@@ -1,0 +1,49 @@
+:root{
+  --bg:#f4f8ff;
+  --card:#ffffff;
+  --ink:#20304a;
+  --muted:#5f7290;
+  --brand:#8bb6ff;   /* pastel blue gradient start */
+  --brand2:#b8d4ff;  /* pastel blue gradient end */
+  --radius:18px;
+  --shadow:0 8px 28px rgba(32,48,74,.08);
+}
+
+html, body, [data-testid="stAppViewContainer"]{
+  background: var(--bg) !important;
+}
+
+h1,h2,h3,h4,h5,h6{ color:var(--ink); }
+
+.hero{ display:flex; justify-content:center; align-items:center; }
+.hero-card{
+  width:min(860px, 92vw);
+  background: linear-gradient(180deg, var(--brand), var(--brand2));
+  color:#0c1a2a;
+  padding:28px 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.hero-card h1, .hero-card h2{ margin:0 0 8px 0; color:#0c1a2a; }
+.hero-card .subtitle{ margin:0; opacity:.9 }
+.instructions{ margin:16px 0 0 18px; }
+
+.card{
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px 18px;
+  box-shadow: var(--shadow);
+  margin: 18px auto;
+  width:min(860px, 92vw);
+}
+
+.upload-card{ display:flex; justify-content:center; align-items:center; flex-direction:column; }
+
+.kv{
+  display:grid; grid-template-columns: 220px 1fr; gap:12px;
+  padding:10px 0; border-bottom:1px solid #eef3ff;
+}
+.kv-key{ color:var(--muted); font-weight:600; }
+.kv-value{ color:var(--ink); }
+
+section.main > div.block-container{ padding-top: 1.2rem; }
