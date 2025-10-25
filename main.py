@@ -101,14 +101,7 @@ ss.setdefault("step", "home")
 ss.setdefault("doc_name", None)
 ss.setdefault("uploaded_bytes", None)
 ss.setdefault("result", None)
-
-def kv_row(label: str, value: str | None):
-    st.markdown(dedent(f"""
-      <div class="kv">
-        <div class="kv-key">{label}</div>
-        <div class="kv-value">{value or "—"}</div>
-      </div>
-    """), unsafe_allow_html=True)
+ss.setdefault("chat", [{"role":"assistant","text":"Hi! How can I help you with this contract?"}])
 
 # ---------------- Screens ----------------
 def screen_home():
@@ -181,71 +174,107 @@ def screen_loading():
 def screen_results():
     st.markdown(dedent("""<div class="mf-container">"""), unsafe_allow_html=True)
 
-    tabs = st.tabs([
-        "📄 Summary","👥 Parties","📅 Key Dates","⚖️ Law & Jurisdiction",
-        "📌 Obligations & Deliverables","💰 Financial Terms","⚠️ Risks"
-    ])
-    res = ss.result or {}
-    summary = res.get("summary")
-    extracted = res.get("extracted", {})
-    risks = res.get("risks", [])
+    # ------ Two-section layout: Left = Tabs, Right = Chat ------
+    left_col, right_col = st.columns([7, 5], gap="large")
 
-    with tabs[0]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown(summary or "_No summary._")
-        st.markdown('</div>', unsafe_allow_html=True)
+    # LEFT: TABS (build single .card per tab to avoid empty rectangle)
+    with left_col:
+        tabs = st.tabs([
+            "📄 Summary","👥 Parties","📅 Key Dates","⚖️ Law & Jurisdiction",
+            "📌 Obligations & Deliverables","💰 Financial Terms","⚠️ Risks"
+        ])
+        res = ss.result or {}
+        summary = res.get("summary")
+        extracted = res.get("extracted", {})
+        risks = res.get("risks", [])
 
-    with tabs[1]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        parties = extracted.get("contracting_parties") or extracted.get("parties")
-        if isinstance(parties, list):
-            for p in parties: kv_row("Party", str(p))
-        else:
-            kv_row("Parties", parties if parties else "—")
-        st.markdown('</div>', unsafe_allow_html=True)
+        # --- Summary ---
+        with tabs[0]:
+            safe_summary = (summary or "_No summary._").replace("\n", "<br>")
+            html = f'<div class="card">{safe_summary}</div>'
+            st.markdown(html, unsafe_allow_html=True)
 
-    with tabs[2]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        dates = extracted.get("key_dates", {}) or {}
-        kv_row("Effective Date", dates.get("effective_date"))
-        kv_row("Expiration Date", dates.get("expiration_date"))
-        kv_row("Renewal Date", dates.get("renewal_date"))
-        st.markdown('</div>', unsafe_allow_html=True)
+        # --- Parties ---
+        with tabs[1]:
+            parties = extracted.get("contracting_parties") or extracted.get("parties")
+            if isinstance(parties, list):
+                inner = "".join(
+                    f'<div class="kv"><div class="kv-key">Party</div><div class="kv-value">{str(p)}</div></div>'
+                    for p in parties
+                )
+            else:
+                inner = f'<div class="kv"><div class="kv-key">Parties</div><div class="kv-value">{parties or "—"}</div></div>'
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-    with tabs[3]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        law = extracted.get("governing_law") or extracted.get("law_and_jurisdiction")
-        juris = extracted.get("jurisdiction")
-        kv_row("Governing Law", law)
-        kv_row("Jurisdiction", juris)
-        st.markdown('</div>', unsafe_allow_html=True)
+        # --- Key Dates ---
+        with tabs[2]:
+            d = extracted.get("key_dates", {}) or {}
+            inner = "".join([
+                f'<div class="kv"><div class="kv-key">Effective Date</div><div class="kv-value">{d.get("effective_date") or "—"}</div></div>',
+                f'<div class="kv"><div class="kv-key">Expiration Date</div><div class="kv-value">{d.get("expiration_date") or "—"}</div></div>',
+                f'<div class="kv"><div class="kv-key">Renewal Date</div><div class="kv-value">{d.get("renewal_date") or "—"}</div></div>',
+            ])
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-    with tabs[4]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        obligations = extracted.get("obligations") or extracted.get("deliverables")
-        if isinstance(obligations, list):
-            for o in obligations: kv_row("Obligation", str(o))
-        else:
-            st.write(obligations or "—")
-        st.markdown('</div>', unsafe_allow_html=True)
+        # --- Law & Jurisdiction ---
+        with tabs[3]:
+            law = extracted.get("governing_law") or extracted.get("law_and_jurisdiction")
+            juris = extracted.get("jurisdiction")
+            inner = "".join([
+                f'<div class="kv"><div class="kv-key">Governing Law</div><div class="kv-value">{law or "—"}</div></div>',
+                f'<div class="kv"><div class="kv-key">Jurisdiction</div><div class="kv-value">{juris or "—"}</div></div>',
+            ])
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-    with tabs[5]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        fin = extracted.get("financial_terms") or {}
-        if isinstance(fin, dict):
-            for k, v in fin.items():
-                kv_row(k.replace("_", " ").title(), str(v))
-        else:
-            st.write(fin or "—")
-        st.markdown('</div>', unsafe_allow_html=True)
+        # --- Obligations & Deliverables ---
+        with tabs[4]:
+            obligations = extracted.get("obligations") or extracted.get("deliverables")
+            if isinstance(obligations, list):
+                inner = "".join(
+                    f'<div class="kv"><div class="kv-key">Obligation</div><div class="kv-value">{str(o)}</div></div>'
+                    for o in obligations
+                )
+            else:
+                inner = f'<div class="kv"><div class="kv-key">Obligations</div><div class="kv-value">{obligations or "—"}</div></div>'
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-    with tabs[6]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        if risks and isinstance(risks, (list, tuple)):
-            for r in risks: st.markdown(f"- {r}")
-        else:
-            st.write("No explicit risks found.")
-        st.markdown('</div>', unsafe_allow_html=True)
+        # --- Financial Terms ---
+        with tabs[5]:
+            fin = extracted.get("financial_terms") or {}
+            if isinstance(fin, dict):
+                inner = "".join(
+                    f'<div class="kv"><div class="kv-key">{k.replace("_"," ").title()}</div><div class="kv-value">{str(v)}</div></div>'
+                    for k, v in fin.items()
+                )
+            else:
+                inner = f'<div class="kv"><div class="kv-key">Financial Terms</div><div class="kv-value">{fin or "—"}</div></div>'
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+
+        # --- Risks ---
+        with tabs[6]:
+            if risks and isinstance(risks, (list, tuple)):
+                inner = "<ul>" + "".join(f"<li>{str(r)}</li>" for r in risks) + "</ul>"
+            else:
+                inner = "No explicit risks found."
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+
+    # RIGHT: Chat panel
+    with right_col:
+        # Messages
+        bubbles = []
+        for m in ss.chat:
+            role_cls = "u" if m["role"] == "user" else "a"
+            bubbles.append(f'<div class="bubble {role_cls}">{m["text"]}</div>')
+        chat_html = '<div class="chat-card">' + "".join(bubbles) + "</div>"
+        st.markdown(chat_html, unsafe_allow_html=True)
+
+        # Input
+        prompt = st.chat_input("Ask the assistant about this contract…")
+        if prompt:
+            ss.chat.append({"role": "user", "text": prompt})
+            # Demo response (stub)
+            ss.chat.append({"role": "assistant", "text": "Demo: I’ll analyze this once the backend is wired. For now, try asking about dates, parties, or auto-renewal."})
+            st.rerun()
 
     st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
 
