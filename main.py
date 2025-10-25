@@ -87,9 +87,10 @@ st.markdown(dedent("""
       <span class="brand-text">VERDICT</span>
     </a>
     <ul class="nav-links nav-right">
-        <li><a class="nav-pill" href="#upload">Upload</a></li>
-        <li><a class="nav-pill" href="#create">Create</a></li>
-        <li><a class="nav-pill" href="#edit">Edit</a></li>
+        <!-- point to real pages; design unchanged -->
+        <li><a class="nav-pill" href="/Upload">Upload</a></li>
+        <li><a class="nav-pill" href="/Create">Create</a></li>
+        <li><a class="nav-pill" href="/Edit">Edit</a></li>
     </ul>
   </nav>
 </header>
@@ -162,12 +163,10 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        # centered button inside the same card
+        # centered button inside the same card → link to Create page
         c1, _ = st.columns([1,5])
         with c1:
-            if st.button("Go to Create", key="home_go_create"):
-                ss.step = "form"
-                st.rerun()
+            st.link_button("Go to Create", "/Create", key="home_go_create")
 
     # ===== 3) Edit (card with button INSIDE) =====
     st.markdown('<span id="edit"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
@@ -187,8 +186,9 @@ def screen_home():
         )
         e1, _ = st.columns([1,5])
         with e1:
+            # keep your disabled logic if you want to gate access
             disabled = ss.get("result") is None
-            st.button("Go to Edit", key="home_go_edit", disabled=disabled)
+            st.link_button("Go to Edit", "/Edit", key="home_go_edit", disabled=disabled)
 
 def screen_loading():
     st.markdown(dedent(f"""
