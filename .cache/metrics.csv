@@ -1,0 +1,19 @@
+q,status,latency_ms,hit_at_k,p1,em,err
+What is the governing law and venue?,OK,75.15,1,1,1,
+What are the termination rights?,OK,52.94,1,1,0,
+What are the payment terms?,OK,54.02,1,1,0,
+Is confidentiality present and how is it scoped?,OK,56.96,1,0,0,
+Who are the parties and roles?,OK,54.93,1,1,1,
+What is the liability cap?,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 418, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 414, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 372, in ask
+    ans = extractive_answer(query, hits)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 276, in extractive_answer
+    m = LEGAL_PATTERNS[""liability_cap""].search(joined)
+                                               ^^^^^^
+UnboundLocalError: cannot access local variable 'joined' where it is not associated with a value"
