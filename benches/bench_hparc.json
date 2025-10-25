@@ -1,0 +1,32 @@
+[
+  {
+    "q": "What is the governing law?",
+    "gold_regex": "laws? of the State of Texas",
+    "k": 8
+  },
+  {
+    "q": "What are termination rights?",
+    "gold_regex": "completion or termination of this Agreement|either party.*terminate|termination",
+    "k": 8
+  },
+  {
+    "q": "What are the payment terms?",
+    "gold_regex": "invoice|net\\s*30|payment in U\\.S\\. Dollars",
+    "k": 8
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "gold_regex": "Confidential|confidential information|covenant of non-competition",
+    "k": 8
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "gold_regex": "between.*HPARC|Software Developer|MSP|HPARC",
+    "k": 8
+  },
+  {
+    "q": "What is the liability cap?",
+    "gold_regex": "aggregate liability.*twelve\\s*\\(12\\)\\s*months|limitation of liability",
+    "k": 8
+  }
+]

@@ -1,0 +1,7 @@
+q,status,latency_ms,hit_at_k,p1,em,err
+What is the governing law?,OK,61.17,1,1,1,
+What are termination rights?,OK,54.72,1,1,0,
+What are the payment terms?,OK,59.38,1,1,1,
+Is confidentiality present and how is it scoped?,OK,57.09,1,1,1,
+Who are the parties and roles?,OK,58.66,1,1,1,
+What is the liability cap?,OK,59.84,0,0,0,

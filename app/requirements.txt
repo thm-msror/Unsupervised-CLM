@@ -1,0 +1,6 @@
+python-dotenv
+orjson
+scikit-learn
+joblib
+regex
+google-generativeai  # optional for generative answers
