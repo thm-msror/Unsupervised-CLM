@@ -140,12 +140,15 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"], label_visibility="collapsed", key="home_uploader")
+        up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"],
+                              label_visibility="collapsed", key="home_uploader")
         if up is not None:
             ss.uploaded_bytes = up.getvalue()
             ss.doc_name = up.name
-            ss.step = "loading"
-            st.rerun()
+            ss.result = None                  # clear previous results
+            ss.pending_upload = True          # tell Results to process it
+            st.switch_page("/Results")        # go to real Results page (URL updates)
+
 
     # ===== 2) Create (card with button INSIDE) =====
     st.markdown('<span id="create"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
