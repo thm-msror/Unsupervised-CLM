@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 CLM AI — 3-screen Streamlit app (FE-first, stubs for backend):
-1) Home (title + instructions + centered upload INSIDE the hero)
+1) Home (Masjid-style hero with centered upload)
 2) Loading (progress while parsing/analysis)
-3) Results (tabs: Summary, Parties, Dates, Law, Obligations, Financials, Risks)
+3) Results (clean text header + tabs with glass cards)
 """
 
 import time
@@ -11,7 +11,6 @@ import os
 import sys
 from pathlib import Path
 import streamlit as st
-from textwrap import dedent
 
 # Ensure we can import from src/ and app/
 ROOT = Path(__file__).parent
@@ -78,7 +77,6 @@ def analyze_risk(text: str, cfg: dict):
         "Medium: Indemnification scope is ambiguous.",
         "Low: Confidentiality clause aligns with standard.",
     ]
-# ---------------------------------------------------------------
 
 # ---- Streamlit page + theme ----
 st.set_page_config(page_title="CLM AI", page_icon="🤖", layout="centered")
@@ -86,10 +84,22 @@ THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(f"<style>{THEME_PATH.read_text()}</style>", unsafe_allow_html=True)
 
-# ---- sidebar (minimal) ----
-st.sidebar.header("⚙️ Settings")
-backend_label = st.sidebar.radio("LLM Backend:", ["HuggingFace API", "Local Ollama"], index=1)
-CFG = get_backend_config(backend_label)
+# ---- Sticky header (Masjid-style) ----
+st.markdown(
+"""<div class="mf-header">
+  <div class="mf-nav">
+    <a class="mf-brand" href="#top" aria-label="CLM AI home">
+      <span class="mf-logo" aria-hidden="true">✦</span>
+      <span>CLM AI</span>
+    </a>
+    <div class="mf-links">
+      <a class="active" href="#top">Home</a>
+      <a href="#results">Results</a>
+    </div>
+  </div>
+</div>""",
+    unsafe_allow_html=True,
+)
 
 # ---- session state ----
 ss = st.session_state
@@ -98,46 +108,59 @@ ss.setdefault("doc_name", None)
 ss.setdefault("uploaded_bytes", None)
 ss.setdefault("result", None)
 
-# ---- UI helpers ----
+# ---- UI helper ----
 def kv_row(label: str, value: str | None):
     st.markdown(
-        f"""
-        <div class="kv">
+        f"""<div class="kv">
           <div class="kv-key">{label}</div>
           <div class="kv-value">{value or "—"}</div>
-        </div>
-        """,
+        </div>""",
         unsafe_allow_html=True
     )
 
+# ---- Screens ----
 def screen_home():
-    st.markdown(dedent("""\
-        <div class="hero">
-        <div class="hero-card">
-        <h1>CLM&nbsp;AI</h1>
-        <p class="subtitle">
-        Upload a contract and let the AI extract key data, summarize terms, and flag risks.
-        (PDF or DOCX • English & Arabic)
-        </p>
-        <ol class="instructions">
-        <li>Upload your file below.</li>
-        <li>Review results in tabs (Summary, Parties, Dates, Law, Obligations, Financials).</li>
-        </ol>
-        <div class="upload-inline">
-        <div class="uploader-label">Upload contract (PDF/DOCX)</div>
+    st.markdown(
+"""<section class="mf-hero" id="top" aria-label="Welcome">
+  <div class="mf-container mf-hero-grid">
+    <div>
+      <div class="hero-copy" style="text-align:center">
+        <h1 class="mf-title" style="margin-top:6px">CLM AI</h1>
+        <div class="mf-sub" style="margin-top:8px">
+          Upload contracts. Get clean summaries, key data & risk flags.
+          (PDF/DOCX • English & Arabic)
         </div>
-        </div>
-        </div>
-        """), unsafe_allow_html=True)
+        <div class="upload-inline"></div>
+      </div>
+    </div>
+    <div class="mf-card" aria-hidden="true">
+      <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0%" stop-color="var(--brand)" />
+            <stop offset="100%" stop-color="var(--brand-2)" />
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#g)" stroke-width="2" opacity=".9">
+          <path d="M200 20l60 60-60 60-60-60 60-60Z" />
+          <path d="M200 80l60 60-60 60-60-60 60-60Z" />
+          <path d="M200 140l60 60-60 60-60-60 60-60Z" />
+          <path d="M200 200l60 60-60 60-60-60 60-60Z" />
+          <circle cx="200" cy="180" r="150" opacity=".25" />
+          <circle cx="200" cy="180" r="110" opacity=".35" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>""",
+        unsafe_allow_html=True,
+    )
 
-    # file_uploader rendered immediately after our inline label,
-    # but still visually inside the hero via CSS (we'll pull it up)
     up = st.file_uploader(
         label="Upload contract (PDF/DOCX)",
         type=["pdf", "docx"],
         label_visibility="collapsed"
     )
-
     if up is not None:
         ss.uploaded_bytes = up.getvalue()
         ss.doc_name = up.name
@@ -146,49 +169,35 @@ def screen_home():
 
 def screen_loading():
     st.markdown(
-        f"""
-        <div class="hero">
-          <div class="hero-card">
-            <h2>Analyzing <code>{ss.doc_name or "your file"}</code>…</h2>
-            <p class="subtitle">Extracting fields, summarizing, and scanning for risks.</p>
-          </div>
-        </div>
-        """,
+        f"""<div class="section-head">
+          <h2>Analyzing <code>{ss.doc_name or "your file"}</code>…</h2>
+          <p>Extracting fields, summarizing, and scanning for risks.</p>
+        </div>""",
         unsafe_allow_html=True
     )
     p = st.progress(5)
     for pct in (12, 25, 42):
         time.sleep(0.15); p.progress(pct)
-
     text = parse_document(ss.uploaded_bytes, ss.doc_name)
-    for pct in (55, 66): time.sleep(0.1); p.progress(pct)
-
-    summary = summarize_contract(text, CFG)
-    for pct in (74, 82): time.sleep(0.1); p.progress(pct)
-
-    extracted = extract_key_data(text, CFG)
-    risks = analyze_risk(text, CFG)
-    for pct in (90, 100): time.sleep(0.1); p.progress(pct)
-
-    ss.result = {
-        "summary": summary,
-        "extracted": extracted,
-        "risks": risks,
-        "raw_text": text
-    }
+    for pct in (55, 66):
+        time.sleep(0.1); p.progress(pct)
+    summary = summarize_contract(text, get_backend_config("x"))
+    for pct in (74, 82):
+        time.sleep(0.1); p.progress(pct)
+    extracted = extract_key_data(text, get_backend_config("x"))
+    risks = analyze_risk(text, get_backend_config("x"))
+    for pct in (90, 100):
+        time.sleep(0.1); p.progress(pct)
+    ss.result = {"summary": summary, "extracted": extracted, "risks": risks, "raw_text": text}
     ss.step = "results"
     st.rerun()
 
 def screen_results():
     st.markdown(
-        f"""
-        <div class="hero">
-          <div class="hero-card">
-            <h2>Results for <code>{ss.doc_name}</code></h2>
-            <p class="subtitle">Explore the tabs below.</p>
-          </div>
-        </div>
-        """,
+        f"""<div class="section-head" id="results">
+          <h2>Results for <code>{ss.doc_name}</code></h2>
+          <p>Explore the tabs below.</p>
+        </div>""",
         unsafe_allow_html=True
     )
 
@@ -216,7 +225,8 @@ def screen_results():
         st.markdown('<div class="card">', unsafe_allow_html=True)
         parties = extracted.get("contracting_parties") or extracted.get("parties")
         if isinstance(parties, list):
-            for p in parties: kv_row("Party", str(p))
+            for p in parties:
+                kv_row("Party", str(p))
         else:
             kv_row("Parties", parties if parties else "—")
         st.markdown("</div>", unsafe_allow_html=True)
@@ -241,7 +251,8 @@ def screen_results():
         st.markdown('<div class="card">', unsafe_allow_html=True)
         obligations = extracted.get("obligations") or extracted.get("deliverables")
         if isinstance(obligations, list):
-            for o in obligations: kv_row("Obligation", str(o))
+            for o in obligations:
+                kv_row("Obligation", str(o))
         else:
             st.write(obligations or "—")
         st.markdown("</div>", unsafe_allow_html=True)
