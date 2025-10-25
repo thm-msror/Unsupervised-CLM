@@ -11,7 +11,7 @@ for p in (ROOT / "src", APP):
     if str(p) not in sys.path:
         sys.path.append(str(p))
 
-# ---- demo stubs ----
+# ---------------- Demo stubs ----------------
 def get_backend_config(_label: str) -> dict:
     return {
         "preferred_backend": "local",
@@ -65,37 +65,37 @@ def analyze_risk(text: str, cfg: dict):
         "Low: Confidentiality clause aligns with standard.",
     ]
 
-# ---- page + theme ----
+# ---------------- Page + theme ----------------
 st.set_page_config(page_title="VERDICT", layout="centered")
 THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(dedent(f"<style>{THEME_PATH.read_text()}</style>"), unsafe_allow_html=True)
 
-# ---- centered header (diamond icon + cursive VERDICT) ----
+# ---------- Custom Header (Masjid-style: brand left, links right) ----------
 st.markdown(dedent("""
-<div class="mf-header">
-  <div class="mf-nav">
+<header class="mf-header" id="site-header">
+  <nav class="mf-nav">
     <a class="brand-lockup" href="#top" aria-label="VERDICT home">
-      <!-- Diamond mini icon -->
       <svg class="brand-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="brandStroke" x1="0" x2="1">
-            <stop offset="0%"  stop-color="var(--brand)"/>
-            <stop offset="100%" stop-color="var(--brand-2)"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="brandStroke" x1="0" x2="1">
+          <stop offset="0%"  stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/>
+        </linearGradient></defs>
         <g fill="none" stroke="url(#brandStroke)" stroke-width="10" opacity=".95">
-          <path d="M100 10 160 70 100 130 40 70Z"/>
-          <path d="M100 70 160 130 100 190 40 130Z"/>
+          <path d="M100 10 160 70 100 130 40 70Z"/><path d="M100 70 160 130 100 190 40 130Z"/>
         </g>
       </svg>
       <span class="brand-text">VERDICT</span>
     </a>
-  </div>
-</div>
+
+    <ul class="nav-links nav-right">
+      <li><a href="#upload">Upload</a></li>
+      <li><a class="nav-cta" href="#create">Create</a></li>
+    </ul>
+  </nav>
+</header>
 """), unsafe_allow_html=True)
 
-# ---- session ----
+# ---------------- Session ----------------
 ss = st.session_state
 ss.setdefault("step", "home")
 ss.setdefault("doc_name", None)
@@ -110,50 +110,53 @@ def kv_row(label: str, value: str | None):
       </div>
     """), unsafe_allow_html=True)
 
-# ---- screens ----
+# ---------------- Screens ----------------
 def screen_home():
-    # Single centered stack: Title row → tagline → uploader
-    st.markdown('<section class="mf-hero" id="top"><div class="mf-container">', unsafe_allow_html=True)
+    st.markdown('<main id="top">', unsafe_allow_html=True)
+
+    # Hero
     st.markdown(dedent("""
-    <div class="hero-stack">
-      <!-- Title row (bigger inline icon + wordmark) -->
-      <a class="brand-lockup hero-title" href="#top" aria-label="VERDICT title">
-        <svg class="brand-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="brandStroke2" x1="0" x2="1">
-              <stop offset="0%"  stop-color="var(--brand)"/>
-              <stop offset="100%" stop-color="var(--brand-2)"/>
-            </linearGradient>
-          </defs>
-          <g fill="none" stroke="url(#brandStroke2)" stroke-width="10" opacity=".95">
-            <path d="M100 10 160 70 100 130 40 70Z"/>
-            <path d="M100 70 160 130 100 190 40 130Z"/>
-          </g>
-        </svg>
-        <span class="brand-text">VERDICT</span>
-      </a>
-
-      <p class="hero-tagline">
-        Upload contracts. Get clean summaries, key data &amp; risk flags.<br/>
-        <span class="muted">(PDF/DOCX • English &amp; Arabic)</span>
-      </p>
-
-      <div class="upload-inline"></div>
-    </div>
+      <section class="hero-block">
+        <div class="hero-content">
+          <h1 class="hero-title">VERDICT</h1>
+          <p class="hero-subtitle">
+            Upload a contract to get a clean summary, key data, and risk flags — or generate a new, law-aware draft in minutes.
+          </p>
+        </div>
+      </section>
     """), unsafe_allow_html=True)
 
-    up = st.file_uploader(
-        "Upload contract (PDF/DOCX)",
-        type=["pdf", "docx"],
-        label_visibility="collapsed"
-    )
+    # Instructions (anchor id for header link)
+    st.markdown(dedent("""
+      <section class="mf-container" id="how">
+        <div class="how-card">
+          <h3>What’s the VERDICT?</h3>
+          <ul class="how-list">
+            <li><strong>Upload</strong> a PDF or DOCX contract (English or Arabic). We parse it locally and prepare it for extraction.</li>
+            <li><strong>Review</strong> the automatic summary, parties, key dates, governing law / jurisdiction, obligations, and financial terms.</li>
+            <li><strong>Flag risks.</strong> We highlight auto-renewals, indemnity scope, confidentiality gaps, and other atypical clauses.</li>
+            <li><strong>Or create</strong> a brand-new contract: pick industry & subject, select governing law (e.g., Qatar or UK), and we swap in compliant clauses automatically.</li>
+          </ul>
+        </div>
+      </section>
+    """), unsafe_allow_html=True)
+
+    # Upload section
+    st.markdown('<span id="upload"></span>', unsafe_allow_html=True)
+    up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"], label_visibility="collapsed")
     if up is not None:
         ss.uploaded_bytes = up.getvalue()
         ss.doc_name = up.name
         ss.step = "loading"
         st.rerun()
 
-    st.markdown('</div></section>', unsafe_allow_html=True)
+    # Create section
+    st.markdown('<span id="create"></span>', unsafe_allow_html=True)
+    if st.button("＋ Create a new contract", use_container_width=True):
+        ss.step = "form"
+        st.rerun()
+
+    st.markdown('</main>', unsafe_allow_html=True)
 
 def screen_loading():
     st.markdown(dedent(f"""
@@ -163,18 +166,14 @@ def screen_loading():
     """), unsafe_allow_html=True)
 
     p = st.progress(5)
-    for pct in (12, 25, 42):
-        time.sleep(0.15); p.progress(pct)
+    for pct in (12, 25, 42): time.sleep(0.15); p.progress(pct)
     text = parse_document(ss.uploaded_bytes, ss.doc_name)
-    for pct in (55, 66):
-        time.sleep(0.10); p.progress(pct)
+    for pct in (55, 66): time.sleep(0.10); p.progress(pct)
     summary = summarize_contract(text, get_backend_config("x"))
-    for pct in (74, 82):
-        time.sleep(0.10); p.progress(pct)
+    for pct in (74, 82): time.sleep(0.10); p.progress(pct)
     extracted = extract_key_data(text, get_backend_config("x"))
     risks = analyze_risk(text, get_backend_config("x"))
-    for pct in (90, 100):
-        time.sleep(0.10); p.progress(pct)
+    for pct in (90, 100): time.sleep(0.10); p.progress(pct)
     ss.result = {"summary": summary, "extracted": extracted, "risks": risks, "raw_text": text}
     ss.step = "results"
     st.rerun()
@@ -250,10 +249,105 @@ def screen_results():
 
     st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
 
-# ---- router ----
+# ---------------- Dynamic Contract Form ----------------
+def screen_form():
+    st.markdown(dedent("""<div class="mf-container">"""), unsafe_allow_html=True)
+    st.markdown("## Create a new contract")
+    st.caption("Select industry, subject, and governing law. Defaults auto-load. Jurisdictional language is swapped to keep the draft legally coherent.")
+
+    industries = ["Technology (SaaS)", "Consulting/Professional Services", "Construction", "Healthcare"]
+    subjects = {
+        "Technology (SaaS)": ["Master Subscription Agreement", "Data Processing Addendum", "Support & SLA"],
+        "Consulting/Professional Services": ["Service Agreement", "Statement of Work", "NDA"],
+        "Construction": ["General Construction Contract", "Subcontract", "Change Order"],
+        "Healthcare": ["Services Agreement", "BAA (HIPAA)", "NDA"],
+    }
+    laws = ["Qatar", "United Kingdom"]
+    jurisdictions = {"Qatar": ["Qatari Courts (Doha)"], "United Kingdom": ["England & Wales Courts (London)"]}
+
+    col1, col2 = st.columns(2)
+    with col1:
+        industry = st.selectbox("Industry", industries, index=0)
+        service  = st.selectbox("Subject / Service", subjects[industry], index=0)
+    with col2:
+        law      = st.selectbox("Governing Law", laws, index=0)
+        forum    = st.selectbox("Jurisdiction", jurisdictions[law], index=0)
+
+    DEFAULTS = {
+        ("Technology (SaaS)", "Master Subscription Agreement"): [
+            "License & Access: Customer is granted a non-exclusive, non-transferable right to access the Service.",
+            "Data Protection: Provider implements industry-standard security controls and encrypts Customer Data in transit and at rest.",
+            "Uptime & SLA: Target uptime is 99.9% monthly; service credits apply for verified downtime.",
+            "Fees & Payment: Invoices are due Net 30 from invoice date; late fees may apply.",
+            "Confidentiality: Each party shall protect Confidential Information using reasonable safeguards.",
+            "Limitation of Liability: Capped at the fees paid in the 12 months preceding the claim.",
+        ],
+        ("Consulting/Professional Services", "Service Agreement"): [
+            "Scope: Consultant will deliver the Services as described in the Statement of Work.",
+            "Deliverables & Acceptance: Client shall review and accept deliverables within 10 days.",
+            "Fees & Expenses: Time & materials; pre-approved expenses reimbursed.",
+            "IP Ownership: Work product becomes Client property upon full payment.",
+            "Confidentiality: Both parties will maintain strict confidentiality.",
+            "Liability: Consultant’s aggregate liability capped at fees paid for the Services.",
+        ],
+        ("Construction", "General Construction Contract"): [
+            "Scope of Work: Contractor shall perform the Work in accordance with the Specifications.",
+            "Schedule: Contractor will diligently pursue Substantial Completion by the Milestone Date.",
+            "Payment: Progress payments monthly based on percent completion.",
+            "Change Orders: Variations must be in writing and signed by both parties.",
+            "Insurance & Safety: Contractor maintains insurance and complies with safety regulations.",
+            "Dispute Resolution: Parties will negotiate in good faith prior to formal proceedings.",
+        ],
+        ("Healthcare", "Services Agreement"): [
+            "Compliance: Provider complies with applicable healthcare regulations.",
+            "PHI Handling: Restricted access; use and disclosure only as permitted.",
+            "Security Safeguards: Technical, administrative, and physical safeguards implemented.",
+            "Audit Rights: Client may audit reasonable aspects upon notice.",
+            "Fees & Payment: As set forth in the Order; Net 30.",
+            "Liability: Limited as permitted by applicable law.",
+        ],
+    }
+
+    LAW_PATCH = {
+        "Qatar": [
+            "Governing Law: This Agreement is governed by the laws of the State of Qatar.",
+            "Jurisdiction: The courts located in Doha, Qatar, shall have exclusive jurisdiction.",
+            "Public Policy: Any provision inconsistent with mandatory Qatari public policy shall be interpreted to the maximum lawful extent.",
+        ],
+        "United Kingdom": [
+            "Governing Law: This Agreement is governed by the laws of England and Wales.",
+            "Jurisdiction: The courts of England and Wales seated in London shall have exclusive jurisdiction.",
+            "Statutory Rights: Nothing in this Agreement excludes or limits liability that cannot be excluded under the laws of England and Wales.",
+        ],
+    }
+
+    base_clauses = DEFAULTS.get((industry, service), [])
+    law_clauses  = LAW_PATCH.get(law, [])
+    draft = f"# {service}\n\n" \
+            f"**Industry:** {industry}\n" \
+            f"**Governing Law:** {law}\n" \
+            f"**Jurisdiction:** {forum}\n\n" \
+            "## Clauses\n" + "".join([f"- {c}\n" for c in base_clauses + law_clauses])
+
+    st.markdown("### Draft (auto-tailored)")
+    st.text_area("Generated draft", value=draft, height=280, label_visibility="collapsed")
+
+    colA, colB = st.columns([1,1])
+    with colA:
+        if st.button("Use this draft", type="primary"):
+            ss.step = "results"
+            st.rerun()
+    with colB:
+        st.download_button("Download .txt", draft.encode("utf-8"), file_name="contract_draft.txt")
+
+    st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
+
+# ---------------- Router ----------------
 if ss.step == "home":
     screen_home()
 elif ss.step == "loading":
     screen_loading()
+elif ss.step == "form":
+    screen_form()
 else:
     screen_results()

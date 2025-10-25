@@ -1,38 +1,18 @@
-/* ===== Aurora Indigo → Teal (eye-friendly) — VERDICT =====
-   Fonts: Playfair Display (cursive/italic title) + Inter for UI
----------------------------------------------------------------- */
+/* ===== Aurora Indigo → Teal — VERDICT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@300;400;600;800&display=swap');
 
 :root{
-  /* Canvas (slightly lighter than deep navy) */
-  --bg:#12263e;
-  --bg-mid:#0f2a43;
-  --bg-soft:#0d2538;
-
-  /* Aurora glows */
+  --bg:#12263e; --bg-mid:#0f2a43; --bg-soft:#0d2538;
   --glow-teal:rgba(26,196,190,.28);
   --glow-violet:rgba(160,150,255,.24);
-
-  /* Brand + accents */
-  --brand:#cfe4ff;
-  --brand-2:#ffffff;
-  --accent:#1aa6a1;
-
-  /* Text */
-  --ink:#f6f9ff;
-  --muted:#cedbf2;
-
-  /* Glass + lines */
-  --glass-1:rgba(255,255,255,.14);
-  --glass-2:rgba(255,255,255,.07);
-  --glass-border:rgba(255,255,255,.24);
-  --hair:rgba(255,255,255,.14);
-
-  --radius:20px;
-  --shadow:0 28px 60px rgba(4,12,26,.55);
+  --brand:#cfe4ff; --brand-2:#ffffff; --accent:#5a8fff;
+  --ink:#f6f9ff; --muted:#cedbf2;
+  --glass-1:rgba(255,255,255,.14); --glass-2:rgba(255,255,255,.07);
+  --glass-border:rgba(255,255,255,.24); --hair:rgba(255,255,255,.12);
+  --radius:20px; --shadow:0 28px 60px rgba(4,12,26,.55);
 }
 
-/* ---------- Page canvas with aurora mesh ---------- */
+/* ===== Base canvas & typography ===== */
 html,body,[data-testid="stAppViewContainer"]{
   background:
     radial-gradient(60% 50% at 85% 8%, var(--glow-teal), transparent 60%),
@@ -41,84 +21,112 @@ html,body,[data-testid="stAppViewContainer"]{
   color:var(--ink);
   font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial !important;
 }
+section.main > div { padding-top: 0 !important; }
 
-/* ---------- Sticky header (centered) ---------- */
+/* Hide accidental code overlays globally */
+[data-testid="stCodeBlock"], pre, code { display:none !important; }
+
+/* Containers */
+.mf-container{ max-width:1100px; margin:0 auto; padding:0 20px; }
+
+/* ===== Remove Streamlit header; use our own ===== */
+header[data-testid="stHeader"], div[data-testid="stHeader"]{ background:transparent !important; border:none !important; }
+header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:none !important; }
+
+/* ===== Custom Header (Masjid-style) ===== */
 .mf-header{
-  position:sticky; top:0; z-index:50;
-  background:rgba(14,32,54,.65);
-  backdrop-filter: blur(10px);
+  position:sticky; top:0; z-index:100; left:0; right:0;
+  width:100vw; margin-left:calc(50% - 50vw);
+  background:linear-gradient(180deg, rgba(8,20,34,.92), rgba(10,26,44,.88)) !important;
   border-bottom:1px solid var(--hair);
 }
 .mf-nav{
-  max-width:1100px; margin:0 auto; padding:0 20px; height:64px;
-  display:flex; align-items:center; justify-content:center;
+  max-width:1200px; margin:0 auto; padding:10px 20px; height:64px;
+  display:flex; align-items:center; gap:18px;
 }
-
-/* Inline brand (diamond icon + wordmark) */
-.brand-lockup{
-  display:inline-flex; align-items:center; gap:14px;
-  text-decoration:none; color:var(--ink);
-}
-.brand-mark{
-  width:26px; height:26px;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
-}
+.brand-lockup{ display:inline-flex; align-items:center; gap:14px; color:var(--ink); text-decoration:none; }
+.brand-mark{ width:26px; height:26px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
 .brand-text{
-  font-family:"Playfair Display", serif;
-  font-style:italic; font-weight:700;
-  font-size: clamp(24px, 3vw, 34px);
-  letter-spacing:.6px; line-height:1;
-  color:var(--ink);
-  text-shadow:0 8px 22px rgba(0,0,0,.45);
-  position:relative; padding-bottom:6px;
+  font-family:"Playfair Display", serif; font-style:italic; font-weight:700;
+  font-size: clamp(22px, 3vw, 30px); letter-spacing:.6px; line-height:1; color:var(--ink);
+  position:relative; padding-bottom:6px; text-shadow:0 8px 22px rgba(0,0,0,.45);
 }
 .brand-text::after{
-  content:""; position:absolute; left:0; right:0; bottom:0;
-  height:4px; border-radius:4px;
-  background:linear-gradient(90deg, #5aa4ff, #8dc7ff 60%, transparent);
-  opacity:.9;
+  content:""; position:absolute; left:0; bottom:0; width:100%; height:4px; border-radius:4px;
+  background:linear-gradient(90deg, #5aa4ff, #8dc7ff 60%, transparent); opacity:.9;
 }
 
-/* ---------- Hero (single centered stack) ---------- */
-.mf-hero{ position:relative; overflow:hidden; }
-.mf-container{ max-width:1100px; margin:0 auto; padding:0 20px; }
-
-.hero-stack{
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:14px; padding:72px 0 48px;
-  min-height: 440px;
+/* Right-aligned links like the Masjid site */
+.nav-links{ list-style:none; display:flex; align-items:center; gap:22px; margin:0; padding:0; flex:1 1 auto; justify-content:flex-end; }
+.nav-links a{
+  color:var(--muted); text-decoration:none; font-weight:600;
+  padding:10px 12px; border-radius:10px; line-height:1;
 }
+.nav-links a:hover{ color:var(--ink); }
 
-/* Big title row inside hero (same lockup style, just larger) */
-.hero-title .brand-mark{ width:34px; height:34px; }
-.hero-title .brand-text{ font-size: clamp(28px, 4vw, 44px); }
-
-/* Tagline */
-.hero-tagline{
-  max-width:780px; text-align:center; margin:4px 0 6px;
-  font-size: clamp(16px, 1.9vw, 18px);
-  line-height:1.45; color:var(--ink);
+/* CTA pill ("Create") */
+.nav-links .nav-cta{
+  color:#071a33; font-weight:800;
+  background:linear-gradient(180deg,#7aa5ff,#5a8fff);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:18px;
+  padding:10px 16px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
 }
-.hero-tagline .muted{ color:var(--muted); }
+.nav-links .nav-cta:hover{ filter:brightness(1.05); }
 
-/* Uploader: wide rectangular with strong contrast */
+/* Ensure no white leaks in header */
+.mf-header, .mf-header *{ background:transparent !important; }
+
+/* ===== Hero ===== */
+.hero-block{ padding:52px 0 12px; }
+.hero-content{ max-width:920px; margin:0 auto; text-align:center; }
+.hero-title{
+  font-family:"Playfair Display", serif; font-style:italic; font-weight:700;
+  font-size: clamp(36px, 6vw, 64px); margin:0 0 8px;
+}
+.hero-subtitle{ color:var(--muted); margin:0; font-size: clamp(16px, 2vw, 18px); }
+
+/* ===== Instructions card (narrow & centered) ===== */
+.how-card{
+  width:clamp(320px, 70ch, 860px);
+  margin:24px auto 14px !important;
+  padding:18px 22px;
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow: var(--shadow);
+}
+.how-card h3{ margin:0 0 10px; }
+.how-list{ margin:0; padding-left:20px; }
+.how-list li{ margin:8px 0; }
+
+/* ===== Uploader ===== */
 .upload-inline{ display:flex; justify-content:center; width:100%; margin-top:8px; }
-[data-testid="stFileUploader"]{ width:min(760px, 92%); }
+[data-testid="stFileUploader"]{ width:min(760px, 92%); margin:8px auto 10px; }
 [data-testid="stFileUploader"] > section{
   border-radius:18px !important;
   border:1px solid var(--glass-border) !important;
-  background:rgba(0,0,0,.26) !important;
-  color:var(--ink) !important;
-  box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 16px 32px rgba(0,0,0,.38);
+  background:rgba(0,0,0,.26) !important; color:var(--ink) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset, 0 16px 32px rgba(0,0,0,.38);
 }
-[data-testid="stFileUploader"] p,
-[data-testid="stFileUploader"] span{ color:var(--ink) !important; opacity:.98; }
-[data-testid="stFileUploader"] button{ filter:none !important; }
+[data-testid="stFileUploader"] p, [data-testid="stFileUploader"] span{ color:var(--ink) !important; opacity:.98; }
 
-/* Loading/info text + tabs + result cards (unchanged patterns) */
+/* ===== Results cards ===== */
+.card{
+  background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
+  border:1px solid var(--glass-border); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow);
+  width:min(1100px,96vw); margin:22px auto; color:var(--ink);
+}
 .section-head{ width:min(1100px,96vw); margin:0 auto 8px; color:var(--ink); padding-top:8px; }
 .section-head p{ margin:0; color:var(--muted); }
+.kv{ display:grid; grid-template-columns:260px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--hair); }
+.kv:last-child{ border-bottom:none; }
+.kv-key{ color:var(--muted); font-weight:700; }
+.kv-value{ color:var(--ink); }
 
+/* ===== Tabs ===== */
 [data-baseweb="tab-list"]{ border-bottom:1px solid var(--hair); gap:.35rem; }
 .stTabs [role="tab"]{
   background:transparent !important; border:none !important; border-radius:0 !important;
@@ -127,23 +135,10 @@ html,body,[data-testid="stAppViewContainer"]{
 .stTabs [role="tab"]:hover{ color:var(--ink) !important; }
 .stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
 
-.card{
-  background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
-  border:1px solid var(--glass-border); border-radius:var(--radius);
-  padding:20px; box-shadow:var(--shadow);
-  width:min(1100px,96vw); margin:22px auto; color:var(--ink);
-}
-
-/* KV rows */
-.kv{ display:grid; grid-template-columns:260px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--hair); }
-.kv:last-child{ border-bottom:none; }
-.kv-key{ color:var(--muted); font-weight:700; }
-.kv-value{ color:var(--ink); }
-
-/* Mobile */
+/* ===== Mobile ===== */
 @media (max-width: 900px){
-  .hero-stack{ padding:56px 0 36px; }
-  .brand-text{ font-size: clamp(22px, 6vw, 30px); }
-  .hero-title .brand-mark{ width:28px; height:28px; }
-  .hero-title .brand-text{ font-size: clamp(26px, 6vw, 36px); }
+  .mf-nav{ padding:8px 14px; }
+  .brand-text{ font-size: clamp(20px, 6vw, 26px); }
+  .hero-block{ padding:40px 0 8px; }
+  .how-card{ width:clamp(280px, 88vw, 860px); }
 }
