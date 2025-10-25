@@ -406,5 +406,128 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .sc-edit   + div[data-testid="stButton"]{ display:flex !important; justify-content:center !important; transform: translateY(-6px); }
 .sc-edit   + div[data-testid="stButton"] button{ min-width: 200px; }
 
-/* NOTE: deliberately NO global :has(.card-anchor) rules here —
-   only .section-card panels get the raised card look. */
+/* === Section cards: keep widget INSIDE the same card ================== */
+/* Top half of each card (title + description) already uses .section-card.
+   We attach the widget container right after it as the bottom half.      */
+
+/* Upload card bottom (uploader) */
+.sc-upload { margin-bottom: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+.sc-upload + div[data-testid="stFileUploader"]{
+  /* same width + centered */
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px)))) !important;
+  margin: 0 auto 22px !important;
+
+  /* visually part of the same card */
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-top: none;                             /* fuse to the top half */
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  padding: 12px 12px 14px;
+}
+/* compact, white uploader inside the card bottom */
+.sc-upload + div[data-testid="stFileUploader"] > div{
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.98) !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+
+/* Create card bottom (button) */
+.sc-create { margin-bottom: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+.sc-create + div[data-testid="stButton"]{
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px)))) !important;
+  margin: 0 auto 22px !important;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+
+  padding: 14px 16px;
+  display: flex !important;
+  justify-content: center !important;
+}
+.sc-create + div[data-testid="stButton"] button{ min-width: 200px; height: 42px !important; border-radius: 12px !important; }
+
+/* Edit card bottom (button) */
+.sc-edit { margin-bottom: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+.sc-edit + div[data-testid="stButton"]{
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px)))) !important;
+  margin: 0 auto 22px !important;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+
+  padding: 14px 16px;
+  display: flex !important;
+  justify-content: center !important;
+}
+.sc-edit + div[data-testid="stButton"] button{ min-width: 200px; height: 42px !important; border-radius: 12px !important; }
+/* === Turn any Streamlit container that has .sc-card into a raised section card === */
+div[data-testid="stVerticalBlock"]:has(.sc-card){
+  max-width: min(1200px, 94vw);
+  margin: 0 auto 22px;
+  padding: 18px 18px 20px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 22px 40px rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+}
+
+/* Inside those cards, keep controls full width of the card */
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stFileUploader,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stButton,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stColumns,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stTextInput,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stSelectbox{
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Make uploader look nice inside card */
+div[data-testid="stVerticalBlock"]:has(.sc-upload-flag) .stFileUploader > div{
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* Center the primary button in Create/Edit cards */
+div[data-testid="stVerticalBlock"]:has(.sc-create-flag) .stButton,
+div[data-testid="stVerticalBlock"]:has(.sc-edit-flag)   .stButton{
+  display: flex !important;
+  justify-content: center !important;
+}
+div[data-testid="stVerticalBlock"]:has(.sc-create-flag) .stButton > button,
+div[data-testid="stVerticalBlock"]:has(.sc-edit-flag)   .stButton > button{
+  min-width: 200px;
+  height: 42px !important;
+  border-radius: 12px !important;
+}
+/* === Make the section card invisible + darker text === */
+.section-card{
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Darker text inside the cards */
+.section-card,
+.section-card p,
+.section-card .section-desc,
+.section-card .section-heading h2{
+  color:#1e2735 !important;   /* deep navy */
+}

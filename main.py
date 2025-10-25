@@ -87,8 +87,9 @@ st.markdown(dedent("""
       <span class="brand-text">VERDICT</span>
     </a>
     <ul class="nav-links nav-right">
-      <li><a href="#upload">Upload</a></li>
-      <li><a class="nav-cta" href="#create">Create</a></li>
+        <li><a class="nav-pill" href="#upload">Upload</a></li>
+        <li><a class="nav-pill" href="#create">Create</a></li>
+        <li><a class="nav-pill" href="#edit">Edit</a></li>
     </ul>
   </nav>
 </header>
@@ -105,7 +106,7 @@ ss.setdefault("clear_compose", False)
 
 # ---------------- Screens ----------------
 def screen_home():
-    # Hero (top)
+    # Hero (unchanged)
     st.markdown(
         """
         <main id="top">
@@ -122,10 +123,10 @@ def screen_home():
         unsafe_allow_html=True
     )
 
-    # ===== Section 1: Upload — card = this container =====
+    # ===== 1) Upload (card with uploader INSIDE) =====
     st.markdown('<span id="upload"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
     with st.container():
-        st.markdown('<div class="card-anchor upload-anchor"></div>', unsafe_allow_html=True)  # for CSS :has()
+        st.markdown('<span class="sc-card sc-upload-flag"></span>', unsafe_allow_html=True)
         st.markdown(
             """
             <div class="section-heading">
@@ -139,17 +140,17 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf","docx"], label_visibility="collapsed", key="home_uploader")
+        up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"], label_visibility="collapsed", key="home_uploader")
         if up is not None:
             ss.uploaded_bytes = up.getvalue()
             ss.doc_name = up.name
             ss.step = "loading"
             st.rerun()
 
-    # ===== Section 2: Create — card = this container =====
+    # ===== 2) Create (card with button INSIDE) =====
     st.markdown('<span id="create"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
     with st.container():
-        st.markdown('<div class="card-anchor create-anchor"></div>', unsafe_allow_html=True)
+        st.markdown('<span class="sc-card sc-create-flag"></span>', unsafe_allow_html=True)
         st.markdown(
             """
             <div class="section-heading">
@@ -162,14 +163,17 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        if st.button("Go to Create", key="home_go_create"):
-            ss.step = "form"
-            st.rerun()
+        # centered button inside the same card
+        c1, _ = st.columns([1,5])
+        with c1:
+            if st.button("Go to Create", key="home_go_create"):
+                ss.step = "form"
+                st.rerun()
 
-    # ===== Section 3: Edit — card = this container =====
+    # ===== 3) Edit (card with button INSIDE) =====
     st.markdown('<span id="edit"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
     with st.container():
-        st.markdown('<div class="card-anchor edit-anchor"></div>', unsafe_allow_html=True)
+        st.markdown('<span class="sc-card sc-edit-flag"></span>', unsafe_allow_html=True)
         st.markdown(
             """
             <div class="section-heading">
@@ -182,7 +186,10 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        st.button("Go to Edit", key="home_go_edit", disabled=ss.get("result") is None)
+        e1, _ = st.columns([1,5])
+        with e1:
+            disabled = ss.get("result") is None
+            st.button("Go to Edit", key="home_go_edit", disabled=disabled)
 
 def screen_loading():
     st.markdown(dedent(f"""
