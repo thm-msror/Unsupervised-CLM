@@ -98,11 +98,7 @@ def main():
         )
         
         st.markdown("### ⚙️ Settings")
-        backend = st.radio(
-            "LLM Backend:",
-            ["🌐 HuggingFace API", "🏠 Local Ollama"],
-            help="Choose between cloud API or local deployment"
-        )
+        st.info("🔷 Using Google Gemini API for AI-powered contract analysis")
     
     # Main content based on selected page
     if page == "🏠 Home":
@@ -261,37 +257,47 @@ def show_test_page():
     """API testing page"""
     st.markdown("### 🧪 Test API Connection")
     
-    col1, col2 = st.columns(2)
+    st.markdown("#### 🔷 Google Gemini API Test")
     
+    gemini_key = st.text_input("Gemini API Key", type="password", 
+                              placeholder="AIza...", help="Enter your Google AI API key")
+    
+    col1, col2 = st.columns(2)
     with col1:
-        st.markdown("#### 🌐 HuggingFace API")
-        hf_key = st.text_input("API Key", type="password", 
-                              placeholder="hf_xxx", help="Enter your HuggingFace API key")
-        if st.button("Test HF API"):
-            if hf_key:
-                with st.spinner("Testing API..."):
-                    # Test API connection
-                    st.success("✅ HuggingFace API connection successful!")
+        if st.button("🧪 Test API Connection", type="primary"):
+            if gemini_key:
+                with st.spinner("Testing Gemini API..."):
+                    try:
+                        import google.generativeai as genai
+                        genai.configure(api_key=gemini_key)
+                        model = genai.GenerativeModel('gemini-2.5-flash')
+                        response = model.generate_content("Say 'API test successful' if you can read this.")
+                        st.success("✅ Gemini API connection successful!")
+                        st.info("🎯 Model: gemini-2.5-flash (latest)")
+                    except Exception as e:
+                        st.error(f"❌ Gemini API error: {str(e)}")
             else:
-                st.error("❌ Please enter an API key")
+                st.error("❌ Please enter a Gemini API key")
     
     with col2:
-        st.markdown("#### 🏠 Local Ollama")
-        if st.button("Test Ollama"):
-            with st.spinner("Testing Ollama..."):
-                # Test Ollama connection
-                try:
-                    import requests
-                    response = requests.get("http://localhost:11434/api/tags", timeout=5)
-                    if response.status_code == 200:
-                        st.success("✅ Ollama is running!")
-                        models = response.json().get('models', [])
-                        if models:
-                            st.write("Available models:", [m['name'] for m in models])
-                    else:
-                        st.error("❌ Ollama server error")
-                except:
-                    st.error("❌ Ollama not running. Start with: `ollama serve`")
+        if st.button("📄 Test Contract Analysis"):
+            if gemini_key:
+                with st.spinner("Testing contract analysis..."):
+                    try:
+                        import google.generativeai as genai
+                        genai.configure(api_key=gemini_key)
+                        model = genai.GenerativeModel('gemini-2.5-flash')
+                        
+                        sample_contract = "CONSULTING AGREEMENT between ABC Corp and John Smith, effective January 2025, $150/hour, 6 months duration."
+                        prompt = f"Analyze this contract and extract: parties, duration, rate, risks: {sample_contract}"
+                        
+                        response = model.generate_content(prompt)
+                        st.success("✅ Contract analysis successful!")
+                        st.text_area("Analysis Result:", response.text, height=150)
+                    except Exception as e:
+                        st.error(f"❌ Analysis error: {str(e)}")
+            else:
+                st.error("❌ Please enter a Gemini API key")
 
 # =============================================================================
 # 🔧 Helper Functions
@@ -316,13 +322,12 @@ def check_system_status():
     else:
         status[".env Configuration"] = "⚠️"
     
-    # Check Ollama (optional)
+    # Check Gemini API availability
     try:
-        import requests
-        response = requests.get("http://localhost:11434/api/tags", timeout=2)
-        status["Ollama (Local LLM)"] = "✅" if response.status_code == 200 else "⚠️"
-    except:
-        status["Ollama (Local LLM)"] = "⚠️"
+        import google.generativeai
+        status["Google Gemini SDK"] = "✅"
+    except ImportError:
+        status["Google Gemini SDK"] = "❌"
     
     return status
 

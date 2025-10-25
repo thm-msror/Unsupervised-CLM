@@ -20,11 +20,11 @@
 | Component | Technology | Purpose |
 |-----------|------------|---------|
 | **Frontend** | [Streamlit](https://streamlit.io/) | Web UI and orchestration |
-| **LLM** | [Qwen 2](https://huggingface.co/qwen-2) (7B/1.5B) | Contract analysis and NLP |
+| **LLM** | [Google Gemini 2.5 Flash](https://ai.google.dev/) | Contract analysis and NLP |
 | **OCR** | PaddleOCR, EasyOCR, Doctr | Document text extraction *(optional)* |
 | **Embeddings** | Sentence-Transformers, E5 Multilingual | Semantic search and RAG |
 | **Cloud Deployment** | [Render](https://render.com/) | Demo hosting |
-| **Local Deployment** | Ollama, Local binaries | **Data confidentiality** and offline use |
+| **API Backend** | Google Gemini API | Fast, free-tier AI processing |
 
 ---
 
@@ -73,7 +73,7 @@ UNSUPERVISED-CLM/
 │   └── dashboard.py                  # Dashboard components & visualizations
 │
 ├── 🧠 src/                           # Core AI logic & LLM integration
-│   ├── llm_handler.py                # LLM wrapper (Qwen, HuggingFace, local)
+│   ├── llm_handler.py                # LLM wrapper (Google Gemini API)
 │   ├── data_extraction.py            # Contract information extraction
 │   ├── risk_analysis.py              # Risk assessment & clause analysis
 │   ├── summarization.py              # Contract summarization
@@ -114,24 +114,18 @@ UNSUPERVISED-CLM/
 
 ### System Requirements
 - **Python 3.8+** — Main runtime
-- **Windows 10/11** — For winget package manager
-- **4GB+ RAM** — For Qwen 1.5B model (16GB+ recommended for 7B model)
-- **Internet connection** — For downloading models and dependencies
+- **Internet connection** — For Google Gemini API access
+- **Google AI API Key** — Free tier available at [Google AI Studio](https://makersuite.google.com/app/apikey)
 
 ### Installation Commands
 ```powershell
-# Python packages (pip checks for existing installations)
+# Install Python dependencies
 pip install -r requirements.txt
 
-# Ollama LLM runtime (winget checks if already installed and skips if found)
-winget install Ollama.Ollama
-
-# Verify installations
+# Verify installation
 python --version
-ollama --version
+pip list | grep google-generativeai
 ```
-
-> ✅ **Smart Installation**: Both `pip` and `winget` automatically check for existing installations and skip if already present, just like other modern package managers.
 
 ---
 
@@ -146,12 +140,12 @@ cd Unsupervised-CLM
 pip install -r requirements.txt
 ```
 
-**Step 2: Install Ollama (for local LLM)**
+**Step 2: Get Google Gemini API Key**
 ```powershell
-# Install Ollama using winget (checks if already installed)
-winget install Ollama.Ollama
-
-# Alternative: Download from https://ollama.ai/download/windows
+# 1. Go to Google AI Studio: https://makersuite.google.com/app/apikey
+# 2. Sign in with Google account
+# 3. Click "Create API Key" 
+# 4. Copy the API key (starts with AIza...)
 ```
 
 **Step 3: Configure Environment**
@@ -159,29 +153,21 @@ winget install Ollama.Ollama
 # Create a .env file
 New-Item -ItemType File -Path .env -Force
 
-# Add your configuration (choose one backend):
-# For Hugging Face API (cloud, quick setup):
-echo "PREFERRED_BACKEND=huggingface" >> .env
-echo "HUGGINGFACE_API_KEY=your_hf_token_here" >> .env
-echo "HUGGINGFACE_MODEL=Qwen/Qwen2.5-7B-Instruct" >> .env
-
-# OR for local Ollama (privacy, requires step 2):
-echo "PREFERRED_BACKEND=local" >> .env
-echo "LOCAL_INFERENCE_URL=http://localhost:11434" >> .env
-echo "LOCAL_MODEL=qwen2:1.5b" >> .env
+# Add your Gemini API key:
+echo "GEMINI_API_KEY=your_api_key_here" >> .env
 ```
 
-> 💡 **Get HF API Key**: Sign up at [Hugging Face](https://huggingface.co/join) and get your token from [Settings > Access Tokens](https://huggingface.co/settings/tokens)
+> 💡 **Free Tier**: Google Gemini offers generous free limits: 15 req/min, 1500 req/day, 1M tokens/month
 
-**Step 4: Run Locally**
+**Step 4: Run Application**
 ```powershell
 # Run from repository root
 streamlit run main.py --server.port 8501
 # Open your browser at: http://localhost:8501
 ```
 
-> ✅ **Privacy Note**: Local deployment ensures full confidentiality — contract data never leaves your machine.  
-> 📁 **Structure Note**: The main entry point is `main.py` at the repository root for simple deployment.
+> 🔑 **API Key Security**: Your Gemini API key is used client-side and not stored permanently  
+> 📁 **Structure Note**: The main entry point is `main.py` at the repository root for simple deployment
 
 ---
 
@@ -201,7 +187,7 @@ For hackathon demos, deploy on Render using cloud-hosted LLMs:
 streamlit run main.py --server.port $PORT --server.address 0.0.0.0
 ```
 
-> ⚠️ **Security Note**: Cloud deployment is for demos only. For sensitive contracts, use local deployment or private cloud/VPC.
+> 🔒 **Security**: Add your GEMINI_API_KEY as an environment variable in Render dashboard
 
 ---
 
@@ -225,96 +211,60 @@ pip install -r requirements.txt
 
 ---
 
-## 🔐 Model Deployment & Privacy
+## 🔐 AI Configuration & API Setup
 
-### 🤖 LLM Configuration
+### 🤖 Google Gemini 2.5 Flash
 
-This application uses **Qwen 2** for contract analysis, extraction, and Q&A:
+This application uses **Google Gemini 2.5 Flash** for contract analysis:
 
-| Model Variant | Use Case | Memory Requirements |
-|---------------|----------|-------------------|
-| **Qwen 2 — 7B** | Recommended for quality | ~16GB RAM |
-| **Qwen 2 — 1.5B** | Low-resource environments | ~4GB RAM |
+| Feature | Specification |
+|---------|---------------|
+| **Model** | gemini-2.5-flash (latest) |
+| **Context Window** | 32K tokens |
+| **Speed** | Optimized for low-latency |
+| **Free Tier** | 15 req/min, 1500 req/day, 1M tokens/month |
 
-### ☁️ Cloud vs 🏠 Local Deployment
+### 🔑 API Key Setup
 
-**For Hackathon Demos:**
-- Uses Hugging Face Inference API
-- Quick deployment without specialized hardware
-- Suitable for public demonstrations
+**Get Your Free API Key:**
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy the key (starts with `AIza...`)
 
-**For Production/Confidential Use:**
-- Run Qwen locally via [Ollama](https://ollama.ai/) or local binaries
-- Complete data privacy — no external API calls
-- Configurable model size based on hardware
-
-### 🔄 Switching Between Cloud & Local
-
-The application supports seamless switching via environment variables:
-
-```bash
-# Use cloud API (demo)
-PREFERRED_BACKEND=huggingface
-HUGGINGFACE_API_KEY=your_api_key
-
-# Use local model (production)
-PREFERRED_BACKEND=local
-LOCAL_INFERENCE_URL=http://localhost:11434
-LOCAL_MODEL=qwen-2-7b
-```
-When running locally, pick the model size that matches your hardware (1.5B for low RAM, 7B for a better balance of performance and resource use).
-
-### 🧪 Testing Qwen Locally with Ollama
-
-**Quick Test Setup:**
+**Add to Environment:**
 ```powershell
-# 1. Install Ollama (Windows)
-# Download from: https://ollama.ai/download/windows
-# Or use winget: winget install Ollama.Ollama
-
-# 2. Pull Qwen model (choose based on your RAM)
-ollama pull qwen2:1.5b    # For low-RAM machines (~4GB RAM)
-ollama pull qwen2:7b      # For moderate RAM (~16GB RAM)
-
-# 3. Test the model directly
-ollama run qwen2:1.5b "Summarize this contract clause: The party agrees to deliver services within 30 days."
-
-# 4. Start Ollama server (runs on http://localhost:11434)
-ollama serve
+# Create .env file
+echo "GEMINI_API_KEY=AIza..." >> .env
 ```
 
-**Test with curl:**
+### 🧪 Testing Gemini API
+
+**Quick Test Script:**
 ```powershell
-# Test API endpoint
-curl -X POST http://localhost:11434/api/generate -H "Content-Type: application/json" -d '{"model": "qwen2:1.5b", "prompt": "Extract parties from: Agreement between ABC Corp and XYZ Ltd", "stream": false}'
+# Run the test script
+python tests/test_gemini_api.py
 ```
 
-### 🌐 Testing Qwen with Hugging Face API (Cloud)
-
-**Quick Setup:**
-```powershell
-# 1. Get API key from https://huggingface.co/settings/tokens
-# 2. Set environment variable
-$env:HUGGINGFACE_API_KEY="your_hf_token_here"
-
-# 3. Test with curl
-curl -X POST "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct" -H "Authorization: Bearer $env:HUGGINGFACE_API_KEY" -H "Content-Type: application/json" -d '{"inputs": "Extract parties from: Agreement between ABC Corp and XYZ Ltd"}'
-```
-
-**Test with Python:**
+**Manual Test with Python:**
 ```python
-import requests
-import os
+import google.generativeai as genai
 
-# Your HF API key
-api_key = os.getenv("HUGGINGFACE_API_KEY")
-headers = {"Authorization": f"Bearer {api_key}"}
+# Configure API
+genai.configure(api_key="your_api_key_here")
+model = genai.GenerativeModel('gemini-2.5-flash')
 
-# Available Qwen models on HF
-models = [
-    "Qwen/Qwen2.5-7B-Instruct",  # Latest and best
-    "Qwen/Qwen2.5-1.5B-Instruct",  # Smaller, faster
-    "Qwen/Qwen2-7B-Instruct"    # Previous version
-]
+# Test contract analysis
+contract_text = "Agreement between ABC Corp and XYZ Ltd, effective Jan 2025, $150/hour"
+prompt = f"Extract key information from this contract: {contract_text}"
 
+response = model.generate_content(prompt)
+print(response.text)
 ```
+
+### 💡 Why Gemini for Hackathons?
+
+- **🆓 Free Tier**: Generous limits for development and demos
+- **⚡ Fast**: Optimized for quick responses
+- **🧠 Smart**: Excellent at structured data extraction
+- **📄 Contract-Ready**: Great performance on legal document analysis

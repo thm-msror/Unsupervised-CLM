@@ -1,15 +1,19 @@
 # Web Framework
 streamlit>=1.29.0
 
-# LLM & Hugging Face
-transformers>=4.35.0
-huggingface-hub>=0.16.0
-torch>=2.0.0
+# LLM & AI APIs
+google-generativeai>=0.3.0  # Google Gemini API
 
 # PDF / DOCX processing
 PyPDF2>=3.0.1
 python-docx>=0.8.11
 pdfplumber>=0.9.0
+pymupdf 
+pdfminer.six 
+langdetect 
+arabic-reshaper 
+python-bidi
+json
 
 # OCR (optional, for scanned PDFs)
 paddleocr>=2.6.0
