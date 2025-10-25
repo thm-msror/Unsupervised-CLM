@@ -34,8 +34,6 @@ section.main > div { padding-top: 0 !important; }
   margin-left:calc(50% - 50vw);
   padding:0;
   position:relative;
-
-  /* Alignment knobs */
   --tab-gap: 12px;
   --card-mt: 12px;
   --chat-offset: calc(var(--tab-gap) + var(--card-mt));
@@ -56,15 +54,9 @@ section.main > div { padding-top: 0 !important; }
 /* Soft divider glow between sections */
 .results-wrap::after{
   content:"";
-  position:absolute;
-  left:50%;
-  top:110px;
-  bottom:40px;
-  width:2px;
+  position:absolute; left:50%; top:110px; bottom:40px; width:2px;
   background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08));
-  backdrop-filter:blur(2px);
-  border-radius:1px;
-  transform:translateX(-50%);
+  backdrop-filter:blur(2px); border-radius:1px; transform:translateX(-50%);
   pointer-events:none;
 }
 
@@ -74,7 +66,8 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 
 /* ===== Custom Header ===== */
 .mf-header{
-  position:sticky; top:0; z-index:100; left:0; right:0;
+  position:sticky; top:0; left:0; right:0;
+  z-index:200; isolation:isolate;
   width:100vw; margin-left:calc(50% - 50vw);
   background:linear-gradient(180deg, rgba(8,20,34,.92), rgba(10,26,44,.88)) !important;
   border-bottom:1px solid var(--hair);
@@ -106,8 +99,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   color:#071a33; font-weight:800;
   background:linear-gradient(180deg,#7aa5ff,#5a8fff);
   border:1px solid rgba(255,255,255,.22);
-  border-radius:18px;
-  padding:10px 16px;
+  border-radius:18px; padding:10px 16px;
   box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
 }
 .nav-links .nav-cta:hover{ filter:brightness(1.05); }
@@ -140,20 +132,13 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
   border:1px solid var(--glass-border);
   border-radius:var(--radius);
-  padding:20px;
-  box-shadow:var(--shadow);
-  width:100%;
-  margin:12px 0;
-  color:var(--ink);
-  box-sizing:border-box;
+  padding:20px; box-shadow:var(--shadow);
+  width:100%; margin:12px 0; color:var(--ink); box-sizing:border-box;
 }
-
-/* Slight lift on left-side cards to emphasize sectioning */
 .results-wrap [data-testid="column"]:first-child .card{
   box-shadow:0 6px 26px rgba(0,0,0,.35);
   border:1px solid rgba(255,255,255,.15);
 }
-
 .section-head{ width:100%; margin:0 auto 8px; color:var(--ink); padding-top:8px; }
 .section-head p{ margin:0; color:var(--muted); }
 
@@ -163,7 +148,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .kv-key{ color:var(--muted); font-weight:700; }
 .kv-value{ color:var(--ink); }
 
-/* ===== Tabs (tighten look) ===== */
+/* ===== Tabs ===== */
 [data-baseweb="tab-list"]{ border-bottom:1px solid var(--hair); gap:.25rem; }
 .stTabs [role="tab"]{
   background:transparent !important; border:none !important; border-radius:0 !important;
@@ -172,52 +157,29 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .stTabs [role="tab"]:hover{ color:var(--ink) !important; }
 .stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
 
-/* ===== Chat panel (right column) ===== */
+/* ===== Chat panel ===== */
 .chat-card{
   background: linear-gradient(180deg, rgba(250,245,235,.94), rgba(245,237,224,.88)) !important;
-  border: 1px solid rgba(96,74,42,.25) !important;
-  border-radius:20px;
-  padding:0;
-  box-shadow:0 12px 40px rgba(0,0,0,.55);
-  min-height:540px;
-  max-height:72vh;
-  overflow:auto;
-  margin:12px 0 8px;
-  transition:transform .2s ease, box-shadow .3s ease;
+  border: 1px solid rgba(96,74,42,.25) !important; border-radius:20px;
+  padding:0; box-shadow:0 12px 40px rgba(0,0,0,.55);
+  min-height:540px; max-height:72vh; overflow:auto;
+  margin:12px 0 8px; transition:transform .2s ease, box-shadow .3s ease;
 }
-
-/* Sticky title bar inside the chat card */
 .chat-titlebar{
-  position:sticky; top:0;
-  padding:12px 16px;
-  font-weight:800;
-  letter-spacing:.2px;
-  color:#2a2a2a;
-  background:linear-gradient(180deg, rgba(252,247,237,1), rgba(246,239,228,.96));
+  position:sticky; top:0; padding:12px 16px; font-weight:800; letter-spacing:.2px;
+  color:#2a2a2a; background:linear-gradient(180deg, rgba(252,247,237,1), rgba(246,239,228,.96));
   border-bottom:1px solid rgba(96,74,42,.18);
-  border-top-left-radius:20px;
-  border-top-right-radius:20px;
-  z-index:1;
+  border-top-left-radius:20px; border-top-right-radius:20px; z-index:1;
 }
 
 /* Message bubbles */
-.bubble{
-  display:inline-block;
-  padding:10px 12px;
-  border-radius:14px;
-  margin:6px 16px;
-  line-height:1.3;
-  max-width:100%;
-  word-wrap:break-word;
-}
+.bubble{ display:inline-block; padding:10px 12px; border-radius:14px; margin:6px 16px; line-height:1.3; max-width:100%; word-wrap:break-word; }
 .bubble.a{ background:rgba(0,0,0,.06) !important; color:#1e2735 !important; }
 .bubble.u{ background:#2b4b74 !important; color:#e8f2ff !important; margin-left:auto; display:block; }
 
 /* Compose row inside the column */
 .stForm .row-widget.stButton > button{ height:42px; border-radius:14px; }
-.stForm .stTextInput > div > div input{
-  height:42px; border-radius:14px; padding:0 14px;
-}
+.stForm .stTextInput > div > div input{ height:42px; border-radius:14px; padding:0 14px; }
 
 /* ===== Mobile ===== */
 @media (max-width:900px){
@@ -226,95 +188,36 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   .hero-block{ padding:40px 0 8px; }
   .how-card{ width:clamp(280px, 88vw, 860px); }
   .kv{ grid-template-columns:1fr; }
-
-  .results-wrap [data-testid="stHorizontalBlock"]{
-    gap:12px !important;
-    column-gap:12px !important;
-  }
+  .results-wrap [data-testid="stHorizontalBlock"]{ gap:12px !important; column-gap:12px !important; }
   .results-wrap::after{ display:none; }
 }
 
 /* Remove Streamlit's default side padding and max-width */
-.main .block-container{
-  padding-left:0 !important;
-  padding-right:0 !important;
-  max-width:100% !important;
-}
+.main .block-container{ padding-left:0 !important; padding-right:0 !important; max-width:100% !important; }
 
-/* ===== Section separation: keep tabs gap consistent */
+/* Tabs gap */
 .results-wrap .stTabs{ margin-bottom: var(--tab-gap) !important; }
 
-/* ===== Align chat top to first results card top ===== */
-.results-wrap [data-testid="stHorizontalBlock"] > [data-testid="column"]:nth-child(2){
-  padding-top: var(--chat-offset) !important;
-}
+/* Align chat top to first results card top */
+.results-wrap [data-testid="stHorizontalBlock"] > [data-testid="column"]:nth-child(2){ padding-top: var(--chat-offset) !important; }
 
-/* === Chat vertical alignment (final) === */
-.results-wrap{ --chat-shift: 16px; }
-.chat-wrap{ padding-top: var(--chat-shift) !important; }
+/* Chat vertical alignment */
+.results-wrap{ --chat-shift: 16px; } .chat-wrap{ padding-top: var(--chat-shift) !important; }
 
-/* ===== Chat bubbles (final definition) ===== */
-.results-wrap .chat-card .bubble{
-  display: inline-block !important;
-  max-width: 92% !important;
-  white-space: pre-wrap !important;
-  word-break: break-word !important;
-  padding: 10px 12px !important;
-  margin: 8px 16px !important;
-  font-size: 14px !important;
-  line-height: 1.35 !important;
-  border-radius: 14px !important;
-}
-.results-wrap .chat-card .bubble.u{
-  margin-left: auto !important;
-  margin-right: 16px !important;
-  display: inline-flex !important;
-  align-self: flex-end !important;
-  background: #2b4b74 !important;
-  color: #e8f2ff !important;
-}
-.results-wrap .chat-card .bubble.a{
-  background: rgba(0,0,0,.06) !important;
-  color: #1e2735 !important;
-}
+/* Chat bubbles final */
+.results-wrap .chat-card .bubble{ display:inline-block !important; max-width:92% !important; white-space:pre-wrap !important; word-break:break-word !important; padding:10px 12px !important; margin:8px 16px !important; font-size:14px !important; line-height:1.35 !important; border-radius:14px !important; }
+.results-wrap .chat-card .bubble.u{ margin-left:auto !important; margin-right:16px !important; display:inline-flex !important; align-self:flex-end !important; background:#2b4b74 !important; color:#e8f2ff !important; }
+.results-wrap .chat-card .bubble.a{ background:rgba(0,0,0,.06) !important; color:#1e2735 !important; }
 
 /* Title centered */
-.chat-titlebar{
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-}
+.chat-titlebar{ text-align:center; display:flex; align-items:center; justify-content:center; font-weight:800; }
 
-/* ===== Compose row under chat ===== */
-.results-wrap .chat-compose{
-  width: 100% !important;
-  display: block !important;
-  margin: 10px 0 0 !important;
-}
-.results-wrap .chat-compose .stTextInput > div { width: 100% !important; }
-.results-wrap .chat-compose .stTextInput input{
-  width: 100% !important;
-  height: 44px !important;
-  border-radius: 14px !important;
-  background: rgba(255,255,255,.98) !important;
-  border: 1px solid rgba(96,74,42,.25) !important;
-  color: #1e2735 !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,.08) !important;
-}
-.results-wrap .chat-compose .stTextInput input::placeholder{
-  color: #6b7785 !important; opacity: .9 !important;
-}
-.results-wrap .chat-compose .stButton > button{
-  height: 44px !important;
-  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
-  color: #071a33 !important;
-  border: 1px solid rgba(255,255,255,.22) !important;
-  border-radius: 14px !important;
-  font-weight: 800 !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
-}
+/* Compose row under chat */
+.results-wrap .chat-compose{ width:100% !important; display:block !important; margin:10px 0 0 !important; }
+.results-wrap .chat-compose .stTextInput > div { width:100% !important; }
+.results-wrap .chat-compose .stTextInput input{ width:100% !important; height:44px !important; border-radius:14px !important; background:rgba(255,255,255,.98) !important; border:1px solid rgba(96,74,42,.25) !important; color:#1e2735 !important; box-shadow:0 2px 10px rgba(0,0,0,.08) !important; }
+.results-wrap .chat-compose .stTextInput input::placeholder{ color:#6b7785 !important; opacity:.9 !important; }
+.results-wrap .chat-compose .stButton > button{ height:44px !important; background:linear-gradient(180deg,#7aa5ff,#5a8fff) !important; color:#071a33 !important; border:1px solid rgba(255,255,255,.22) !important; border-radius:14px !important; font-weight:800 !important; box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important; }
 .results-wrap .chat-compose .stButton > button:hover{ filter: brightness(1.05); }
 .results-wrap .chat-compose .stButton > button:disabled{ opacity:.55; filter: grayscale(.15); }
 
@@ -326,10 +229,8 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 
 /* Section wrapper → full-width band with gentle gradient */
 .section-block{
-  width:100vw;
-  margin-left:calc(50% - 50vw);
-  padding: 32px 0;
-  position: relative;
+  width:100vw; margin-left:calc(50% - 50vw);
+  padding: 32px 0; position: relative;
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   border-top: 1px solid rgba(255,255,255,.06);
   border-bottom: 1px solid rgba(0,0,0,.25);
@@ -342,83 +243,63 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   border-bottom: 1px solid rgba(0,0,0,.35);
 }
 
-/* Inner width */
+/* Inner width alignment */
 .section-block > .stMarkdown:first-child .section-heading,
 .section-block > .stMarkdown:first-child + div,
 .section-block .mf-container,
 .section-block > div[data-testid="stFileUploader"],
 .section-block > div[data-testid="stHorizontalBlock"],
-.section-block > div[data-testid="stVerticalBlock"] {
-  max-width: min(1100px, 94vw);
-  margin: 0 auto;
+.section-block > div[data-testid="stVerticalBlock"]{
+  max-width: min(1100px, 94vw); margin:0 auto;
 }
 
-/* Title row with number “kicker” */
+/* Title row */
 .section-heading{
   display:flex; align-items:center; gap:12px;
-  margin: 4px auto 10px;
-  max-width: min(1100px, 94vw);
+  margin: 4px auto 10px; max-width: min(1100px, 94vw);
 }
-.section-heading h2{
-  margin:0; padding:0;
-  font-weight: 800; letter-spacing:.2px;
-  font-size: clamp(24px, 3vw, 34px);
-  color: var(--ink);
-  text-shadow: 0 10px 24px rgba(0,0,0,.35);
-}
+.section-heading h2{ margin:0; padding:0; font-weight:800; letter-spacing:.2px; font-size: clamp(24px, 3vw, 34px); color: var(--ink); text-shadow: 0 10px 24px rgba(0,0,0,.35); }
 .kicker{
-  width:28px; height:28px; border-radius:999px;
-  display:grid; place-items:center;
+  width:28px; height:28px; border-radius:999px; display:grid; place-items:center;
   font-weight:800; color:#dbe7ff;
   background: linear-gradient(180deg,#5a8fff,#3f6ddd);
   box-shadow: 0 6px 14px rgba(30,80,170,.45), inset 0 1px 0 rgba(255,255,255,.18);
 }
 
-/* Description text inside each section */
-.section-desc{
-  max-width: min(1100px, 94vw);
-  margin: 0 auto 14px;
-  color: var(--muted);
-}
+/* Description text */
+.section-desc{ max-width: min(1100px, 94vw); margin: 0 auto 14px; color: var(--muted); }
 
-/* Make Streamlit rows align like cards under headings */
+/* Controls width */
 .section-block .stFileUploader,
 .section-block .stButton,
 .section-block .stColumns, 
 .section-block .stTextInput,
 .section-block .stSelectbox{
-  max-width: min(1100px, 94vw);
-  margin-left:auto; margin-right:auto;
+  max-width: min(1100px, 94vw); margin-left:auto; margin-right:auto;
 }
 
-/* Extra visual separator band */
+/* Separator band */
 .section-divider{
   width:100vw; margin-left:calc(50% - 50vw);
   height: 56px;
-  background:
-    radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.08), transparent 70%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22));
+  background: radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.08), transparent 70%),
+              linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22));
   border-top: 1px solid rgba(255,255,255,.06);
   border-bottom: 1px solid rgba(0,0,0,.35);
 }
 
-/* Uploader polish */
+/* Uploader polish (generic, outside of cards) */
 .section-block .stFileUploader > div{
-  border-radius: 14px !important;
-  border: 1px solid rgba(255,255,255,.22) !important;
-  background: rgba(255,255,255,.10) !important;
-  backdrop-filter: blur(6px);
+  border-radius: 14px !important; border: 1px solid rgba(255,255,255,.22) !important;
+  background: rgba(255,255,255,.10) !important; backdrop-filter: blur(6px);
   box-shadow: 0 10px 28px rgba(0,0,0,.28);
 }
 
 /* Primary buttons in sections */
 .section-block .stButton > button{
   background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
-  color: #071a33 !important;
-  border: 1px solid rgba(255,255,255,.22) !important;
-  border-radius: 14px !important;
-  font-weight: 800 !important;
-  height: 42px !important;
+  color: #071a33 !important; border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 14px !important; font-weight: 800 !important; height: 42px !important;
   box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
 }
 .section-block .stButton > button:hover{ filter:brightness(1.06); }
@@ -427,72 +308,43 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   .section-block{ padding: 26px 0; }
   .section-divider{ height: 40px; }
 }
-/* ======= Tighter section layout (overrides) ======= */
 
-/* Wider inner width so side margins shrink */
+/* ======= Tighter section layout ======= */
 .section-block > .stMarkdown:first-child .section-heading,
 .section-block > .stMarkdown:first-child + div,
 .section-block .mf-container,
 .section-block > div[data-testid="stFileUploader"],
 .section-block > div[data-testid="stHorizontalBlock"],
 .section-block > div[data-testid="stVerticalBlock"]{
-  max-width: min(1200px, 98vw) !important;  /* was 1100px / 94vw */
+  max-width: min(1200px, 98vw) !important;
 }
-
-/* Reduce vertical padding for each band */
-.section-block{ padding: 22px 0 !important; }              /* was 32px */
+.section-block{ padding: 22px 0 !important; }
 .section-block.section-alt{ padding: 22px 0 !important; }
-
-/* Tighten the heading + description spacing */
-.section-heading{ margin: 0 auto 6px !important; }         /* was 4px auto 10px */
+.section-heading{ margin: 0 auto 6px !important; }
 .section-heading h2{ font-size: clamp(22px, 2.4vw, 30px) !important; }
-
-.section-desc{ margin: 2px auto 10px !important; }         /* was 14px */
-
-/* Give controls a little less top gap */
+.section-desc{ margin: 2px auto 10px !important; }
 .section-block .stFileUploader,
 .section-block .stButton,
 .section-block .stColumns, 
 .section-block .stTextInput,
-.section-block .stSelectbox{
-  margin-top: 8px !important;                               /* was default */
-}
-
-/* Slightly shorter hero so content starts sooner */
-.hero-block{ padding: 40px 0 8px !important; }              /* was 52px 0 12px */
-
-/* Optional: thinner separators between sections */
+.section-block .stSelectbox{ margin-top: 8px !important; }
+.hero-block{ padding: 40px 0 8px !important; }
 .section-divider{
-  height: 42px !important;                                  /* was 56px */
-  background:
-    radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.06), transparent 70%),
-    linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.18)) !important;
-}
-/* === FINAL HOME SECTION GUTTERS + UNIFIED WIDTH (place at end) === */
-
-:root{
-  /* global section sizing */
-  --section-max: 1200px;               /* shared inner width cap */
-  --section-gutter: 32px;              /* space from screen edge on desktop */
-  --section-pad-y: 22px;               /* vertical padding per band */
+  height: 42px !important;
+  background: radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.06), transparent 70%),
+              linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.18)) !important;
 }
 
-@media (max-width: 1024px){
-  :root{ --section-gutter: 24px; }
-}
-@media (max-width: 640px){
-  :root{ --section-gutter: 18px; }
-}
+/* === FINAL HOME SECTION GUTTERS + UNIFIED WIDTH === */
+:root{ --section-max: 1200px; --section-gutter: 32px; --section-pad-y: 22px; }
+@media (max-width: 1024px){ :root{ --section-gutter: 24px; } }
+@media (max-width: 640px){ :root{ --section-gutter: 18px; } }
 
-/* Full-bleed bands still span 100vw, but we add side gutters */
 .section-block{
   padding: var(--section-pad-y) 0 !important;
-  /* side gutter – prevents content touching screen edge */
   padding-left: var(--section-gutter) !important;
   padding-right: var(--section-gutter) !important;
 }
-
-/* One canonical inner width for EVERYTHING inside a section */
 .section-block .section-heading,
 .section-block .section-desc,
 .section-block .stFileUploader,
@@ -507,83 +359,52 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .section-block > div[data-testid="stHorizontalBlock"],
 .section-block > div[data-testid="stVerticalBlock"]{
   max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;               /* ensures identical lengths */
+  margin-left: auto !important; margin-right: auto !important; width: 100% !important;
 }
-
-/* Slightly tighter spacing for the header + description rows */
 .section-heading{ margin: 2px auto 8px !important; }
 .section-desc{ margin: 0 auto 12px !important; }
-
-/* Uploader looks like a card but fills the same inner width */
 .section-block .stFileUploader > div{
-  width: 100% !important;
-  border-radius: 14px !important;
-  border: 1px solid rgba(255,255,255,.22) !important;
-  background: rgba(255,255,255,.10) !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+  width: 100% !important; border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.22) !important; background: rgba(255,255,255,.10) !important;
+  padding-left: 10px !important; padding-right: 10px !important; box-shadow: 0 10px 28px rgba(0,0,0,.28);
 }
-
-/* Optional: make the top “hero” follow the same gutter logic */
-.hero-content{
-  max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
+.hero-content{ max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important; padding-left:0 !important; padding-right:0 !important; }
 
 /* === SECTION CARDS (raised panels) =============================== */
 .section-card{
-  /* same inner width as the rest of the section */
   max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px))));
-  margin: 0 auto 22px;                 /* bottom spacing to next band */
-  padding: 18px 18px 20px;
-  border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 22px 40px rgba(0,0,0,.45);
+  margin: 0 auto 22px; padding: 18px 18px 20px; border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18); box-shadow: 0 22px 40px rgba(0,0,0,.45);
   backdrop-filter: blur(6px);
 }
-
-/* tighter spacing between heading/desc inside cards */
 .section-card .section-heading{ margin: 0 0 8px !important; }
 .section-card .section-desc{ margin: 0 0 12px !important; }
-
-/* uploader/button rows fill the card width nicely */
 .section-card .stFileUploader,
 .section-card .stButton,
 .section-card .stColumns,
 .section-card .stTextInput,
-.section-card .stSelectbox{
-  max-width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-/* pretty uploader inside card */
+.section-card .stSelectbox{ max-width: 100% !important; margin-left:0 !important; margin-right:0 !important; }
 .section-card .stFileUploader > div{
-  border-radius: 12px !important;
-  background: rgba(255,255,255,.96) !important;
-  border: 1px solid rgba(0,0,0,.10) !important;
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-  padding-left: 12px !important;
-  padding-right: 12px !important;
+  border-radius: 12px !important; background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(0,0,0,.10) !important; box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding-left: 12px !important; padding-right: 12px !important;
 }
-
-/* card-specific primary button */
 .section-card .stButton > button{
-  height: 42px !important;
-  border-radius: 12px !important;
-  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
-  color: #071a33 !important;
-  border: 1px solid rgba(255,255,255,.22) !important;
-  font-weight: 800 !important;
+  height: 42px !important; border-radius: 12px !important;
+  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important; color: #071a33 !important;
+  border: 1px solid rgba(255,255,255,.22) !important; font-weight: 800 !important;
   box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
 }
 .section-card .stButton > button:hover{ filter: brightness(1.06); }
 
-/* give the band itself lighter padding; the card does the visual work */
-.section-block{ padding: var(--section-pad-y, 22px) 0 !important; }
+/* The cards host their widgets using adjacent-sibling placement from main.py */
+.section-card{ position: relative; padding-bottom: 18px; }
+.sc-upload + div[data-testid="stFileUploader"]{ max-width: 860px; margin: 8px auto 10px !important; transform: translateY(-8px); }
+.sc-create + div[data-testid="stButton"]{ display:flex !important; justify-content:center !important; transform: translateY(-6px); }
+.sc-create + div[data-testid="stButton"] button{ min-width: 200px; }
+.sc-edit   + div[data-testid="stButton"]{ display:flex !important; justify-content:center !important; transform: translateY(-6px); }
+.sc-edit   + div[data-testid="stButton"] button{ min-width: 200px; }
+
+/* NOTE: deliberately NO global :has(.card-anchor) rules here —
+   only .section-card panels get the raised card look. */

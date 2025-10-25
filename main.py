@@ -122,12 +122,12 @@ def screen_home():
         unsafe_allow_html=True
     )
 
-    # ===== Section 1: Upload (card + centered uploader INSIDE the card) =====
+    # ===== Section 1: Upload — card = this container =====
     st.markdown('<span id="upload"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <section class="section-block">
-          <div class="section-card">
+    with st.container():
+        st.markdown('<div class="card-anchor upload-anchor"></div>', unsafe_allow_html=True)  # for CSS :has()
+        st.markdown(
+            """
             <div class="section-heading">
               <div class="kicker">①</div>
               <h2>Upload an Existing Contract</h2>
@@ -136,31 +136,22 @@ def screen_home():
               Drop in a PDF/DOCX and we’ll produce a structured summary, key fields, and risk flags.
               You’ll also get a chat assistant on the right so you can ask questions about the contract.
             </p>
-        """,
-        unsafe_allow_html=True
-    )
-    # Center the uploader within the card
-    c1, c2, c3 = st.columns([1.2, 6, 1.2])
-    with c2:
-        up = st.file_uploader(
-            "Upload contract (PDF/DOCX)",
-            type=["pdf", "docx"],
-            label_visibility="collapsed",
-            key="home_uploader",
+            """,
+            unsafe_allow_html=True
         )
-    st.markdown("</div></section>", unsafe_allow_html=True)  # close .section-card + section
-    if up is not None:
-        ss.uploaded_bytes = up.getvalue()
-        ss.doc_name = up.name
-        ss.step = "loading"
-        st.rerun()
+        up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf","docx"], label_visibility="collapsed", key="home_uploader")
+        if up is not None:
+            ss.uploaded_bytes = up.getvalue()
+            ss.doc_name = up.name
+            ss.step = "loading"
+            st.rerun()
 
-    # ===== Section 2: Create (card + centered button INSIDE the card) =====
+    # ===== Section 2: Create — card = this container =====
     st.markdown('<span id="create"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <section class="section-block section-alt">
-          <div class="section-card">
+    with st.container():
+        st.markdown('<div class="card-anchor create-anchor"></div>', unsafe_allow_html=True)
+        st.markdown(
+            """
             <div class="section-heading">
               <div class="kicker">②</div>
               <h2>Create a New Contract</h2>
@@ -168,23 +159,19 @@ def screen_home():
             <p class="section-desc">
               Pick industry, subject, and governing law. We prefill jurisdiction-aware clauses so you start with a clean draft.
             </p>
-        """,
-        unsafe_allow_html=True
-    )
-    b1, b2, b3 = st.columns([2, 2, 2])
-    with b2:
-        btn_create = st.button("Go to Create", key="home_go_create", use_container_width=True)
-    st.markdown("</div></section>", unsafe_allow_html=True)
-    if btn_create:
-        ss.step = "form"
-        st.rerun()
+            """,
+            unsafe_allow_html=True
+        )
+        if st.button("Go to Create", key="home_go_create"):
+            ss.step = "form"
+            st.rerun()
 
-    # ===== Section 3: Edit (card + centered button INSIDE the card) =====
+    # ===== Section 3: Edit — card = this container =====
     st.markdown('<span id="edit"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <section class="section-block">
-          <div class="section-card">
+    with st.container():
+        st.markdown('<div class="card-anchor edit-anchor"></div>', unsafe_allow_html=True)
+        st.markdown(
+            """
             <div class="section-heading">
               <div class="kicker">③</div>
               <h2>Edit a Contract Inline</h2>
@@ -192,14 +179,10 @@ def screen_home():
             <p class="section-desc">
               Paste or upload text to tweak clauses and metadata on-screen, then export. (Demo stub — wire this next.)
             </p>
-        """,
-        unsafe_allow_html=True
-    )
-    e1, e2, e3 = st.columns([2, 2, 2])
-    with e2:
-        disabled = ss.get("result") is None
-        st.button("Go to Edit", key="home_go_edit", disabled=disabled, use_container_width=True)
-    st.markdown("</div></section>", unsafe_allow_html=True)
+            """,
+            unsafe_allow_html=True
+        )
+        st.button("Go to Edit", key="home_go_edit", disabled=ss.get("result") is None)
 
 def screen_loading():
     st.markdown(dedent(f"""
