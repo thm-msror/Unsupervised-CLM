@@ -1,16 +1,17 @@
 :root{
-  /* Dark palette */
-  --bg:#0b1220;            /* page background (deep navy) */
-  --card:#121a2b;          /* card background */
-  --ink:#e9eef7;           /* primary text (near-white) */
-  --muted:#a8b3c7;         /* muted text */
-  --gold:#d4af37;          /* gold accent */
-  --gold-2:#f1d26b;        /* lighter gold for gradient */
-  --navy-1:#0f1a33;        /* hero gradient start */
-  --navy-2:#15264a;        /* hero gradient end */
+  /* Your palette */
+  --bg:#172551;            /* dark blue background */
+  --card:#f8f3e8;          /* other blue for cards */
+  --ink:#000000;           /* beige text */
+  --muted:#d8d2c8;         /* softer beige */
+  --accent:#009483;        /* green accent */
+
+  --navy-1:#172551;        /* hero gradient start */
+  --navy-2:#273867;        /* hero gradient end */
+
   --radius:18px;
   --shadow:0 10px 34px rgba(0,0,0,.35);
-  --hair:#1e2b44;          /* hairline separators */
+  --hair:rgba(248,243,232,.12);  /* subtle beige divider */
 }
 
 html, body, [data-testid="stAppViewContainer"]{
@@ -23,21 +24,22 @@ p, li, label, span, code { color: var(--ink); }
 /* --- HERO --- */
 .hero{ display:flex; justify-content:center; align-items:center; }
 .hero-card{
-  width:min(1100px, 96vw);          /* longer */
-  min-height: 240px;                /* a bit taller */
+  width:min(1100px, 96vw);
+  min-height: 300px; /* taller to house the uploader */
   background: linear-gradient(180deg, var(--navy-1), var(--navy-2));
   position: relative;
-  padding:40px 44px;
+  padding:40px 44px 30px 44px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border:1px solid rgba(212,175,55,.35); /* subtle gold rim */
+  border:1px solid rgba(248,243,232,.25); /* beige rim */
 }
 .hero-card:before{
   content:"";
   position:absolute; inset:0;
   border-radius: inherit;
-  background: radial-gradient(60% 120% at 10% 0%, rgba(212,175,55,.18), transparent 40%),
-              radial-gradient(50% 80% at 90% 10%, rgba(241,210,107,.12), transparent 40%);
+  background:
+    radial-gradient(60% 120% at 10% 0%, rgba(248,243,232,.12), transparent 40%),
+    radial-gradient(50% 80% at 90% 10%, rgba(0,148,131,.12), transparent 40%);
   pointer-events:none;
 }
 .hero-card h1{
@@ -48,17 +50,51 @@ p, li, label, span, code { color: var(--ink); }
 }
 .hero-card .subtitle{
   margin:0;
-  text-align:center;                 /* center title + subtitle */
-  color: var(--gold-2);
+  text-align:center;
+  color: var(--ink);
+  opacity:.88;
 }
 .instructions{
-  text-align:left;                   /* keep steps left-aligned */
+  text-align:left;
   max-width: 820px;
-  margin:18px auto 0 auto;           /* center the block under subtitle */
+  margin:18px auto 14px auto;
   color: var(--ink);
 }
 
-/* --- CARDS --- */
+/* inline upload area INSIDE hero */
+.upload-inline{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(248,243,232,.12);
+}
+.upload-inline .uploader-label{
+  width: min(760px, 90%);
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* make the actual uploader appear right after the label, visually inside hero */
+[data-testid="stFileUploader"]{
+  width: min(760px, 90%);
+  margin: 0 auto 0 auto;
+  transform: translateY(-8px); /* pull it into the hero card */
+}
+
+/* remove the filename text box inside uploader */
+[data-testid="stFileUploader"] .stTextInput,
+[data-testid="stFileUploader"] .stTextInput > div,
+[data-testid="stFileUploader"] input[type="text"],
+[data-testid="stTextInput"],
+[data-baseweb="input"],
+div[role="textbox"]{
+  display: none !important;
+}
+
+/* --- CARDS (results) --- */
 .card{
   background: var(--card);
   border-radius: var(--radius);
@@ -66,56 +102,32 @@ p, li, label, span, code { color: var(--ink); }
   box-shadow: var(--shadow);
   margin: 20px auto;
   width:min(1100px, 96vw);
-  border:1px solid rgba(255,255,255,.06);
+  border:1px solid rgba(248,243,232,.08);
 }
 
-/* --- UPLOADER --- */
-.upload-card{
-  display:flex; justify-content:center; align-items:center; flex-direction:column;
-  padding-top: 10px;
-}
-.uploader-label{
-  font-weight: 700;
-  color: var(--gold-2);
-  margin: 6px 8px 12px 8px;
-  align-self: flex-start;
-  width:min(760px, 90%);
-  margin-left: calc((100% - min(760px, 90%))/2);
-}
-.upload-card [data-testid="stFileUploader"]{
-  width: min(760px, 90%);            /* center the gray dropzone */
-  margin: 0 auto;
-}
-/* hide any stray text input inside the uploader */
-.upload-card .stTextInput, 
-.upload-card .stTextInput > div,
-.upload-card .stTextInput input{
-  display:none !important;
-}
-
-/* --- KV rows (results) --- */
+/* --- KV rows --- */
 .kv{
   display:grid; grid-template-columns: 240px 1fr; gap:12px;
   padding:12px 0; border-bottom:1px solid var(--hair);
 }
-.kv-key{ color:var(--gold-2); font-weight:700; }
+.kv-key{ color:var(--muted); font-weight:700; }
 .kv-value{ color:var(--ink); }
 
-/* --- Tabs: tweak indicators for dark theme --- */
+/* --- Tabs --- */
 [data-baseweb="tab-list"] button, .stTabs [role="tab"]{
   color: var(--ink) !important;
 }
 .stTabs [role="tab"][aria-selected="true"]{
-  border-bottom: 3px solid var(--gold) !important;
-  color: var(--gold-2) !important;
+  border-bottom: 3px solid var(--accent) !important;
+  color: var(--ink) !important;
 }
 
-/* Tighten vertical spacing a bit */
+/* Spacing */
 section.main > div.block-container{ padding-top: 1.0rem; }
 
-/* Streamlit alerts on dark */
+/* Alerts */
 .stAlert{
   border:1px solid var(--hair);
-  background: #101826;
+  background: rgba(39,56,103,.65);
   color: var(--ink);
 }

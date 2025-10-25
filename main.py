@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 CLM AI — 3-screen Streamlit app (FE-first, stubs for backend):
-1) Home (title + instructions + centered upload)
+1) Home (title + instructions + centered upload INSIDE the hero)
 2) Loading (progress while parsing/analysis)
 3) Results (tabs: Summary, Parties, Dates, Law, Obligations, Financials, Risks)
 """
@@ -11,6 +11,7 @@ import os
 import sys
 from pathlib import Path
 import streamlit as st
+from textwrap import dedent
 
 # Ensure we can import from src/ and app/
 ROOT = Path(__file__).parent
@@ -21,7 +22,6 @@ for p in (SRC, APP):
         sys.path.append(str(p))
 
 # ---------------- FE-only fallbacks (Option B) ----------------
-# Backend config (simple stub)
 def get_backend_config(_label: str) -> dict:
     return {
         "preferred_backend": "local",
@@ -31,7 +31,6 @@ def get_backend_config(_label: str) -> dict:
         "local_model": os.getenv("LOCAL_MODEL", "qwen2:1.5b"),
     }
 
-# Minimal parser (no external deps)
 def parse_document(file_bytes: bytes, file_name: str) -> str:
     name = (file_name or "").lower()
     if name.endswith(".pdf"):
@@ -43,7 +42,6 @@ def parse_document(file_bytes: bytes, file_name: str) -> str:
     except Exception:
         return "DEMO TEXT: unsupported file; parser disabled."
 
-# Stub AI functions so UI works immediately
 def summarize_contract(text: str, cfg: dict) -> str:
     return (
         "This is a demo summary. Replace with real LLM call later.\n\n"
@@ -88,7 +86,7 @@ THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(f"<style>{THEME_PATH.read_text()}</style>", unsafe_allow_html=True)
 
-# ---- sidebar (kept minimal) ----
+# ---- sidebar (minimal) ----
 st.sidebar.header("⚙️ Settings")
 backend_label = st.sidebar.radio("LLM Backend:", ["HuggingFace API", "Local Ollama"], index=1)
 CFG = get_backend_config(backend_label)
@@ -113,35 +111,32 @@ def kv_row(label: str, value: str | None):
     )
 
 def screen_home():
-    st.markdown(
-        """
+    st.markdown(dedent("""\
         <div class="hero">
-          <div class="hero-card">
-            <h1>🎐 CLM&nbsp;AI</h1>
-            <p class="subtitle">
-              Upload a contract and let the AI extract key data, summarize terms, and flag risks.
-              (PDF or DOCX • English & Arabic)
-            </p>
-            <ol class="instructions">
-              <li>Upload your file below.</li>
-              <li>We’ll process it on a loading screen.</li>
-              <li>Review results in tabs (Summary, Parties, Dates, Law, Obligations, Financials).</li>
-            </ol>
-          </div>
+        <div class="hero-card">
+        <h1>CLM&nbsp;AI</h1>
+        <p class="subtitle">
+        Upload a contract and let the AI extract key data, summarize terms, and flag risks.
+        (PDF or DOCX • English & Arabic)
+        </p>
+        <ol class="instructions">
+        <li>Upload your file below.</li>
+        <li>Review results in tabs (Summary, Parties, Dates, Law, Obligations, Financials).</li>
+        </ol>
+        <div class="upload-inline">
+        <div class="uploader-label">Upload contract (PDF/DOCX)</div>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+        </div>
+        </div>
+        """), unsafe_allow_html=True)
 
-    # Centered, clean uploader (no extra white input)
-    st.markdown('<div class="card upload-card">', unsafe_allow_html=True)
-    st.markdown('<div class="uploader-label">Upload contract (PDF/DOCX)</div>', unsafe_allow_html=True)
+    # file_uploader rendered immediately after our inline label,
+    # but still visually inside the hero via CSS (we'll pull it up)
     up = st.file_uploader(
         label="Upload contract (PDF/DOCX)",
         type=["pdf", "docx"],
         label_visibility="collapsed"
     )
-    st.markdown("</div>", unsafe_allow_html=True)
 
     if up is not None:
         ss.uploaded_bytes = up.getvalue()
