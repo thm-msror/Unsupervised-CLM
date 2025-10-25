@@ -30,4 +30,4 @@ if up is not None:
     ss.doc_name = up.name
     ss.result = None
     ss.pending_upload = True
-    st.switch_page("/Results")
+    st.switch_page("pages/4_Results.py")

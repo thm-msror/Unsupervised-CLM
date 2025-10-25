@@ -140,6 +140,7 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
+        
         up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"],
                               label_visibility="collapsed", key="home_uploader")
         if up is not None:
@@ -147,7 +148,7 @@ def screen_home():
             ss.doc_name = up.name
             ss.result = None                  # clear previous results
             ss.pending_upload = True          # tell Results to process it
-            st.switch_page("/Results")        # go to real Results page (URL updates)
+            st.switch_page("pages/4_Results.py")     # go to real Results page (URL updates)
 
 
     # ===== 2) Create (card with button INSIDE) =====
@@ -169,7 +170,7 @@ def screen_home():
         # centered button inside the same card → link to Create page
         c1, _ = st.columns([1,5])
         with c1:
-            st.link_button("Go to Create", "/Create", key="home_go_create")
+            st.link_button("Go to Create", "/Create")
 
     # ===== 3) Edit (card with button INSIDE) =====
     st.markdown('<span id="edit"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
@@ -191,7 +192,11 @@ def screen_home():
         with e1:
             # keep your disabled logic if you want to gate access
             disabled = ss.get("result") is None
-            st.link_button("Go to Edit", "/Edit", key="home_go_edit", disabled=disabled)
+            if disabled:
+                st.button("Go to Edit", disabled=True)
+            else:
+                if st.button("Go to Edit"):
+                    st.switch_page("pages/3_Edit.py")
 
 def screen_loading():
     st.markdown(dedent(f"""
