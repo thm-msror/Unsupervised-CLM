@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdm.toml
+
+# Virtual environments
+env/
+venv/
+.venv/
+*.env
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints
+
+# Streamlit cache
+.streamlit/
+
+# VSCode settings
+.vscode/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Render secrets / environment files
+.env
+.env.local
+.env.*.local
