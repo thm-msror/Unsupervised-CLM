@@ -66,7 +66,7 @@ def analyze_risk(text: str, cfg: dict):
     ]
 
 # ---------------- Page + theme ----------------
-st.set_page_config(page_title="VERDICT", layout="centered")
+st.set_page_config(page_title="VERDICT", layout="wide")
 THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(dedent(f"<style>{THEME_PATH.read_text()}</style>"), unsafe_allow_html=True)
@@ -171,7 +171,7 @@ def screen_results():
     st.markdown(dedent("""<div class="mf-container results-wrap">"""), unsafe_allow_html=True)
 
     # Give the chat a little more width, but keep balance; smaller gap for a tighter, pro layout
-    left_col, right_col = st.columns([8, 9], gap="small")
+    left_col, right_col = st.columns([14, 10], gap="small")
 
     # LEFT: tabs
     with left_col:
@@ -263,7 +263,7 @@ def screen_results():
             if submitted and msg.strip():
                 ss.chat.append({"role":"user","text":msg.strip()})
                 ss.chat.append({"role":"assistant","text":"Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."})
-                st.experimental_rerun()
+                st.rerun()
 
     st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
 

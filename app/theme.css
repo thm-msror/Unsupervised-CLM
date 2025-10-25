@@ -26,16 +26,41 @@ section.main > div { padding-top: 0 !important; }
 /* Hide accidental code overlays globally */
 [data-testid="stCodeBlock"], pre, code { display:none !important; }
 
-/* Containers */
-.mf-container{ max-width:1100px; margin:0 auto; padding:0 20px; }
+/* ===== Containers ===== */
+.mf-container{ max-width:min(1280px, 96vw); margin:0 auto; padding:0 20px; }
 
-/* Wider & tighter container for RESULTS only — kills side whitespace professionally */
 .results-wrap{
-  max-width:min(96vw, 1600px);
-  padding:0 8px;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  padding:0;
+  position:relative; /* allow divider pseudo-element */
 }
-@media (min-width: 1680px){
+.results-wrap [data-testid="stHorizontalBlock"]{
+  align-items:flex-start;
+  gap:40px !important;            /* visually separates the panels */
+  column-gap:40px !important;
+}
+.results-wrap [data-testid="column"]{
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+@media (min-width:1680px){
   .results-wrap{ max-width:min(94vw, 1720px); }
+}
+
+/* Soft divider glow between sections */
+.results-wrap::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:110px;
+  bottom:40px;
+  width:2px;
+  background:linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.05));
+  backdrop-filter:blur(2px);
+  border-radius:1px;
+  transform:translateX(-50%);
+  pointer-events:none;
 }
 
 /* ===== Remove Streamlit header; use our own ===== */
@@ -117,6 +142,13 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   color:var(--ink);
   box-sizing:border-box;
 }
+
+/* Slight lift on left-side cards to emphasize sectioning */
+.results-wrap [data-testid="column"]:first-child .card{
+  box-shadow:0 6px 26px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.15);
+}
+
 .section-head{ width:100%; margin:0 auto 8px; color:var(--ink); padding-top:8px; }
 .section-head p{ margin:0; color:var(--muted); }
 
@@ -137,15 +169,16 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 
 /* ===== Chat panel (right column) ===== */
 .chat-card{
-  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:18px;
-  padding:16px;
-  box-shadow: var(--shadow);
-  min-height: 520px;
-  max-height: 72vh;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 12px 40px rgba(0,0,0,.55);
+  min-height:540px;
+  max-height:72vh;
   overflow:auto;
   margin:12px 0 8px;
+  transition:transform .2s ease, box-shadow .3s ease;
 }
 .bubble{
   display:inline-block;
@@ -153,8 +186,8 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   border-radius:14px;
   margin:6px 0;
   line-height:1.3;
-  max-width: 100%;
-  word-wrap: break-word;
+  max-width:100%;
+  word-wrap:break-word;
 }
 .bubble.a{ background:rgba(255,255,255,.12); color:var(--ink); }
 .bubble.u{ background:#2b4b74; color:#e8f2ff; margin-left:auto; display:block; }
@@ -166,10 +199,24 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 }
 
 /* ===== Mobile ===== */
-@media (max-width: 900px){
+@media (max-width:900px){
   .mf-nav{ padding:8px 14px; }
   .brand-text{ font-size: clamp(20px, 6vw, 26px); }
   .hero-block{ padding:40px 0 8px; }
   .how-card{ width:clamp(280px, 88vw, 860px); }
-  .kv{ grid-template-columns: 1fr; }
+  .kv{ grid-template-columns:1fr; }
+
+  /* tighter separation on mobile; hide divider */
+  .results-wrap [data-testid="stHorizontalBlock"]{
+    gap:12px !important;
+    column-gap:12px !important;
+  }
+  .results-wrap::after{ display:none; }
+}
+
+/* Remove Streamlit's default side padding and max-width */
+.main .block-container{
+  padding-left:0 !important;
+  padding-right:0 !important;
+  max-width:100% !important;
 }
