@@ -84,10 +84,15 @@ def find_sections(full_text: str, lang: str):
             level = len(m.group(1).split(".")) if m else 1
             anchors.append((idx, level, s))
         idx += len(line)
-
+    
+    
+    sections = []
+    sections.append({
+        "full_text": full_text
+    })
     # If no anchors, return one giant section
     if not anchors:
-        sections = []
+        
         default_section_size = 500
         for e, i in enumerate(range(0, len(full_text), default_section_size)):
             start = max(0, i-100)
@@ -105,7 +110,6 @@ def find_sections(full_text: str, lang: str):
         return sections
 
     # Build sections
-    sections = []
     is_start = True 
     for i, (start, level, title) in enumerate(anchors):
         if is_start and start!=0:
@@ -173,6 +177,7 @@ def test():
             json.dump(sections, f, ensure_ascii=False, indent=4)
 
         print(f"✅ Data saved to {filename}")
+
 
 test()
 
