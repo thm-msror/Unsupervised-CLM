@@ -1,0 +1,26 @@
+[
+  {
+    "q": "What is the governing law?",
+    "gold_regex": "(?i)(applicable law|competent jurisdiction|laws? of .+\\.)"
+  },
+  {
+    "q": "What are the termination rights?",
+    "gold_regex": "(?i)terminat(e|ion)[\\s\\S]{0,400}"
+  },
+  {
+    "q": "What are the payment terms?",
+    "gold_regex": "(?i)(payment|price|fixed price|percent(?:age)?|%)[\\s\\S]{0,400}"
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "gold_regex": "(?i)confidential(it(y|ies))?"
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "gold_regex": "(?i)BETWEEN:[\\s\\S]{0,400}AND:"
+  },
+  {
+    "q": "What is the liability cap?",
+    "gold_regex": "(?i)(in no event shall .* (aggregate )?liabilit(y|ies)|liability cap)"
+  }
+]

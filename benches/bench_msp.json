@@ -1,0 +1,32 @@
+[
+  {
+    "q": "What is the governing law and venue?",
+    "gold_regex": "laws? of the State of California.*San\\s*Francisco,?\\s*California",
+    "k": 8
+  },
+  {
+    "q": "What are the termination rights?",
+    "gold_regex": "fifteen\\s*\\(15\\)\\s*days\\s*written notice|either party may terminate.*ninety\\s*\\(90\\)\\s*days",
+    "k": 8
+  },
+  {
+    "q": "What are the payment terms?",
+    "gold_regex": "invoice|net\\s*30|in advance.*monthly|quarterly|annually",
+    "k": 8
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "gold_regex": "Confidential Information|use all reasonable efforts to protect the confidentiality",
+    "k": 8
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "gold_regex": "Corelight,? Inc\\.|MSP",
+    "k": 8
+  },
+  {
+    "q": "What is the liability cap?",
+    "gold_regex": "aggregate liability.*twelve\\s*\\(12\\)\\s*months",
+    "k": 8
+  }
+]

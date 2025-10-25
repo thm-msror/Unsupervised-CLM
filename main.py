@@ -166,105 +166,68 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        up = st.file_uploader(
-            "Upload contract (PDF/DOCX)",
-            type=["pdf","docx"],
-            label_visibility="collapsed",
-            key="home_uploader",
-        )
-        if up is not None:
-            ss.uploaded_bytes = up.getvalue()
-            ss.doc_name = up.name
-            ss.result = None
-            ss.pending_upload = True
-            st.switch_page("pages/4_Results.py")  # navigate in the SAME tab
+        
+        st.markdown("### ⚙️ Settings")
+        st.info("🔷 Using Google Gemini API for AI-powered contract analysis")
+    
+    # Main content based on selected page
+    if page == "🏠 Home":
+        show_home_page()
+    elif page == "📄 Contract Upload":
+        show_upload_page()
+    elif page == "🔍 Analysis":
+        show_analysis_page()
+    elif page == "📊 Dashboard":
+        show_dashboard_page()
+    elif page == "🧪 Test API":
+        show_test_page()
 
-    # ===== 2) Create (card with button INSIDE) =====
-    st.markdown('<span id="create"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
-    with st.container():
-        st.markdown('<span class="sc-card sc-create-flag"></span>', unsafe_allow_html=True)
-        st.markdown(
-            """
-            <div class="section-heading">
-              <div class="kicker">②</div>
-              <h2>Create a New Contract</h2>
-            </div>
-            <p class="section-desc">
-              Pick industry, subject, and governing law. We prefill jurisdiction-aware clauses so you start with a clean draft.
-            </p>
-            """,
-            unsafe_allow_html=True
-        )
-        c1, _ = st.columns([1,5])
-        with c1:
-            st.link_button("Go to Create", "/Create")
-
-    # ===== 3) Edit (card with button INSIDE) =====
-    st.markdown('<span id="edit"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
-    with st.container():
-        st.markdown('<span class="sc-card sc-edit-flag"></span>', unsafe_allow_html=True)
-        st.markdown(
-            """
-            <div class="section-heading">
-              <div class="kicker">③</div>
-              <h2>Edit a Contract Inline</h2>
-            </div>
-            <p class="section-desc">
-              Paste or upload text to tweak clauses and metadata on-screen, then export. (Demo stub — wire this next.)
-            </p>
-            """,
-            unsafe_allow_html=True
-        )
-        e1, _ = st.columns([1,5])
-        with e1:
-            # Make the Edit button always functional (same-tab navigation)
-            st.link_button("Go to Edit", "/Edit")
-
-def screen_loading():
-    st.markdown(dedent(f"""
-      <div class="section-head">
-        <p>Analyzing <code>{ss.doc_name or "your file"}</code>… Extracting fields, summarizing, and scanning for risks.</p>
-      </div>
-    """), unsafe_allow_html=True)
-
-    p = st.progress(5)
-    for pct in (12, 25, 42): time.sleep(0.15); p.progress(pct)
-    text = parse_document(ss.uploaded_bytes, ss.doc_name)
-    for pct in (55, 66): time.sleep(0.10); p.progress(pct)
-    summary = summarize_contract(text, get_backend_config("x"))
-    for pct in (74, 82): time.sleep(0.10); p.progress(pct)
-    extracted = extract_key_data(text, get_backend_config("x"))
-    risks = analyze_risk(text, get_backend_config("x"))
-    for pct in (90, 100): time.sleep(0.10); p.progress(pct)
-    ss.result = {"summary": summary, "extracted": extracted, "risks": risks, "raw_text": text}
-    ss.step = "results"
-    st.rerun()
-
-def screen_results():
-    st.markdown(dedent("""<div class="mf-container results-wrap">"""), unsafe_allow_html=True)
-    left_col, right_col = st.columns([14, 10], gap="small")
-
-    with left_col:
-        tabs = st.tabs([
-            "📄 Summary","👥 Parties","📅 Key Dates","⚖️ Law & Jurisdiction",
-            "📌 Obligations & Deliverables","💰 Financial Terms","⚠️ Risks"
-        ])
-        res = ss.result or {}
-        summary = res.get("summary")
-        extracted = res.get("extracted", {})
-        risks = res.get("risks", [])
-
-        with tabs[0]:
-            safe_summary = (summary or "_No summary._").replace("\n", "<br>")
-            st.markdown(f'<div class="card">{safe_summary}</div>', unsafe_allow_html=True)
-
-        with tabs[1]:
-            parties = extracted.get("contracting_parties") or extracted.get("parties")
-            if isinstance(parties, list):
-                inner = "".join(
-                    f'<div class="kv"><div class="kv-key">Party</div><div class="kv-value">{str(p)}</div></div>'
-                    for p in parties
-                )
+# =============================================================================
+# 📄 Page Functions
+# =============================================================================
+def show_home_page():
+    """Homepage with overview and features"""
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("### 🎯 Welcome to CLM AI")
+        st.write("""
+        This AI-powered platform automates legal contract management, helping legal and procurement 
+        teams reduce manual effort, minimize errors, and accelerate contract review processes.
+        """)
+        
+        st.markdown("### ✨ Key Features")
+        
+        features = [
+            ("📄", "Secure Contract Upload", "Support for PDF and DOCX files"),
+            ("🤖", "AI-Powered Extraction", "Automated extraction of key contract data"),
+            ("⚠️", "Risk Analysis", "Identify potential issues and missing clauses"),
+            ("📊", "Smart Summarization", "AI-generated insights and summaries"),
+            ("❓", "Q&A System", "Interactive questions about contract content"),
+            ("🌐", "Multilingual Support", "English and Arabic contract processing")
+        ]
+        
+        for icon, title, desc in features:
+            with st.container():
+                st.markdown(f"""
+                <div class="feature-card">
+                    <h4>{icon} {title}</h4>
+                    <p>{desc}</p>
+                </div>
+                """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("### 🔧 System Status")
+        
+        # Check system components
+        status_checks = check_system_status()
+        
+        for component, status in status_checks.items():
+            if status == "✅":
+                st.markdown(f'<p class="status-success">{status} {component}</p>', unsafe_allow_html=True)
+            elif status == "⚠️":
+                st.markdown(f'<p class="status-warning">{status} {component}</p>', unsafe_allow_html=True)
             else:
                 inner = f'<div class="kv"><div class="kv-key">Parties</div><div class="kv-value">{parties or "—"}</div></div>'
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
@@ -375,89 +338,86 @@ def screen_form():
     laws = ["Qatar", "United Kingdom"]
     jurisdictions = {"Qatar": ["Qatari Courts (Doha)"], "United Kingdom": ["England & Wales Courts (London)"]}
 
+def show_test_page():
+    """API testing page"""
+    st.markdown("### 🧪 Test API Connection")
+    
+    st.markdown("#### 🔷 Google Gemini API Test")
+    
+    gemini_key = st.text_input("Gemini API Key", type="password", 
+                              placeholder="AIza...", help="Enter your Google AI API key")
+    
     col1, col2 = st.columns(2)
     with col1:
-        industry = st.selectbox("Industry", industries, index=0)
-        service  = st.selectbox("Subject / Service", subjects[industry], index=0)
+        if st.button("🧪 Test API Connection", type="primary"):
+            if gemini_key:
+                with st.spinner("Testing Gemini API..."):
+                    try:
+                        import google.generativeai as genai
+                        genai.configure(api_key=gemini_key)
+                        model = genai.GenerativeModel('gemini-2.5-flash')
+                        response = model.generate_content("Say 'API test successful' if you can read this.")
+                        st.success("✅ Gemini API connection successful!")
+                        st.info("🎯 Model: gemini-2.5-flash (latest)")
+                    except Exception as e:
+                        st.error(f"❌ Gemini API error: {str(e)}")
+            else:
+                st.error("❌ Please enter a Gemini API key")
+    
     with col2:
-        law      = st.selectbox("Governing Law", laws, index=0)
-        forum    = st.selectbox("Jurisdiction", jurisdictions[law], index=0)
+        if st.button("📄 Test Contract Analysis"):
+            if gemini_key:
+                with st.spinner("Testing contract analysis..."):
+                    try:
+                        import google.generativeai as genai
+                        genai.configure(api_key=gemini_key)
+                        model = genai.GenerativeModel('gemini-2.5-flash')
+                        
+                        sample_contract = "CONSULTING AGREEMENT between ABC Corp and John Smith, effective January 2025, $150/hour, 6 months duration."
+                        prompt = f"Analyze this contract and extract: parties, duration, rate, risks: {sample_contract}"
+                        
+                        response = model.generate_content(prompt)
+                        st.success("✅ Contract analysis successful!")
+                        st.text_area("Analysis Result:", response.text, height=150)
+                    except Exception as e:
+                        st.error(f"❌ Analysis error: {str(e)}")
+            else:
+                st.error("❌ Please enter a Gemini API key")
 
-    DEFAULTS = {
-        ("Technology (SaaS)", "Master Subscription Agreement"): [
-            "License & Access: Customer is granted a non-exclusive, non-transferable right to access the Service.",
-            "Data Protection: Provider implements industry-standard security controls and encrypts Customer Data in transit and at rest.",
-            "Uptime & SLA: Target uptime is 99.9% monthly; service credits apply for verified downtime.",
-            "Fees & Payment: Invoices are due Net 30 from invoice date; late fees may apply.",
-            "Confidentiality: Each party shall protect Confidential Information using reasonable safeguards.",
-            "Limitation of Liability: Capped at the fees paid in the 12 months preceding the claim.",
-        ],
-        ("Consulting/Professional Services", "Service Agreement"): [
-            "Scope: Consultant will deliver the Services as described in the Statement of Work.",
-            "Deliverables & Acceptance: Client shall review and accept deliverables within 10 days.",
-            "Fees & Expenses: Time & materials; pre-approved expenses reimbursed.",
-            "IP Ownership: Work product becomes Client property upon full payment.",
-            "Confidentiality: Both parties will maintain strict confidentiality.",
-            "Liability: Consultant’s aggregate liability capped at fees paid for the Services.",
-        ],
-        ("Construction", "General Construction Contract"): [
-            "Scope of Work: Contractor shall perform the Work in accordance with the Specifications.",
-            "Schedule: Contractor will diligently pursue Substantial Completion by the Milestone Date.",
-            "Payment: Progress payments monthly based on percent completion.",
-            "Change Orders: Variations must be in writing and signed by both parties.",
-            "Insurance & Safety: Contractor maintains insurance and complies with safety regulations.",
-            "Dispute Resolution: Parties will negotiate in good faith prior to formal proceedings.",
-        ],
-        ("Healthcare", "Services Agreement"): [
-            "Compliance: Provider complies with applicable healthcare regulations.",
-            "PHI Handling: Restricted access; use and disclosure only as permitted.",
-            "Security Safeguards: Technical, administrative, and physical safeguards implemented.",
-            "Audit Rights: Client may audit reasonable aspects upon notice.",
-            "Fees & Payment: As set forth in the Order; Net 30.",
-            "Liability: Limited as permitted by applicable law.",
-        ],
-    }
+# =============================================================================
+# 🔧 Helper Functions
+# =============================================================================
+def check_system_status():
+    """Check status of system components"""
+    status = {}
+    
+    # Check Python environment
+    status["Python Environment"] = "✅"
+    
+    # Check required packages
+    try:
+        import streamlit, requests
+        status["Required Packages"] = "✅"
+    except ImportError:
+        status["Required Packages"] = "❌"
+    
+    # Check .env file
+    if os.path.exists(".env"):
+        status[".env Configuration"] = "✅"
+    else:
+        status[".env Configuration"] = "⚠️"
+    
+    # Check Gemini API availability
+    try:
+        import google.generativeai
+        status["Google Gemini SDK"] = "✅"
+    except ImportError:
+        status["Google Gemini SDK"] = "❌"
+    
+    return status
 
-    LAW_PATCH = {
-        "Qatar": [
-            "Governing Law: This Agreement is governed by the laws of the State of Qatar.",
-            "Jurisdiction: The courts located in Doha, Qatar, shall have exclusive jurisdiction.",
-            "Public Policy: Any provision inconsistent with mandatory Qatari public policy shall be interpreted to the maximum lawful extent.",
-        ],
-        "United Kingdom": [
-            "Governing Law: This Agreement is governed by the laws of England and Wales.",
-            "Jurisdiction: The courts of England and Wales seated in London shall have exclusive jurisdiction.",
-            "Statutory Rights: Nothing in this Agreement excludes or limits liability that cannot be excluded under the laws of England and Wales.",
-        ],
-    }
-
-    base_clauses = DEFAULTS.get((industry, service), [])
-    law_clauses  = LAW_PATCH.get(law, [])
-    draft = f"# {service}\n\n" \
-            f"**Industry:** {industry}\n" \
-            f"**Governing Law:** {law}\n" \
-            f"**Jurisdiction:** {forum}\n\n" \
-            "## Clauses\n" + "".join([f"- {c}\n" for c in base_clauses + law_clauses])
-
-    st.markdown("### Draft (auto-tailored)")
-    st.text_area("Generated draft", value=draft, height=280, label_visibility="collapsed")
-
-    colA, colB = st.columns([1,1])
-    with colA:
-        if st.button("Use this draft", type="primary"):
-            ss.step = "results"
-            st.rerun()
-    with colB:
-        st.download_button("Download .txt", draft.encode("utf-8"), file_name="contract_draft.txt")
-
-    st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
-
-# ---------- Router ----------
-if ss.step == "home":
-    screen_home()
-elif ss.step == "loading":
-    screen_loading()
-elif ss.step == "form":
-    screen_form()
-else:
-    screen_results()
+# =============================================================================
+# 🚀 Application Entry Point
+# =============================================================================
+if __name__ == "__main__":
+    main()

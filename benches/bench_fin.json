@@ -1,0 +1,32 @@
+[
+  {
+    "q": "What is the governing law?",
+    "gold_regex": "laws? of the State of Wisconsin",
+    "k": 8
+  },
+  {
+    "q": "What are AFMIC's termination rights?",
+    "gold_regex": "30\\s*days? prior written notice|mutual written agreement",
+    "k": 8
+  },
+  {
+    "q": "What are the payment terms?",
+    "gold_regex": "pass[- ]through cost|settle all charges.*on a net basis",
+    "k": 8
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "gold_regex": "AMERICAN FAMILY MUTUAL INSURANCE COMPANY|Service Provider|Service Recipient",
+    "k": 8
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "gold_regex": "confidential",
+    "k": 8
+  },
+  {
+    "q": "What is the liability cap?",
+    "gold_regex": "limitation of liability|aggregate liability",
+    "k": 8
+  }
+]
