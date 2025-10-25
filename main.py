@@ -101,50 +101,105 @@ ss.setdefault("doc_name", None)
 ss.setdefault("uploaded_bytes", None)
 ss.setdefault("result", None)
 ss.setdefault("chat", [{"role":"assistant","text":"Hi! How can I help you with this contract?"}])
+ss.setdefault("clear_compose", False)
 
 # ---------------- Screens ----------------
 def screen_home():
-    st.markdown('<main id="top">', unsafe_allow_html=True)
+    # Hero (top)
+    st.markdown(
+        """
+        <main id="top">
+          <section class="hero-block hero-tight">
+            <div class="hero-content">
+              <h1 class="hero-title">VERDICT</h1>
+              <p class="hero-subtitle">
+                Upload a contract to get a clean summary, key data, and risk flags — or generate a new, law-aware draft in minutes.
+              </p>
+            </div>
+          </section>
+        </main>
+        """,
+        unsafe_allow_html=True
+    )
 
-    st.markdown(dedent("""
-      <section class="hero-block">
-        <div class="hero-content">
-          <h1 class="hero-title">VERDICT</h1>
-          <p class="hero-subtitle">
-            Upload a contract to get a clean summary, key data, and risk flags — or generate a new, law-aware draft in minutes.
-          </p>
-        </div>
-      </section>
-    """), unsafe_allow_html=True)
-
-    st.markdown(dedent("""
-      <section class="mf-container" id="how">
-        <div class="how-card">
-          <h3>What’s the VERDICT?</h3>
-          <ul class="how-list">
-            <li><strong>Upload</strong> a PDF or DOCX contract (English or Arabic). We parse it locally and prepare it for extraction.</li>
-            <li><strong>Review</strong> the automatic summary, parties, key dates, governing law / jurisdiction, obligations, and financial terms.</li>
-            <li><strong>Flag risks.</strong> We highlight auto-renewals, indemnity scope, confidentiality gaps, and other atypical clauses.</li>
-            <li><strong>Or create</strong> a brand-new contract: pick industry & subject, select governing law (e.g., Qatar or UK), and we swap in compliant clauses automatically.</li>
-          </ul>
-        </div>
-      </section>
-    """), unsafe_allow_html=True)
-
-    st.markdown('<span id="upload"></span>', unsafe_allow_html=True)
-    up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"], label_visibility="collapsed")
+    # ===== Section 1: Upload (card + centered uploader INSIDE the card) =====
+    st.markdown('<span id="upload"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <section class="section-block">
+          <div class="section-card">
+            <div class="section-heading">
+              <div class="kicker">①</div>
+              <h2>Upload an Existing Contract</h2>
+            </div>
+            <p class="section-desc">
+              Drop in a PDF/DOCX and we’ll produce a structured summary, key fields, and risk flags.
+              You’ll also get a chat assistant on the right so you can ask questions about the contract.
+            </p>
+        """,
+        unsafe_allow_html=True
+    )
+    # Center the uploader within the card
+    c1, c2, c3 = st.columns([1.2, 6, 1.2])
+    with c2:
+        up = st.file_uploader(
+            "Upload contract (PDF/DOCX)",
+            type=["pdf", "docx"],
+            label_visibility="collapsed",
+            key="home_uploader",
+        )
+    st.markdown("</div></section>", unsafe_allow_html=True)  # close .section-card + section
     if up is not None:
         ss.uploaded_bytes = up.getvalue()
         ss.doc_name = up.name
         ss.step = "loading"
         st.rerun()
 
-    st.markdown('<span id="create"></span>', unsafe_allow_html=True)
-    if st.button("＋ Create a new contract", use_container_width=True):
+    # ===== Section 2: Create (card + centered button INSIDE the card) =====
+    st.markdown('<span id="create"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <section class="section-block section-alt">
+          <div class="section-card">
+            <div class="section-heading">
+              <div class="kicker">②</div>
+              <h2>Create a New Contract</h2>
+            </div>
+            <p class="section-desc">
+              Pick industry, subject, and governing law. We prefill jurisdiction-aware clauses so you start with a clean draft.
+            </p>
+        """,
+        unsafe_allow_html=True
+    )
+    b1, b2, b3 = st.columns([2, 2, 2])
+    with b2:
+        btn_create = st.button("Go to Create", key="home_go_create", use_container_width=True)
+    st.markdown("</div></section>", unsafe_allow_html=True)
+    if btn_create:
         ss.step = "form"
         st.rerun()
 
-    st.markdown('</main>', unsafe_allow_html=True)
+    # ===== Section 3: Edit (card + centered button INSIDE the card) =====
+    st.markdown('<span id="edit"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <section class="section-block">
+          <div class="section-card">
+            <div class="section-heading">
+              <div class="kicker">③</div>
+              <h2>Edit a Contract Inline</h2>
+            </div>
+            <p class="section-desc">
+              Paste or upload text to tweak clauses and metadata on-screen, then export. (Demo stub — wire this next.)
+            </p>
+        """,
+        unsafe_allow_html=True
+    )
+    e1, e2, e3 = st.columns([2, 2, 2])
+    with e2:
+        disabled = ss.get("result") is None
+        st.button("Go to Edit", key="home_go_edit", disabled=disabled, use_container_width=True)
+    st.markdown("</div></section>", unsafe_allow_html=True)
 
 def screen_loading():
     st.markdown(dedent(f"""
@@ -167,13 +222,9 @@ def screen_loading():
     st.rerun()
 
 def screen_results():
-    # Wider / tighter container to kill side whitespace
     st.markdown(dedent("""<div class="mf-container results-wrap">"""), unsafe_allow_html=True)
-
-    # Give the chat a little more width, but keep balance; smaller gap for a tighter, pro layout
     left_col, right_col = st.columns([14, 10], gap="small")
 
-    # LEFT: tabs
     with left_col:
         tabs = st.tabs([
             "📄 Summary","👥 Parties","📅 Key Dates","⚖️ Law & Jurisdiction",
@@ -246,41 +297,49 @@ def screen_results():
                 inner = "No explicit risks found."
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-    # RIGHT: chat (compose sits INSIDE the column)
     with right_col:
+        if ss.get("clear_compose"):
+            ss["compose_text"] = ""
+            ss["clear_compose"] = False
+
         bubbles = []
         for m in ss.chat:
             role_cls = "u" if m["role"] == "user" else "a"
             bubbles.append(f'<div class="bubble {role_cls}">{m["text"]}</div>')
 
-        # ⬇️ Title bar added here
-        st.markdown(
-            '<div class="chat-card">'
-            '<div class="chat-titlebar">Assistant Chat</div>'
-            + "".join(bubbles) +
-            "</div>",
-            unsafe_allow_html=True
+        chat_html = (
+            '<div class="chat-wrap">'
+            '  <div class="chat-card">'
+            '    <div class="chat-titlebar">Assistant Chat</div>'
+            f'    {"".join(bubbles)}'
+            '  </div>'
+            '</div>'
         )
+        st.markdown(chat_html, unsafe_allow_html=True)
 
-        with st.form("compose"):
+        st.markdown('<div class="chat-compose">', unsafe_allow_html=True)
+        with st.form("compose", clear_on_submit=True):
             c1, c2 = st.columns([10, 2])
             with c1:
                 msg = st.text_input(
                     "Ask the assistant about this contract…",
                     key="compose_text",
-                    label_visibility="collapsed"
+                    label_visibility="collapsed",
                 )
             with c2:
                 submitted = st.form_submit_button("Send", use_container_width=True)
-            if submitted and msg.strip():
-                ss.chat.append({"role": "user", "text": msg.strip()})
-                ss.chat.append({
-                    "role": "assistant",
-                    "text": "Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."
-                })
-                st.rerun()
 
-    st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
+            if submitted:
+                text = (ss.get("compose_text") or "").strip()
+                if text:
+                    ss.chat.append({"role": "user", "text": text})
+                    ss.chat.append({
+                        "role": "assistant",
+                        "text": "Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."
+                    })
+                ss["clear_compose"] = True
+                st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
 def screen_form():
     st.markdown(dedent("""<div class="mf-container">"""), unsafe_allow_html=True)

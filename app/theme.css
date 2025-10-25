@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@300;400;600;800&display=swap');
 
 :root{
-  --bg:#12263e; --bg-mid:#0f2a43; --bg-soft:#0d2538;
-  --glow-teal:rgba(26,196,190,.28);
-  --glow-violet:rgba(160,150,255,.24);
-  --brand:#cfe4ff; --brand-2:#ffffff; --accent:#5a8fff;
-  --ink:#f6f9ff; --muted:#cedbf2;
+  --bg:#0d1933; --bg-mid:#0d1933; --bg-soft:#0d1933;
+  --glow-teal:#077e7c72;
+  --glow-violet:#0998965a;
+  --brand:#cfe4ff; --brand-2:#ffffff; --accent:#0d1933;
+  --ink:#c9d8ff; --muted:#cedbf2;
   --glass-1:rgba(255,255,255,.14); --glass-2:rgba(255,255,255,.07);
   --glass-border:rgba(255,255,255,.24); --hair:rgba(255,255,255,.12);
   --radius:20px; --shadow:0 28px 60px rgba(4,12,26,.55);
@@ -33,12 +33,12 @@ section.main > div { padding-top: 0 !important; }
   width:100vw;
   margin-left:calc(50% - 50vw);
   padding:0;
-  position:relative; /* allow divider pseudo-element */
+  position:relative;
 
   /* Alignment knobs */
-  --tab-gap: 12px;     /* spacing below tabs */
-  --card-mt: 12px;     /* top margin of .card (keep in sync) */
-  --chat-offset: calc(var(--tab-gap) + var(--card-mt)); /* makes chat top == first card top */
+  --tab-gap: 12px;
+  --card-mt: 12px;
+  --chat-offset: calc(var(--tab-gap) + var(--card-mt));
 }
 .results-wrap [data-testid="stHorizontalBlock"]{
   align-items:flex-start;
@@ -61,7 +61,7 @@ section.main > div { padding-top: 0 !important; }
   top:110px;
   bottom:40px;
   width:2px;
-  background:linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.05));
+  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08));
   backdrop-filter:blur(2px);
   border-radius:1px;
   transform:translateX(-50%);
@@ -143,7 +143,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   padding:20px;
   box-shadow:var(--shadow);
   width:100%;
-  margin:12px 0; /* <-- card top margin participates in chat alignment */
+  margin:12px 0;
   color:var(--ink);
   box-sizing:border-box;
 }
@@ -173,12 +173,11 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
 
 /* ===== Chat panel (right column) ===== */
-/* Beige chat look */
 .chat-card{
   background: linear-gradient(180deg, rgba(250,245,235,.94), rgba(245,237,224,.88)) !important;
   border: 1px solid rgba(96,74,42,.25) !important;
   border-radius:20px;
-  padding:0; /* title bar provides top padding */
+  padding:0;
   box-shadow:0 12px 40px rgba(0,0,0,.55);
   min-height:540px;
   max-height:72vh;
@@ -201,12 +200,12 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   z-index:1;
 }
 
-/* Message bubbles (beige palette) */
+/* Message bubbles */
 .bubble{
   display:inline-block;
   padding:10px 12px;
   border-radius:14px;
-  margin:6px 16px;  /* horizontal space since chat-card has no inner padding */
+  margin:6px 16px;
   line-height:1.3;
   max-width:100%;
   word-wrap:break-word;
@@ -245,13 +244,346 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 /* ===== Section separation: keep tabs gap consistent */
 .results-wrap .stTabs{ margin-bottom: var(--tab-gap) !important; }
 
-/* ===== Align chat top to first results card top (single rule) ===== */
-/* Pad the right column down by the exact offset produced by the tabs gap + card top margin */
+/* ===== Align chat top to first results card top ===== */
 .results-wrap [data-testid="stHorizontalBlock"] > [data-testid="column"]:nth-child(2){
   padding-top: var(--chat-offset) !important;
 }
 
-/* Divider looks good on light panel */
-.results-wrap::after{
-  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08)) !important;
+/* === Chat vertical alignment (final) === */
+.results-wrap{ --chat-shift: 16px; }
+.chat-wrap{ padding-top: var(--chat-shift) !important; }
+
+/* ===== Chat bubbles (final definition) ===== */
+.results-wrap .chat-card .bubble{
+  display: inline-block !important;
+  max-width: 92% !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  padding: 10px 12px !important;
+  margin: 8px 16px !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  border-radius: 14px !important;
 }
+.results-wrap .chat-card .bubble.u{
+  margin-left: auto !important;
+  margin-right: 16px !important;
+  display: inline-flex !important;
+  align-self: flex-end !important;
+  background: #2b4b74 !important;
+  color: #e8f2ff !important;
+}
+.results-wrap .chat-card .bubble.a{
+  background: rgba(0,0,0,.06) !important;
+  color: #1e2735 !important;
+}
+
+/* Title centered */
+.chat-titlebar{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+/* ===== Compose row under chat ===== */
+.results-wrap .chat-compose{
+  width: 100% !important;
+  display: block !important;
+  margin: 10px 0 0 !important;
+}
+.results-wrap .chat-compose .stTextInput > div { width: 100% !important; }
+.results-wrap .chat-compose .stTextInput input{
+  width: 100% !important;
+  height: 44px !important;
+  border-radius: 14px !important;
+  background: rgba(255,255,255,.98) !important;
+  border: 1px solid rgba(96,74,42,.25) !important;
+  color: #1e2735 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08) !important;
+}
+.results-wrap .chat-compose .stTextInput input::placeholder{
+  color: #6b7785 !important; opacity: .9 !important;
+}
+.results-wrap .chat-compose .stButton > button{
+  height: 44px !important;
+  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
+  color: #071a33 !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.results-wrap .chat-compose .stButton > button:hover{ filter: brightness(1.05); }
+.results-wrap .chat-compose .stButton > button:disabled{ opacity:.55; filter: grayscale(.15); }
+
+/* =========================================================
+   HOME SECTIONS (distinct panels like GOIC)
+   ========================================================= */
+.hero-tight { padding: 56px 0 20px !important; }
+.anchor-spacer { display:block; height: 64px; margin-top:-64px; }
+
+/* Section wrapper → full-width band with gentle gradient */
+.section-block{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  padding: 32px 0;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+/* Alternate band for stronger contrast */
+.section-block.section-alt{
+  background: linear-gradient(180deg, rgba(5,10,22,.35), rgba(5,10,22,.50));
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(0,0,0,.35);
+}
+
+/* Inner width */
+.section-block > .stMarkdown:first-child .section-heading,
+.section-block > .stMarkdown:first-child + div,
+.section-block .mf-container,
+.section-block > div[data-testid="stFileUploader"],
+.section-block > div[data-testid="stHorizontalBlock"],
+.section-block > div[data-testid="stVerticalBlock"] {
+  max-width: min(1100px, 94vw);
+  margin: 0 auto;
+}
+
+/* Title row with number “kicker” */
+.section-heading{
+  display:flex; align-items:center; gap:12px;
+  margin: 4px auto 10px;
+  max-width: min(1100px, 94vw);
+}
+.section-heading h2{
+  margin:0; padding:0;
+  font-weight: 800; letter-spacing:.2px;
+  font-size: clamp(24px, 3vw, 34px);
+  color: var(--ink);
+  text-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+.kicker{
+  width:28px; height:28px; border-radius:999px;
+  display:grid; place-items:center;
+  font-weight:800; color:#dbe7ff;
+  background: linear-gradient(180deg,#5a8fff,#3f6ddd);
+  box-shadow: 0 6px 14px rgba(30,80,170,.45), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Description text inside each section */
+.section-desc{
+  max-width: min(1100px, 94vw);
+  margin: 0 auto 14px;
+  color: var(--muted);
+}
+
+/* Make Streamlit rows align like cards under headings */
+.section-block .stFileUploader,
+.section-block .stButton,
+.section-block .stColumns, 
+.section-block .stTextInput,
+.section-block .stSelectbox{
+  max-width: min(1100px, 94vw);
+  margin-left:auto; margin-right:auto;
+}
+
+/* Extra visual separator band */
+.section-divider{
+  width:100vw; margin-left:calc(50% - 50vw);
+  height: 56px;
+  background:
+    radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.08), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22));
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(0,0,0,.35);
+}
+
+/* Uploader polish */
+.section-block .stFileUploader > div{
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  background: rgba(255,255,255,.10) !important;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+
+/* Primary buttons in sections */
+.section-block .stButton > button{
+  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
+  color: #071a33 !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  height: 42px !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.section-block .stButton > button:hover{ filter:brightness(1.06); }
+
+@media (max-width: 900px){
+  .section-block{ padding: 26px 0; }
+  .section-divider{ height: 40px; }
+}
+/* ======= Tighter section layout (overrides) ======= */
+
+/* Wider inner width so side margins shrink */
+.section-block > .stMarkdown:first-child .section-heading,
+.section-block > .stMarkdown:first-child + div,
+.section-block .mf-container,
+.section-block > div[data-testid="stFileUploader"],
+.section-block > div[data-testid="stHorizontalBlock"],
+.section-block > div[data-testid="stVerticalBlock"]{
+  max-width: min(1200px, 98vw) !important;  /* was 1100px / 94vw */
+}
+
+/* Reduce vertical padding for each band */
+.section-block{ padding: 22px 0 !important; }              /* was 32px */
+.section-block.section-alt{ padding: 22px 0 !important; }
+
+/* Tighten the heading + description spacing */
+.section-heading{ margin: 0 auto 6px !important; }         /* was 4px auto 10px */
+.section-heading h2{ font-size: clamp(22px, 2.4vw, 30px) !important; }
+
+.section-desc{ margin: 2px auto 10px !important; }         /* was 14px */
+
+/* Give controls a little less top gap */
+.section-block .stFileUploader,
+.section-block .stButton,
+.section-block .stColumns, 
+.section-block .stTextInput,
+.section-block .stSelectbox{
+  margin-top: 8px !important;                               /* was default */
+}
+
+/* Slightly shorter hero so content starts sooner */
+.hero-block{ padding: 40px 0 8px !important; }              /* was 52px 0 12px */
+
+/* Optional: thinner separators between sections */
+.section-divider{
+  height: 42px !important;                                  /* was 56px */
+  background:
+    radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.06), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.18)) !important;
+}
+/* === FINAL HOME SECTION GUTTERS + UNIFIED WIDTH (place at end) === */
+
+:root{
+  /* global section sizing */
+  --section-max: 1200px;               /* shared inner width cap */
+  --section-gutter: 32px;              /* space from screen edge on desktop */
+  --section-pad-y: 22px;               /* vertical padding per band */
+}
+
+@media (max-width: 1024px){
+  :root{ --section-gutter: 24px; }
+}
+@media (max-width: 640px){
+  :root{ --section-gutter: 18px; }
+}
+
+/* Full-bleed bands still span 100vw, but we add side gutters */
+.section-block{
+  padding: var(--section-pad-y) 0 !important;
+  /* side gutter – prevents content touching screen edge */
+  padding-left: var(--section-gutter) !important;
+  padding-right: var(--section-gutter) !important;
+}
+
+/* One canonical inner width for EVERYTHING inside a section */
+.section-block .section-heading,
+.section-block .section-desc,
+.section-block .stFileUploader,
+.section-block .stButton,
+.section-block .stColumns,
+.section-block .stTextInput,
+.section-block .stSelectbox,
+.section-block > .stMarkdown:first-child,
+.section-block > .stMarkdown:first-child + div,
+.section-block .mf-container,
+.section-block > div[data-testid="stFileUploader"],
+.section-block > div[data-testid="stHorizontalBlock"],
+.section-block > div[data-testid="stVerticalBlock"]{
+  max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;               /* ensures identical lengths */
+}
+
+/* Slightly tighter spacing for the header + description rows */
+.section-heading{ margin: 2px auto 8px !important; }
+.section-desc{ margin: 0 auto 12px !important; }
+
+/* Uploader looks like a card but fills the same inner width */
+.section-block .stFileUploader > div{
+  width: 100% !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  background: rgba(255,255,255,.10) !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+
+/* Optional: make the top “hero” follow the same gutter logic */
+.hero-content{
+  max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* === SECTION CARDS (raised panels) =============================== */
+.section-card{
+  /* same inner width as the rest of the section */
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px))));
+  margin: 0 auto 22px;                 /* bottom spacing to next band */
+  padding: 18px 18px 20px;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 22px 40px rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+}
+
+/* tighter spacing between heading/desc inside cards */
+.section-card .section-heading{ margin: 0 0 8px !important; }
+.section-card .section-desc{ margin: 0 0 12px !important; }
+
+/* uploader/button rows fill the card width nicely */
+.section-card .stFileUploader,
+.section-card .stButton,
+.section-card .stColumns,
+.section-card .stTextInput,
+.section-card .stSelectbox{
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* pretty uploader inside card */
+.section-card .stFileUploader > div{
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* card-specific primary button */
+.section-card .stButton > button{
+  height: 42px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
+  color: #071a33 !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  font-weight: 800 !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.section-card .stButton > button:hover{ filter: brightness(1.06); }
+
+/* give the band itself lighter padding; the card does the visual work */
+.section-block{ padding: var(--section-pad-y, 22px) 0 !important; }
