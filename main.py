@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
-import os, sys, time
+import os, sys, time, base64
 from pathlib import Path
 from textwrap import dedent
 import streamlit as st
 
-# paths
+# ---------- paths ----------
 ROOT = Path(__file__).parent
-APP = ROOT / "app"
+APP  = ROOT / "app"
+ASSETS = APP / "assets"
 for p in (ROOT / "src", APP):
     if str(p) not in sys.path:
         sys.path.append(str(p))
 
-# ---------------- Demo stubs ----------------
+# ---------- tiny util: embed image as base64 (tries several names) ----------
+def img_b64(*candidates) -> str | None:
+    for name in candidates:
+        p = ASSETS / name
+        if p.exists():
+            mime = "png" if p.suffix.lower() == ".png" else "jpeg"
+            return f"data:image/{mime};base64," + base64.b64encode(p.read_bytes()).decode("ascii")
+    return None
+
+# ---------- Demo stubs (unchanged) ----------
 def get_backend_config(_label: str) -> dict:
     return {
         "preferred_backend": "local",
@@ -65,13 +75,24 @@ def analyze_risk(text: str, cfg: dict):
         "Low: Confidentiality clause aligns with standard.",
     ]
 
-# ---------------- Page + theme ----------------
+# ---------- Page + theme ----------
 st.set_page_config(page_title="VERDICT", layout="wide")
 THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(dedent(f"<style>{THEME_PATH.read_text()}</style>"), unsafe_allow_html=True)
 
-# ---------- Custom Header ----------
+# --- local CSS: center hero content + size the logo ---
+st.markdown(dedent("""
+<style>
+  .hero-block .hero-content{ display:flex; flex-direction:column; align-items:center; }
+  .hero-title-wrap{ display:flex; align-items:center; gap:.85rem; justify-content:center; }
+  .hero-title{ margin:0; }
+  .hero-logo{ width:84px; height:auto; border-radius:12px; box-shadow:0 10px 35px rgba(0,0,0,.35); }
+  @media (max-width: 640px){ .hero-logo{ width:64px; } }
+</style>
+"""), unsafe_allow_html=True)
+
+# ---------- Header (links to real pages) ----------
 st.markdown(dedent("""
 <header class="mf-header" id="site-header">
   <nav class="mf-nav">
@@ -87,7 +108,6 @@ st.markdown(dedent("""
       <span class="brand-text">VERDICT</span>
     </a>
     <ul class="nav-links nav-right">
-        <!-- point to real pages; design unchanged -->
         <li><a class="nav-pill" href="/Upload">Upload</a></li>
         <li><a class="nav-pill" href="/Create">Create</a></li>
         <li><a class="nav-pill" href="/Edit">Edit</a></li>
@@ -96,7 +116,7 @@ st.markdown(dedent("""
 </header>
 """), unsafe_allow_html=True)
 
-# ---------------- Session ----------------
+# ---------- Session ----------
 ss = st.session_state
 ss.setdefault("step", "home")
 ss.setdefault("doc_name", None)
@@ -105,17 +125,23 @@ ss.setdefault("result", None)
 ss.setdefault("chat", [{"role":"assistant","text":"Hi! How can I help you with this contract?"}])
 ss.setdefault("clear_compose", False)
 
-# ---------------- Screens ----------------
+# pre-encode logo once
+HERO_LOGO = img_b64("logo1.jpeg", "logo2.jpeg", "image.png")
+
+# ---------- Screens ----------
 def screen_home():
-    # Hero (unchanged)
+    # Hero (centered title + logo)
+    logo_html = f'<img class="hero-logo" src="{HERO_LOGO}" alt="VERDICT logo"/>' if HERO_LOGO else ""
     st.markdown(
-        """
+        f"""
         <main id="top">
           <section class="hero-block hero-tight">
             <div class="hero-content">
-              <h1 class="hero-title">VERDICT</h1>
-              <p class="hero-subtitle">
-              </p>
+              <div class="hero-title-wrap">
+                <h1 class="hero-title">VERDICT</h1>
+                {logo_html}
+              </div>
+              <p class="hero-subtitle"></p>
             </div>
           </section>
         </main>
@@ -140,16 +166,18 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        
-        up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"],
-                              label_visibility="collapsed", key="home_uploader")
+        up = st.file_uploader(
+            "Upload contract (PDF/DOCX)",
+            type=["pdf","docx"],
+            label_visibility="collapsed",
+            key="home_uploader",
+        )
         if up is not None:
             ss.uploaded_bytes = up.getvalue()
             ss.doc_name = up.name
-            ss.result = None                  # clear previous results
-            ss.pending_upload = True          # tell Results to process it
-            st.switch_page("pages/4_Results.py")     # go to real Results page (URL updates)
-
+            ss.result = None
+            ss.pending_upload = True
+            st.switch_page("pages/4_Results.py")  # navigate in the SAME tab
 
     # ===== 2) Create (card with button INSIDE) =====
     st.markdown('<span id="create"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
@@ -167,7 +195,6 @@ def screen_home():
             """,
             unsafe_allow_html=True
         )
-        # centered button inside the same card → link to Create page
         c1, _ = st.columns([1,5])
         with c1:
             st.link_button("Go to Create", "/Create")
@@ -190,13 +217,8 @@ def screen_home():
         )
         e1, _ = st.columns([1,5])
         with e1:
-            # keep your disabled logic if you want to gate access
-            disabled = ss.get("result") is None
-            if disabled:
-                st.button("Go to Edit", disabled=True)
-            else:
-                if st.button("Go to Edit"):
-                    st.switch_page("pages/3_Edit.py")
+            # Make the Edit button always functional (same-tab navigation)
+            st.link_button("Go to Edit", "/Edit")
 
 def screen_loading():
     st.markdown(dedent(f"""
@@ -430,7 +452,7 @@ def screen_form():
 
     st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
 
-# ---------------- Router ----------------
+# ---------- Router ----------
 if ss.step == "home":
     screen_home()
 elif ss.step == "loading":

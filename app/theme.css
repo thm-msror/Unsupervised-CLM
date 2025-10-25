@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@300;400;600;800&display=swap');
 
 :root{
-  --bg:#0d1933; --bg-mid:#0d1933; --bg-soft:#0d1933;
+  --bg:#08132a; --bg-mid:#0d1933; --bg-soft:#0d1933;
   --glow-teal:#077e7c72;
   --glow-violet:#0998965a;
   --brand:#cfe4ff; --brand-2:#ffffff; --accent:#0d1933;
-  --ink:#c9d8ff; --muted:#cedbf2;
+  --ink:#f2f4fb; --muted:#cedbf2;
   --glass-1:rgba(255,255,255,.14); --glass-2:rgba(255,255,255,.07);
   --glass-border:rgba(255,255,255,.24); --hair:rgba(255,255,255,.12);
   --radius:20px; --shadow:0 28px 60px rgba(4,12,26,.55);
