@@ -1,105 +1,124 @@
-/* =========================================
-   Royal Navy Hero (blue + beige) — v2
-   Sticky header, hero grid, glass card
-   ========================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Naskh+Arabic:wght@600;700&display=swap');
+/* ===== Aurora Indigo → Teal (eye-friendly) — VERDICT =====
+   Fonts: Playfair Display (cursive/italic title) + Inter for UI
+---------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@300;400;600;800&display=swap');
 
 :root{
-  /* Canvas */
-  --bg:#0f1b3d;        /* deep navy */
-  --bg2:#0e1938;       /* slightly darker band */
-  --bg3:#0b1630;
+  /* Canvas (slightly lighter than deep navy) */
+  --bg:#12263e;
+  --bg-mid:#0f2a43;
+  --bg-soft:#0d2538;
 
-  /* Brand (blue + beige + teal) */
-  --brand:#9fbfff;     /* soft light blue (cards/hero) */
-  --brand-2:#f5f2ea;   /* warm beige highlight */
-  --accent:#00a89b;    /* teal underline/cta */
+  /* Aurora glows */
+  --glow-teal:rgba(26,196,190,.28);
+  --glow-violet:rgba(160,150,255,.24);
+
+  /* Brand + accents */
+  --brand:#cfe4ff;
+  --brand-2:#ffffff;
+  --accent:#1aa6a1;
 
   /* Text */
-  --ink:#f6f9ff;       /* near white */
-  --muted:#c9d7ff;     /* muted cool text */
+  --ink:#f6f9ff;
+  --muted:#cedbf2;
 
-  /* Glass */
-  --glass-1:rgba(255,255,255,.09);
-  --glass-2:rgba(255,255,255,.04);
-  --glass-border:rgba(255,255,255,.12);
+  /* Glass + lines */
+  --glass-1:rgba(255,255,255,.14);
+  --glass-2:rgba(255,255,255,.07);
+  --glass-border:rgba(255,255,255,.24);
+  --hair:rgba(255,255,255,.14);
 
-  --hair:rgba(255,255,255,.08);
   --radius:20px;
-  --shadow:0 10px 30px rgba(3,10,28,.35);
+  --shadow:0 28px 60px rgba(4,12,26,.55);
 }
 
-/* Canvas gradient */
+/* ---------- Page canvas with aurora mesh ---------- */
 html,body,[data-testid="stAppViewContainer"]{
-  background:linear-gradient(180deg,var(--bg),#11224e 60%,var(--bg3)) !important;
+  background:
+    radial-gradient(60% 50% at 85% 8%, var(--glow-teal), transparent 60%),
+    radial-gradient(65% 55% at 18% 82%, var(--glow-violet), transparent 62%),
+    linear-gradient(180deg, var(--bg), var(--bg-mid) 55%, var(--bg-soft));
   color:var(--ink);
   font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial !important;
 }
 
-/* ---------- Sticky header ---------- */
+/* ---------- Sticky header (centered) ---------- */
 .mf-header{
   position:sticky; top:0; z-index:50;
-  background:rgba(12,22,48,.70);
-  backdrop-filter: blur(8px);
+  background:rgba(14,32,54,.65);
+  backdrop-filter: blur(10px);
   border-bottom:1px solid var(--hair);
 }
-.mf-nav{ max-width:1100px; margin:0 auto; padding:0 20px; height:64px;
-  display:flex; align-items:center; justify-content:space-between; }
-.mf-brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); }
-.mf-logo{ width:36px; height:36px; display:grid; place-items:center;
-  background: radial-gradient(60% 60% at 50% 40%, var(--brand), transparent 70%);
-  border:1px solid var(--glass-border); border-radius:12px; box-shadow:var(--shadow); }
-.mf-brand span{ font-weight:800; letter-spacing:.3px; }
-.mf-links a{ margin-left:18px; padding:8px 12px; border-radius:10px; text-decoration:none; color:var(--muted); }
-.mf-links a:hover, .mf-links a.active{ background:var(--glass-1); color:var(--ink); }
+.mf-nav{
+  max-width:1100px; margin:0 auto; padding:0 20px; height:64px;
+  display:flex; align-items:center; justify-content:center;
+}
 
-/* ---------- Hero (blue + beige glows) ---------- */
+/* Inline brand (diamond icon + wordmark) */
+.brand-lockup{
+  display:inline-flex; align-items:center; gap:14px;
+  text-decoration:none; color:var(--ink);
+}
+.brand-mark{
+  width:26px; height:26px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+}
+.brand-text{
+  font-family:"Playfair Display", serif;
+  font-style:italic; font-weight:700;
+  font-size: clamp(24px, 3vw, 34px);
+  letter-spacing:.6px; line-height:1;
+  color:var(--ink);
+  text-shadow:0 8px 22px rgba(0,0,0,.45);
+  position:relative; padding-bottom:6px;
+}
+.brand-text::after{
+  content:""; position:absolute; left:0; right:0; bottom:0;
+  height:4px; border-radius:4px;
+  background:linear-gradient(90deg, #5aa4ff, #8dc7ff 60%, transparent);
+  opacity:.9;
+}
+
+/* ---------- Hero (single centered stack) ---------- */
 .mf-hero{ position:relative; overflow:hidden; }
-.mf-hero::before{
-  content:""; position:absolute; inset:-20% -10%;
-  background:
-    radial-gradient(60% 60% at 70% 20%, rgba(159,191,255,.28), transparent 60%),
-    radial-gradient(50% 50% at 20% 80%, rgba(245,242,234,.20), transparent 60%);
-  pointer-events:none;
-}
 .mf-container{ max-width:1100px; margin:0 auto; padding:0 20px; }
-.mf-hero-grid{
-  display:grid; gap:28px; grid-template-columns:1.2fr .8fr;
-  align-items:center; padding:72px 0;
+
+.hero-stack{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; padding:72px 0 48px;
+  min-height: 440px;
 }
 
-/* Titles */
-.mf-title{ font-size:clamp(32px, 5vw, 58px); line-height:1.05; margin:0; }
-.mf-sub{ color:var(--muted); font-size:clamp(16px,2vw,18px); margin:.5rem 0 0; }
-.arabic{ font-family:"Noto Naskh Arabic", serif; font-weight:700; letter-spacing:.3px; }
-.mf-bism{ display:inline-block; font-size:clamp(22px,3vw,28px);
-  background:linear-gradient(90deg,var(--brand-2),#ffffff);
-  -webkit-background-clip:text; background-clip:text; color:transparent; }
+/* Big title row inside hero (same lockup style, just larger) */
+.hero-title .brand-mark{ width:34px; height:34px; }
+.hero-title .brand-text{ font-size: clamp(28px, 4vw, 44px); }
 
-/* Right glass card */
-.mf-card{
-  background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
-  border:1px solid var(--glass-border);
-  border-radius:20px; padding:22px; box-shadow:var(--shadow);
+/* Tagline */
+.hero-tagline{
+  max-width:780px; text-align:center; margin:4px 0 6px;
+  font-size: clamp(16px, 1.9vw, 18px);
+  line-height:1.45; color:var(--ink);
 }
+.hero-tagline .muted{ color:var(--muted); }
 
-/* Uploader */
-.upload-inline{ display:flex; justify-content:center; margin-top:16px; }
-[data-testid="stFileUploader"]{ width:min(760px,90%); margin:14px auto 0; }
+/* Uploader: wide rectangular with strong contrast */
+.upload-inline{ display:flex; justify-content:center; width:100%; margin-top:8px; }
+[data-testid="stFileUploader"]{ width:min(760px, 92%); }
 [data-testid="stFileUploader"] > section{
-  border-radius:14px !important; border:1px solid var(--glass-border) !important;
-  background:rgba(0,0,0,.18) !important; color:var(--ink);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 18px rgba(0,0,0,.28);
+  border-radius:18px !important;
+  border:1px solid var(--glass-border) !important;
+  background:rgba(0,0,0,.26) !important;
+  color:var(--ink) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 16px 32px rgba(0,0,0,.38);
 }
-[data-testid="stFileUploader"] .stTextInput,
-[data-testid="stFileUploader"] input[type="text"], [data-testid="stTextInput"],
-[data-baseweb="input"], div[role="textbox"]{ display:none !important; }
+[data-testid="stFileUploader"] p,
+[data-testid="stFileUploader"] span{ color:var(--ink) !important; opacity:.98; }
+[data-testid="stFileUploader"] button{ filter:none !important; }
 
-/* Kill any long progress rectangles globally */
-[data-testid="stProgressBar"], [role="progressbar"], div[aria-valuemin][aria-valuemax]{ display:none !important; }
+/* Loading/info text + tabs + result cards (unchanged patterns) */
+.section-head{ width:min(1100px,96vw); margin:0 auto 8px; color:var(--ink); padding-top:8px; }
+.section-head p{ margin:0; color:var(--muted); }
 
-/* Tabs (clean underline) */
 [data-baseweb="tab-list"]{ border-bottom:1px solid var(--hair); gap:.35rem; }
 .stTabs [role="tab"]{
   background:transparent !important; border:none !important; border-radius:0 !important;
@@ -108,11 +127,11 @@ html,body,[data-testid="stAppViewContainer"]{
 .stTabs [role="tab"]:hover{ color:var(--ink) !important; }
 .stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
 
-/* Result content cards (optional) */
 .card{
   background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
   border:1px solid var(--glass-border); border-radius:var(--radius);
-  padding:20px; box-shadow:var(--shadow); width:min(1100px,96vw); margin:22px auto; color:var(--ink);
+  padding:20px; box-shadow:var(--shadow);
+  width:min(1100px,96vw); margin:22px auto; color:var(--ink);
 }
 
 /* KV rows */
@@ -121,16 +140,10 @@ html,body,[data-testid="stAppViewContainer"]{
 .kv-key{ color:var(--muted); font-weight:700; }
 .kv-value{ color:var(--ink); }
 
-/* Results header (text only, no card) */
-.section-head{ width:min(1100px,96vw); margin:0 auto 8px; color:var(--ink); padding-top:8px; }
-.section-head h2{ margin:0 0 4px; font-weight:800; }
-.section-head p{ margin:0; color:var(--muted); }
-
-/* Responsive */
+/* Mobile */
 @media (max-width: 900px){
-  .mf-hero-grid{ grid-template-columns:1fr; padding:56px 0; }
+  .hero-stack{ padding:56px 0 36px; }
+  .brand-text{ font-size: clamp(22px, 6vw, 30px); }
+  .hero-title .brand-mark{ width:28px; height:28px; }
+  .hero-title .brand-text{ font-size: clamp(26px, 6vw, 36px); }
 }
-
-/* Ensure the decorative motif fills the glass card */
-.mf-card .mf-motif { width: 100%; height: 100%; display: block; }
-.mf-card svg { padding: 10px; border-radius: 18px; }
