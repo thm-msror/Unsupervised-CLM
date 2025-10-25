@@ -13,7 +13,6 @@ pdfminer.six
 langdetect 
 arabic-reshaper 
 python-bidi
-json
 
 # OCR (optional, for scanned PDFs)
 paddleocr>=2.6.0
