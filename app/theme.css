@@ -1,0 +1,533 @@
+/* ===== Aurora Indigo → Teal — VERDICT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@300;400;600;800&display=swap');
+
+:root{
+  --bg:#08132a; --bg-mid:#0d1933; --bg-soft:#0d1933;
+  --glow-teal:#077e7c72;
+  --glow-violet:#0998965a;
+  --brand:#cfe4ff; --brand-2:#ffffff; --accent:#0d1933;
+  --ink:#f2f4fb; --muted:#cedbf2;
+  --glass-1:rgba(255,255,255,.14); --glass-2:rgba(255,255,255,.07);
+  --glass-border:rgba(255,255,255,.24); --hair:rgba(255,255,255,.12);
+  --radius:20px; --shadow:0 28px 60px rgba(4,12,26,.55);
+}
+
+/* ===== Base canvas & typography ===== */
+html,body,[data-testid="stAppViewContainer"]{
+  background:
+    radial-gradient(60% 50% at 85% 8%, var(--glow-teal), transparent 60%),
+    radial-gradient(65% 55% at 18% 82%, var(--glow-violet), transparent 62%),
+    linear-gradient(180deg, var(--bg), var(--bg-mid) 55%, var(--bg-soft));
+  color:var(--ink);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial !important;
+}
+section.main > div { padding-top: 0 !important; }
+
+/* Hide accidental code overlays globally */
+[data-testid="stCodeBlock"], pre, code { display:none !important; }
+
+/* ===== Containers ===== */
+.mf-container{ max-width:min(1280px, 96vw); margin:0 auto; padding:0 20px; }
+
+.results-wrap{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  padding:0;
+  position:relative;
+  --tab-gap: 12px;
+  --card-mt: 12px;
+  --chat-offset: calc(var(--tab-gap) + var(--card-mt));
+}
+.results-wrap [data-testid="stHorizontalBlock"]{
+  align-items:flex-start;
+  gap:40px !important;
+  column-gap:40px !important;
+}
+.results-wrap [data-testid="column"]{
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+@media (min-width:1680px){
+  .results-wrap{ max-width:min(94vw, 1720px); }
+}
+
+/* Soft divider glow between sections */
+.results-wrap::after{
+  content:"";
+  position:absolute; left:50%; top:110px; bottom:40px; width:2px;
+  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08));
+  backdrop-filter:blur(2px); border-radius:1px; transform:translateX(-50%);
+  pointer-events:none;
+}
+
+/* ===== Remove Streamlit header; use our own ===== */
+header[data-testid="stHeader"], div[data-testid="stHeader"]{ background:transparent !important; border:none !important; }
+header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:none !important; }
+
+/* ===== Custom Header ===== */
+.mf-header{
+  position:sticky; top:0; left:0; right:0;
+  z-index:200; isolation:isolate;
+  width:100vw; margin-left:calc(50% - 50vw);
+  background:linear-gradient(180deg, rgba(8,20,34,.92), rgba(10,26,44,.88)) !important;
+  border-bottom:1px solid var(--hair);
+}
+.mf-nav{
+  max-width:1200px; margin:0 auto; padding:10px 20px; height:64px;
+  display:flex; align-items:center; gap:18px;
+}
+.brand-lockup{ display:inline-flex; align-items:center; gap:14px; color:var(--ink); text-decoration:none; }
+.brand-mark{ width:26px; height:26px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+.brand-text{
+  font-family:"Playfair Display", serif; font-style:italic; font-weight:700;
+  font-size: clamp(22px, 3vw, 30px); letter-spacing:.6px; line-height:1; color:var(--ink);
+  position:relative; padding-bottom:6px; text-shadow:0 8px 22px rgba(0,0,0,.45);
+}
+.brand-text::after{
+  content:""; position:absolute; left:0; bottom:0; width:100%; height:4px; border-radius:4px;
+  background:linear-gradient(90deg, #5aa4ff, #8dc7ff 60%, transparent); opacity:.9;
+}
+
+/* Nav */
+.nav-links{ list-style:none; display:flex; align-items:center; gap:22px; margin:0; padding:0; flex:1 1 auto; justify-content:flex-end; }
+.nav-links a{
+  color:var(--muted); text-decoration:none; font-weight:600;
+  padding:10px 12px; border-radius:10px; line-height:1;
+}
+.nav-links a:hover{ color:var(--ink); }
+.nav-links .nav-cta{
+  color:#071a33; font-weight:800;
+  background:linear-gradient(180deg,#7aa5ff,#5a8fff);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:18px; padding:10px 16px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.nav-links .nav-cta:hover{ filter:brightness(1.05); }
+.mf-header, .mf-header *{ background:transparent !important; }
+
+/* ===== Hero ===== */
+.hero-block{ padding:52px 0 12px; }
+.hero-content{ max-width:920px; margin:0 auto; text-align:center; }
+.hero-title{
+  font-family:"Playfair Display", serif; font-style:italic; font-weight:700;
+  font-size: clamp(36px, 6vw, 64px); margin:0 0 8px;
+}
+.hero-subtitle{ color:var(--muted); margin:0; font-size: clamp(16px, 2vw, 18px); }
+
+/* ===== Instructions ===== */
+.how-card{
+  width:clamp(320px, 70ch, 860px);
+  margin:24px auto 14px !important;
+  padding:18px 22px;
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow: var(--shadow);
+}
+.how-list{ margin:0; padding-left:20px; }
+.how-list li{ margin:8px 0; }
+
+/* ===== Results cards ===== */
+.card{
+  background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow);
+  width:100%; margin:12px 0; color:var(--ink); box-sizing:border-box;
+}
+.results-wrap [data-testid="column"]:first-child .card{
+  box-shadow:0 6px 26px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.15);
+}
+.section-head{ width:100%; margin:0 auto 8px; color:var(--ink); padding-top:8px; }
+.section-head p{ margin:0; color:var(--muted); }
+
+/* Key/Value rows */
+.kv{ display:grid; grid-template-columns:260px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--hair); }
+.kv:last-child{ border-bottom:none; }
+.kv-key{ color:var(--muted); font-weight:700; }
+.kv-value{ color:var(--ink); }
+
+/* ===== Tabs ===== */
+[data-baseweb="tab-list"]{ border-bottom:1px solid var(--hair); gap:.25rem; }
+.stTabs [role="tab"]{
+  background:transparent !important; border:none !important; border-radius:0 !important;
+  color:var(--muted) !important; padding:.55rem .65rem !important; margin:0 .2rem; font-weight:700;
+}
+.stTabs [role="tab"]:hover{ color:var(--ink) !important; }
+.stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
+
+/* ===== Chat panel ===== */
+.chat-card{
+  background: linear-gradient(180deg, rgba(250,245,235,.94), rgba(245,237,224,.88)) !important;
+  border: 1px solid rgba(96,74,42,.25) !important; border-radius:20px;
+  padding:0; box-shadow:0 12px 40px rgba(0,0,0,.55);
+  min-height:540px; max-height:72vh; overflow:auto;
+  margin:12px 0 8px; transition:transform .2s ease, box-shadow .3s ease;
+}
+.chat-titlebar{
+  position:sticky; top:0; padding:12px 16px; font-weight:800; letter-spacing:.2px;
+  color:#2a2a2a; background:linear-gradient(180deg, rgba(252,247,237,1), rgba(246,239,228,.96));
+  border-bottom:1px solid rgba(96,74,42,.18);
+  border-top-left-radius:20px; border-top-right-radius:20px; z-index:1;
+}
+
+/* Message bubbles */
+.bubble{ display:inline-block; padding:10px 12px; border-radius:14px; margin:6px 16px; line-height:1.3; max-width:100%; word-wrap:break-word; }
+.bubble.a{ background:rgba(0,0,0,.06) !important; color:#1e2735 !important; }
+.bubble.u{ background:#2b4b74 !important; color:#e8f2ff !important; margin-left:auto; display:block; }
+
+/* Compose row inside the column */
+.stForm .row-widget.stButton > button{ height:42px; border-radius:14px; }
+.stForm .stTextInput > div > div input{ height:42px; border-radius:14px; padding:0 14px; }
+
+/* ===== Mobile ===== */
+@media (max-width:900px){
+  .mf-nav{ padding:8px 14px; }
+  .brand-text{ font-size: clamp(20px, 6vw, 26px); }
+  .hero-block{ padding:40px 0 8px; }
+  .how-card{ width:clamp(280px, 88vw, 860px); }
+  .kv{ grid-template-columns:1fr; }
+  .results-wrap [data-testid="stHorizontalBlock"]{ gap:12px !important; column-gap:12px !important; }
+  .results-wrap::after{ display:none; }
+}
+
+/* Remove Streamlit's default side padding and max-width */
+.main .block-container{ padding-left:0 !important; padding-right:0 !important; max-width:100% !important; }
+
+/* Tabs gap */
+.results-wrap .stTabs{ margin-bottom: var(--tab-gap) !important; }
+
+/* Align chat top to first results card top */
+.results-wrap [data-testid="stHorizontalBlock"] > [data-testid="column"]:nth-child(2){ padding-top: var(--chat-offset) !important; }
+
+/* Chat vertical alignment */
+.results-wrap{ --chat-shift: 16px; } .chat-wrap{ padding-top: var(--chat-shift) !important; }
+
+/* Chat bubbles final */
+.results-wrap .chat-card .bubble{ display:inline-block !important; max-width:92% !important; white-space:pre-wrap !important; word-break:break-word !important; padding:10px 12px !important; margin:8px 16px !important; font-size:14px !important; line-height:1.35 !important; border-radius:14px !important; }
+.results-wrap .chat-card .bubble.u{ margin-left:auto !important; margin-right:16px !important; display:inline-flex !important; align-self:flex-end !important; background:#2b4b74 !important; color:#e8f2ff !important; }
+.results-wrap .chat-card .bubble.a{ background:rgba(0,0,0,.06) !important; color:#1e2735 !important; }
+
+/* Title centered */
+.chat-titlebar{ text-align:center; display:flex; align-items:center; justify-content:center; font-weight:800; }
+
+/* Compose row under chat */
+.results-wrap .chat-compose{ width:100% !important; display:block !important; margin:10px 0 0 !important; }
+.results-wrap .chat-compose .stTextInput > div { width:100% !important; }
+.results-wrap .chat-compose .stTextInput input{ width:100% !important; height:44px !important; border-radius:14px !important; background:rgba(255,255,255,.98) !important; border:1px solid rgba(96,74,42,.25) !important; color:#1e2735 !important; box-shadow:0 2px 10px rgba(0,0,0,.08) !important; }
+.results-wrap .chat-compose .stTextInput input::placeholder{ color:#6b7785 !important; opacity:.9 !important; }
+.results-wrap .chat-compose .stButton > button{ height:44px !important; background:linear-gradient(180deg,#7aa5ff,#5a8fff) !important; color:#071a33 !important; border:1px solid rgba(255,255,255,.22) !important; border-radius:14px !important; font-weight:800 !important; box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important; }
+.results-wrap .chat-compose .stButton > button:hover{ filter: brightness(1.05); }
+.results-wrap .chat-compose .stButton > button:disabled{ opacity:.55; filter: grayscale(.15); }
+
+/* =========================================================
+   HOME SECTIONS (distinct panels like GOIC)
+   ========================================================= */
+.hero-tight { padding: 56px 0 20px !important; }
+.anchor-spacer { display:block; height: 64px; margin-top:-64px; }
+
+/* Section wrapper → full-width band with gentle gradient */
+.section-block{
+  width:100vw; margin-left:calc(50% - 50vw);
+  padding: 32px 0; position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+/* Alternate band for stronger contrast */
+.section-block.section-alt{
+  background: linear-gradient(180deg, rgba(5,10,22,.35), rgba(5,10,22,.50));
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(0,0,0,.35);
+}
+
+/* Inner width alignment */
+.section-block > .stMarkdown:first-child .section-heading,
+.section-block > .stMarkdown:first-child + div,
+.section-block .mf-container,
+.section-block > div[data-testid="stFileUploader"],
+.section-block > div[data-testid="stHorizontalBlock"],
+.section-block > div[data-testid="stVerticalBlock"]{
+  max-width: min(1100px, 94vw); margin:0 auto;
+}
+
+/* Title row */
+.section-heading{
+  display:flex; align-items:center; gap:12px;
+  margin: 4px auto 10px; max-width: min(1100px, 94vw);
+}
+.section-heading h2{ margin:0; padding:0; font-weight:800; letter-spacing:.2px; font-size: clamp(24px, 3vw, 34px); color: var(--ink); text-shadow: 0 10px 24px rgba(0,0,0,.35); }
+.kicker{
+  width:28px; height:28px; border-radius:999px; display:grid; place-items:center;
+  font-weight:800; color:#dbe7ff;
+  background: linear-gradient(180deg,#5a8fff,#3f6ddd);
+  box-shadow: 0 6px 14px rgba(30,80,170,.45), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Description text */
+.section-desc{ max-width: min(1100px, 94vw); margin: 0 auto 14px; color: var(--muted); }
+
+/* Controls width */
+.section-block .stFileUploader,
+.section-block .stButton,
+.section-block .stColumns, 
+.section-block .stTextInput,
+.section-block .stSelectbox{
+  max-width: min(1100px, 94vw); margin-left:auto; margin-right:auto;
+}
+
+/* Separator band */
+.section-divider{
+  width:100vw; margin-left:calc(50% - 50vw);
+  height: 56px;
+  background: radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.08), transparent 70%),
+              linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22));
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(0,0,0,.35);
+}
+
+/* Uploader polish (generic, outside of cards) */
+.section-block .stFileUploader > div{
+  border-radius: 14px !important; border: 1px solid rgba(255,255,255,.22) !important;
+  background: rgba(255,255,255,.10) !important; backdrop-filter: blur(6px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+
+/* Primary buttons in sections */
+.section-block .stButton > button{
+  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important;
+  color: #071a33 !important; border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 14px !important; font-weight: 800 !important; height: 42px !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.section-block .stButton > button:hover{ filter:brightness(1.06); }
+
+@media (max-width: 900px){
+  .section-block{ padding: 26px 0; }
+  .section-divider{ height: 40px; }
+}
+
+/* ======= Tighter section layout ======= */
+.section-block > .stMarkdown:first-child .section-heading,
+.section-block > .stMarkdown:first-child + div,
+.section-block .mf-container,
+.section-block > div[data-testid="stFileUploader"],
+.section-block > div[data-testid="stHorizontalBlock"],
+.section-block > div[data-testid="stVerticalBlock"]{
+  max-width: min(1200px, 98vw) !important;
+}
+.section-block{ padding: 22px 0 !important; }
+.section-block.section-alt{ padding: 22px 0 !important; }
+.section-heading{ margin: 0 auto 6px !important; }
+.section-heading h2{ font-size: clamp(22px, 2.4vw, 30px) !important; }
+.section-desc{ margin: 2px auto 10px !important; }
+.section-block .stFileUploader,
+.section-block .stButton,
+.section-block .stColumns, 
+.section-block .stTextInput,
+.section-block .stSelectbox{ margin-top: 8px !important; }
+.hero-block{ padding: 40px 0 8px !important; }
+.section-divider{
+  height: 42px !important;
+  background: radial-gradient(60% 35% at 50% 0%, rgba(255,255,255,.06), transparent 70%),
+              linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.18)) !important;
+}
+
+/* === FINAL HOME SECTION GUTTERS + UNIFIED WIDTH === */
+:root{ --section-max: 1200px; --section-gutter: 32px; --section-pad-y: 22px; }
+@media (max-width: 1024px){ :root{ --section-gutter: 24px; } }
+@media (max-width: 640px){ :root{ --section-gutter: 18px; } }
+
+.section-block{
+  padding: var(--section-pad-y) 0 !important;
+  padding-left: var(--section-gutter) !important;
+  padding-right: var(--section-gutter) !important;
+}
+.section-block .section-heading,
+.section-block .section-desc,
+.section-block .stFileUploader,
+.section-block .stButton,
+.section-block .stColumns,
+.section-block .stTextInput,
+.section-block .stSelectbox,
+.section-block > .stMarkdown:first-child,
+.section-block > .stMarkdown:first-child + div,
+.section-block .mf-container,
+.section-block > div[data-testid="stFileUploader"],
+.section-block > div[data-testid="stHorizontalBlock"],
+.section-block > div[data-testid="stVerticalBlock"]{
+  max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important;
+  margin-left: auto !important; margin-right: auto !important; width: 100% !important;
+}
+.section-heading{ margin: 2px auto 8px !important; }
+.section-desc{ margin: 0 auto 12px !important; }
+.section-block .stFileUploader > div{
+  width: 100% !important; border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.22) !important; background: rgba(255,255,255,.10) !important;
+  padding-left: 10px !important; padding-right: 10px !important; box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+.hero-content{ max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important; padding-left:0 !important; padding-right:0 !important; }
+
+/* === SECTION CARDS (raised panels) =============================== */
+.section-card{
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px))));
+  margin: 0 auto 22px; padding: 18px 18px 20px; border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18); box-shadow: 0 22px 40px rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+}
+.section-card .section-heading{ margin: 0 0 8px !important; }
+.section-card .section-desc{ margin: 0 0 12px !important; }
+.section-card .stFileUploader,
+.section-card .stButton,
+.section-card .stColumns,
+.section-card .stTextInput,
+.section-card .stSelectbox{ max-width: 100% !important; margin-left:0 !important; margin-right:0 !important; }
+.section-card .stFileUploader > div{
+  border-radius: 12px !important; background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(0,0,0,.10) !important; box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding-left: 12px !important; padding-right: 12px !important;
+}
+.section-card .stButton > button{
+  height: 42px !important; border-radius: 12px !important;
+  background: linear-gradient(180deg,#7aa5ff,#5a8fff) !important; color: #071a33 !important;
+  border: 1px solid rgba(255,255,255,.22) !important; font-weight: 800 !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.section-card .stButton > button:hover{ filter: brightness(1.06); }
+
+/* The cards host their widgets using adjacent-sibling placement from main.py */
+.section-card{ position: relative; padding-bottom: 18px; }
+.sc-upload + div[data-testid="stFileUploader"]{ max-width: 860px; margin: 8px auto 10px !important; transform: translateY(-8px); }
+.sc-create + div[data-testid="stButton"]{ display:flex !important; justify-content:center !important; transform: translateY(-6px); }
+.sc-create + div[data-testid="stButton"] button{ min-width: 200px; }
+.sc-edit   + div[data-testid="stButton"]{ display:flex !important; justify-content:center !important; transform: translateY(-6px); }
+.sc-edit   + div[data-testid="stButton"] button{ min-width: 200px; }
+
+/* === Section cards: keep widget INSIDE the same card ================== */
+/* Top half of each card (title + description) already uses .section-card.
+   We attach the widget container right after it as the bottom half.      */
+
+/* Upload card bottom (uploader) */
+.sc-upload { margin-bottom: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+.sc-upload + div[data-testid="stFileUploader"]{
+  /* same width + centered */
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px)))) !important;
+  margin: 0 auto 22px !important;
+
+  /* visually part of the same card */
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-top: none;                             /* fuse to the top half */
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  padding: 12px 12px 14px;
+}
+/* compact, white uploader inside the card bottom */
+.sc-upload + div[data-testid="stFileUploader"] > div{
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.98) !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+
+/* Create card bottom (button) */
+.sc-create { margin-bottom: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+.sc-create + div[data-testid="stButton"]{
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px)))) !important;
+  margin: 0 auto 22px !important;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+
+  padding: 14px 16px;
+  display: flex !important;
+  justify-content: center !important;
+}
+.sc-create + div[data-testid="stButton"] button{ min-width: 200px; height: 42px !important; border-radius: 12px !important; }
+
+/* Edit card bottom (button) */
+.sc-edit { margin-bottom: 0 !important; border-bottom-left-radius: 0 !important; border-bottom-right-radius: 0 !important; }
+.sc-edit + div[data-testid="stButton"]{
+  max-width: min(var(--section-max, 1200px), calc(100vw - (2 * var(--section-gutter, 32px)))) !important;
+  margin: 0 auto 22px !important;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+
+  padding: 14px 16px;
+  display: flex !important;
+  justify-content: center !important;
+}
+.sc-edit + div[data-testid="stButton"] button{ min-width: 200px; height: 42px !important; border-radius: 12px !important; }
+/* === Turn any Streamlit container that has .sc-card into a raised section card === */
+div[data-testid="stVerticalBlock"]:has(.sc-card){
+  max-width: min(1200px, 94vw);
+  margin: 0 auto 22px;
+  padding: 18px 18px 20px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 22px 40px rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+}
+
+/* Inside those cards, keep controls full width of the card */
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stFileUploader,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stButton,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stColumns,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stTextInput,
+div[data-testid="stVerticalBlock"]:has(.sc-card) .stSelectbox{
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Make uploader look nice inside card */
+div[data-testid="stVerticalBlock"]:has(.sc-upload-flag) .stFileUploader > div{
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+/* Center the primary button in Create/Edit cards */
+div[data-testid="stVerticalBlock"]:has(.sc-create-flag) .stButton,
+div[data-testid="stVerticalBlock"]:has(.sc-edit-flag)   .stButton{
+  display: flex !important;
+  justify-content: center !important;
+}
+div[data-testid="stVerticalBlock"]:has(.sc-create-flag) .stButton > button,
+div[data-testid="stVerticalBlock"]:has(.sc-edit-flag)   .stButton > button{
+  min-width: 200px;
+  height: 42px !important;
+  border-radius: 12px !important;
+}
+/* === Make the section card invisible + darker text === */
+.section-card{
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Darker text inside the cards */
+.section-card,
+.section-card p,
+.section-card .section-desc,
+.section-card .section-heading h2{
+  color:#1e2735 !important;   /* deep navy */
+}

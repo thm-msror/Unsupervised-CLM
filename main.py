@@ -1,100 +1,170 @@
 #!/usr/bin/env python3
-"""
-AI-Driven Contract Lifecycle Management (CLM) - Streamlit Application
-Main entry point for the web application
-"""
-
-import streamlit as st
-import os
-import sys
+import os, sys, time, base64
 from pathlib import Path
+from textwrap import dedent
+import streamlit as st
 
-# Add the src directory to the Python path for imports
-src_path = Path(__file__).parent / "src"
-if str(src_path) not in sys.path:
-    sys.path.append(str(src_path))
+# ---------- paths ----------
+ROOT = Path(__file__).parent
+APP  = ROOT / "app"
+ASSETS = APP / "assets"
+for p in (ROOT / "src", APP):
+    if str(p) not in sys.path:
+        sys.path.append(str(p))
 
-# Import app modules (create these later)
-try:
-    from app.config import load_config
-    from app.utils import initialize_session_state
-except ImportError:
-    # Fallback if modules don't exist yet
-    def load_config():
-        return {"app_name": "CLM AI Hackathon"}
-    def initialize_session_state():
-        pass
+# ---------- tiny util: embed image as base64 (tries several names) ----------
+def img_b64(*candidates) -> str | None:
+    for name in candidates:
+        p = ASSETS / name
+        if p.exists():
+            mime = "png" if p.suffix.lower() == ".png" else "jpeg"
+            return f"data:image/{mime};base64," + base64.b64encode(p.read_bytes()).decode("ascii")
+    return None
 
-# =============================================================================
-# 🎯 Streamlit Page Configuration
-# =============================================================================
-st.set_page_config(
-    page_title="CLM AI - Contract Lifecycle Management",
-    page_icon="📄",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://github.com/thm-msror/Unsupervised-CLM',
-        'Report a bug': 'https://github.com/thm-msror/Unsupervised-CLM/issues',
-        'About': "AI-Driven Contract Lifecycle Management - AIX Hackathon 2025"
+# ---------- Demo stubs (unchanged) ----------
+def get_backend_config(_label: str) -> dict:
+    return {
+        "preferred_backend": "local",
+        "hf_api_key": os.getenv("HUGGINGFACE_API_KEY") or os.getenv("HUGGINGFACEHUB_API_KEY"),
+        "hf_model": os.getenv("HUGGINGFACE_MODEL", "Qwen/Qwen2.5-7B-Instruct"),
+        "local_url": os.getenv("LOCAL_INFERENCE_URL", "http://localhost:11434"),
+        "local_model": os.getenv("LOCAL_MODEL", "qwen2:1.5b"),
     }
-)
 
-# =============================================================================
-# 🎨 Custom CSS Styling
-# =============================================================================
-st.markdown("""
+def parse_document(file_bytes: bytes, file_name: str) -> str:
+    name = (file_name or "").lower()
+    if name.endswith(".pdf"):  return "DEMO TEXT (PDF): parser disabled during FE sprint."
+    if name.endswith(".docx"): return "DEMO TEXT (DOCX): parser disabled during FE sprint."
+    try:    return file_bytes.decode("utf-8", errors="ignore")
+    except: return "DEMO TEXT: unsupported file; parser disabled."
+
+def summarize_contract(text: str, cfg: dict) -> str:
+    return (
+        "This is a demo summary. Replace with real LLM call later.\n\n"
+        "• Purpose: Sample agreement between ABC and XYZ.\n"
+        "• Term: 12 months, auto-renew.\n"
+        "• Payment: Net 30.\n"
+    )
+
+def extract_key_data(text: str, cfg: dict) -> dict:
+    return {
+        "contracting_parties": ["ABC Corporation", "XYZ Limited"],
+        "key_dates": {
+            "effective_date": "2025-01-15",
+            "expiration_date": "2026-01-14",
+            "renewal_date": "Auto-renews annually",
+        },
+        "governing_law": "State of New York",
+        "jurisdiction": "New York courts",
+        "obligations": [
+            "Supplier delivers services within 30 days of PO.",
+            "Client pays within Net 30 days.",
+        ],
+        "financial_terms": {
+            "payment_schedule": "Monthly, Net 30",
+            "penalties": "1.5% monthly late fee",
+            "currency": "USD",
+            "cap": "Liability cap at annual fees",
+        },
+    }
+
+def analyze_risk(text: str, cfg: dict):
+    return [
+        "High: Automatic renewal without notice period.",
+        "Medium: Indemnification scope is ambiguous.",
+        "Low: Confidentiality clause aligns with standard.",
+    ]
+
+# ---------- Page + theme ----------
+st.set_page_config(page_title="VERDICT", layout="wide")
+THEME_PATH = APP / "theme.css"
+if THEME_PATH.exists():
+    st.markdown(dedent(f"<style>{THEME_PATH.read_text()}</style>"), unsafe_allow_html=True)
+
+# --- local CSS: center hero content + size the logo ---
+st.markdown(dedent("""
 <style>
-    .main-header {
-        font-size: 2.5rem;
-        color: #1f77b4;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    .feature-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 1rem;
-        border-radius: 10px;
-        color: white;
-        margin: 0.5rem 0;
-    }
-    .status-success {
-        color: #28a745;
-        font-weight: bold;
-    }
-    .status-warning {
-        color: #ffc107;
-        font-weight: bold;
-    }
-    .status-error {
-        color: #dc3545;
-        font-weight: bold;
-    }
+  .hero-block .hero-content{ display:flex; flex-direction:column; align-items:center; }
+  .hero-title-wrap{ display:flex; align-items:center; gap:.85rem; justify-content:center; }
+  .hero-title{ margin:0; }
+  .hero-logo{ width:84px; height:auto; border-radius:12px; box-shadow:0 10px 35px rgba(0,0,0,.35); }
+  @media (max-width: 640px){ .hero-logo{ width:64px; } }
 </style>
-""", unsafe_allow_html=True)
+"""), unsafe_allow_html=True)
 
-# =============================================================================
-# 🚀 Main Application
-# =============================================================================
-def main():
-    """Main Streamlit application function"""
-    
-    # Initialize session state
-    initialize_session_state()
-    
-    # Header
-    st.markdown('<h1 class="main-header">🤖 CLM AI - Contract Lifecycle Management</h1>', 
-                unsafe_allow_html=True)
-    
-    # Sidebar
-    with st.sidebar:
-        st.image("https://via.placeholder.com/200x100/1f77b4/ffffff?text=CLM+AI", 
-                 caption="AI-Driven Contract Analysis")
-        
-        st.markdown("### 🎯 Navigation")
-        page = st.selectbox(
-            "Choose a page:",
-            ["🏠 Home", "📄 Contract Upload", "🔍 Analysis", "📊 Dashboard", "🧪 Test API"]
+# ---------- Header (links to real pages) ----------
+st.markdown(dedent("""
+<header class="mf-header" id="site-header">
+  <nav class="mf-nav">
+    <a class="brand-lockup" href="#top" aria-label="VERDICT home">
+      <svg class="brand-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="brandStroke" x1="0" x2="1">
+          <stop offset="0%"  stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/>
+        </linearGradient></defs>
+        <g fill="none" stroke="url(#brandStroke)" stroke-width="10" opacity=".95">
+          <path d="M100 10 160 70 100 130 40 70Z"/><path d="M100 70 160 130 100 190 40 130Z"/>
+        </g>
+      </svg>
+      <span class="brand-text">VERDICT</span>
+    </a>
+    <ul class="nav-links nav-right">
+        <li><a class="nav-pill" href="/Upload">Upload</a></li>
+        <li><a class="nav-pill" href="/Create">Create</a></li>
+        <li><a class="nav-pill" href="/Edit">Edit</a></li>
+    </ul>
+  </nav>
+</header>
+"""), unsafe_allow_html=True)
+
+# ---------- Session ----------
+ss = st.session_state
+ss.setdefault("step", "home")
+ss.setdefault("doc_name", None)
+ss.setdefault("uploaded_bytes", None)
+ss.setdefault("result", None)
+ss.setdefault("chat", [{"role":"assistant","text":"Hi! How can I help you with this contract?"}])
+ss.setdefault("clear_compose", False)
+
+# pre-encode logo once
+HERO_LOGO = img_b64("logo1.jpeg", "logo2.jpeg", "image.png")
+
+# ---------- Screens ----------
+def screen_home():
+    # Hero (centered title + logo)
+    logo_html = f'<img class="hero-logo" src="{HERO_LOGO}" alt="VERDICT logo"/>' if HERO_LOGO else ""
+    st.markdown(
+        f"""
+        <main id="top">
+          <section class="hero-block hero-tight">
+            <div class="hero-content">
+              <div class="hero-title-wrap">
+                <h1 class="hero-title">VERDICT</h1>
+                {logo_html}
+              </div>
+              <p class="hero-subtitle"></p>
+            </div>
+          </section>
+        </main>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # ===== 1) Upload (card with uploader INSIDE) =====
+    st.markdown('<span id="upload"></span><div class="anchor-spacer"></div>', unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<span class="sc-card sc-upload-flag"></span>', unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="section-heading">
+              <div class="kicker">①</div>
+              <h2>Upload an Existing Contract</h2>
+            </div>
+            <p class="section-desc">
+              Drop in a PDF/DOCX and we’ll produce a structured summary, key fields, and risk flags.
+              You’ll also get a chat assistant on the right so you can ask questions about the contract.
+            </p>
+            """,
+            unsafe_allow_html=True
         )
         
         st.markdown("### ⚙️ Settings")
@@ -159,99 +229,114 @@ def show_home_page():
             elif status == "⚠️":
                 st.markdown(f'<p class="status-warning">{status} {component}</p>', unsafe_allow_html=True)
             else:
-                st.markdown(f'<p class="status-error">{status} {component}</p>', unsafe_allow_html=True)
-        
-        st.markdown("### 🚀 Quick Start")
-        if st.button("📄 Upload Your First Contract", type="primary"):
-            st.session_state.page = "📄 Contract Upload"
-            st.rerun()
+                inner = f'<div class="kv"><div class="kv-key">Parties</div><div class="kv-value">{parties or "—"}</div></div>'
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-def show_upload_page():
-    """Contract upload page"""
-    st.markdown("### 📄 Upload Contract")
-    
-    uploaded_file = st.file_uploader(
-        "Choose a contract file",
-        type=['pdf', 'docx'],
-        help="Upload PDF or DOCX contract files for analysis"
-    )
-    
-    if uploaded_file is not None:
-        st.success(f"✅ File uploaded: {uploaded_file.name}")
-        
-        # File details
-        file_details = {
-            "Filename": uploaded_file.name,
-            "File size": f"{uploaded_file.size:,} bytes",
-            "File type": uploaded_file.type
-        }
-        
-        st.json(file_details)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("🔍 Analyze Contract", type="primary"):
-                with st.spinner("Analyzing contract..."):
-                    # Placeholder for actual analysis
-                    st.success("Analysis complete! Check the Analysis tab.")
-        
-        with col2:
-            if st.button("💾 Save for Later"):
-                st.info("Contract saved to session.")
+        with tabs[2]:
+            d = extracted.get("key_dates", {}) or {}
+            inner = "".join([
+                f'<div class="kv"><div class="kv-key">Effective Date</div><div class="kv-value">{d.get("effective_date") or "—"}</div></div>',
+                f'<div class="kv"><div class="kv-key">Expiration Date</div><div class="kv-value">{d.get("expiration_date") or "—"}</div></div>',
+                f'<div class="kv"><div class="kv-key">Renewal Date</div><div class="kv-value">{d.get("renewal_date") or "—"}</div></div>',
+            ])
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-def show_analysis_page():
-    """Contract analysis results page"""
-    st.markdown("### 🔍 Contract Analysis")
-    
-    if "analyzed_contract" not in st.session_state:
-        st.info("📄 No contract analyzed yet. Please upload a contract first.")
-        return
-    
-    # Sample analysis results (replace with real analysis)
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("#### 📋 Extracted Information")
-        sample_data = {
-            "Parties": ["ABC Corporation", "XYZ Limited"],
-            "Effective Date": "January 15, 2025",
-            "Duration": "12 months",
-            "Governing Law": "New York State"
-        }
-        st.json(sample_data)
-    
-    with col2:
-        st.markdown("#### ⚠️ Risk Assessment")
-        st.error("🚨 High Risk: Automatic renewal clause detected")
-        st.warning("⚠️ Medium Risk: Missing indemnification clause")
-        st.success("✅ Low Risk: Standard termination provisions")
+        with tabs[3]:
+            law = extracted.get("governing_law") or extracted.get("law_and_jurisdiction")
+            juris = extracted.get("jurisdiction")
+            inner = "".join([
+                f'<div class="kv"><div class="kv-key">Governing Law</div><div class="kv-value">{law or "—"}</div></div>',
+                f'<div class="kv"><div class="kv-key">Jurisdiction</div><div class="kv-value">{juris or "—"}</div></div>',
+            ])
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-def show_dashboard_page():
-    """Analytics dashboard page"""
-    st.markdown("### 📊 Dashboard")
-    
-    # Sample metrics
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.metric("Contracts Processed", "42", "+5")
-    with col2:
-        st.metric("Risk Flags", "8", "-2")
-    with col3:
-        st.metric("Avg Processing Time", "45s", "-10s")
-    with col4:
-        st.metric("Accuracy Score", "94%", "+3%")
-    
-    # Sample chart
-    import pandas as pd
-    import numpy as np
-    
-    chart_data = pd.DataFrame(
-        np.random.randn(20, 3),
-        columns=['Contract Volume', 'Risk Score', 'Processing Time']
-    )
-    
-    st.line_chart(chart_data)
+        with tabs[4]:
+            obligations = extracted.get("obligations") or extracted.get("deliverables")
+            if isinstance(obligations, list):
+                inner = "".join(
+                    f'<div class="kv"><div class="kv-key">Obligation</div><div class="kv-value">{str(o)}</div></div>'
+                    for o in obligations
+                )
+            else:
+                inner = f'<div class="kv"><div class="kv-key">Obligations</div><div class="kv-value">{obligations or "—"}</div></div>'
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+
+        with tabs[5]:
+            fin = extracted.get("financial_terms") or {}
+            if isinstance(fin, dict):
+                inner = "".join(
+                    f'<div class="kv"><div class="kv-key">{k.replace("_"," ").title()}</div><div class="kv-value">{str(v)}</div></div>'
+                    for k, v in fin.items()
+                )
+            else:
+                inner = f'<div class="kv"><div class="kv-key">Financial Terms</div><div class="kv-value">{fin or "—"}</div></div>'
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+
+        with tabs[6]:
+            if risks and isinstance(risks, (list, tuple)):
+                inner = "<ul>" + "".join(f"<li>{str(r)}</li>" for r in risks) + "</ul>"
+            else:
+                inner = "No explicit risks found."
+            st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+
+    with right_col:
+        if ss.get("clear_compose"):
+            ss["compose_text"] = ""
+            ss["clear_compose"] = False
+
+        bubbles = []
+        for m in ss.chat:
+            role_cls = "u" if m["role"] == "user" else "a"
+            bubbles.append(f'<div class="bubble {role_cls}">{m["text"]}</div>')
+
+        chat_html = (
+            '<div class="chat-wrap">'
+            '  <div class="chat-card">'
+            '    <div class="chat-titlebar">Assistant Chat</div>'
+            f'    {"".join(bubbles)}'
+            '  </div>'
+            '</div>'
+        )
+        st.markdown(chat_html, unsafe_allow_html=True)
+
+        st.markdown('<div class="chat-compose">', unsafe_allow_html=True)
+        with st.form("compose", clear_on_submit=True):
+            c1, c2 = st.columns([10, 2])
+            with c1:
+                msg = st.text_input(
+                    "Ask the assistant about this contract…",
+                    key="compose_text",
+                    label_visibility="collapsed",
+                )
+            with c2:
+                submitted = st.form_submit_button("Send", use_container_width=True)
+
+            if submitted:
+                text = (ss.get("compose_text") or "").strip()
+                if text:
+                    ss.chat.append({"role": "user", "text": text})
+                    ss.chat.append({
+                        "role": "assistant",
+                        "text": "Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."
+                    })
+                ss["clear_compose"] = True
+                st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+def screen_form():
+    st.markdown(dedent("""<div class="mf-container">"""), unsafe_allow_html=True)
+    st.markdown("## Create a new contract")
+    st.caption("Select industry, subject, and governing law. Defaults auto-load. Jurisdictional language is swapped to keep the draft legally coherent.")
+
+    industries = ["Technology (SaaS)", "Consulting/Professional Services", "Construction", "Healthcare"]
+    subjects = {
+        "Technology (SaaS)": ["Master Subscription Agreement", "Data Processing Addendum", "Support & SLA"],
+        "Consulting/Professional Services": ["Service Agreement", "Statement of Work", "NDA"],
+        "Construction": ["General Construction Contract", "Subcontract", "Change Order"],
+        "Healthcare": ["Services Agreement", "BAA (HIPAA)", "NDA"],
+    }
+    laws = ["Qatar", "United Kingdom"]
+    jurisdictions = {"Qatar": ["Qatari Courts (Doha)"], "United Kingdom": ["England & Wales Courts (London)"]}
 
 def show_test_page():
     """API testing page"""
