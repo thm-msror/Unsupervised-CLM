@@ -114,7 +114,6 @@ def screen_home():
             <div class="hero-content">
               <h1 class="hero-title">VERDICT</h1>
               <p class="hero-subtitle">
-                Upload a contract to get a clean summary, key data, and risk flags — or generate a new, law-aware draft in minutes.
               </p>
             </div>
           </section>
