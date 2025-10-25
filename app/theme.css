@@ -29,11 +29,20 @@ section.main > div { padding-top: 0 !important; }
 /* Containers */
 .mf-container{ max-width:1100px; margin:0 auto; padding:0 20px; }
 
+/* Wider & tighter container for RESULTS only — kills side whitespace professionally */
+.results-wrap{
+  max-width:min(96vw, 1600px);
+  padding:0 8px;
+}
+@media (min-width: 1680px){
+  .results-wrap{ max-width:min(94vw, 1720px); }
+}
+
 /* ===== Remove Streamlit header; use our own ===== */
 header[data-testid="stHeader"], div[data-testid="stHeader"]{ background:transparent !important; border:none !important; }
 header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:none !important; }
 
-/* ===== Custom Header (Masjid-style) ===== */
+/* ===== Custom Header ===== */
 .mf-header{
   position:sticky; top:0; z-index:100; left:0; right:0;
   width:100vw; margin-left:calc(50% - 50vw);
@@ -56,15 +65,13 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   background:linear-gradient(90deg, #5aa4ff, #8dc7ff 60%, transparent); opacity:.9;
 }
 
-/* Right-aligned links like the Masjid site */
+/* Nav */
 .nav-links{ list-style:none; display:flex; align-items:center; gap:22px; margin:0; padding:0; flex:1 1 auto; justify-content:flex-end; }
 .nav-links a{
   color:var(--muted); text-decoration:none; font-weight:600;
   padding:10px 12px; border-radius:10px; line-height:1;
 }
 .nav-links a:hover{ color:var(--ink); }
-
-/* CTA pill ("Create") */
 .nav-links .nav-cta{
   color:#071a33; font-weight:800;
   background:linear-gradient(180deg,#7aa5ff,#5a8fff);
@@ -74,8 +81,6 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
 }
 .nav-links .nav-cta:hover{ filter:brightness(1.05); }
-
-/* Ensure no white leaks in header */
 .mf-header, .mf-header *{ background:transparent !important; }
 
 /* ===== Hero ===== */
@@ -87,7 +92,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 }
 .hero-subtitle{ color:var(--muted); margin:0; font-size: clamp(16px, 2vw, 18px); }
 
-/* ===== Instructions card (narrow & centered) ===== */
+/* ===== Instructions ===== */
 .how-card{
   width:clamp(320px, 70ch, 860px);
   margin:24px auto 14px !important;
@@ -97,22 +102,10 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   border:1px solid rgba(255,255,255,.18);
   box-shadow: var(--shadow);
 }
-.how-card h3{ margin:0 0 10px; }
 .how-list{ margin:0; padding-left:20px; }
 .how-list li{ margin:8px 0; }
 
-/* ===== Uploader ===== */
-.upload-inline{ display:flex; justify-content:center; width:100%; margin-top:8px; }
-[data-testid="stFileUploader"]{ width:min(760px, 92%); margin:8px auto 10px; }
-[data-testid="stFileUploader"] > section{
-  border-radius:18px !important;
-  border:1px solid var(--glass-border) !important;
-  background:rgba(0,0,0,.26) !important; color:var(--ink) !important;
-  box-shadow:0 1px 0 rgba(255,255,255,.08) inset, 0 16px 32px rgba(0,0,0,.38);
-}
-[data-testid="stFileUploader"] p, [data-testid="stFileUploader"] span{ color:var(--ink) !important; opacity:.98; }
-
-/* ===== Results cards (make them fill the column; also fixes the empty long rectangle) ===== */
+/* ===== Results cards ===== */
 .card{
   background:linear-gradient(180deg,var(--glass-1),var(--glass-2));
   border:1px solid var(--glass-border);
@@ -120,7 +113,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   padding:20px;
   box-shadow:var(--shadow);
   width:100%;
-  margin:14px 0;           /* inside column, no global centering */
+  margin:12px 0;
   color:var(--ink);
   box-sizing:border-box;
 }
@@ -133,26 +126,26 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .kv-key{ color:var(--muted); font-weight:700; }
 .kv-value{ color:var(--ink); }
 
-/* ===== Tabs ===== */
-[data-baseweb="tab-list"]{ border-bottom:1px solid var(--hair); gap:.35rem; }
+/* ===== Tabs (tighten look) ===== */
+[data-baseweb="tab-list"]{ border-bottom:1px solid var(--hair); gap:.25rem; }
 .stTabs [role="tab"]{
   background:transparent !important; border:none !important; border-radius:0 !important;
-  color:var(--muted) !important; padding:.6rem .75rem !important; margin:0 .25rem; font-weight:700;
+  color:var(--muted) !important; padding:.55rem .65rem !important; margin:0 .2rem; font-weight:700;
 }
 .stTabs [role="tab"]:hover{ color:var(--ink) !important; }
 .stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
 
-/* ===== Chat panel (right side) ===== */
+/* ===== Chat panel (right column) ===== */
 .chat-card{
   background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
   border:1px solid rgba(255,255,255,.18);
   border-radius:18px;
   padding:16px;
   box-shadow: var(--shadow);
-  min-height: 360px;
-  max-height: 70vh;
+  min-height: 520px;
+  max-height: 72vh;
   overflow:auto;
-  margin:14px 0;
+  margin:12px 0 8px;
 }
 .bubble{
   display:inline-block;
@@ -165,6 +158,12 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 }
 .bubble.a{ background:rgba(255,255,255,.12); color:var(--ink); }
 .bubble.u{ background:#2b4b74; color:#e8f2ff; margin-left:auto; display:block; }
+
+/* Compose row inside the column */
+.stForm .row-widget.stButton > button{ height:42px; border-radius:14px; }
+.stForm .stTextInput > div > div input{
+  height:42px; border-radius:14px; padding:0 14px;
+}
 
 /* ===== Mobile ===== */
 @media (max-width: 900px){

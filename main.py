@@ -71,7 +71,7 @@ THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(dedent(f"<style>{THEME_PATH.read_text()}</style>"), unsafe_allow_html=True)
 
-# ---------- Custom Header (Masjid-style: brand left, links right) ----------
+# ---------- Custom Header ----------
 st.markdown(dedent("""
 <header class="mf-header" id="site-header">
   <nav class="mf-nav">
@@ -86,7 +86,6 @@ st.markdown(dedent("""
       </svg>
       <span class="brand-text">VERDICT</span>
     </a>
-
     <ul class="nav-links nav-right">
       <li><a href="#upload">Upload</a></li>
       <li><a class="nav-cta" href="#create">Create</a></li>
@@ -107,7 +106,6 @@ ss.setdefault("chat", [{"role":"assistant","text":"Hi! How can I help you with t
 def screen_home():
     st.markdown('<main id="top">', unsafe_allow_html=True)
 
-    # Hero
     st.markdown(dedent("""
       <section class="hero-block">
         <div class="hero-content">
@@ -119,7 +117,6 @@ def screen_home():
       </section>
     """), unsafe_allow_html=True)
 
-    # Instructions (anchor id for header link)
     st.markdown(dedent("""
       <section class="mf-container" id="how">
         <div class="how-card">
@@ -134,7 +131,6 @@ def screen_home():
       </section>
     """), unsafe_allow_html=True)
 
-    # Upload section
     st.markdown('<span id="upload"></span>', unsafe_allow_html=True)
     up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"], label_visibility="collapsed")
     if up is not None:
@@ -143,7 +139,6 @@ def screen_home():
         ss.step = "loading"
         st.rerun()
 
-    # Create section
     st.markdown('<span id="create"></span>', unsafe_allow_html=True)
     if st.button("＋ Create a new contract", use_container_width=True):
         ss.step = "form"
@@ -172,12 +167,13 @@ def screen_loading():
     st.rerun()
 
 def screen_results():
-    st.markdown(dedent("""<div class="mf-container">"""), unsafe_allow_html=True)
+    # Wider / tighter container to kill side whitespace
+    st.markdown(dedent("""<div class="mf-container results-wrap">"""), unsafe_allow_html=True)
 
-    # ------ Two-section layout: Left = Tabs, Right = Chat ------
-    left_col, right_col = st.columns([7, 5], gap="large")
+    # Give the chat a little more width, but keep balance; smaller gap for a tighter, pro layout
+    left_col, right_col = st.columns([8, 9], gap="small")
 
-    # LEFT: TABS (build single .card per tab to avoid empty rectangle)
+    # LEFT: tabs
     with left_col:
         tabs = st.tabs([
             "📄 Summary","👥 Parties","📅 Key Dates","⚖️ Law & Jurisdiction",
@@ -188,13 +184,10 @@ def screen_results():
         extracted = res.get("extracted", {})
         risks = res.get("risks", [])
 
-        # --- Summary ---
         with tabs[0]:
             safe_summary = (summary or "_No summary._").replace("\n", "<br>")
-            html = f'<div class="card">{safe_summary}</div>'
-            st.markdown(html, unsafe_allow_html=True)
+            st.markdown(f'<div class="card">{safe_summary}</div>', unsafe_allow_html=True)
 
-        # --- Parties ---
         with tabs[1]:
             parties = extracted.get("contracting_parties") or extracted.get("parties")
             if isinstance(parties, list):
@@ -206,7 +199,6 @@ def screen_results():
                 inner = f'<div class="kv"><div class="kv-key">Parties</div><div class="kv-value">{parties or "—"}</div></div>'
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-        # --- Key Dates ---
         with tabs[2]:
             d = extracted.get("key_dates", {}) or {}
             inner = "".join([
@@ -216,7 +208,6 @@ def screen_results():
             ])
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-        # --- Law & Jurisdiction ---
         with tabs[3]:
             law = extracted.get("governing_law") or extracted.get("law_and_jurisdiction")
             juris = extracted.get("jurisdiction")
@@ -226,7 +217,6 @@ def screen_results():
             ])
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-        # --- Obligations & Deliverables ---
         with tabs[4]:
             obligations = extracted.get("obligations") or extracted.get("deliverables")
             if isinstance(obligations, list):
@@ -238,7 +228,6 @@ def screen_results():
                 inner = f'<div class="kv"><div class="kv-key">Obligations</div><div class="kv-value">{obligations or "—"}</div></div>'
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-        # --- Financial Terms ---
         with tabs[5]:
             fin = extracted.get("financial_terms") or {}
             if isinstance(fin, dict):
@@ -250,7 +239,6 @@ def screen_results():
                 inner = f'<div class="kv"><div class="kv-key">Financial Terms</div><div class="kv-value">{fin or "—"}</div></div>'
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-        # --- Risks ---
         with tabs[6]:
             if risks and isinstance(risks, (list, tuple)):
                 inner = "<ul>" + "".join(f"<li>{str(r)}</li>" for r in risks) + "</ul>"
@@ -258,27 +246,27 @@ def screen_results():
                 inner = "No explicit risks found."
             st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
 
-    # RIGHT: Chat panel
+    # RIGHT: chat (compose sits INSIDE the column)
     with right_col:
-        # Messages
         bubbles = []
         for m in ss.chat:
             role_cls = "u" if m["role"] == "user" else "a"
             bubbles.append(f'<div class="bubble {role_cls}">{m["text"]}</div>')
-        chat_html = '<div class="chat-card">' + "".join(bubbles) + "</div>"
-        st.markdown(chat_html, unsafe_allow_html=True)
+        st.markdown('<div class="chat-card">' + "".join(bubbles) + "</div>", unsafe_allow_html=True)
 
-        # Input
-        prompt = st.chat_input("Ask the assistant about this contract…")
-        if prompt:
-            ss.chat.append({"role": "user", "text": prompt})
-            # Demo response (stub)
-            ss.chat.append({"role": "assistant", "text": "Demo: I’ll analyze this once the backend is wired. For now, try asking about dates, parties, or auto-renewal."})
-            st.rerun()
+        with st.form("compose"):
+            c1, c2 = st.columns([10,2])
+            with c1:
+                msg = st.text_input("Ask the assistant about this contract…", key="compose_text", label_visibility="collapsed")
+            with c2:
+                submitted = st.form_submit_button("Send", use_container_width=True)
+            if submitted and msg.strip():
+                ss.chat.append({"role":"user","text":msg.strip()})
+                ss.chat.append({"role":"assistant","text":"Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."})
+                st.experimental_rerun()
 
     st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
 
-# ---------------- Dynamic Contract Form ----------------
 def screen_form():
     st.markdown(dedent("""<div class="mf-container">"""), unsafe_allow_html=True)
     st.markdown("## Create a new contract")
