@@ -34,10 +34,15 @@ section.main > div { padding-top: 0 !important; }
   margin-left:calc(50% - 50vw);
   padding:0;
   position:relative; /* allow divider pseudo-element */
+
+  /* Alignment knobs */
+  --tab-gap: 12px;     /* spacing below tabs */
+  --card-mt: 12px;     /* top margin of .card (keep in sync) */
+  --chat-offset: calc(var(--tab-gap) + var(--card-mt)); /* makes chat top == first card top */
 }
 .results-wrap [data-testid="stHorizontalBlock"]{
   align-items:flex-start;
-  gap:40px !important;            /* visually separates the panels */
+  gap:40px !important;
   column-gap:40px !important;
 }
 .results-wrap [data-testid="column"]{
@@ -138,7 +143,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   padding:20px;
   box-shadow:var(--shadow);
   width:100%;
-  margin:12px 0;
+  margin:12px 0; /* <-- card top margin participates in chat alignment */
   color:var(--ink);
   box-sizing:border-box;
 }
@@ -168,11 +173,12 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .stTabs [role="tab"][aria-selected="true"]{ color:#fff !important; box-shadow:0 3px 0 0 var(--accent) inset; }
 
 /* ===== Chat panel (right column) ===== */
+/* Beige chat look */
 .chat-card{
-  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.22);
+  background: linear-gradient(180deg, rgba(250,245,235,.94), rgba(245,237,224,.88)) !important;
+  border: 1px solid rgba(96,74,42,.25) !important;
   border-radius:20px;
-  padding:20px;
+  padding:0; /* title bar provides top padding */
   box-shadow:0 12px 40px rgba(0,0,0,.55);
   min-height:540px;
   max-height:72vh;
@@ -180,17 +186,33 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   margin:12px 0 8px;
   transition:transform .2s ease, box-shadow .3s ease;
 }
+
+/* Sticky title bar inside the chat card */
+.chat-titlebar{
+  position:sticky; top:0;
+  padding:12px 16px;
+  font-weight:800;
+  letter-spacing:.2px;
+  color:#2a2a2a;
+  background:linear-gradient(180deg, rgba(252,247,237,1), rgba(246,239,228,.96));
+  border-bottom:1px solid rgba(96,74,42,.18);
+  border-top-left-radius:20px;
+  border-top-right-radius:20px;
+  z-index:1;
+}
+
+/* Message bubbles (beige palette) */
 .bubble{
   display:inline-block;
   padding:10px 12px;
   border-radius:14px;
-  margin:6px 0;
+  margin:6px 16px;  /* horizontal space since chat-card has no inner padding */
   line-height:1.3;
   max-width:100%;
   word-wrap:break-word;
 }
-.bubble.a{ background:rgba(255,255,255,.12); color:var(--ink); }
-.bubble.u{ background:#2b4b74; color:#e8f2ff; margin-left:auto; display:block; }
+.bubble.a{ background:rgba(0,0,0,.06) !important; color:#1e2735 !important; }
+.bubble.u{ background:#2b4b74 !important; color:#e8f2ff !important; margin-left:auto; display:block; }
 
 /* Compose row inside the column */
 .stForm .row-widget.stButton > button{ height:42px; border-radius:14px; }
@@ -206,7 +228,6 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   .how-card{ width:clamp(280px, 88vw, 860px); }
   .kv{ grid-template-columns:1fr; }
 
-  /* tighter separation on mobile; hide divider */
   .results-wrap [data-testid="stHorizontalBlock"]{
     gap:12px !important;
     column-gap:12px !important;
@@ -219,4 +240,18 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
   padding-left:0 !important;
   padding-right:0 !important;
   max-width:100% !important;
+}
+
+/* ===== Section separation: keep tabs gap consistent */
+.results-wrap .stTabs{ margin-bottom: var(--tab-gap) !important; }
+
+/* ===== Align chat top to first results card top (single rule) ===== */
+/* Pad the right column down by the exact offset produced by the tabs gap + card top margin */
+.results-wrap [data-testid="stHorizontalBlock"] > [data-testid="column"]:nth-child(2){
+  padding-top: var(--chat-offset) !important;
+}
+
+/* Divider looks good on light panel */
+.results-wrap::after{
+  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08)) !important;
 }

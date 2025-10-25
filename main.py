@@ -252,17 +252,32 @@ def screen_results():
         for m in ss.chat:
             role_cls = "u" if m["role"] == "user" else "a"
             bubbles.append(f'<div class="bubble {role_cls}">{m["text"]}</div>')
-        st.markdown('<div class="chat-card">' + "".join(bubbles) + "</div>", unsafe_allow_html=True)
+
+        # ⬇️ Title bar added here
+        st.markdown(
+            '<div class="chat-card">'
+            '<div class="chat-titlebar">Assistant Chat</div>'
+            + "".join(bubbles) +
+            "</div>",
+            unsafe_allow_html=True
+        )
 
         with st.form("compose"):
-            c1, c2 = st.columns([10,2])
+            c1, c2 = st.columns([10, 2])
             with c1:
-                msg = st.text_input("Ask the assistant about this contract…", key="compose_text", label_visibility="collapsed")
+                msg = st.text_input(
+                    "Ask the assistant about this contract…",
+                    key="compose_text",
+                    label_visibility="collapsed"
+                )
             with c2:
                 submitted = st.form_submit_button("Send", use_container_width=True)
             if submitted and msg.strip():
-                ss.chat.append({"role":"user","text":msg.strip()})
-                ss.chat.append({"role":"assistant","text":"Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."})
+                ss.chat.append({"role": "user", "text": msg.strip()})
+                ss.chat.append({
+                    "role": "assistant",
+                    "text": "Demo: I’ll analyze this once the backend is wired. Try asking about governing law, key dates, or renewal."
+                })
                 st.rerun()
 
     st.markdown(dedent("""</div>"""), unsafe_allow_html=True)
