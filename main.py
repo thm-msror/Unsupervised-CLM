@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CLM AI — 3-screen Streamlit app:
+CLM AI — 3-screen Streamlit app (FE-first, stubs for backend):
 1) Home (title + instructions + centered upload)
 2) Loading (progress while parsing/analysis)
 3) Results (tabs: Summary, Parties, Dates, Law, Obligations, Financials, Risks)
@@ -20,73 +20,67 @@ for p in (SRC, APP):
     if str(p) not in sys.path:
         sys.path.append(str(p))
 
-# ---- optional config helpers (safe fallbacks if missing) ----
-try:
-    from app.config import get_backend_config  # prefer this name
-except Exception:
-    # fallback to your existing load_config (if present)
+# ---------------- FE-only fallbacks (Option B) ----------------
+# Backend config (simple stub)
+def get_backend_config(_label: str) -> dict:
+    return {
+        "preferred_backend": "local",
+        "hf_api_key": os.getenv("HUGGINGFACE_API_KEY") or os.getenv("HUGGINGFACEHUB_API_KEY"),
+        "hf_model": os.getenv("HUGGINGFACE_MODEL", "Qwen/Qwen2.5-7B-Instruct"),
+        "local_url": os.getenv("LOCAL_INFERENCE_URL", "http://localhost:11434"),
+        "local_model": os.getenv("LOCAL_MODEL", "qwen2:1.5b"),
+    }
+
+# Minimal parser (no external deps)
+def parse_document(file_bytes: bytes, file_name: str) -> str:
+    name = (file_name or "").lower()
+    if name.endswith(".pdf"):
+        return "DEMO TEXT (PDF): parser disabled during FE sprint."
+    if name.endswith(".docx"):
+        return "DEMO TEXT (DOCX): parser disabled during FE sprint."
     try:
-        from app.config import load_config as _load_config
-        def get_backend_config(_label: str) -> dict:
-            return _load_config()
-    except Exception:
-        def get_backend_config(_label: str) -> dict:
-            return {
-                "preferred_backend": "local",
-                "hf_api_key": os.getenv("HUGGINGFACE_API_KEY") or os.getenv("HUGGINGFACEHUB_API_KEY"),
-                "hf_model": os.getenv("HUGGINGFACE_MODEL", "Qwen/Qwen2.5-7B-Instruct"),
-                "local_url": os.getenv("LOCAL_INFERENCE_URL", "http://localhost:11434"),
-                "local_model": os.getenv("LOCAL_MODEL", "qwen2:1.5b"),
-            }
-
-try:
-    from app.utils import parse_document
-except Exception:
-    # very small fallback parser
-    from io import BytesIO
-    import docx  # python-docx
-    from PyPDF2 import PdfReader
-    def _read_pdf(b: bytes) -> str:
-        text = []
-        reader = PdfReader(BytesIO(b))
-        for page in reader.pages:
-            text.append(page.extract_text() or "")
-        return "\n".join(text).strip()
-    def _read_docx(b: bytes) -> str:
-        d = docx.Document(BytesIO(b))
-        return "\n".join(p.text for p in d.paragraphs).strip()
-    def parse_document(file_bytes: bytes, file_name: str) -> str:
-        n = (file_name or "").lower()
-        if n.endswith(".pdf"):
-            return _read_pdf(file_bytes)
-        if n.endswith(".docx"):
-            return _read_docx(file_bytes)
         return file_bytes.decode("utf-8", errors="ignore")
+    except Exception:
+        return "DEMO TEXT: unsupported file; parser disabled."
 
-# Import AI pipeline pieces with safe fallbacks
-try:
-    from src.summarization import summarize_contract as _summarize
-except Exception:
-    def _summarize(text, cfg): return "No summary available yet. (wire summarize_contract)"
+# Stub AI functions so UI works immediately
+def summarize_contract(text: str, cfg: dict) -> str:
+    return (
+        "This is a demo summary. Replace with real LLM call later.\n\n"
+        "• Purpose: Sample agreement between ABC and XYZ.\n"
+        "• Term: 12 months, auto-renew.\n"
+        "• Payment: Net 30.\n"
+    )
 
-try:
-    from src.data_extraction import extract_key_data as _extract
-except Exception:
-    def _extract(text, cfg):
-        # skeleton keys used by the UI
-        return {
-            "contracting_parties": [],
-            "key_dates": {"effective_date": None, "expiration_date": None, "renewal_date": None},
-            "governing_law": None,
-            "jurisdiction": None,
-            "obligations": [],
-            "financial_terms": {}
-        }
+def extract_key_data(text: str, cfg: dict) -> dict:
+    return {
+        "contracting_parties": ["ABC Corporation", "XYZ Limited"],
+        "key_dates": {
+            "effective_date": "2025-01-15",
+            "expiration_date": "2026-01-14",
+            "renewal_date": "Auto-renews annually",
+        },
+        "governing_law": "State of New York",
+        "jurisdiction": "New York courts",
+        "obligations": [
+            "Supplier delivers services within 30 days of PO.",
+            "Client pays within Net 30 days.",
+        ],
+        "financial_terms": {
+            "payment_schedule": "Monthly, Net 30",
+            "penalties": "1.5% monthly late fee",
+            "currency": "USD",
+            "cap": "Liability cap at annual fees",
+        },
+    }
 
-try:
-    from src.risk_analysis import analyze_risk as _risks
-except Exception:
-    def _risks(text, cfg): return []
+def analyze_risk(text: str, cfg: dict):
+    return [
+        "High: Automatic renewal without notice period.",
+        "Medium: Indemnification scope is ambiguous.",
+        "Low: Confidentiality clause aligns with standard.",
+    ]
+# ---------------------------------------------------------------
 
 # ---- Streamlit page + theme ----
 st.set_page_config(page_title="CLM AI", page_icon="🤖", layout="centered")
@@ -94,9 +88,9 @@ THEME_PATH = APP / "theme.css"
 if THEME_PATH.exists():
     st.markdown(f"<style>{THEME_PATH.read_text()}</style>", unsafe_allow_html=True)
 
-# ---- sidebar backend selector ----
+# ---- sidebar (kept minimal) ----
 st.sidebar.header("⚙️ Settings")
-backend_label = st.sidebar.radio("LLM Backend:", ["HuggingFace API", "Local Ollama"], index=0)
+backend_label = st.sidebar.radio("LLM Backend:", ["HuggingFace API", "Local Ollama"], index=1)
 CFG = get_backend_config(backend_label)
 
 # ---- session state ----
@@ -106,7 +100,7 @@ ss.setdefault("doc_name", None)
 ss.setdefault("uploaded_bytes", None)
 ss.setdefault("result", None)
 
-# ---- UI helpers (dashboard components) ----
+# ---- UI helpers ----
 def kv_row(label: str, value: str | None):
     st.markdown(
         f"""
@@ -138,8 +132,15 @@ def screen_home():
         """,
         unsafe_allow_html=True
     )
+
+    # Centered, clean uploader (no extra white input)
     st.markdown('<div class="card upload-card">', unsafe_allow_html=True)
-    up = st.file_uploader("Upload contract (PDF/DOCX)", type=["pdf", "docx"])
+    st.markdown('<div class="uploader-label">Upload contract (PDF/DOCX)</div>', unsafe_allow_html=True)
+    up = st.file_uploader(
+        label="Upload contract (PDF/DOCX)",
+        type=["pdf", "docx"],
+        label_visibility="collapsed"
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
     if up is not None:
@@ -164,15 +165,14 @@ def screen_loading():
     for pct in (12, 25, 42):
         time.sleep(0.15); p.progress(pct)
 
-    # run pipeline
     text = parse_document(ss.uploaded_bytes, ss.doc_name)
     for pct in (55, 66): time.sleep(0.1); p.progress(pct)
 
-    summary = _summarize(text, CFG)
+    summary = summarize_contract(text, CFG)
     for pct in (74, 82): time.sleep(0.1); p.progress(pct)
 
-    extracted = _extract(text, CFG)
-    risks = _risks(text, CFG)
+    extracted = extract_key_data(text, CFG)
+    risks = analyze_risk(text, CFG)
     for pct in (90, 100): time.sleep(0.1); p.progress(pct)
 
     ss.result = {
