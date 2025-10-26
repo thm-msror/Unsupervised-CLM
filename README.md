@@ -607,7 +607,7 @@ echo "GEMINI_API_KEY=your_api_key_here" >> .env
 **Step 4: Run Application**
 ```powershell
 # Run from repository root
-streamlit run main.py --server.port 8501
+python -m streamlit run .\main.py --server.port 8501
 # Open your browser at: http://localhost:8501
 ```
 
