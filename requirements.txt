@@ -40,4 +40,3 @@ pytest>=7.0.0
 # Additional dependencies for contract processing
 textract-py3>=1.5.0
 python-magic==0.4.27
-pip install python-magic

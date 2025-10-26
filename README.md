@@ -157,7 +157,40 @@ UNSUPERVISED-CLM/
 
 ---
 
-## 🔄 Analysis Pipeline
+## � Quick Start (Clone & Run)
+
+Follow these steps to set up VERDICT on a new machine without a virtual environment:
+
+1. **Clone the repository**
+   ```powershell
+   git clone https://github.com/thm-msror/Unsupervised-CLM.git
+   cd Unsupervised-CLM
+   ```
+2. **Install Python dependencies** (uses the global interpreter)
+   ```powershell
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+   python -m pip install deep-translator python-magic-bin
+   ```
+   > `deep-translator` (Arabic translation) and `python-magic-bin` (file type detection on Windows) are required at runtime; add them to the requirements file if your environment does not already include them.
+3. **Create the `.env` file** in the project root with your own credentials
+   ```env
+   GEMINI_API_KEY=AIza...your_key_here...
+   STREAMLIT_SERVER_PORT=8501
+   ```
+4. **Launch the Streamlit app**
+   ```powershell
+   streamlit run main.py
+   ```
+5. **(Optional) Verify setup**
+   ```powershell
+   pytest
+   python tests/test_env.py
+   ```
+
+---
+
+## �🔄 Analysis Pipeline
 
 ### **Main Pipeline Flow (main.py & 1_Upload.py)**
 
