@@ -1,0 +1,54 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_Web Site Development _Simple_.json
+Analyzed: 2025-10-25 23:32:56
+Language: EN
+Original Length: 28,134 characters
+Processing Time: 23.63 seconds
+
+==================================================
+
+### **CONTRACT ANALYSIS REPORT**
+
+**1. BASIC INFO**
+-   **Contract Type:** A Web Site Development and Hosting Agreement.
+-   **Main Parties:** SOFTWARE DISTRIBUTION COMPANY (“COMPANY”) and OUT-OF-SITE WEB SITE DEVELOPMENT COMPANY (“DEVELOPER”).
+-   **Purpose:** For the DEVELOPER to design, develop, test, deliver, and host a website for the COMPANY as a "work made for hire".
+
+**2. KEY DATES**
+-   **Start Date:** The Effective Date is listed as "[date]" and is not specified.
+-   **End Date:** The term is 99 years from the Effective Date unless terminated earlier.
+-   **Important Deadlines:** The website must be completed for a demonstration at a trade show on a specific "[date]" as noted in Exhibit B.
+
+**3. MONEY MATTERS**
+-   **Total Value:** There is a contradictory development fee of either $7,500 or $10,000, plus an ongoing hosting fee of $1,000 per month.
+-   **Payment Schedule:** An initial payment is due upon signing, with a final development payment upon acceptance; hosting fees are paid monthly.
+-   **Late Fees:** Not specified.
+
+**4. MAIN OBLIGATIONS**
+-   **Party 1 (COMPANY) Must:** Provide all necessary materials for the website design and make timely payments as per the agreed schedule.
+-   **Party 2 (DEVELOPER) Must:** Design, develop, and host the website according to the proposal and deliver all final work product ("Deliverables") to the COMPANY.
+
+**5. LEGALITY**
+-   **Governing Law:** The laws of the state of New York.
+-   **Dispute Resolution:** All disputes must be resolved in the state or federal courts of New York.
+
+**6. RISKS FOUND**
+-   **High Risk Items:** The payment clause is contradictory, the developer's liability for infringement is capped, and the 99-year term is commercially impractical.
+-   **Clause References:**
+    -   **Payment Ambiguity:** "The total price...shall be SEVEN THOUSAND, FIVE HUNDRED UNITED STATES DOLLARS ($7,500.00)...COMPANY will forward...($7,500.00) and an additional...($2,500.00)..." - Section 4.A.
+    -   **Liability Cap:** "DEVELOPER’s total liability under this Agreement shall not exceed twice the amount of revenue derived by DEVELOPER under this Agreement." - Section 6.D.
+-   **Missing Protections:** The agreement lacks a modern data privacy/protection clause and a specific Service Level Agreement (SLA) for website uptime and performance.
+-   **Overall Risk Level:** **Medium to High** for the COMPANY due to the ambiguous payment terms, capped indemnification liability, and an excessively long term.
+
+**7. RECOMMENDATIONS**
+-   **Top Priority:** Immediately clarify the contradictory payment amounts in Section 4.A and renegotiate the liability cap in Section 6.D to ensure adequate protection.
+-   **Should Legal Review:** **Yes**, a legal professional should review and redraft the ambiguous payment terms, the liability cap, the impractical 99-year term, and add missing data protection clauses.
+
+**8. LEGAL REVIEW CITATIONS**
+-   **Risk Clause 1:** Quote: "The total price for all of the work...shall be SEVEN THOUSAND, FIVE HUNDRED UNITED STATES DOLLARS ($7,500.00)...COMPANY will forward to DEVELOPER SEVEN THOUSAND, FIVE, HUNDRED UNITED STATES DOLLARS ($7,500.00) and an additional TWO THOUSAND, FIVE HUNDRED UNITED STATES DOLLARS ($2,500.00)..." - Location: Section 4.A, "Price for Web Site Creation".
+-   **Risk Clause 2:** Quote: "DEVELOPER’s total liability under this Agreement shall not exceed twice the amount of revenue derived by DEVELOPER under this Agreement." - Location: Section 6.D, "Indemnification/No Infringement".
+-   **Key Terms Location:**
+    -   "Work made for hire": "WHEREAS, COMPANY desires to engage DEVELOPER...as a work made for hire..." - Location: First "WHEREAS" clause.
+    -   "Deliverables": "...all Code, Documentation, reports and other materials developed...and all changes and enhancements thereto (the “Deliverables”)." - Location: Section 2, "Delivery of Deliverables" paragraph.
+-   **Review Priority Areas:** Section 4 (Compensation), Section 6.D (Indemnification/No Infringement), and Section 9.A (Term of Agreement).

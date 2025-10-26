@@ -1,0 +1,35 @@
+Contract Analysis - english_FinAmFamMut2016RestructExhA-19.json
+Generated: 2025-10-25T17:37:50.726105
+==================================================
+
+**1. BASIC INFO**
+- Contract Type: Amended and Restated Intercompany Services and Cost Allocation Agreement.
+- Main Parties: American Family Mutual Insurance Company, S.I. (AFMIC) and its various Affiliates.
+- Purpose: To establish terms for AFMIC and its Affiliates to provide and receive goods, third-party services, and management services to each other on a cost-efficient basis, ensuring fair value and cost recovery.
+
+**2. KEY DATES**
+- Start Date: Effective for each Affiliate on the date it first becomes a signatory.
+- End Date: Initially five years from the Initial Effective Date for each Affiliate, automatically extending by one year each December 31st to maintain a rolling five-year term.
+- Important Deadlines: Charges are settled on a net basis not less than quarterly.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified, as it's a cost allocation agreement based on actual costs or fair value.
+- Payment Schedule: Charges are settled on a net basis not less than quarterly.
+- Late Fees: Not specified.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 (Service Provider) Must: Provide specified Goods, Third Party Services, and Management Services using best efforts and in compliance with applicable law and industry standards. Maintain accurate records of services provided.
+- Party 2 (Service Recipient) Must: Pay its allocable share of costs or fair value for services received. Indemnify the Service Provider for third-party claims unless due to the Service Provider's negligence, willful misconduct, or fraud.
+
+**5. LEGAL STUFF**
+- Governing Law: The laws of the State of Wisconsin.
+- Dispute Resolution: Not specified; implies resolution through litigation under Wisconsin law.
+
+**6. RISKS FOUND**
+- High Risk Items: AFMIC has discretion to unilaterally amend cost allocation methods. Affiliates have no automatic termination right if AFMIC enters delinquency proceedings, and AFMIC cannot terminate an insurance company Affiliate for insolvency.
+- Missing Protections: No explicit limitation of liability for either party, no specific confidentiality clause, and no force majeure clause.
+- Overall Risk Level: Medium.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Review the implications of AFMIC's unilateral right to amend cost allocation methods and the lack of liability caps for both parties.
+- Should Legal Review: Yes, to assess the indemnification clauses, the absence of liability limitations, and the implications of the insolvency provisions, especially for Affiliates.

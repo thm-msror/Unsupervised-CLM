@@ -1,0 +1,58 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: arabic_software-development-agreement-contract-template-word_arabic.json
+Analyzed: 2025-10-25 21:31:44
+Language: AR
+Original Length: 13,034 characters
+Processing Time: 19.75 seconds
+
+==================================================
+
+Here's an analysis of the provided contract document:
+
+**1. BASIC INFO**
+- Contract Type: Software Development Agreement (ﺍﺗﻔﺎﻗﻴﺔ ﺗﻄﻮﻳﺮ ﺍﻟﺒﺮﻣﺠﻴﺎﺕ).
+- Main Parties: The Company (ﺍﻟﺸﺮﻛﺔ) and The Developer (ﺍﻟﻤﻄﻮﺭ).
+- Purpose: To define terms for a software development project where the Developer creates and supplies custom software for the Company.
+
+**2. KEY DATES**
+- Start Date: Not specified (placeholder: ﺍﻟﺘﺎﺭﻳﺦ: .............................................................................................................................................).
+- End Date: Not specified.
+- Important Deadlines: Delivery dates for each development phase are critical, with "time is of the essence" (Section 4.4). Grace periods for late delivery and acceptance testing timelines are also key (Section 4.5, 4.12, 4.13).
+
+**3. MONEY MATTERS**
+- Total Value: Not specified (placeholders for percentages of fixed price).
+- Payment Schedule: Phased payments tied to signing phase agreements, delivery, passing acceptance tests, and successful live usage (Section 4.5, 4.13).
+- Late Fees: Developer's failure to deliver on time results in a percentage reduction in the phase cost (Section 4.5).
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Define requirements in phases, approve specifications, conduct acceptance tests, and make timely payments.
+- Party 2 Must: Develop, supply, and install custom software, consult with Company staff for design, and deliver programming by specified dates.
+
+**5. LEGALITY**
+- Governing Law: Not specified in the template (mentioned as a general clause type in the intro).
+- Dispute Resolution: Not specified in the template (mentioned as a general clause type in the intro; user guide suggests ICC arbitration as an example).
+
+**6. RISKS FOUND**
+- High Risk Items: Undefined requirements, Company's sole discretion for approval, and incomplete payment terms.
+- Clause References:
+    - "ﺍﻟﻤﺘﻄﻠﺒﺎﺕ ﺍﻟﺘﻲ ﻳﺠﺐ ﺍﻟﻮﻓﺎﺀ ﺑﻬﺎ ﻣﻦ ﺧﻼﻝ ﺍﻟﺒﺮﻣﺠﺔ ﺍﻟﻤﺨﺼﺼﺔ ﻟﻠﺤﺰﻡ ﺍﻟﻤﺬﻛﻮﺭﺓ ﺃﻋﻼﻩ ﻏﻴﺮ ﻣﺤﺪﺩﺓ ﺣﺎﻟﻴﺎ." - Section 3.2
+    - "ﺳﺘﻜﻮﻥ ﻫﺬﻩ ﺍﻟﻤﻮﺍﻓﻘﺔ ﻭﻓﻘﺎ ﻟﺘﻘﺪﻳﺮ ﺍﻟﺸﺮﻛﺔ ﻭﺣﺪﻫﺎ." - Section 4.3
+    - "ﻳﺠﺐ ﻋﻠﻰ ﺍﻟﺸﺮﻛﺔ ﺍﻟﺪﻓﻊ ﻟﻠﻤﻄﻮﺭ ......... [ﻳﺪﺭﺝ ﺍﻟﺮﻗﻢ] ٪ ﻣﻦ ﺍﻟﺘﻜﻠﻔﺔ ﺍﻟﺜﺎﺑﺘﺔ ﺍﻟﻤﺸﺎﺭ ﺇﻟﻴﻬﺎ ﻓﻲ ﺍﺗﻔﺎﻕ ﺍﻟﻤﺮﺣﻠﺔ." - Section 4.5
+- Missing Protections: Detailed Intellectual Property assignment, comprehensive warranties, limitation of liability, confidentiality clause specifics, and force majeure.
+- Overall Risk Level: High. The document is a template with numerous critical blank fields, subjective approval criteria, and lacks essential protective clauses.
+
+**7. RECOMMENDATIONS**
+- Top Priority: All blank fields, especially payment percentages, timelines, and detailed scope descriptions, must be completed.
+- Should Legal Review: Yes, a full legal review is essential to address the high risks, fill in missing clauses, and ensure enforceability.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "ﺍﻟﻤﺘﻄﻠﺒﺎﺕ ﺍﻟﺘﻲ ﻳﺠﺐ ﺍﻟﻮﻓﺎﺀ ﺑﻬﺎ ﻣﻦ ﺧﻼﻝ ﺍﻟﺒﺮﻣﺠﺔ ﺍﻟﻤﺨﺼﺼﺔ ﻟﻠﺤﺰﻡ ﺍﻟﻤﺬﻛﻮﺭﺓ ﺃﻋﻼﻩ ﻏﻴﺮ ﻣﺤﺪﺩﺓ ﺣﺎﻟﻴﺎ." - Location: Section 3.2
+- Risk Clause 2: "ﺳﺘﻜﻮﻥ ﻫﺬﻩ ﺍﻟﻤﻮﺍﻓﻘﺔ ﻭﻓﻘﺎ ﻟﺘﻘﺪﻳﺮ ﺍﻟﺸﺮﻛﺔ ﻭﺣﺪﻫﺎ." - Location: Section 4.3
+- Key Terms Location:
+    - "ﺍﺗﻔﺎﻗﻴﺔ ﺗﻄﻮﻳﺮ ﺍﻟﺒﺮﻣﺠﻴﺎﺕ" - Title/Intro Paragraph
+    - "ﺍﻟﺸﺮﻛﺔ" - Parties Section
+    - "ﺍﻟﻤﻄﻮﺭ" - Parties Section
+    - "ﻳﺘﻢ ﻧﻘﻞ ﻣﻠﻜﻴﺔ ﺍﻟﺒﺮﻧﺎﻣﺞ ﺇﻟﻰ ﺍﻟﻌﻤﻴﻞ." - Intro Paragraph
+    - "ﺗﺎﺭﻳﺦ ﺍﻟﺘﺴﻠﻴﻢ ، ﻭﻫﺬﺍ ﺍﻟﻮﻗﺖ ﻫﻮ ﺍﻟﺠﻮﻫﺮ." - Section 4.4
+- Review Priority Areas: Sections 2 (Scope), 3 (Developer Responsibilities), 4 (Development Phases & Payments), and the entire "User Guide" section for instructions on filling blanks.

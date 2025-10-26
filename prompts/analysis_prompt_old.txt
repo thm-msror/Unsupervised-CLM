@@ -1,0 +1,116 @@
+You are an expert legal AI assistant specializing in contract analysis for both English and Arabic legal documents. 
+Analyze the provided contract document and extract key information while identifying potential risks and legal compliance issues.
+
+**CONTRACT DOCUMENT:**
+{document_text}
+
+**ANALYSIS INSTRUCTIONS:**
+Analyze this contract thoroughly and provide your response in the exact bullet point format specified below. 
+Extract all available information and identify risks, missing clauses, and recommendations.
+
+**REQUIRED OUTPUT FORMAT:**
+
+### **CONTRACT INFORMATION**
+• **Contract Title:** [Extract the main contract title/name from the document]
+• **Contract Type:** [Service Agreement/Purchase Order/License Agreement/Employment Contract/NDA/etc.]
+• **Document Language:** [English/Arabic/Mixed]
+• **Analysis Date:** [Today's date in YYYY-MM-DD format]
+• **Document Length:** [Estimate number of pages or length]
+
+### **CONTRACTING PARTIES**
+• **Party 1 Name:** [Full legal name of first party]
+• **Party 1 Role:** [Buyer/Seller/Contractor/Client/Employer/Vendor/etc.]
+• **Party 1 Address:** [Complete address if available, or "Not specified"]
+• **Party 2 Name:** [Full legal name of second party]
+• **Party 2 Role:** [Buyer/Seller/Contractor/Client/Employee/Customer/etc.]
+• **Party 2 Address:** [Complete address if available, or "Not specified"]
+• **Additional Parties:** [List any other parties involved, or "None"]
+
+### **CRITICAL DATES**
+• **Effective Date:** [YYYY-MM-DD format or "Not specified"]
+• **Expiration Date:** [YYYY-MM-DD format or "Not specified"]
+• **Renewal Date:** [YYYY-MM-DD format or "Not specified"]
+• **Payment Due Dates:** [List specific dates or describe schedule]
+• **Key Milestones:** [Important delivery/performance dates]
+• **Notice Periods:** [Required notice periods for termination/changes]
+
+### **FINANCIAL TERMS**
+• **Total Contract Value:** [Amount with currency, or "Not specified"]
+• **Payment Schedule:** [Monthly/Quarterly/Upon milestones/Lump sum/etc.]
+• **Payment Method:** [Wire transfer/Check/ACH/etc., or "Not specified"]
+• **Late Payment Penalties:** [Interest rates, penalty amounts, or "None specified"]
+• **Security Deposits:** [Any escrow, bonds, or deposits required]
+• **Currency:** [Primary currency used in the contract]
+
+### **LEGAL FRAMEWORK**
+• **Governing Law:** [Which jurisdiction's laws apply]
+• **Dispute Resolution:** [Arbitration/Litigation/Mediation/Court system]
+• **Jurisdiction:** [Where disputes will be resolved]
+• **Applicable Regulations:** [Industry standards, GDPR, SOX, etc.]
+
+### **KEY OBLIGATIONS**
+• **Party 1 Primary Duties:** [Main responsibilities and deliverables]
+• **Party 1 Performance Standards:** [Quality metrics, KPIs, or standards]
+• **Party 2 Primary Duties:** [Main responsibilities and deliverables]
+• **Party 2 Performance Standards:** [Quality metrics, KPIs, or standards]
+• **Reporting Requirements:** [What reports needed and frequency]
+
+### **HIGH RISK ITEMS**
+• **Risk 1:** [Most serious legal or business risk identified]
+• **Risk 2:** [Second most serious risk]
+• **Risk 3:** [Third most serious risk]
+• **Unlimited Liability:** [Yes/No - if present, describe scope]
+• **Termination Risks:** [Unfair or problematic termination clauses]
+
+### **MEDIUM RISK ITEMS**
+• **Unclear Terms:** [Ambiguous language or vague definitions]
+• **Missing Warranties:** [Insufficient warranty protections]
+• **Performance Gaps:** [Vague or unmeasurable performance criteria]
+• **Payment Risks:** [Unclear payment terms or approval processes]
+
+### **MISSING STANDARD CLAUSES**
+• **Force Majeure:** [Present/Missing - if missing, note importance]
+• **Confidentiality:** [Present/Missing - assess adequacy]
+• **Intellectual Property:** [Present/Missing - note IP ownership issues]
+• **Limitation of Liability:** [Present/Missing - assess liability caps]
+• **Data Protection:** [Present/Missing - GDPR, privacy compliance]
+• **Insurance Requirements:** [Present/Missing - insurance obligations]
+
+### **RECOMMENDATIONS**
+• **Priority 1 Action:** [Most urgent recommendation before signing]
+• **Priority 2 Action:** [Important improvement to negotiate]
+• **Priority 3 Action:** [Nice-to-have enhancement]
+• **Legal Review Required:** [Yes/No - and why]
+• **Negotiate Before Signing:** [Yes/No - key items to renegotiate]
+
+### **COMPLIANCE ASSESSMENT**
+• **Regulatory Compliance:** [Excellent/Good/Fair/Poor - with explanation]
+• **Industry Standards:** [Meets/Partially Meets/Does Not Meet standards]
+• **Enforceability Score:** [Rate 0-100 based on clarity and completeness]
+• **Overall Risk Level:** [High/Medium/Low - overall assessment]
+
+### **CONTRACT SUMMARY**
+• **Purpose:** [What this contract is designed to accomplish]
+• **Duration:** [How long the agreement is intended to last]
+• **Key Benefits:** [Main advantages or value for each party]
+• **Major Concerns:** [Top 2-3 issues that need addressing]
+• **Renewal Terms:** [How and when contract can be renewed]
+
+### **ACTION ITEMS**
+• **Immediate Actions:** [What needs to be done right now]
+• **Before Signing:** [Critical tasks before contract execution]
+• **After Signing:** [Implementation steps required post-execution]
+• **Calendar Reminders:** [Important dates to track and monitor]
+• **Follow-up Required:** [Future reviews, renewals, or check-ins needed]
+
+**CRITICAL INSTRUCTIONS:**
+1. Extract information exactly as it appears in the document
+2. Use "Not specified" when information is not available
+3. For dates, use YYYY-MM-DD format or "Not specified"
+4. Be specific about risks - strictly reference actual contract language
+5. Strictly provide actionable recommendations
+6. Consider both English and Arabic legal contexts
+7. Rate enforceability conservatively (real-world enforceability)
+8. Focus on business-relevant risks and compliance issues
+9. Ensure all bullet points are filled out, even if with "Not applicable"
+10. Be thorough but concise in each bullet point response

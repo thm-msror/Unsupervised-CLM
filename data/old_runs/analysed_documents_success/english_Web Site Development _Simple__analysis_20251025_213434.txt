@@ -1,0 +1,53 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_Web Site Development _Simple_.json
+Analyzed: 2025-10-25 21:34:34
+Language: EN
+Original Length: 28,134 characters
+Processing Time: 16.88 seconds
+
+==================================================
+
+**1. BASIC INFO**
+- Contract Type: Web Site Development and Hosting Agreement.
+- Main Parties: SOFTWARE DISTRIBUTION COMPANY ("COMPANY") and OUT-OF-SITE WEB SITE DEVELOPMENT COMPANY ("DEVELOPER").
+- Purpose: DEVELOPER to design, develop, test, deliver, and host a Web Site ("Whizzer’s Web") for COMPANY.
+
+**2. KEY DATES**
+- Start Date: The "[date]" specified as the "Effective Date".
+- End Date: "99 years, unless otherwise terminated as provided herein" (Section 9.A).
+- Important Deadlines: Trade Show demonstration on "[date]", project planning meeting within one week of signing, and modifications within 5 or 10 business days (Section 3.A).
+
+**3. MONEY MATTERS**
+- Total Value: Development Fee of $7,500.00 plus a Hosting Fee of $1,000.00 per month.
+- Payment Schedule: Development Fee paid in two installments ($7,500 upon signing, $2,500 when operational); Hosting Fee monthly on anniversary of operational date; other work invoiced bi-weekly, due 15 days after receipt.
+- Late Fees: Not specified.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Retain DEVELOPER's services, provide necessary materials, pay agreed fees, and provide space for the trade show demonstration.
+- Party 2 Must: Design, develop, test, deliver, and host the Web Site, adhere to the schedule, ensure a professional image, and indemnify COMPANY against intellectual property infringement.
+
+**5. LEGALITY**
+- Governing Law: Laws of New York (Section 15).
+- Dispute Resolution: Resolved in the applicable state or federal courts of New York (Section 15).
+
+**6. RISKS FOUND**
+- High Risk Items: The DEVELOPER's total liability is capped at "twice the amount of revenue derived by DEVELOPER under this Agreement" (Section 6.D), which is a low cap for potential IP infringement. The 99-year term is unusually long and inflexible (Section 9.A). Compensation for advertising assistance is an "agreement to agree" (Section 2.H).
+- Clause References: "DEVELOPER’s total liability under this Agreement shall not exceed twice the amount of revenue derived by DEVELOPER under this Agreement." - Section 6.D. "This Agreement shall be effective as of the Effective Date and shall remain in force for a period of 99 years" - Section 9.A. "the parties agree to enter into good faith negotiations to reasonably compensate DEVELOPER for such services." - Section 2.H.
+- Missing Protections: No explicit Service Level Agreement (SLA) for hosting uptime or detailed performance metrics. No specific data privacy or security clauses beyond general confidentiality. No source code escrow provision.
+- Overall Risk Level: High. Significant liability limitations for DEVELOPER, vague compensation terms, an extremely long contract term, and missing standard protections create substantial risk for COMPANY.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Re-negotiate the liability cap, clarify compensation for advertising, and revise the 99-year term and DEVELOPER's termination rights.
+- Should Legal Review: Yes, immediately and thoroughly, due to several high-risk clauses and missing protections.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "DEVELOPER’s total liability under this Agreement shall not exceed twice the amount of revenue derived by DEVELOPER under this Agreement." - Location: Section 6.D/Page 4/Paragraph 4.
+- Risk Clause 2: "This Agreement shall be effective as of the Effective Date and shall remain in force for a period of 99 years, unless otherwise terminated as provided herein." - Location: Section 9.A/Page 5/Paragraph 1.
+- Key Terms Location:
+    - "Effective Date": Preamble/Page 1/Paragraph 1.
+    - "Development Fee": Section 4.A/Page 3/Paragraph 1.
+    - "Hosting Fee": Section 4.B/Page 3/Paragraph 2.
+    - "Deliverables": Section 2.G/Page 2/Paragraph 7.
+    - "Work Made For Hire": Preamble/Page 1/Paragraph 2; Section 6.A/Page 4/Paragraph 1.
+- Review Priority Areas: Section 6 (Ownership and Rights), Section 9 (Term and Termination), Section 4 (Compensation), Section 5 (Confidentiality), Section 3 (Web Site Hosting).

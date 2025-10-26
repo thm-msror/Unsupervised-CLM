@@ -1,0 +1,37 @@
+Contract Analysis - arabic_software-development-agreement-contract-template-word_arabic.json
+Generated: 2025-10-25T17:37:13.610768
+==================================================
+
+Here's the analysis of the contract:
+
+**1. BASIC INFO**
+- Contract Type: Software Development Agreement.
+- Main Parties: The Company (Client) and The Developer.
+- Purpose: To develop, supply, and install custom software packages for the Company, with ownership transferring to the Company.
+
+**2. KEY DATES**
+- Start Date: Not specified; a placeholder is provided at the beginning of the contract.
+- End Date: Not specified; the contract outlines a phased development approach without an overall end date.
+- Important Deadlines: Delivery dates for each development phase are critical, with "time is of the essence" explicitly stated.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified; the contract refers to a "fixed price for the phase" for individual stages.
+- Payment Schedule: Payments are made in stages: upon signing a Stage Agreement, upon delivery of programming, upon passing acceptance tests, and a final payment after a period of successful live use.
+- Late Fees: Penalties for the Developer's late delivery include a percentage reduction in the phase cost for each period of delay.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must (The Company): Approve or reject programming specifications and acceptance tests, and make phased payments as agreed.
+- Party 2 Must (The Developer): Develop, supply, and deliver custom software packages, including designing specifications and acceptance tests, within agreed timelines.
+
+**5. LEGAL STUFF**
+- Governing Law: Not specified; a placeholder for "Applicable Law" is mentioned as a clause type but not filled.
+- Dispute Resolution: Not specified; "Competent Jurisdiction" is mentioned as a clause type, but the specific mechanism is left blank.
+
+**6. RISKS FOUND**
+- High Risk Items: The initial software requirements are unspecified, leading to potential scope creep, and many critical financial and timeline details are left as blank placeholders.
+- Missing Protections: Specific details regarding intellectual property rights for pre-existing developer packages and a comprehensive dispute resolution mechanism are not clearly defined.
+- Overall Risk Level: High.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Immediately fill in all blank placeholders for financial terms, timelines, grace periods, and penalty percentages, and define the initial software scope.
+- Should Legal Review: Yes, due to numerous blank fields, undefined terms, and the high overall risk level, a legal review is essential to protect both parties.

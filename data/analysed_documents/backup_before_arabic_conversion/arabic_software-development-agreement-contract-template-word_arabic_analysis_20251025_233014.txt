@@ -1,0 +1,52 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: arabic_software-development-agreement-contract-template-word_arabic.json
+Analyzed: 2025-10-25 23:30:14
+Language: AR
+Original Length: 13,034 characters
+Processing Time: 20.53 seconds
+
+==================================================
+
+Here is a short and clear analysis of the provided contract template.
+
+**1. BASIC INFO**
+*   **Contract Type:** Software Development Agreement Template (نموذج اتفاقية تطوير البرمجيات).
+*   **Main Parties:** The "Company" (الشركة) as the client and the "Developer" (المطور).
+*   **Purpose:** For the Developer to create and deliver custom software for the Company based on requirements defined in phases.
+
+**2. KEY DATES**
+*   **Start Date:** Not specified; a blank field is provided for the date.
+*   **End Date:** Not specified; the agreement is structured by project phases with no overall end date.
+*   **Important Deadlines:** Delivery dates are set within separate "Phase Agreements" (اتفاقية المرحلة), with penalties for delays.
+
+**3. MONEY MATTERS**
+*   **Total Value:** Not specified. Cost is determined on a per-phase basis with a fixed price for each.
+*   **Payment Schedule:** Milestone-based payments are made at the signing of a phase agreement, upon delivery, after successful acceptance testing, and after a period of live use.
+*   **Late Fees:** Yes, the contract includes a percentage reduction in the phase cost for late delivery by the Developer.
+
+**4. MAIN OBLIGATIONS**
+*   **Party 1 (Company) Must:** Define requirements for each phase, approve specifications, conduct acceptance tests, and make timely payments.
+*   **Party 2 (Developer) Must:** Develop software according to approved specifications and deliver the completed programming by the agreed-upon deadline for each phase.
+
+**5. LEGALITY**
+*   **Governing Law:** Not specified in the provided template text.
+*   **Dispute Resolution:** Not specified in the provided template text.
+
+**6. RISKS FOUND**
+*   **High Risk Items:** The scope is explicitly undefined at the start, creating ambiguity. The Company has sole discretion over specification approval, which could lead to endless revisions.
+*   **Clause References:**
+    *   "ﺍﻟﻤﺘﻄﻠﺒﺎﺕ ﺍﻟﺘﻲ ﻳﺠﺐ ﺍﻟﻮﻓﺎﺀ ﺑﻬﺎ... ﻏﻴﺮ ﻣﺤﺪﺩﺓ ﺣﺎﻟﻴﺎ" ("The requirements to be met... are not currently specified") - Section 3.2.
+    *   "ﺳﺘﻜﻮﻥ ﻫﺬﻩ ﺍﻟﻤﻮﺍﻓﻘﺔ ﻭﻓﻘﺎ ﻟﺘﻘﺪﻳﺮ ﺍﻟﺸﺮﻛﺔ ﻭﺣﺪﻫﺎ" ("This approval will be at the sole discretion of the Company") - Section 4.3.
+*   **Missing Protections:** Critical clauses are missing, including Confidentiality, detailed Intellectual Property rights transfer, Limitation of Liability, Warranties, Governing Law, and Dispute Resolution.
+*   **Overall Risk Level:** **High**. This is an incomplete template. Using it without filling in critical details and adding standard legal protections would be extremely risky for both parties.
+
+**7. RECOMMENDATIONS**
+*   **Top Priority:** Define the project scope, payment percentages, and timelines in all blank sections before signing. Add missing standard legal clauses.
+*   **Should Legal Review:** **Yes**. This is a generic template that lacks essential legal protections and requires significant customization by a qualified lawyer to be enforceable and safe.
+
+**8. LEGAL REVIEW CITATIONS**
+*   **Risk Clause 1:** Quote: "ﺍﻟﻤﺘﻄﻠﺒﺎﺕ ﺍﻟﺘﻲ ﻳﺠﺐ ﺍﻟﻮﻓﺎﺀ ﺑﻬﺎ... ﻏﻴﺮ ﻣﺤﺪﺩﺓ ﺣﺎﻟﻴﺎ" - Location: Section 3.2.
+*   **Risk Clause 2:** Quote: "ﺳﺘﻜﻮﻥ ﻫﺬﻩ ﺍﻟﻤﻮﺍﻓﻘﺔ ﻭﻓﻘﺎ ﻟﺘﻘﺪﻳﺮ ﺍﻟﺸﺮﻛﺔ ﻭﺣﺪﻫﺎ" - Location: Section 4.3.
+*   **Key Terms Location:** "Phase Agreement" (ﺍﺗﻔﺎﻗﻴﺔ ﺍﻟﻤﺮﺣﻠﺔ) is defined in Section 4.4. "Acceptance Test" (ﺍﺧﺘﺒﺎﺭ ﺍﻟﻘﺒﻮﻝ) is defined in Section 4.3.
+*   **Review Priority Areas:** Sections 2 (Scope), 3 (Responsibilities), and 4 (Development Phases) must be completed. The entire document requires review to add missing clauses for IP, Confidentiality, Liability, and Governing Law.

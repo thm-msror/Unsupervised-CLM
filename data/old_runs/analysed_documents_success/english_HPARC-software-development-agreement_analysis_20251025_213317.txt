@@ -1,0 +1,62 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_HPARC-software-development-agreement.json
+Analyzed: 2025-10-25 21:33:17
+Language: EN
+Original Length: 35,482 characters
+Processing Time: 30.61 seconds
+
+==================================================
+
+Here's the analysis of the Software Development Agreement:
+
+**1. BASIC INFO**
+- Contract Type: Software Development Agreement
+- Main Parties: HEMISFAIR PARK AREA REDEVELOPMENT CORPORATION (HPARC) and Software Developer.
+- Purpose: HPARC retains Software Developer to perform software development services for the support of HPARC’s business.
+
+**2. KEY DATES**
+- Start Date: "as of the ____ day of ____, 2021" (Specific date to be filled in).
+- End Date: "continue for __________." (Not specified, then "until terminated as provided herein").
+- Important Deadlines: Weekly reports (Section 3b), 30-day payment term (Section 4d), 1-year warranty (Section 6d), 90-day termination notice by HPARC without cause (Section 7b).
+
+**3. MONEY MATTERS**
+- Total Value: "a lumpsum amount of - _____________________, ($________)" (Not specified).
+- Payment Schedule: Monthly invoices based on percent complete of each development task and deliverables, paid within thirty (30) days of receipt for undisputed invoices.
+- Late Fees: Not specified.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must (HPARC): Develop business designs, provide network access, assist integration testing, and provide training to the Software Developer.
+- Party 2 Must (Software Developer): Develop, maintain, customize, distribute, and manage the system; provide 24-hour emergency response, Second Level Support, and documentation.
+
+**5. LEGALITY**
+- Governing Law: Laws of the State of Texas.
+- Dispute Resolution: Arbitration in accordance with the Commercial Arbitration Rules of the American Arbitration Association in Washington, D.C.
+
+**6. RISKS FOUND**
+- High Risk Items: The contract has an unspecified term, grants HPARC unilateral control over staffing decisions and removal, imposes an exclusivity clause on Software Developer's resources, and includes a broad non-compete clause. There's also a potential conflict between "work made for hire" and Software Developer's proprietary software, and a low fixed penalty for delays.
+- Clause References:
+    - "Subject to Section 7, the term of this Agreement shall commence on the date set forth above, and continue for __________." - Section 2.
+    - "HPARC reserves the right to approve all staffing decisions." and "HPARC reserves the right to have any of Software Developer’s personnel removed from HPARC’s projects for any reason that HPARC deems necessary for quality and performance." - Section 3c.
+    - "Resources shall be applied exclusively to HPARC projects, and will not be shared with other projects that Software Developer may support." - Section 3c.
+    - "the Software Developer agrees not to develop, design, code, test or document a competing product." and "without the prior written consent of the HPARC, it will not enter into any discussions with any party with respect to the foregoing applications and deliverables for a period commencing on the date of this Agreement and terminating on that day which is the third anniversary of the acceptance by the HPARC of the last deliverable provided under this Agreement." - Section 8a.
+    - "The parties acknowledge that any work performed by Software Developer for HPARC is being created at the insistence of HPARC and shall be deemed “work made for hire” under United States copyright law." - Section 11e.
+    - "Notwithstanding the provisions of Subsections 9a) and 9b) above, it is understood and agreed that Software Developer may, in its sole discretion, use its proprietary software programs in providing Services. If Software Developer uses any such proprietary software programs and so notifies HPARC, HPARC shall not market or in any way use such software programs as independent “stand-alone” programs without the express written consent of Software Developer, and HPARC shall not acquire any proprietary rights to such programs." - Section 9d.
+    - "HPARC shall be entitled to a credit of one hundred dollars ($100.00) per calendar day that the delivery of the System is delayed past the applicable Delivery Date." - Section 14.
+    - "HPARC may apply to a court of competent jurisdiction for injunctive relief to restrain such breach or threat of breach, without disentitling HPARC from any other relief in either law or equity." - Section 24.
+- Missing Protections: A general limitation of liability clause, detailed acceptance criteria, and comprehensive data privacy/security provisions are notably absent.
+- Overall Risk Level: High. The contract contains significant ambiguities, one-sided clauses, and critical missing protections, particularly for the Software Developer.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Clarify the contract term and total fees, negotiate the scope of the non-compete and exclusivity clauses, and add a comprehensive limitation of liability.
+- Should Legal Review: Yes, immediately. The document has several high-risk clauses and omissions that require expert legal review and negotiation.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "Subject to Section 7, the term of this Agreement shall commence on the date set forth above, and continue for __________." - Location: Section 2.
+- Risk Clause 2: "HPARC reserves the right to approve all staffing decisions." and "HPARC reserves the right to have any of Software Developer’s personnel removed from HPARC’s projects for any reason that HPARC deems necessary for quality and performance." - Location: Section 3c.
+- Key Terms Location:
+    - "First Level Support": Section 1a
+    - "Second Level Support": Section 1b
+    - "Work made for hire": Section 11e
+    - "Force Majeure": Section 20
+- Review Priority Areas: Section 2 (Term), Section 3c (Staffing Resources and Guarantee), Section 4 (Fees and Payment), Section 8 (Covenants of Non-Competition, Confidentiality, Non-Solicitation), Section 9d (Software Developer’s Proprietary Software Programs), Section 11e, 11f, 11g (Rights in Work), Section 14 (Time/Delay Penalties), and the absence of a Limitation of Liability clause.

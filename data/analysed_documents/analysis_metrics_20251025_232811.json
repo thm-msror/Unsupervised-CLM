@@ -1,0 +1,335 @@
+{
+  "session_id": "20251025_232811",
+  "session_start": "2025-10-25T23:28:11.649021",
+  "documents_processed": 10,
+  "successful_analyses": 10,
+  "failed_analyses": 0,
+  "total_processing_time": 239.9570918000536,
+  "per_document_metrics": [
+    {
+      "filename": "arabic_FinAmFamMut2016RestructExhA-19_arabic.json",
+      "start_time": 928536.3272816,
+      "text_length": 17204,
+      "language": "ar",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.4444444444444444,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 29.063,
+      "processing_time": 29.07820690004155,
+      "success": true,
+      "end_time": 928565.4054885,
+      "timestamp": "2025-10-25T23:28:40.731682"
+    },
+    {
+      "filename": "arabic_HPARC-software-development-agreement_arabic.json",
+      "start_time": 928570.4085619,
+      "text_length": 28247,
+      "language": "ar",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.5555555555555556,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 24.77,
+      "processing_time": 24.774483799934387,
+      "success": true,
+      "end_time": 928595.1830457,
+      "timestamp": "2025-10-25T23:29:10.508754"
+    },
+    {
+      "filename": "arabic_msp-agreement_arabic.json",
+      "start_time": 928600.184813,
+      "text_length": 26625,
+      "language": "ar",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.6666666666666666,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 33.105,
+      "processing_time": 33.11023200000636,
+      "success": true,
+      "end_time": 928633.295045,
+      "timestamp": "2025-10-25T23:29:48.620890"
+    },
+    {
+      "filename": "arabic_software-development-agreement-contract-template-word_arabic.json",
+      "start_time": 928638.2986609,
+      "text_length": 13034,
+      "language": "ar",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.3333333333333333,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 20.532,
+      "processing_time": 20.541528700035997,
+      "success": true,
+      "end_time": 928658.8401896,
+      "timestamp": "2025-10-25T23:30:14.166223"
+    },
+    {
+      "filename": "arabic_Web Site Development _Simple_arabic.json",
+      "start_time": 928663.845288,
+      "text_length": 23219,
+      "language": "ar",
+      "truncated": false,
+      "api_calls": 0,
+      "errors": [],
+      "analysis_quality": {},
+      "processing_time": 26.527162700076587,
+      "success": true,
+      "end_time": 928690.3724507,
+      "timestamp": "2025-10-25T23:30:45.698338"
+    },
+    {
+      "filename": "english_FinAmFamMut2016RestructExhA-19.json",
+      "start_time": 928695.37512,
+      "text_length": 21528,
+      "language": "en",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.4444444444444444,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 17.677,
+      "processing_time": 17.684094200027175,
+      "success": true,
+      "end_time": 928713.0592142,
+      "timestamp": "2025-10-25T23:31:08.384931"
+    },
+    {
+      "filename": "english_HPARC-software-development-agreement.json",
+      "start_time": 928718.0618253,
+      "text_length": 35482,
+      "language": "en",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.6666666666666666,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 23.106,
+      "processing_time": 23.112413099966943,
+      "success": true,
+      "end_time": 928741.1742384,
+      "timestamp": "2025-10-25T23:31:36.500471"
+    },
+    {
+      "filename": "english_msp-agreement.json",
+      "start_time": 928746.1769101,
+      "text_length": 33139,
+      "language": "en",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.7777777777777778,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 22.939,
+      "processing_time": 22.942867300007492,
+      "success": true,
+      "end_time": 928769.1197774,
+      "timestamp": "2025-10-25T23:32:04.445659"
+    },
+    {
+      "filename": "english_software-development-agreement-contract-template-word.json",
+      "start_time": 928774.1234321,
+      "text_length": 16242,
+      "language": "en",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.3333333333333333,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 18.539,
+      "processing_time": 18.546368599985726,
+      "success": true,
+      "end_time": 928792.6698007,
+      "timestamp": "2025-10-25T23:32:27.995846"
+    },
+    {
+      "filename": "english_Web Site Development _Simple_.json",
+      "start_time": 928797.6726439,
+      "text_length": 28134,
+      "language": "en",
+      "truncated": false,
+      "api_calls": 1,
+      "errors": [],
+      "analysis_quality": {
+        "structure_compliance": 1.0,
+        "completeness": 1.0,
+        "information_density": 0.5555555555555556,
+        "consistency": 1.0,
+        "type_detection": 1.0
+      },
+      "api_response_time": 23.634,
+      "processing_time": 23.639734499971382,
+      "success": true,
+      "end_time": 928821.3123784,
+      "timestamp": "2025-10-25T23:32:56.638439"
+    }
+  ],
+  "quality_metrics": {
+    "structure_compliance": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "completeness_scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "extraction_accuracy": [
+      0.4444444444444444,
+      0.5555555555555556,
+      0.6666666666666666,
+      0.3333333333333333,
+      0.4444444444444444,
+      0.6666666666666666,
+      0.7777777777777778,
+      0.3333333333333333,
+      0.5555555555555556
+    ],
+    "consistency_scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "avg_structure_compliance": 1.0,
+    "avg_completeness_scores": 1.0,
+    "avg_extraction_accuracy": 0.531,
+    "avg_consistency_scores": 1.0,
+    "avg_avg_structure_compliance": 1.0,
+    "avg_avg_completeness_scores": 1.0,
+    "avg_avg_extraction_accuracy": 0.531,
+    "avg_avg_consistency_scores": 1.0
+  },
+  "performance_metrics": {
+    "api_response_times": [
+      29.063,
+      24.77,
+      33.105,
+      20.532,
+      17.677,
+      23.106,
+      22.939,
+      18.539,
+      23.634
+    ],
+    "tokens_processed": [
+      5806,
+      8609,
+      8262,
+      4721,
+      6917,
+      10543,
+      9783,
+      5577,
+      8619
+    ],
+    "throughput_docs_per_minute": 2.5,
+    "error_rates": [],
+    "avg_response_time": 23.707,
+    "success_rate": 1.0
+  },
+  "content_metrics": {
+    "document_sizes": [
+      17204,
+      28247,
+      26625,
+      13034,
+      23219,
+      21528,
+      35482,
+      33139,
+      16242,
+      28134
+    ],
+    "languages_detected": {
+      "ar": 5,
+      "en": 5
+    },
+    "contract_types_identified": {
+      "employment": 6,
+      "purchase": 2,
+      "software": 1
+    },
+    "complexity_scores": [
+      0.6586747586672207,
+      0.6896357839991251,
+      0.7463333333333333,
+      0.5114923826671466,
+      0.5394475026676878,
+      0.4511210466669686,
+      0.6044623677774105,
+      0.5869585255556388,
+      0.42546187333317476,
+      0.5613348277774598
+    ],
+    "avg_document_size": 24285,
+    "median_document_size": 24922,
+    "avg_complexity": 0.577
+  },
+  "session_end": "2025-10-25T23:32:56.643665",
+  "session_duration_minutes": 4.75
+}

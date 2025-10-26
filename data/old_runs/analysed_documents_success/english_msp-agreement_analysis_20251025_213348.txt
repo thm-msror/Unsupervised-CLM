@@ -1,0 +1,68 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_msp-agreement.json
+Analyzed: 2025-10-25 21:33:48
+Language: EN
+Original Length: 33,139 characters
+Processing Time: 23.01 seconds
+
+==================================================
+
+Here's an analysis of the provided contract document:
+
+**1. BASIC INFO**
+- Contract Type: Managed Service Provider Agreement.
+- Main Parties: Corelight, Inc. ("Company") and the Managed Service Provider ("MSP").
+- Purpose: To appoint MSP as a nonexclusive provider of Company's Licensed MSP Products and MSP Services to MSP Customers.
+
+**2. KEY DATES**
+- Start Date: As of the last date executed below ("Effective Date").
+- End Date: Twelve (12) months from the Effective Date, with automatic twelve (12) month renewals unless cancelled.
+- Important Deadlines: Invoices due net thirty (30) days; 90-day limited warranty; 15-day cure period for breaches; 90-day notice for termination without cause; 30 business days for MSP to ensure customers have current Updates.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified, depends on orders placed by MSP.
+- Payment Schedule: Invoices due net thirty (30) days from receipt; subscription terms billed in advance (monthly, quarterly, or annually).
+- Late Fees: Lesser of one and one-half percent (1½%) per month or the highest rate permitted by applicable law.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Appoint MSP as a nonexclusive provider, grant licenses to distribute and deploy Licensed MSP Products, and provide standard support services.
+- Party 2 Must: Ensure MSP Customer agreements protect Company, conduct monthly pipeline reviews, pay all fees regardless of customer collection, and ensure customers use current Updates.
+
+**5. LEGALITY**
+- Governing Law: Laws of the State of California, excluding its conflicts of law rules.
+- Dispute Resolution: Exclusive jurisdiction and venue in the state and federal courts located in San Francisco, California; injunctive relief available for Company for certain breaches.
+
+**6. RISKS FOUND**
+- High Risk Items:
+    - **One-sided Indemnification:** MSP's indemnification is extremely broad, covering "any claims, actions, proceedings, damages, costs, expenses, or other liability whatsoever arising out of, resulting from or relating to MSP’s and each MSP Customer’s use of the Licensed MSP Products."
+    - **Limited Company Warranty & Extensive Disclaimers:** Company provides a very short 90-day limited warranty and disclaims all other warranties, including merchantability and fitness for a particular purpose.
+    - **Severe Limitation of Company's Liability:** Company excludes all indirect, incidental, special, consequential, or punitive damages and caps direct damages to amounts received in the preceding twelve (12) months.
+    - **Non-refundable Fees:** All fees paid by MSP are explicitly non-refundable, even upon termination.
+    - **Broad Audit Rights:** Company has extensive audit rights, and MSP bears audit costs if underpayment exceeds 5% or license restrictions are violated.
+- Clause References:
+    - "MSP further represents, warrants, and agrees not to copy, modify, rent, disassemble, decompile, or otherwise reverse engineer the any Company product or software, or otherwise attempt to learn the source code, structure, algorithms, or ideas underlying any Company products or software, except to the extent, and only the extent, this clause is expressly prohibited by applicable law, or allow any others to do the same." - Section 10, Page 3.
+    - "TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE WARRANTIES STATED ABOVE ARE EXCLUSIVE AND IN LIEU OF ALL OTHER WARRANTIES AND CONDITIONS, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR QUALITY OF SERVICE." - Section 9.3, Page 3.
+    - "TO THE MAXIMUM EXTENT PERMITTED BY LAW, COMPANY, ITS LICENSORS, AFFILIATES, AGENTS, SUPPLIERS, DISTRIBUTORS AND MSPS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOST PROFITS, LOST DATA OR LOSS OF USE, OR PROCUREMENT OF REPLACEMENT LICENSED MSP PRODUCTS, HOWEVER INCURRED BY MSP OR ANY THIRD PARTY, WHETHER IN AN ACTION IN CONTRACT OR TORT, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT SHALL COMPANY'S AGGREGATE LIABILITY FOR DIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT EXCEED THE AMOUNTS RECEIVED BY COMPANY PURSUANT TO THIS AGREEMENT FROM MSP IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CAUSE OF ACTION." - Section 14, Page 4.
+    - "All fees paid are non-refundable." - Section 15.4, Page 5.
+    - "MSP agrees to indemnify Company against any claims or losses resulting from MSP’s breach of this section." - Section 6.1, Page 2.
+    - "MSP shall permit Company, or an independent certified accountant appointed by Company, access to MSP’s premises and MSP’s books of account and records at any time on fifteen (15) business days written notice during normal business hours for the purpose of inspecting, auditing, verifying, or monitoring the manner and performance of MSP’s obligations under this Agreement including without limitation the payment of all applicable fees." - Section 7, Page 2.
+- Missing Protections: No specific data privacy/security clause beyond general confidentiality; no limitation on Company's audit frequency if "reasonably assert" over-usage; no clear termination for convenience for MSP without financial penalty.
+- Overall Risk Level: High. The agreement heavily favors the Company, placing significant liability, compliance, and financial burdens on the MSP with limited recourse.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Negotiate the indemnification, warranty, and limitation of liability clauses to achieve a more balanced risk allocation.
+- Should Legal Review: Yes, a thorough legal review is essential to mitigate the significant risks identified for the MSP.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "MSP further represents, warrants, and agrees not to copy, modify, rent, disassemble, decompile, or otherwise reverse engineer the any Company product or software, or otherwise attempt to learn the source code, structure, algorithms, or ideas underlying any Company products or software, except to the extent, and only the extent, this clause is expressly prohibited by applicable law, or allow any others to do the same." - Location: Section 10, Page 3.
+- Risk Clause 2: "TO THE MAXIMUM EXTENT PERMITTED BY LAW, COMPANY, ITS LICENSORS, AFFILIATES, AGENTS, SUPPLIERS, DISTRIBUTORS AND MSPS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOST PROFITS, LOST DATA OR LOSS OF USE, OR PROCUREMENT OF REPLACEMENT LICENSED MSP PRODUCTS, HOWEVER INCURRED BY MSP OR ANY THIRD PARTY, WHETHER IN AN ACTION IN CONTRACT OR TORT, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT SHALL COMPANY'S AGGREGATE LIABILITY FOR DIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT EXCEED THE AMOUNTS RECEIVED BY COMPANY PURSUANT TO THIS AGREEMENT FROM MSP IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CAUSE OF ACTION." - Location: Section 14, Page 4.
+- Key Terms Location:
+    - "Effective Date": First paragraph, Page 1.
+    - "Licensed MSP Product(s)": Section 1 (DEFINITIONS), Page 1.
+    - "MSP Customer(s)": Section 1 (DEFINITIONS), Page 1.
+    - "Subscription Term": Section 1 (DEFINITIONS), Page 1.
+    - "Territory": Section 1 (DEFINITIONS), Page 1.
+    - "Company’s then-current Master Customer Agreement (MCA)": Section 2 (APPOINTMENT; TERRITORY; PRODUCTS), Page 1.
+    - "Confidential Information": Section 12 (CONFIDENTIAL INFORMATION), Page 4.
+- Review Priority Areas: Sections 6 (MSP OBLIGATIONS), 7 (PRODUCT ORDERS, PRICE, PAYMENT - especially Audit), 9 (COMPANY WARRANTIES), 10 (MSP WARRANTIES), 13 (INDEMNITY), 14 (LIMITATION OF LIABILITY), 15 (TERM AND TERMINATION), 16 (RELATIONSHIP OF PARTIES), 17 (NO CONFLICT OF INTEREST), 18 (IRREPARABLE HARM), and 19.7 (Governing Law and Venue).

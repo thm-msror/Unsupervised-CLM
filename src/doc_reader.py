@@ -188,5 +188,7 @@ def test():
         print(f"✅ Data saved to {filename}")
 
 
-test()
+# Only run test when called directly, not on import
+if __name__ == "__main__":
+    test()
 

@@ -1,0 +1,37 @@
+Contract Analysis - english_Web Site Development _Simple_.json
+Generated: 2025-10-25T17:43:27.033493
+==================================================
+
+Here's an analysis of your contract:
+
+**1. BASIC INFO**
+- **Contract Type:** Web Site Development and Hosting Agreement.
+- **Main Parties:** SOFTWARE DISTRIBUTION COMPANY ("COMPANY") and OUT-OF-SITE WEB SITE DEVELOPMENT COMPANY ("DEVELOPER").
+- **Purpose:** COMPANY retains DEVELOPER to design, develop, test, deliver, and host a Web Site and Intranet ("Whizzer's Web").
+
+**2. KEY DATES**
+- **Start Date:** As of the [Effective Date] placeholder.
+- **End Date:** Remains in force for 99 years unless terminated earlier.
+- **Important Deadlines:** Web Site demonstration at a New York Trade Show on [date], project planning meeting within one week of signing, and payment due 15 days after invoice receipt.
+
+**3. MONEY MATTERS**
+- **Total Value:** $10,000 Development Fee ($7,500 upon signing, $2,500 upon operational) plus $1,000 per month Hosting Fee.
+- **Payment Schedule:** Development Fee paid in two installments; Hosting Fee is monthly, commencing when the site is operational. Other work is invoiced bi-weekly and due 15 days after receipt.
+- **Late Fees:** Not specified.
+
+**4. MAIN OBLIGATIONS**
+- **Party 1 (COMPANY) Must:** Pay development and hosting fees, provide necessary materials for the website, and pay domain registration fees.
+- **Party 2 (DEVELOPER) Must:** Design, develop, test, deliver, and host the website, register the domain, and demonstrate the site at a trade show.
+
+**5. LEGAL STUFF**
+- **Governing Law:** Laws of New York.
+- **Dispute Resolution:** Disputes resolved in applicable state or federal courts of New York.
+
+**6. RISKS FOUND**
+- **High Risk Items:** The 99-year term is excessively long, Developer's liability is capped at twice revenue, and Developer cannot terminate without COMPANY's consent. Multiple key dates are left as "[date]" placeholders.
+- **Missing Protections:** No specific Service Level Agreement (SLA) for hosting uptime or performance, and a detailed data security/privacy clause is absent. Ownership of future materials is left for mutual agreement.
+- **Overall Risk Level:** Medium to High.
+
+**7. RECOMMENDATIONS**
+- **Top Priority:** Define all placeholder dates, renegotiate the 99-year term, clarify Developer's termination rights, and review the liability cap.
+- **Should Legal Review:** Yes, due to the extremely long term, one-sided termination clause, liability cap, and undefined dates.

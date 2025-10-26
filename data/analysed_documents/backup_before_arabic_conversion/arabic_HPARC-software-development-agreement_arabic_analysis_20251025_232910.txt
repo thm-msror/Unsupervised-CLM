@@ -1,0 +1,56 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: arabic_HPARC-software-development-agreement_arabic.json
+Analyzed: 2025-10-25 23:29:10
+Language: AR
+Original Length: 28,247 characters
+Processing Time: 24.77 seconds
+
+==================================================
+
+### **Software Development Agreement Analysis**
+
+**1. BASIC INFO**
+- **Contract Type:** A Software Development Agreement for creating and supporting a custom software system.
+- **Main Parties:** HEMISFAIR PARK AREA REDEVELOPMENT CORPORATION ("HPARC") and an unnamed Software Developer ("ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ").
+- **Purpose:** HPARC is retaining the Software Developer to provide software development, consulting, and support services.
+
+**2. KEY DATES**
+- **Start Date:** Not specified; the date is left blank ("ﺍﻋﺘﺒﺎﺭﺍ ﻣﻦ ﻳﻮﻡ ، 2021").
+- **End Date:** Not specified; the term is left blank ("ﺗﺴﺘﻤﺮ ﻟﻤﺪﺓ __________").
+- **Important Deadlines:** Delivery dates are to be defined in a separate "Implementation Plan," with a penalty of $100 per day for delays.
+
+**3. MONEY MATTERS**
+- **Total Value:** Not specified; the total lump sum fee is left blank ("($________)").
+- **Payment Schedule:** Monthly invoices based on a "percentage complete" for each task, payable within 30 days of receipt.
+- **Late Fees:** No penalties are mentioned for late payments by HPARC, but a $100/day credit is due to HPARC for late delivery by the Developer.
+
+**4. MAIN OBLIGATIONS**
+- **Party 1 (Developer) Must:** Develop, maintain, and support the software system, and provide weekly status reports.
+- **Party 2 (HPARC) Must:** Pay all undisputed invoices within 30 days and provide the Developer with necessary training on its systems.
+
+**5. LEGALITY**
+- **Governing Law:** The laws of the State of Texas.
+- **Dispute Resolution:** Any dispute will be settled by arbitration in Washington D.C. under the American Arbitration Association rules.
+
+**6. RISKS FOUND**
+- **High Risk Items:** The contract is a template with critical information missing, creating ambiguity. It also contains one-sided clauses favoring HPARC, particularly regarding termination rights and intellectual property ownership.
+- **Clause References:**
+    - **Ambiguous Payment:** Payment is based on "ﻧﺴﺒﺔ ﻣﺌﻮﻳﺔ ﻣﻜﺘﻤﻠﺔ" (percentage complete), which is subjective and can cause disputes without clear milestones (Section 4.b).
+    - **Unilateral Termination:** HPARC can terminate without cause, but if the Developer does, HPARC can force a 180-day extension (Section 7).
+    - **Unlimited IP Indemnity:** The Developer provides a broad, uncapped indemnification for intellectual property infringement, posing a significant financial risk (Section 13).
+- **Missing Protections:** A **Limitation of Liability** clause is critically absent for the Developer, exposing them to potentially unlimited financial damages.
+- **Overall Risk Level:** **High for the Developer.** The combination of blank essential terms, one-sided clauses, and the lack of a liability cap creates substantial legal and financial exposure.
+
+**7. RECOMMENDATIONS**
+- **Top Priority:** **Do not sign as is.** All blank fields (Developer name, dates, duration, total fees) must be completed, and objective payment milestones must be defined.
+- **Should Legal Review:** **Yes.** The agreement requires professional legal review to negotiate fairer terms, especially regarding termination, liability, and indemnification, before it is executed.
+
+**8. LEGAL REVIEW CITATIONS**
+- **Risk Clause 1:** "ﻳﺠﺐ ﻋﻠﻰ ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ ﺗﺰﻭﻳﺪ HPARC ، ﻋﻠﻰ ﺃﺳﺎﺱ ﺷﻬﺮﻱ ، ﺑﻔﺎﺗﻮﺭﺓ ﺑﻨﺎﺀ ﻋﻠﻰ ﻧﺴﺒﺔ ﻣﺌﻮﻳﺔ ﻣﻜﺘﻤﻠﺔ ﻟﻜﻞ ﻣﻬﻤﺔ ﺗﻄﻮﻳﺮ ﻭﺗﺴﻠﻴﻤﺎﺕ." - **Location:** Section 4.b.
+- **Risk Clause 2:** "ﻳﻘﺮ ﺍﻟﻄﺮﻓﺎﻥ ﺑﺄﻥ ﺃﻱ ﻋﻤﻞ ﻳﻘﻮﻡ ﺑﻪ ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ ﻝ HPARC ﻳﺘﻢ ﺇﻧﺸﺎﺅﻩ ﺑﻨﺎﺀ ﻋﻠﻰ ﺇﺻﺮﺍﺭ HPARC ﻭﻳﻌﺘﺒﺮ "ﻋﻤﻼ ﺗﻢ ﺇﻧﺸﺎﺅﻩ ﻟﻠﺘﺄﺟﻴﺮ" ﺑﻤﻮﺟﺐ ﻗﺎﻧﻮﻥ ﺣﻘﻮﻕ ﺍﻟﻄﺒﻊ ﻭﺍﻟﻨﺸﺮ ﻓﻲ ﺍﻟﻮﻻﻳﺎﺕ ﺍﻟﻤﺘﺤﺪﺓ." - **Location:** Section 10.b.
+- **Key Terms Location:**
+    - **Services:** "ﺍﻟﺨﺪﻣﺎﺕ" - Section 3.a.i.
+    - **Termination:** "ﺍﻹﻧﻬﺎﺀ" - Section 7.
+    - **Indemnification:** "ﺗﻌﻮﻳﺾ" - Sections 12 & 13.
+- **Review Priority Areas:** Sections 2 (Term), 4 (Fees and Payment), 7 (Termination), 10 (Rights in Work), and 13 (IP Indemnification) require immediate legal attention.

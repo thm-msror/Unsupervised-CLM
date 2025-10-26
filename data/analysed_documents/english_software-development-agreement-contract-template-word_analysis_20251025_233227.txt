@@ -1,0 +1,50 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_software-development-agreement-contract-template-word.json
+Analyzed: 2025-10-25 23:32:27
+Language: EN
+Original Length: 16,242 characters
+Processing Time: 18.54 seconds
+
+==================================================
+
+Here is the analysis of the provided contract document:
+
+**1. BASIC INFO**
+- **Contract Type:** Software Development Agreement.
+- **Main Parties:** The "Company" (Client) and the "Developer".
+- **Purpose:** For the Developer to create custom software for the Company by modifying pre-existing software packages.
+
+**2. KEY DATES**
+- **Start Date:** Not specified; the date field in the header is blank.
+- **End Date:** Not specified; the agreement is structured in phases with no overall termination date.
+- **Important Deadlines:** Delivery dates are to be set for each project "Phase" in separate "Phase Agreements".
+
+**3. MONEY MATTERS**
+- **Total Value:** Not specified; a "fixed price" is to be determined for each individual Phase.
+- **Payment Schedule:** Payments are structured in multiple installments per phase: upon signing, upon delivery, upon passing acceptance tests, and after a period of live use.
+- **Late Fees:** Yes, a percentage reduction in the phase cost is applied for each period the Developer is late on delivery.
+
+**4. MAIN OBLIGATIONS**
+- **Party 1 (Company) Must:** Approve programming specifications and make timely payments based on project milestones.
+- **Party 2 (Developer) Must:** Design, program, and deliver custom software that meets the approved specifications and delivery deadlines for each phase.
+
+**5. LEGALITY**
+- **Governing Law:** Not specified in the agreement template.
+- **Dispute Resolution:** Not specified in the agreement template.
+
+**6. RISKS FOUND**
+- **High Risk Items:** The agreement is based on undefined requirements, creating a high risk of scope creep and disputes. The penalty clause for late delivery is poorly drafted and contradictory, making it potentially unenforceable.
+- **Clause References:** "The requirements to be fulfilled by the custom programming to the above listed packages are presently undefined." (Clause 3.2). The late delivery penalty text is duplicated and garbled, creating ambiguity (Clause 4.5, Paragraphs 8 & 9).
+- **Missing Protections:** The template lacks critical clauses for Confidentiality, Intellectual Property ownership details, Warranties, Limitation of Liability, and Data Protection.
+- **Overall Risk Level:** **High.** This is an incomplete template with ambiguous core terms (scope, price, penalties) and is missing standard legal protections, making it unsafe to use as-is.
+
+**7. RECOMMENDATIONS**
+- **Top Priority:** Clearly define the initial project scope, requirements, and all blank fields (payments, deadlines, penalties) before any work begins.
+- **Should Legal Review:** **Yes.** The document is a non-binding template with significant omissions and unclear clauses that require professional legal drafting to be made into a valid contract.
+
+**8. LEGAL REVIEW CITATIONS**
+- **Risk Clause 1:** "The requirements to be fulfilled by the custom programming to the above listed packages are presently undefined." - **Location:** Clause 3.2
+- **Risk Clause 2:** The late delivery penalty clause contains duplicated, conflicting text: "Failure by Developer to deliver the completed programming by the end of the ………… [insert number] days after the delivery date specified in the Phase Agreement delivery after the date specified in the Phase Agreement, but prior to the expiration of a grace period of …….. [insert number] days, Company shall pay to Developer [%] of the price for that Phase." - **Location:** Clause 4.5, Paragraph 9.
+- **Key Terms Location:** "Services" (Clause 1), "Phase Agreement" (Clause 4.4), "Acceptance test" (Clause 4.3).
+- **Review Priority Areas:** Clause 3 (Developer Responsibilities) and Clause 4 (Development Phases) must be reviewed for ambiguity. The entire document needs review to add missing standard clauses (Confidentiality, IP, Warranties, etc.).

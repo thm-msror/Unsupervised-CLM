@@ -1,0 +1,60 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: arabic_FinAmFamMut2016RestructExhA-19_arabic.json
+Analyzed: 2025-10-25 21:29:44
+Language: AR
+Original Length: 17,204 characters
+Processing Time: 41.98 seconds
+
+==================================================
+
+Here's an analysis of the provided contract:
+
+**1. BASIC INFO**
+- Contract Type: Amended and Restated Intercompany Services and Cost Allocation Agreement.
+- Main Parties: American Family Mutual Insurance Company, SI ("AFMIC") and its Subsidiaries.
+- Purpose: To provide and receive goods, third-party services, and administrative/management services between AFMIC and its Subsidiaries, and to allocate associated costs.
+
+**2. KEY DATES**
+- Start Date: Effective for each Subsidiary from the date it first signs the agreement.
+- End Date: Initially five years from the initial effective date for each Subsidiary, automatically extending for one year annually on December 31st to maintain a five-year term.
+- Important Deadlines: Charges are settled at least quarterly; Management Services are charged monthly.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified, as it's based on actual costs or fair value of services rendered.
+- Payment Schedule: At least quarterly for goods, third-party services, and office space; monthly for Management Services. All charges are settled on a net basis at least quarterly.
+- Late Fees: Not specified.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 (Service Provider - AFMIC or Subsidiary) Must: Provide goods and services with best efforts, materially comply with applicable law, and meet insurance industry standards.
+- Party 2 (Service Recipient - AFMIC or Subsidiary) Must: Pay its allocable share of actual costs or fair value for received goods and services.
+
+**5. LEGALITY**
+- Governing Law: Laws of the State of Wisconsin.
+- Dispute Resolution: Not specified.
+
+**6. RISKS FOUND**
+- High Risk Items: Conflicting ownership of books and records, broad indemnification for Service Recipients, and clauses heavily favoring the regulator during AFMIC's insolvency.
+- Clause References:
+    - Conflicting Record Ownership: "ﻳﺠﺐ ﺃﻥ ﺗﻜﻮﻥ ﺟﻤﻴﻊ ﻫﺬﻩ ﺍﻟﺴﺠﻼﺕ ﻭﺍﻟﺤﺴﺎﺑﺎﺕ ﻣﻠﻜﺎ ﻟﻜﻞ ﻣﻘﺪﻡ ﺧﺪﻣﺔ ﻣﻌﻨﻲ... ﻋﻠﻰ ﺍﻟﺮﻏﻢ ﻣﻤﺎ ﺳﺒﻖ، ﺑﻘﺪﺭ ﻣﺎ ﻳﻜﻮﻥ ﻣﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﺷﺮﻛﺔ ﺗﺄﻣﻴﻦ، ﻓﺈﻥ ﺟﻤﻴﻊ ﻫﺬﻩ ﺍﻟﺴﺠﻼﺕ ﻭﺍﻟﺤﺴﺎﺑﺎﺕ ﻳﺠﺐ ﺃﻥ ﺗﻜﻮﻥ ﻣﻠﻜﺎ ﻟﻤﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﻭﺗﻈﻞ ﻓﻲ ﺟﻤﻴﻊ ﺍﻷﻭﻗﺎﺕ ﺗﺤﺖ ﺳﻴﻄﺮﺓ ﻣﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ." - Section 3.1
+    - Broad Service Recipient Indemnification: "ﻳﺘﺤﻤﻞ ﻛﻞ ﻣﺘﻠﻘﻲ ﺧﺪﻣﺔ ﺍﻟﻤﺴﺆﻭﻟﻴﺔ ﺍﻟﺬﺍﺗﻴﺔ ﻭﺣﺪﻫﺎ... ﻭﻳﺠﺐ ﺃﻥ ﻳﺘﺤﻤﻞ ﺿﺮﺭﻩ ﻭﻳﻌﻮﺽ ﻛﻞ ﺧﺪﻣﺔ ﻣﻦ ﺧﺪﻣﺎﺗﻪ ﺍﻟﺨﺎﺻﺔ ﻣﻘﺪﻡ ﺍﻟﺨﺪﻣﺔ (ﺍﻟﻤﺰﻭﺩﻭﻥ)... ﻣﻦ ﻭﺿﺪ ﺟﻤﻴﻊ ﺍﻟﺨﺴﺎﺋﺮ ﻭﺍﻟﻤﻄﺎﻟﺒﺎﺕ ﻭﺍﻷﺿﺮﺍﺭ ﻭﺍﻻﻟﺘﺰﺍﻣﺎﺕ ﻭﺍﻟﻨﻔﻘﺎﺕ... ﻓﻴﻤﺎ ﻳﺘﻌﻠﻖ ﺑﺘﻘﺪﻳﻢ ﻣﻘﺪﻡ ﺍﻟﺨﺪﻣﺔ ﻟﺨﺪﻣﺎﺕ ﺍﻹﺩﺍﺭﺓ ﻟﻤﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﻫﺬﺍ، ﻣﺎ ﻟﻢ ﺗﻜﻦ ﻫﺬﻩ ﺍﻟﺨﺴﺎﺭﺓ ﺃﻭ ﺍﻟﻤﻄﺎﻟﺒﺔ ﺃﻭ ﺍﻟﻀﺮﺭ ﺃﻭ ﺍﻟﻤﺴﺆﻭﻟﻴﺔ ﺃﻭ ﺍﻟﻨﻔﻘﺎﺕ ﻧﺎﺗﺠﺔ ﻋﻦ ﺍﻹﻫﻤﺎﻝ ﺃﻭ ﺳﻮﺀ ﺍﻟﺴﻠﻮﻙ ﺍﻟﻤﺘﻌﻤﺪ ﺃﻭ ﺍﻻﺣﺘﻴﺎﻝ ﻣﻦ ﻗﺒﻞ ﻣﺰﻭﺩ ﺍﻟﺨﺪﻣﺔ..." - Section 4
+    - AFMIC Insolvency Obligations: "ﻻ ﻳﺤﻖ ﻟﻠﺸﺮﻛﺎﺕ ﺍﻟﺘﺎﺑﻌﺔ ﺗﻠﻘﺎﺋﻴﺎ ﺇﻧﻬﺎﺀ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ. ﻳﺠﺐ ﻋﻠﻰ ﺍﻟﺸﺮﻛﺎﺕ ﺍﻟﺘﺎﺑﻌﺔ ﺍﻻﺳﺘﻤﺮﺍﺭ ﻓﻲ ﺍﻟﺤﻔﺎﻅ ﻋﻠﻰ ﺃﻱ ﺃﻧﻈﻤﺔ ﺃﻭ ﺑﺮﺍﻣﺞ ﺃﻭ ﺑﻨﻴﺔ ﺗﺤﺘﻴﺔ ﺃﺧﺮﻯ ﻭﺳﺘﺘﻴﺤﻬﺎ ﻟﻠﻤﺴﺘﻠﻢ ﺃﻭ ﺍﻟﻤﻔﻮﺽ ﻃﺎﻟﻤﺎ ﺍﺳﺘﻤﺮ ﺍﻟﺘﺎﺑﻊ ﻓﻲ ﺗﻠﻘﻲ ﺍﻟﻤﺪﻓﻮﻋﺎﺕ ﻓﻲ ﺍﻟﻮﻗﺖ ﺍﻟﻤﻨﺎﺳﺐ ﻣﻦ AFMIC ﻣﻘﺎﺑﻞ ﺍﻟﺨﺪﻣﺎﺕ." - Section 5, paragraphs 3 & 4
+- Missing Protections: Specific dispute resolution mechanism, limitation of liability clauses, dedicated confidentiality clause, and detailed service level agreements (SLAs).
+- Overall Risk Level: Medium to High. The document contains significant ambiguities and one-sided clauses that could expose Subsidiaries to undue risk and operational burdens.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Clarify and resolve the contradictory clauses regarding the ownership and control of books and records, especially for insurance company Subsidiaries.
+- Should Legal Review: Yes, a thorough legal review is essential to address the identified risks, particularly the indemnification scope, record ownership, and the implications of AFMIC's insolvency on Subsidiaries.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "ﻳﺠﺐ ﺃﻥ ﺗﻜﻮﻥ ﺟﻤﻴﻊ ﻫﺬﻩ ﺍﻟﺴﺠﻼﺕ ﻭﺍﻟﺤﺴﺎﺑﺎﺕ ﻣﻠﻜﺎ ﻟﻜﻞ ﻣﻘﺪﻡ ﺧﺪﻣﺔ ﻣﻌﻨﻲ، ﻣﻊ ﻣﺮﺍﻋﺎﺓ ﺣﻖ ﺍﻟﺘﻔﺘﻴﺶ ﻋﻠﻰ ﻣﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﺑﻤﻮﺟﺐ ﺍﻟﻘﺴﻢ 3.1 ﻣﻦ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ ﻭﺣﻘﻮﻕ ﺍﻟﻔﺤﺺ ﺍﻟﺨﺎﺻﺔ ﺑﺎﻟﺘﺄﻣﻴﻦ ﻭﺍﻟﺴﻠﻄﺎﺕ ﺍﻟﺘﻨﻈﻴﻤﻴﺔ ﺍﻷﺧﺮﻯ ﺍﻟﻤﻌﻤﻮﻝ ﺑﻬﺎ. ﻋﻠﻰ ﺍﻟﺮﻏﻢ ﻣﻤﺎ ﺳﺒﻖ، ﺑﻘﺪﺭ ﻣﺎ ﻳﻜﻮﻥ ﻣﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﺷﺮﻛﺔ ﺗﺄﻣﻴﻦ، ﻓﺈﻥ ﺟﻤﻴﻊ ﻫﺬﻩ ﺍﻟﺴﺠﻼﺕ ﻭﺍﻟﺤﺴﺎﺑﺎﺕ ﻳﺠﺐ ﺃﻥ ﺗﻜﻮﻥ ﻣﻠﻜﺎ ﻟﻤﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﻭﺗﻈﻞ ﻓﻲ ﺟﻤﻴﻊ ﺍﻷﻭﻗﺎﺕ ﺗﺤﺖ ﺳﻴﻄﺮﺓ ﻣﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ." - Location: Section 3.1
+- Risk Clause 2: "ﻳﺘﺤﻤﻞ ﻛﻞ ﻣﺘﻠﻘﻲ ﺧﺪﻣﺔ ﺍﻟﻤﺴﺆﻭﻟﻴﺔ ﺍﻟﺬﺍﺗﻴﺔ ﻭﺣﺪﻫﺎ، ﺑﺸﻜﻞ ﻓﺮﺩﻱ ﻭﻟﻴﺲ ﻣﺸﺘﺮﻛﺎ، ﻋﻦ ﻛﻞ ﺧﺪﻣﺔ ﻣﻦ ﺧﺪﻣﺎﺗﻪ ﺍﻟﺨﺎﺻﺔ ﻭﻳﺠﺐ ﺃﻥ ﻳﺘﺤﻤﻞ ﺿﺮﺭﻩ ﻭﻳﻌﻮﺽ ﻛﻞ ﺧﺪﻣﺔ ﻣﻦ ﺧﺪﻣﺎﺗﻪ ﺍﻟﺨﺎﺻﺔ ﻣﻘﺪﻡ ﺍﻟﺨﺪﻣﺔ (ﺍﻟﻤﺰﻭﺩﻭﻥ)، ﺑﻤﺎ ﻓﻲ ﺫﻟﻚ ﺧﻠﻔﺎﺋﻬﻢ ﻭﻣﺴﺆﻭﻟﻴﻬﻢ ﻭﻣﺪﻳﺮﻳﻬﻢ ﻭﻣﻮﻇﻔﻴﻬﻢ ﻭﻭﻛﻼﺋﻬﻢ ﻭﺍﻟﺸﺮﻛﺎﺕ ﺍﻟﺘﺎﺑﻌﺔ ﻟﻬﻢ، ﻣﻦ ﻭﺿﺪ ﺟﻤﻴﻊ ﺍﻟﺨﺴﺎﺋﺮ ﻭﺍﻟﻤﻄﺎﻟﺒﺎﺕ ﻭﺍﻷﺿﺮﺍﺭ ﻭﺍﻻﻟﺘﺰﺍﻣﺎﺕ ﻭﺍﻟﻨﻔﻘﺎﺕ، ﺑﻤﺎ ﻓﻲ ﺫﻟﻚ ﺃﻱ ﻭﺟﻤﻴﻊ ﺍﻟﻨﻔﻘﺎﺕ ﺍﻟﻤﻌﻘﻮﻟﺔ ﻭﺃﺗﻌﺎﺏ ﺍﻟﻤﺤﺎﻣﺎﺓ ﻭﺍﻟﻤﺼﺮﻭﻓﺎﺕ ﺍﻟﻤﺘﻜﺒﺪﺓ ﻓﻲ ﺍﻟﺘﺤﻘﻴﻖ ﺃﻭ ﺍﻹﻋﺪﺍﺩ ﺃﻭ ﺍﻟﺪﻓﺎﻉ ﺿﺪ ﺃﻱ ﺩﻋﻮﻯ ﺃﻭ ﺇﺟﺮﺍﺀ، ﺳﻮﺍﺀ ﺑﺪﺃﺕ ﺃﻭ ﻣﻬﺪﺩﺓ، ﺃﻭ ﺃﻱ ﻣﻄﺎﻟﺒﺔ ﺃﺧﺮﻯ ﻣﻦ ﺃﻱ ﻧﻮﻉ، ﺳﻮﺍﺀ ﺃﺩﺕ ﺇﻟﻰ ﺃﻱ ﻣﺴﺆﻭﻟﻴﺔ ﺃﻡ ﻻ، ﺗﻌﺮﺿﺖ ﺃﻭ ﺗﻜﺒﺪﺗﻬﺎ ﺃﻭ ﻗﺪﻣﺘﻬﺎ ﺃﻭ ﺭﻓﻌﻬﺎ ﺃﻭ ﺃﻛﺪﺗﻬﺎ ﻣﻦ ﻗﺒﻞ ﺃﻱ ﺷﺨﺺ ﻟﻴﺲ ﻃﺮﻓﺎ ﻓﻲ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ ﻓﻴﻤﺎ ﻳﺘﻌﻠﻖ ﺑﺘﻘﺪﻳﻢ ﻣﻘﺪﻡ ﺍﻟﺨﺪﻣﺔ ﻟﺨﺪﻣﺎﺕ ﺍﻹﺩﺍﺭﺓ ﻟﻤﺘﻠﻘﻲ ﺍﻟﺨﺪﻣﺔ ﻫﺬﺍ، ﻣﺎ ﻟﻢ ﺗﻜﻦ ﻫﺬﻩ ﺍﻟﺨﺴﺎﺭﺓ ﺃﻭ ﺍﻟﻤﻄﺎﻟﺒﺔ ﺃﻭ ﺍﻟﻀﺮﺭ ﺃﻭ ﺍﻟﻤﺴﺆﻭﻟﻴﺔ ﺃﻭ ﺍﻟﻨﻔﻘﺎﺕ ﻧﺎﺗﺠﺔ ﻋﻦ ﺍﻹﻫﻤﺎﻝ ﺃﻭ ﺳﻮﺀ ﺍﻟﺴﻠﻮﻙ ﺍﻟﻤﺘﻌﻤﺪ ﺃﻭ ﺍﻻﺣﺘﻴﺎﻝ ﻣﻦ ﻗﺒﻞ ﻣﺰﻭﺩ ﺍﻟﺨﺪﻣﺔ ﺃﻭ ﻣﺴﺆﻭﻟﻴﻪ ﺃﻭ ﻣﺪﻳﺮﻳﻪ ﺃﻭ ﻣﻮﻇﻔﻴﻪ ﺃﻭ ﻭﻛﻼﺋﻪ ﺃﻭ ﺍﻟﺸﺮﻛﺎﺕ ﺍﻟﺘﺎﺑﻌﺔ ﻟﻪ ﺃﻭ ﺃﻱ ﺷﺨﺺ ﺁﺧﺮ ﻳﺘﻢ ﺗﻌﻴﻴﻨﻪ ﻣﻦ ﻗﺒﻞ ﻣﺰﻭﺩ ﺍﻟﺨﺪﻣﺔ ﻟﺘﻘﺪﻳﻢ ﺧﺪﻣﺎﺕ ﺍﻹﺩﺍﺭﺓ ﻟﻬﺬﻩ ﺍﻟﺨﺪﻣﺔ ﺍﻟﻤﺴﺘﻠﻢ." - Location: Section 4
+- Key Terms Location:
+    - "ﺍﺗﻔﺎﻗﻴﺔ ﺍﻟﺨﺪﻣﺎﺕ ﺑﻴﻦ ﺍﻟﺸﺮﻛﺎﺕ ﻭﺗﺨﺼﻴﺺ ﺍﻟﺘﻜﺎﻟﻴﻒ ﺍﻟﻤﻌﺪﻟﺔ ﻭﺍﻟﻤﻌﺎﺩ ﺻﻴﺎﻏﺘﻬﺎ" (Amended and Restated Intercompany Services and Cost Allocation Agreement) - Title
+    - "ﺷﺮﻛﺔ ﺍﻟﺘﺄﻣﻴﻦ ﺍﻟﻌﺎﺋﻠﻲ ﺍﻷﻣﺮﻳﻜﻲ، SI. ("AFMIC")" (American Family Mutual Insurance Company, SI ("AFMIC")) - First paragraph
+    - "ﺍﻟﺸﺮﻛﺎﺕ ﺍﻟﺘﺎﺑﻌﺔ" (Subsidiaries) - First paragraph
+    - "ﺧﺪﻣﺎﺕ ﺍﻹﺩﺍﺭﺓ" (Management Services) - Second paragraph
+    - "ﻣﺰﻭﺩ ﺍﻟﺨﺪﻣﺔ" (Service Provider) - Fourth paragraph
+    - "ﻣﺴﺘﻠﻢ ﺍﻟﺨﺪﻣﺔ" (Service Recipient) - Fifth paragraph
+    - "ﻗﻮﺍﻧﻴﻦ ﻭﻻﻳﺔ ﻭﻳﺴﻜﻮﻧﺴﻦ" (laws of the State of Wisconsin) - Section 6.9
+- Review Priority Areas: Section 1.1 (Cost Allocation Methods), Section 3.1 (Books and Records), Section 4 (Indemnification), Section 5 (AFMIC Insolvency), and the absence of a dispute resolution clause.

@@ -1,0 +1,52 @@
+# INTELLIGENT CONTRACT SUMMARY GENERATOR
+
+You are analyzing contract documents to create a comprehensive executive summary for a legal dashboard.
+
+## ANALYSIS INPUT:
+
+{CONTRACT_DATA}
+
+## OUTPUT REQUIREMENTS:
+
+Create a comprehensive executive summary with these exact sections:
+
+### 🏢 CONTRACT OVERVIEW
+- Contract Type & Purpose
+- Primary Parties (all organizations/individuals)
+- Contract Scope & Objectives
+- Languages Available: [Arabic/English/Both]
+
+### 📊 KEY EXTRACTED DATA
+- **Contracting Parties**: Names of all organizations/individuals involved
+- **Critical Dates**: Effective Date, Expiration Date, Renewal Date, Key Deadlines
+- **Financial Terms**: Payment amounts, schedules, penalties
+- **Governing Law & Jurisdiction**: Legal framework governing the contract
+- **Key Obligations & Deliverables**: Critical duties for each party
+
+### ⚠️ RISK & COMPLIANCE ALERTS
+- **High-Risk Clauses**: Unusual or concerning terms (unlimited liability, unusual termination)
+- **Missing Standard Clauses**: Missing confidentiality, force majeure, etc.
+- **Compliance Issues**: Terms that may not match standard templates
+- **Consistency Warnings**: Conflicting or unclear defined terms
+
+### 💡 AI-GENERATED INSIGHTS
+- **Contract Purpose**: Concise summary of what this contract achieves
+- **Strategic Importance**: Business impact and significance
+- **Legal Advice**: Recommendations for legal review or action
+- **Regulatory Comparisons**: How this compares to applicable laws/standards
+
+### 📈 EXECUTIVE RECOMMENDATIONS
+- **Immediate Actions Required**: Urgent items needing attention
+- **Legal Review Priority**: High/Medium/Low
+- **Business Impact Assessment**: Financial and operational implications
+- **Next Steps**: Specific recommended actions
+
+## FORMATTING INSTRUCTIONS:
+- Use clear headings with emojis as shown
+- Provide specific, actionable information
+- Be concise but comprehensive
+- Highlight critical issues in **bold**
+- Use bullet points for clarity
+- Include both Arabic and English insights where available
+
+Generate the executive summary now:

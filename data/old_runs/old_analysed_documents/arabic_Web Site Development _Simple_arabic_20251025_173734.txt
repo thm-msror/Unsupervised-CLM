@@ -1,0 +1,37 @@
+Contract Analysis - arabic_Web Site Development _Simple_arabic.json
+Generated: 2025-10-25T17:37:34.890489
+==================================================
+
+Here's the analysis of your contract:
+
+**1. BASIC INFO**
+- Contract Type: Web Site Development and Hosting Agreement.
+- Main Parties: Software Distribution Company ("The Company") and Off-Site Web Site Development Company ("The Developer").
+- Purpose: Developer to design, develop, host, and maintain a website and intranet ("Whizzer's Web") for the Company.
+
+**2. KEY DATES**
+- Start Date: Effective Date, specified as "[The Date]".
+- End Date: 99 years from the Effective Date, unless terminated earlier.
+- Important Deadlines: Project planning meeting within 1 week of signing; website display at a trade show on "[The Date]"; maintenance modifications within 5-10 business days.
+
+**3. MONEY MATTERS**
+- Total Value: Stated as $7,500.00 for development, plus $1,000.00 monthly for hosting.
+- Payment Schedule: Development fees are $7,500.00 upon signing and an additional $2,500.00 when the website is ready (totaling $10,000, which contradicts the stated total value of $7,500). Hosting fees are monthly, starting upon website acceptance.
+- Late Fees: Not specified.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Provide website materials and pay development and hosting fees.
+- Party 2 Must: Design, develop, host, and maintain the website, ensuring it is professional and free of infringing or offensive content.
+
+**5. LEGAL STUFF**
+- Governing Law: Laws of New York.
+- Dispute Resolution: All disputes are resolved in applicable state or federal courts in New York.
+
+**6. RISKS FOUND**
+- High Risk Items: Contradictory development fee amounts ($7,500 total vs. $7,500 + $2,500 payment schedule) and a Developer liability cap of twice the revenue generated. The 99-year term is unusually long.
+- Missing Protections: No specific SLAs for hosting uptime, no clear pre-litigation dispute resolution process, and no penalties for Developer's late delivery.
+- Overall Risk Level: High
+
+**7. RECOMMENDATIONS**
+- Top Priority: Immediately clarify and correct the contradictory development fee payment terms to prevent future disputes.
+- Should Legal Review: Yes, due to the payment discrepancy, the unusually long term, the liability cap, and missing standard protections.

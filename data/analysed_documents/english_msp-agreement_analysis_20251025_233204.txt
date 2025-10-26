@@ -1,0 +1,52 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_msp-agreement.json
+Analyzed: 2025-10-25 23:32:04
+Language: EN
+Original Length: 33,139 characters
+Processing Time: 22.94 seconds
+
+==================================================
+
+### **Contract Analysis: Managed Service Provider Agreement**
+
+---
+
+**1. BASIC INFO**
+-   **Contract Type:** A Managed Service Provider (MSP) Agreement.
+-   **Main Parties:** Corelight, Inc. (“Company”) and an unnamed Managed Service Provider (“MSP”).
+-   **Purpose:** To appoint the MSP as a non-exclusive provider of the Company's products and services to the MSP's own customers.
+
+**2. KEY DATES**
+-   **Start Date:** The last date the agreement is signed by both parties ("Effective Date").
+-   **End Date:** The initial term is 12 months, with automatic 12-month renewals unless cancelled.
+-   **Important Deadlines:** Invoices are due in 30 days; termination without cause requires 90 days' notice.
+
+**3. MONEY MATTERS**
+-   **Total Value:** Not specified; value is based on purchase orders placed against a price list.
+-   **Payment Schedule:** Invoices are due net 30 days from receipt; subscriptions are billed in advance (monthly, quarterly, or annually).
+-   **Late Fees:** Interest may be charged at 1.5% per month or the highest rate permitted by law.
+
+**4. MAIN OBLIGATIONS**
+-   **Party 1 (Company) Must:** Grant the MSP a non-exclusive license to distribute and deploy its products and provide standard support services.
+-   **Party 2 (MSP) Must:** Pay all fees on time and ensure its agreements with customers are at least as protective of the Company as the Company's own Master Customer Agreement.
+
+**5. LEGALITY**
+-   **Governing Law:** The laws of the State of California.
+-   **Dispute Resolution:** Disputes will be handled in the state and federal courts located in San Francisco, California.
+
+**6. RISKS FOUND**
+-   **High Risk Items:** The agreement contains a very broad, one-sided indemnification obligation on the MSP, an aggressive audit clause, and a severe limitation of the Company's liability.
+-   **Clause References:** The MSP must indemnify the Company for any liability from customer use, and the Company's liability is capped at 12 months of fees.
+-   **Missing Protections:** The contract lacks a Service Level Agreement (SLA) for support, mutual indemnification for breach, and any clauses regarding data protection or privacy.
+-   **Overall Risk Level:** **High** for the MSP. The agreement is heavily weighted in favor of the Company, imposing significant liability on the MSP while strictly limiting its own.
+
+**7. RECOMMENDATIONS**
+-   **Top Priority:** The MSP must negotiate the broad indemnification clause to be more specific and reciprocal.
+-   **Should Legal Review:** **Yes.** The one-sided liability, indemnity, and termination clauses, along with the absence of data privacy terms, require professional legal negotiation.
+
+**8. LEGAL REVIEW CITATIONS**
+-   **Risk Clause 1:** "hold harmless, defend, and fully indemnify Company against any claims, actions, proceedings, damages, costs, expenses, or other liability whatsoever arising out of, resulting from or relating to MSP’s and each MSP Customer’s use of the Licensed MSP Products..." - **Location:** Section 10(f) / Page 4
+-   **Risk Clause 2:** "IN NO EVENT SHALL COMPANY'S AGGREGATE LIABILITY FOR DIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT EXCEED THE AMOUNTS RECEIVED BY COMPANY PURSUANT TO THIS AGREEMENT FROM MSP IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CAUSE OF ACTION." - **Location:** Section 14 / Page 5
+-   **Key Terms Location:** "MSP Customer(s)" (Section 1/Page 1), "Licensed MSP Product(s)" (Section 1/Page 1), "Subscription Term" (Section 1/Page 1).
+-   **Review Priority Areas:** Section 6 (MSP Obligations), Section 10 (MSP Warranties, especially indemnification), Section 14 (Limitation of Liability), and Section 15 (Term and Termination).

@@ -358,7 +358,7 @@ header[data-testid="stHeader"] > *, div[data-testid="stHeader"] > *{ display:non
 .section-block > div[data-testid="stFileUploader"],
 .section-block > div[data-testid="stHorizontalBlock"],
 .section-block > div[data-testid="stVerticalBlock"]{
-  max-width: min(var(--section-max), calc(100vw - (2 * var(--section-gutter)))) !important;
+  max-width: min(var(--section-max), calc(100vw - (3 * var(--section-gutter)))) !important;
   margin-left: auto !important; margin-right: auto !important; width: 100% !important;
 }
 .section-heading{ margin: 2px auto 8px !important; }

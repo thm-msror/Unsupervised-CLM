@@ -56,90 +56,84 @@ left_col, right_col = st.columns([14, 10], gap="small")
 
 with left_col:
     tabs = st.tabs([
-        "📄 Summary",
-        "👥 Parties",
-        "📅 Key Dates",
-        "⚖️ Law & Jurisdiction",
-        "📌 Obligations & Deliverables",
-        "💰 Financial Terms",
-        "⚠️ Risks",
+        "📄 Full Analysis",
+        "🌐 Arabic Translation"
     ])
 
     res = ss.result or {}
     summary = res.get("summary")
     extracted = res.get("extracted", {})
     risks = res.get("risks", [])
+    raw_text = res.get("raw_text", "")
 
-    # Summary
+    # Full Analysis tab - show complete analysis
     with tabs[0]:
-        safe_summary = (summary or "_No summary._").replace("\n", "<br>")
-        st.markdown(f'<div class="card">{safe_summary}</div>', unsafe_allow_html=True)
+        st.markdown("### 📄 Complete Analysis")
+        
+        # Combine all sections into full analysis display
+        full_analysis = f"""
+**Summary:**
+{summary or "_No summary available._"}
 
-    # Parties
-    with tabs[1]:
-        parties = extracted.get("contracting_parties") or extracted.get("parties")
-        if isinstance(parties, list):
-            inner = "".join(
-                f'<div class="kv"><div class="kv-key">Party</div><div class="kv-value">{str(p)}</div></div>'
-                for p in parties
-            )
-        else:
-            inner = f'<div class="kv"><div class="kv-key">Parties</div><div class="kv-value">{parties or "—"}</div></div>'
-        st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+---
 
-    # Key Dates
-    with tabs[2]:
-        d = extracted.get("key_dates", {}) or {}
-        inner = "".join([
-            f'<div class="kv"><div class="kv-key">Effective Date</div><div class="kv-value">{d.get("effective_date") or "—"}</div></div>',
-            f'<div class="kv"><div class="kv-key">Expiration Date</div><div class="kv-value">{d.get("expiration_date") or "—"}</div></div>',
-            f'<div class="kv"><div class="kv-key">Renewal Date</div><div class="kv-value">{d.get("renewal_date") or "—"}</div></div>',
-        ])
-        st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+**Key Parties:**
+{extracted.get("contracting_parties") or extracted.get("parties") or "—"}
 
-    # Law & Jurisdiction
-    with tabs[3]:
-        law = extracted.get("governing_law") or extracted.get("law_and_jurisdiction")
-        juris = extracted.get("jurisdiction")
-        inner = "".join([
-            f'<div class="kv"><div class="kv-key">Governing Law</div><div class="kv-value">{law or "—"}</div></div>',
-            f'<div class="kv"><div class="kv-key">Jurisdiction</div><div class="kv-value">{juris or "—"}</div></div>',
-        ])
-        st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+---
 
-    # Obligations & Deliverables
-    with tabs[4]:
-        obligations = extracted.get("obligations") or extracted.get("deliverables")
-        if isinstance(obligations, list):
-            inner = "".join(
-                f'<div class="kv"><div class="kv-key">Obligation</div><div class="kv-value">{str(o)}</div></div>'
-                for o in obligations
-            )
-        else:
-            inner = f'<div class="kv"><div class="kv-key">Obligations</div><div class="kv-value">{obligations or "—"}</div></div>'
-        st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+**Key Dates:**
+- Effective Date: {(extracted.get("key_dates", {}) or {}).get("effective_date") or "—"}
+- Expiration Date: {(extracted.get("key_dates", {}) or {}).get("expiration_date") or "—"}
+- Renewal Date: {(extracted.get("key_dates", {}) or {}).get("renewal_date") or "—"}
 
-    # Financial Terms
-    with tabs[5]:
-        fin = extracted.get("financial_terms") or {}
-        if isinstance(fin, dict):
-            inner = "".join(
-                f'<div class="kv"><div class="kv-key">{k.replace("_"," ").title()}</div>'
-                f'<div class="kv-value">{str(v)}</div></div>'
-                for k, v in fin.items()
-            )
-        else:
-            inner = f'<div class="kv"><div class="kv-key">Financial Terms</div><div class="kv-value">{fin or "—"}</div></div>'
-        # IMPORTANT: no extra parenthesis here!
-        st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+---
 
-    # Risks
-    with tabs[6]:
+**Governing Law & Jurisdiction:**
+- Governing Law: {extracted.get("governing_law") or extracted.get("law_and_jurisdiction") or "—"}
+- Jurisdiction: {extracted.get("jurisdiction") or "—"}
+
+---
+
+**Obligations & Deliverables:**
+{extracted.get("obligations") or extracted.get("deliverables") or "—"}
+
+---
+
+**Financial Terms:**
+{extracted.get("financial_terms") or "—"}
+
+---
+
+**Risk Analysis:**
+"""
         if risks and isinstance(risks, (list, tuple)):
-            inner = "<ul>" + "".join(f"<li>{str(r)}</li>" for r in risks) + "</ul>"
+            full_analysis += "\n".join(f"- {str(r)}" for r in risks)
         else:
-            inner = "No explicit risks found."
-        st.markdown(f'<div class="card">{inner}</div>', unsafe_allow_html=True)
+            full_analysis += "No explicit risks found."
+        
+        st.markdown(
+            f"""
+            <div style="
+                background-color: #0d1933;
+                border: 2px solid #1a2847;
+                border-radius: 10px;
+                padding: 20px;
+                margin: 10px 0;
+                max-height: 600px;
+                overflow-y: auto;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            ">
+                <pre style="white-space: pre-wrap; margin: 0; font-size: 14px; line-height: 1.6; color: #f2f4fb;">{full_analysis}</pre>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
+    # Arabic Translation tab
+    with tabs[1]:
+        st.markdown("### 🌐 Arabic Translation")
+        st.info("Arabic translation feature available in main page analysis workflow.")
 
 with right_col:
     # ---- chat transcript ----

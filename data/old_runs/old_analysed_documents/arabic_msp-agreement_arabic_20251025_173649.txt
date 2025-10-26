@@ -1,0 +1,37 @@
+Contract Analysis - arabic_msp-agreement_arabic.json
+Generated: 2025-10-25T17:36:49.858495
+==================================================
+
+Here's an analysis of the contract:
+
+**1. BASIC INFO**
+- Contract Type: Managed Service Provider Agreement.
+- Main Parties: Corelight, Inc. (The Company) and a Managed Service Provider (MSP).
+- Purpose: The Company appoints MSP as a non-exclusive provider to market, promote, and distribute Licensed MSP Products and Services to MSP Clients.
+
+**2. KEY DATES**
+- Start Date: The last date executed below (Effective Date).
+- End Date: Initial term of 12 months, automatically renewing for 12-month increments unless cancelled.
+- Important Deadlines: Invoices due 30 days from receipt; MSP must install updates within 30 business days; Company provides 6 months' notice for product End-of-Life.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified; based on the Company's current price list.
+- Payment Schedule: Invoices issued in advance for subscription terms (monthly, quarterly, annually), due 30 days from receipt.
+- Late Fees: 1.5% per month or the highest rate allowed by law.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Appoint MSP as a non-exclusive provider and provide standard support services.
+- Party 2 Must: Ensure client agreements protect the Company and pay all fees regardless of client collection.
+
+**5. LEGAL STUFF**
+- Governing Law: Laws of the State of California.
+- Dispute Resolution: Exclusive jurisdiction in state and federal courts in San Francisco, California; prevailing party recovers costs and attorney's fees.
+
+**6. RISKS FOUND**
+- High Risk Items: Broad MSP indemnification, MSP's obligation to pay regardless of client collection, limited Company warranty (90 days), and no down-tiering of licenses during subscription.
+- Missing Protections: No explicit limitation of liability for MSP, and no clear refund policy for MSP if they terminate for convenience after advance payment.
+- Overall Risk Level: High (for MSP).
+
+**7. RECOMMENDATIONS**
+- Top Priority: Negotiate indemnification clauses, payment terms, and liability limitations to balance risk.
+- Should Legal Review: Yes, due to highly unfavorable clauses for the MSP and significant financial and legal risks.

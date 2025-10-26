@@ -21,8 +21,6 @@ def load_bench(path: Path) -> List[Dict[str, Any]]:
         it.setdefault("k", 8)
     return data
 
-
-
 # ---- Utilities ----
 def load_texts_from_index(idx_path: Path) -> Dict[str, str]:
     idx = load(idx_path)  # saved in rag_model.build()

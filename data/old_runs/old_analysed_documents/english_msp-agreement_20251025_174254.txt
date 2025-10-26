@@ -1,0 +1,37 @@
+Contract Analysis - english_msp-agreement.json
+Generated: 2025-10-25T17:42:54.718716
+==================================================
+
+Here's an analysis of the contract:
+
+**1. BASIC INFO**
+- **Contract Type:** Managed Service Provider Agreement.
+- **Main Parties:** Corelight, Inc. ("Company") and an unnamed Managed Service Provider ("MSP").
+- **Purpose:** Company appoints MSP as a nonexclusive provider of Licensed MSP Products and Services to MSP Customers.
+
+**2. KEY DATES**
+- **Start Date:** The last date executed below ("Effective Date").
+- **End Date:** Twelve (12) months, automatically renewing for twelve (12) month increments unless cancelled.
+- **Important Deadlines:** Invoices due net thirty (30) days; MSP must install Updates within thirty (30) business days; 90-day warranty period for Licensed MSP Products.
+
+**3. MONEY MATTERS**
+- **Total Value:** Not specified (depends on orders and pricing).
+- **Payment Schedule:** Invoices due net thirty (30) days from receipt; subscription terms can be monthly, quarterly, or annually, invoiced in advance.
+- **Late Fees:** Interest at 1.5% per month or the highest rate permitted by applicable law.
+
+**4. MAIN OBLIGATIONS**
+- **Party 1 (Company) Must:** Appoint MSP as a nonexclusive provider and grant licenses for Licensed MSP Products and Services; provide standard support services to MSP.
+- **Party 2 (MSP) Must:** Ensure MSP Customer agreements protect Company and name Company as a third-party beneficiary; pay all fees in full regardless of collection from customers.
+
+**5. LEGAL STUFF**
+- **Governing Law:** Not specified in the provided text.
+- **Dispute Resolution:** Injunctive relief is available for breaches of confidentiality or restrictive provisions; general dispute resolution methods are not specified.
+
+**6. RISKS FOUND**
+- **High Risk Items:** MSP has broad indemnification obligations for customer agreements and use of Licensed MSP Products; Company's liability is capped at 12 months of fees and excludes indirect damages. All fees paid are non-refundable upon termination.
+- **Missing Protections:** No specific general dispute resolution process (e.g., arbitration); Force Majeure clause is incomplete.
+- **Overall Risk Level:** Medium-High for MSP.
+
+**7. RECOMMENDATIONS**
+- **Top Priority:** MSP should carefully review the broad indemnity clauses and the limitation of liability to understand potential financial exposure.
+- **Should Legal Review:** Yes, to assess the indemnification scope, liability limitations, and ensure adequate protections for the MSP, especially regarding customer agreements and intellectual property.

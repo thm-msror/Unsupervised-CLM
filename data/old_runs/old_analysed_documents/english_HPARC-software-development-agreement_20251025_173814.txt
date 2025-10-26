@@ -1,0 +1,37 @@
+Contract Analysis - english_HPARC-software-development-agreement.json
+Generated: 2025-10-25T17:38:14.194944
+==================================================
+
+Here's the analysis of your contract:
+
+**1. BASIC INFO**
+- **Contract Type:** Software Development Agreement
+- **Main Parties:** HEMISFAIR PARK AREA REDEVELOPMENT CORPORATION (HPARC) and Software Developer.
+- **Purpose:** HPARC retains Software Developer to develop, maintain, customize, and support the Telecommunication Billing and HPARC Care System.
+
+**2. KEY DATES**
+- **Start Date:** Not specified (blank field in contract).
+- **End Date:** Not specified (blank field for initial term, continues until terminated).
+- **Important Deadlines:** Software Developer must deliver weekly reports, meet monthly, and provide a one-year warranty on the System.
+
+**3. MONEY MATTERS**
+- **Total Value:** Not specified (blank field in contract).
+- **Payment Schedule:** Software Developer provides monthly invoices based on percent complete, which HPARC must pay within thirty (30) days.
+- **Late Fees:** HPARC receives a $100.00 per calendar day credit for Software Developer's delayed delivery; no late fees for HPARC's late payments are specified.
+
+**4. MAIN OBLIGATIONS**
+- **Party 1 (HPARC) Must:** Develop business designs, provide network access and training, and pay undisputed invoices within 30 days.
+- **Party 2 (Software Developer) Must:** Develop, maintain, and support the System, provide reports and documentation, and adhere to strict IP, non-compete, and confidentiality clauses.
+
+**5. LEGAL STUFF**
+- **Governing Law:** State of Texas.
+- **Dispute Resolution:** Arbitration in Washington, D.C., under the Commercial Arbitration Rules of the American Arbitration Association.
+
+**6. RISKS FOUND**
+- **High Risk Items:** Key financial terms (total fee, initial term) are left blank, creating commercial uncertainty. The "work made for hire" and non-competition clauses are very broad and heavily favor HPARC, limiting the Software Developer's future business. HPARC has extensive control over Software Developer's staffing and resource allocation.
+- **Missing Protections:** A general limitation of liability for the Software Developer is not explicitly detailed. A force majeure clause is not present in the provided sections.
+- **Overall Risk Level:** High
+
+**7. RECOMMENDATIONS**
+- **Top Priority:** Immediately fill in all blank commercial terms, especially the total lump sum fee and the initial term of the agreement.
+- **Should Legal Review:** Yes, absolutely. The contract contains significant intellectual property, non-competition, and liability clauses that could pose substantial risks to the Software Developer.

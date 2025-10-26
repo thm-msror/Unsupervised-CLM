@@ -1,0 +1,37 @@
+Contract Analysis - english_software-development-agreement-contract-template-word.json
+Generated: 2025-10-25T17:43:08.453453
+==================================================
+
+Here's the analysis of the contract:
+
+**1. BASIC INFO**
+- Contract Type: Software Development Agreement.
+- Main Parties: Company (Client) and Developer (Software Company).
+- Purpose: To outline terms for the Developer to create, supply, and install custom software packages for the Company.
+
+**2. KEY DATES**
+- Start Date: To be filled in the header.
+- End Date: Not specified.
+- Important Deadlines: Delivery dates for each development Phase are critical, with penalties for delays.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified; fixed price is determined per Phase.
+- Payment Schedule: Payments are phased: upon signing Phase Agreement, upon delivery, upon passing acceptance tests, and a final payment after live use.
+- Late Fees: Developer faces a percentage reduction in cost for late delivery and potential Phase cancellation.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must (Company): Approve programming specifications, conduct acceptance tests, and make timely payments.
+- Party 2 Must (Developer): Develop custom software, consult with Company, design specifications, and deliver completed programming for each phase.
+
+**5. LEGAL STUFF**
+- Governing Law: Not specified in the template; mentioned as a clause type to be included.
+- Dispute Resolution: Not specified in the template; mentioned as a clause type to be included.
+
+**6. RISKS FOUND**
+- High Risk Items: Requirements for custom programming are "presently undefined" (Clause 3.2), leading to potential scope creep. Many critical financial percentages and timelines are left blank.
+- Missing Protections: Specific clauses for confidentiality, non-competition, copyright, and warranties are mentioned as general types but not detailed in the provided text. Governing law and dispute resolution are also missing.
+- Overall Risk Level: Medium to High.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Define all software requirements and complete all blank financial and timeline terms before execution.
+- Should Legal Review: Yes, to fill in missing critical clauses (e.g., IP, warranties, confidentiality, governing law, dispute resolution) and ensure all blanks are appropriately completed.

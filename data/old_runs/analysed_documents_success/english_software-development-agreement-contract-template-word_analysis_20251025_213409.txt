@@ -1,0 +1,58 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: english_software-development-agreement-contract-template-word.json
+Analyzed: 2025-10-25 21:34:09
+Language: EN
+Original Length: 16,242 characters
+Processing Time: 12.77 seconds
+
+==================================================
+
+Here's an analysis of the provided contract template:
+
+**1. BASIC INFO**
+- Contract Type: Software Development Agreement.
+- Main Parties: The "Company" (Client) and the "Developer" (Software Company).
+- Purpose: To outline terms for the Developer to create, supply, and install custom software packages for the Company, with ownership transferring to the Client.
+
+**2. KEY DATES**
+- Start Date: Not specified, indicated by "DATE: .............................................................................................................................................".
+- End Date: Not specified.
+- Important Deadlines: Delivery dates for Phases are critical, with "time is of the essence" (Clause 4.4), and penalties for delays are mentioned but undefined.
+
+**3. MONEY MATTERS**
+- Total Value: Not specified, as all payment percentages and fixed costs are blank placeholders.
+- Payment Schedule: Payments are phased, tied to Phase Agreement signing, delivery, acceptance test passing, and successful live use, but all percentages are blank.
+- Late Fees: Penalties for late delivery are mentioned, including a percentage reduction in cost, but the percentages and grace periods are undefined placeholders.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Approve programming specifications, conduct acceptance tests, and make phased payments.
+- Party 2 Must: Develop custom software, design programming specifications, deliver completed programming, and remedy acceptance test failures.
+
+**5. LEGALITY**
+- Governing Law: Not specified in the provided clauses; mentioned as a general clause type in the introductory text.
+- Dispute Resolution: Not specified in the provided clauses; mentioned as a general clause type in the introductory text.
+
+**6. RISKS FOUND**
+- High Risk Items: The contract is a template with numerous critical blank spaces, making it non-executable and highly ambiguous. Key terms like requirements, payment amounts, and timelines are undefined.
+- Clause References:
+    - "The requirements to be fulfilled by the custom programming to the above listed packages are presently undefined." - Clause 3.2
+    - "Upon the signing of the Phase Agreement by both Company and Developer, Company shall pay to Developer ……… [insert number] % of the fixed cost indicated in the Phase Agreement." - Clause 4.5
+    - "Failure by Developer to deliver the completed programming by the end of the ………[insert number] days after the delivery date specified in the Phase Agreement will entitle Company to a ……. [insert number] % reduction in the cost of the entire Phase for each ……. [insert number] day period in which Developer is late." - Clause 4.5
+    - "If the failure can be remedied within [NUMBER] days, and the Acceptance testing shall continue." - Clause 4.12
+- Missing Protections: Specific clauses for governing law, dispute resolution, detailed IP ownership (beyond general transfer), confidentiality, non-competition, limitation of liability, force majeure, and comprehensive termination rights are not included in the provided text.
+- Overall Risk Level: High. The document is an incomplete template with critical financial, scope, and legal terms undefined, leading to significant potential for disputes and non-enforceability.
+
+**7. RECOMMENDATIONS**
+- Top Priority: All blank spaces, especially those related to scope, requirements, payment terms, and deadlines, must be precisely defined and filled.
+- Should Legal Review: Yes, absolutely. The document is a template requiring extensive customization and the addition of crucial legal clauses to be a binding and enforceable agreement.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "The requirements to be fulfilled by the custom programming to the above listed packages are presently undefined." - Location: Clause 3.2
+- Risk Clause 2: "Upon the signing of the Phase Agreement by both Company and Developer, Company shall pay to Developer ……… [insert number] % of the fixed cost indicated in the Phase Agreement." - Location: Clause 4.5, Paragraph 7
+- Key Terms Location:
+    - "Services": Clause 1
+    - "Developer responsibilities": Clause 3
+    - "Development Phases and Sub-phases": Clause 4
+    - "time is of the essence": Clause 4.4, Paragraph 3
+- Review Priority Areas: Clauses 2 (Scope), 3 (Developer Responsibilities), 4 (Development Phases and Sub-Phases), and the entire document for missing standard legal clauses (e.g., governing law, dispute resolution, IP, confidentiality, liability).

@@ -1,0 +1,62 @@
+CONTRACT ANALYSIS REPORT
+==================================================
+Document: arabic_HPARC-software-development-agreement_arabic.json
+Analyzed: 2025-10-25 21:30:35
+Language: AR
+Original Length: 28,247 characters
+Processing Time: 43.68 seconds
+
+==================================================
+
+**1. BASIC INFO**
+- Contract Type: Software Development Agreement (ﺍﺗﻔﺎﻗﻴﺔ ﺗﻄﻮﻳﺮ ﺍﻟﺒﺮﻣﺠﻴﺎﺕ).
+- Main Parties: HEMISFAIR PARK AREA REDEVELOPMENT CORPORATION (HPARC) and the Software Developer (ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ).
+- Purpose: HPARC retains the Software Developer to perform software development services to support HPARC's operations.
+
+**2. KEY DATES**
+- Start Date: As of [Day, blank], 2021.
+- End Date: Not specified; continues based on future need until terminated.
+- Important Deadlines: Weekly reports, monthly meetings, 30-day payment term, 1-year warranty, 30-day cure period for breach, 90-day notice for HPARC termination without cause.
+
+**3. MONEY MATTERS**
+- Total Value: Lump sum - Not specified (_____________________, ($________)).
+- Payment Schedule: Monthly, based on a percentage completed for each development task and deliverables.
+- Late Fees: Not specified.
+
+**4. MAIN OBLIGATIONS**
+- Party 1 Must: Develop business designs, provide network access, assist in integration testing, and provide adequate training on HPARC systems.
+- Party 2 Must: Develop, maintain, customize, distribute, and administer the system; provide 24-hour emergency response, Level Two support, and documentation; deliver weekly reports and meet monthly.
+
+**5. LEGALITY**
+- Governing Law: Laws of the State of Texas (ﻗﻮﺍﻧﻴﻦ ﻭﻻﻳﺔ ﺗﻜﺴﺎﺱ).
+- Dispute Resolution: Arbitration in accordance with the Commercial Arbitration Rules of the American Arbitration Association in Washington D.C. (ﺍﻟﺘﺤﻜﻴﻢ ﻭﻓﻘﺎ ﻟﻘﻮﺍﻋﺪ ﺍﻟﺘﺤﻜﻴﻢ ﺍﻟﺘﺠﺎﺭﻱ ﻟﺠﻤﻌﻴﺔ ﺍﻟﺘﺤﻜﻴﻢ ﺍﻷﻣﺮﻳﻜﻴﺔ ﻓﻲ ﻭﺍﺷﻨﻄﻦ ﺍﻟﻌﺎﺻﻤﺔ).
+
+**6. RISKS FOUND**
+- High Risk Items: HPARC can terminate without cause with minimal payment, developer termination without cause allows HPARC to extend for 180 days, and a broad "work for hire" clause assigns all IP to HPARC.
+- Clause References:
+    - "ﻳﺠﻮﺯ ﻟﺸﺮﻛﺔ HPARC ﺇﻧﻬﺎﺀ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ ﻓﻲ ﺃﻱ ﻭﻗﺖ، ﻭﺩﻭﻥ ﺳﺒﺐ، ﺑﻨﺎﺀ ﻋﻠﻰ ﺇﺧﻄﺎﺭ ﻣﺴﺒﻖ ﻗﺒﻞ ﺗﺴﻌﻴﻦ (90) ﻳﻮﻣﺎ ﺃﻭ ﺩﻓﻊ ﻣﺒﺎﻟﻎ ﺗﻌﺎﺩﻝ ﻣﺒﺎﻟﻎ ﻓﻮﺗﺮﺓ ﺷﻬﺮ ﻭﺍﺣﺪ (1) ﺍﻟﺴﺎﺑﻖ." - Section 7.b.
+    - "ﻓﻲ ﺣﺎﻟﺔ ﺇﻧﻬﺎﺀ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ ﻣﻦ ﻗﺒﻞ ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ ﺩﻭﻥ ﺳﺒﺐ، ﻗﺒﻞ ﻧﻬﺎﻳﺔ ﻣﺪﺓ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ، ﻳﺠﻮﺯ ﻝ HPARC ﺗﻤﺪﻳﺪ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ ﺇﻟﻰ ﻣﺎ ﺑﻌﺪ ﺗﺎﺭﻳﺦ ﺍﻹﻧﻬﺎﺀ ﺍﻟﻤﻌﻠﻦ ﻟﻤﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ ﻟﻤﺪﺓ ﻣﺎﺋﺔ ﻭﺛﻤﺎﻧﻴﻦ (180) ﻳﻮﻣﺎ ﺑﻌﺪ ﺗﺎﺭﻳﺦ ﺍﻟﺬﻛﺮﻯ ﺍﻟﺴﻨﻮﻳﺔ ﺑﺎﻷﺳﻌﺎﺭ ﺍﻟﻤﻌﻤﻮﻝ ﺑﻬﺎ ﺣﺎﻟﻴﺎ" - Section 7.c.
+    - "ﻳﻘﺮ ﺍﻟﻄﺮﻓﺎﻥ ﺑﺄﻥ ﺃﻱ ﻋﻤﻞ ﻳﻘﻮﻡ ﺑﻪ ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ ﻝ HPARC ﻳﺘﻢ ﺇﻧﺸﺎﺅﻩ ﺑﻨﺎﺀ ﻋﻠﻰ ﺇﺻﺮﺍﺭ HPARC ﻭﻳﻌﺘﺒﺮ "ﻋﻤﻼ ﺗﻢ ﺇﻧﺸﺎﺅﻩ ﻟﻠﺘﺄﺟﻴﺮ" ﺑﻤﻮﺟﺐ ﻗﺎﻧﻮﻥ ﺣﻘﻮﻕ ﺍﻟﻄﺒﻊ ﻭﺍﻟﻨﺸﺮ ﻓﻲ ﺍﻟﻮﻻﻳﺎﺕ ﺍﻟﻤﺘﺤﺪﺓ." - Section 10.a.
+- Missing Protections: A general limitation of liability clause, detailed data security/privacy provisions, and source code escrow are not explicitly included.
+- Overall Risk Level: High, due to numerous blank commercial terms, HPARC-favored termination and IP clauses, and potential conflicts regarding developer's proprietary software.
+
+**7. RECOMMENDATIONS**
+- Top Priority: Fill in all blank fields, especially for the contract term and total value, and negotiate more balanced termination and IP clauses.
+- Should Legal Review: Yes, a comprehensive legal review is essential due to significant implications for IP ownership, termination rights, and potential liabilities.
+
+**8. LEGAL REVIEW CITATIONS**
+- Risk Clause 1: "ﻳﺠﻮﺯ ﻟﺸﺮﻛﺔ HPARC ﺇﻧﻬﺎﺀ ﻫﺬﻩ ﺍﻻﺗﻔﺎﻗﻴﺔ ﻓﻲ ﺃﻱ ﻭﻗﺖ، ﻭﺩﻭﻥ ﺳﺒﺐ، ﺑﻨﺎﺀ ﻋﻠﻰ ﺇﺧﻄﺎﺭ ﻣﺴﺒﻖ ﻗﺒﻞ ﺗﺴﻌﻴﻦ (90) ﻳﻮﻣﺎ ﺃﻭ ﺩﻓﻊ ﻣﺒﺎﻟﻎ ﺗﻌﺎﺩﻝ ﻣﺒﺎﻟﻎ ﻓﻮﺗﺮﺓ ﺷﻬﺮ ﻭﺍﺣﺪ (1) ﺍﻟﺴﺎﺑﻖ." - Location: Section 7.b.
+- Risk Clause 2: "ﻳﻘﺮ ﺍﻟﻄﺮﻓﺎﻥ ﺑﺄﻥ ﺃﻱ ﻋﻤﻞ ﻳﻘﻮﻡ ﺑﻪ ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ ﻝ HPARC ﻳﺘﻢ ﺇﻧﺸﺎﺅﻩ ﺑﻨﺎﺀ ﻋﻠﻰ ﺇﺻﺮﺍﺭ HPARC ﻭﻳﻌﺘﺒﺮ "ﻋﻤﻼ ﺗﻢ ﺇﻧﺸﺎﺅﻩ ﻟﻠﺘﺄﺟﻴﺮ" ﺑﻤﻮﺟﺐ ﻗﺎﻧﻮﻥ ﺣﻘﻮﻕ ﺍﻟﻄﺒﻊ ﻭﺍﻟﻨﺸﺮ ﻓﻲ ﺍﻟﻮﻻﻳﺎﺕ ﺍﻟﻤﺘﺤﺪﺓ." - Location: Section 10.a.
+- Key Terms Location:
+    - "ﺍﺗﻔﺎﻗﻴﺔ ﺗﻄﻮﻳﺮ ﺍﻟﺒﺮﻣﺠﻴﺎﺕ" - Title/Preamble
+    - "HPARC" - Preamble
+    - "ﻣﻄﻮﺭ ﺍﻟﺒﺮﺍﻣﺞ" - Preamble
+    - "ﺩﻋﻢ ﺍﻟﻤﺴﺘﻮﻯ ﺍﻷﻭﻝ" - Section 1.a
+    - "ﺩﻋﻢ ﺍﻟﻤﺴﺘﻮﻯ ﺍﻟﺜﺎﻧﻲ" - Section 1.b
+    - "ﺍﻟﻀﺮﺍﺋﺐ" - Section 1.c
+    - "ﺍﻟﺨﺪﻣﺎﺕ" - Section 3.a
+    - "ﺍﻟﻨﻈﺎﻡ" - Section 3.a
+    - "ﻃﻠﺐ ﺍﻟﺘﻌﺪﻳﻞ/ﺍﻟﺘﻐﻴﻴﺮ" - Section 5.a
+    - "ﻋﻤﻼ ﺗﻢ ﺇﻧﺸﺎﺅﻩ ﻟﻠﺘﺄﺟﻴﺮ" - Section 10.a
+    - "ﺍﻟﻘﻮﺓ ﺍﻟﻘﺎﻫﺮﺓ" - Section 20
+- Review Priority Areas: Sections 2 (Term), 4 (Fees and Payment), 6 (Warranty and Disclaimer), 7 (Termination), 8 (Non-Compete, Confidentiality, Non-Solicitation), 9 (Deliverables, especially 9.d on proprietary software), 10 (Rights in Work), 12 (Indemnification), 13 (IP Indemnification), 14 (Time, Compliance with Laws, Export Controls), 16 (Arbitration).
