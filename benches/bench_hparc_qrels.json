@@ -1,0 +1,96 @@
+[
+  {
+    "q": "What is the governing law?",
+    "k": 8,
+    "gold_ids": [
+      "sec_9"
+    ],
+    "gold_answers": [
+      "13."
+    ]
+  },
+  {
+    "q": "What are termination rights?",
+    "k": 8,
+    "gold_ids": [
+      "sec_6",
+      "sec_7",
+      "sec_8"
+    ],
+    "gold_answers": [
+      "7.",
+      "8.",
+      "9."
+    ]
+  },
+  {
+    "q": "What are the payment terms?",
+    "k": 8,
+    "gold_ids": [
+      "sec_4",
+      "sec_9",
+      "sec_11"
+    ],
+    "gold_answers": [
+      "4.",
+      "13.",
+      "NOT USED Exhibit C Weekly Status Report & Monthly Invoice Format Weekly Status Report The Weekly Status Report shall be addressed to the HPARC project manager and shall contain the following information for each HPARC project the Software Developer, or its staff, employees or assigns have performed any work on: Current Status of the Project Progress towards HPARC objectives Estimated progress for the next week Personnel and skill level working on the project Issues The Weekly Status Report shall be in PC-compatible Microsoft Word format, with 12pitch, Arial font."
+    ]
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "k": 8,
+    "gold_ids": [
+      "sec_5",
+      "sec_7",
+      "sec_8"
+    ],
+    "gold_answers": [
+      "6.",
+      "8.",
+      "9."
+    ]
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "k": 8,
+    "gold_ids": [
+      "sec_0",
+      "sec_1",
+      "sec_2",
+      "sec_3",
+      "sec_4",
+      "sec_5",
+      "sec_6",
+      "sec_7",
+      "sec_8",
+      "sec_9"
+    ],
+    "gold_answers": [
+      "Software Development Agreement THIS SOFTWARE DEVELOPMENT AGREEMENT is entered into as of the day of , 2021, by and between HEMISFAIR PARK AREA REDEVELOPMENT CORPORATION, a public, nonprofit Texas local government corporation formed under Subchapter D of Chapter 431 of the Texas Transportation Code, with its address at 630 East Nueva Street, San Antonio, TX 782045 (“HPARC”), and _______________________ a ____________ corporation with its principal place of business at ______________________________(the “Software Developer”).",
+      "Witnesseth: WHEREAS, HPARC is desirous of retaining Software Developer to perform the software development services described in this Agreement for the support of HPARC’s business; and WHEREAS, Software Developer desires to perform these services in accordance with the terms and conditions of this Agreement; and WHEREAS, Software Developer represents and warrants that it possesses the qualifications and skills necessary to perform the software development services described in this Agreement; and WHEREAS, Software Developer has previously performed similar software development services for governmental clients and is familiar with HPARC’s desired product.",
+      "1."
+    ]
+  },
+  {
+    "q": "What is the liability cap?",
+    "k": 8,
+    "gold_ids": [
+      "sec_9",
+      "sec_7",
+      "sec_3",
+      "sec_11",
+      "sec_10",
+      "sec_8",
+      "sec_6",
+      "sec_2",
+      "sec_1",
+      "sec_4"
+    ],
+    "gold_answers": [
+      "13.",
+      "8.",
+      "3."
+    ]
+  }
+]

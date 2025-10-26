@@ -58,6 +58,13 @@ LEGAL_PATTERNS = {
 }
 
 
+# top of file
+_SBERT_CACHE = {}
+def _get_sbert(name):
+    from sentence_transformers import SentenceTransformer
+    if name not in _SBERT_CACHE:
+        _SBERT_CACHE[name] = SentenceTransformer(name)
+    return _SBERT_CACHE[name]
 
 
 
@@ -361,7 +368,7 @@ def _search(idx_obj, query: str, k: int) -> List[Tuple[str,float,str]]:
     elif idx_obj["type"] == "sbert":
         from sentence_transformers import SentenceTransformer
         import numpy as np
-        model = SentenceTransformer(idx_obj["model_name"])
+        model = _get_sbert(idx_obj["model_name"])
         qv = model.encode([q], normalize_embeddings=True)[0]
         sims = (idx_obj["X"] @ qv)
         order = np.argsort(sims)[::-1][:max(k, 50)]
@@ -392,9 +399,12 @@ def ask(idx_path: str, query: str, k: int=8, lambda_mmr: float=0.75, mode: str="
         "answer": round((t4 - t3) * 1000, 2),
         "total": round((t4 - t0) * 1000, 2),
     }
+    contexts = [{"id": h[0], "text": h[2]} for h in hits[:k]]
+
     return {
         "query": query,
         "hits": [{"id": h[0], "score": h[1]} for h in hits],
+        "contexts": contexts,
         "result": ans,
         "timings_ms": timings_ms,
         "meta": idx.get("meta", {})
@@ -423,6 +433,7 @@ def main():
         print(orjson.dumps({"status":"ok","meta":meta}, option=orjson.OPT_INDENT_2).decode())
     else:
         out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+        
         print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
 
 if __name__ == "__main__":

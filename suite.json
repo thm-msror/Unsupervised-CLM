@@ -1,0 +1,9 @@
+{
+  "datasets": [
+    {"name":"contracts_en","idx":".cache/idx_fin_en_tfidf.joblib","bench":"benches/bench_fin_qrels.json"},
+    {"name":"contracts_ar","idx":".cache/idx_fin_ar_sbert.joblib","bench":"benches/bench_fin_ar_qrels.json"},
+    {"name":"hparc","idx":".cache/idx_hparc.joblib","bench":"benches/bench_hparc_qrels.json"},
+    {"name":"msp","idx":".cache/idx_msp.joblib","bench":"benches/bench_msp_qrels.json"},
+    {"name":"sda","idx":".cache/idx_sda.joblib","bench":"benches/bench_sda_qrels.json"}
+  ]
+}
