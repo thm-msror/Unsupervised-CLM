@@ -217,7 +217,7 @@ def test():
    
     generate_contract_doc(
         contract_data = contract_input_1, 
-        template_path = r"prompts\contract_template.md", 
+        template_path = r"prompts\contract_templates\default.md", 
         output_file_path = r"data\generated_contracts\contract_output.docx", 
         old_contract_path=r"data\english\FinAmFamMut2016RestructExhA-19.docx"
     )
