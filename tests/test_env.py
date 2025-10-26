@@ -99,7 +99,7 @@ def fix_common_env_issues():
     print(f"\n2. File Format:")
     print(f"   ✅ No spaces around = sign")
     print(f"   ✅ No quotes around values")
-    print(f"   ✅ Example: GEMINI_API_KEY=AIzaSyBf64zxrlhfjkUAhjLfJAFROoXt9WJaJmo")
+    print(f"   ✅ Example: GEMINI_API_KEY=AIza... (replace with your actual key)")
     
     print(f"\n3. API Key Format:")
     print(f"   ✅ Google AI Studio keys start with 'AIza'")
