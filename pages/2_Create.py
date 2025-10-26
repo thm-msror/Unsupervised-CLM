@@ -91,15 +91,33 @@ st.text_area("Generated draft", value=draft, height=280, label_visibility="colla
 cA, cB = st.columns([1,1])
 with cA:
     if st.button("Use this draft"):
-        # (Optionally: put structured data into session_state to show on Results)
-        st.session_state["result"] = {
+        # Store the draft in session state
+        st.session_state["created_result"] = {
             "summary": "Demo: Created a tailored draft.",
             "extracted": {"contracting_parties": [], "key_dates": {}, "governing_law": law, "jurisdiction": forum},
             "risks": ["Draft not reviewed by LLM yet."],
             "raw_text": draft,
         }
-        st.switch_page("pages/4_Results.py")
-with cB:
-    st.download_button("Download .txt", draft.encode("utf-8"), file_name="contract_draft.txt")
+        st.session_state["show_create_results"] = True
+        st.rerun()
+
+# Show results section if draft was created
+if st.session_state.get("show_create_results", False) and "created_result" in st.session_state:
+    st.markdown("---")
+    st.success("✅ Draft created successfully!")
+    
+    result = st.session_state["created_result"]
+    draft_text = result["raw_text"]
+    
+    st.markdown("### Created Contract Draft")
+    st.text_area("Contract Draft", value=draft_text, height=300, key="created_draft_preview", label_visibility="collapsed")
+    
+    st.download_button(
+        "📥 Download Draft (.txt)", 
+        draft_text.encode("utf-8"), 
+        file_name="contract_draft.txt",
+        type="primary",
+        use_container_width=True
+    )
 
 st.markdown('</div>', unsafe_allow_html=True)

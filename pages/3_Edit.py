@@ -176,15 +176,33 @@ with c_form:
             )
 
             # 3. Save results to session state
-            st.session_state["result"] = {
-                "summary": "Demo: Contract metadata edited. Review the 'Raw Text' tab on the Results page to see the generated draft.",
+            st.session_state["edited_result"] = {
+                "summary": "Demo: Contract metadata edited. Review the edited contract below.",
                 "extracted": metadata,
                 "risks": ["Demo: Risk analysis required on new draft."],
                 "raw_text": edited_contract_text,
                 "is_edited_draft": True,
             }
-            
-            # 4. Switch to Results page
-            st.switch_page("pages/4_Results.py")
+            st.session_state["show_edit_results"] = True
+
+# Display results outside the form
+if st.session_state.get("show_edit_results", False) and "edited_result" in st.session_state:
+    st.markdown("---")
+    st.success("✅ Contract edited successfully!")
+    
+    result = st.session_state["edited_result"]
+    edited_text = result["raw_text"]
+    
+    st.markdown("### Edited Contract Preview")
+    st.text_area("Edited Contract", value=edited_text, height=400, key="edited_preview", label_visibility="collapsed")
+    
+    # Download button (outside form)
+    st.download_button(
+        "📥 Download Edited Contract",
+        edited_text.encode("utf-8"),
+        file_name=f"edited_contract_{date.today().isoformat()}.txt",
+        mime="text/plain",
+        type="primary"
+    )
 
 st.markdown('</div>', unsafe_allow_html=True)

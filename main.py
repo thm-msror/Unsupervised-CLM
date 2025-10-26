@@ -682,6 +682,29 @@ def build_rag_index_for_analysis(analysis_data):
                 })
                 segment_id += 1
         
+        # If we have too few segments, split the content into paragraphs
+        if len(segments) < 3 and content:
+            segments = []
+            segment_id = 0
+            
+            # Split by double newlines (paragraphs)
+            paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+            
+            # If still too few, split by single newlines
+            if len(paragraphs) < 3:
+                paragraphs = [p.strip() for p in content.split('\n') if p.strip() and len(p.strip()) > 50]
+            
+            # Create segments from paragraphs
+            for para in paragraphs:
+                if para and len(para) > 20:  # Skip very short segments
+                    segments.append({
+                        "id": str(segment_id),
+                        "text": para,
+                        "title": f"Section {segment_id + 1}",
+                        "level": 2
+                    })
+                    segment_id += 1
+        
         if not segments:
             return None
         
@@ -738,7 +761,9 @@ def answer_contract_question(question, index_data):
             if answer != "NOT_FOUND":
                 citations = answer_data.get('citations', [])
                 if citations:
-                    return f"{answer}\n\n*Source: Analysis sections {', '.join(citations)}*"
+                    # Convert citations to strings in case they're integers
+                    citation_strs = [str(c) for c in citations]
+                    return f"{answer}\n\n*Source: Analysis sections {', '.join(citation_strs)}*"
                 return answer
             else:
                 return "I couldn't find specific information about that in the contract analysis. Could you try rephrasing your question?"
@@ -879,7 +904,7 @@ st.markdown(dedent("""
       <span class="brand-text">VERDICT</span>
     </a>
     <ul class="nav-links nav-right">
-        <li><a class="nav-pill" href="/Upload">Upload</a></li>
+        <li><a class="nav-pill" href="/">Home</a></li>
         <li><a class="nav-pill" href="/Create">Create</a></li>
         <li><a class="nav-pill" href="/Edit">Edit</a></li>
     </ul>
