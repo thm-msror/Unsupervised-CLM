@@ -1,0 +1,55 @@
+q,status,latency_ms,hit_at_k,p1,em,err
+ما هو القانون الحاكم؟,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 427, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 424, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\anaconda3\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 15-16: character maps to <undefined>"
+ما هي حقوق إنهاء العقد؟,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 427, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 424, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\anaconda3\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 15-16: character maps to <undefined>"
+ما هي شروط الدفع؟,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 427, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 424, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\anaconda3\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 15-16: character maps to <undefined>"
+هل توجد سرية وكيف نطاقها؟,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 427, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 424, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\anaconda3\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 15-16: character maps to <undefined>"
+من هم الأطراف والأدوار؟,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 427, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 424, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\anaconda3\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 15-16: character maps to <undefined>"
+ما هو حد المسؤولية؟,ERR,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 427, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix\Unsupervised-CLM\app\rag_model.py"", line 424, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\anaconda3\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 15-16: character maps to <undefined>"

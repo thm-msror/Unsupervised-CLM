@@ -23,7 +23,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 LEGAL_PATTERNS = {
     "governing_law": re.compile(
-        r"(?:governing law[^.]*\.|construed\s+and\s+enforced\s+according\s+to\s+the\s+laws\s+of\s+[^.]+\.)",
+        r"(?:governing\s+law[^.]*\.|construed\s+and\s+enforced\s+in\s+accordance\s+with\s+the\s+laws\s+of\s+[^.]+\."
+        r"|laws?\s+and\s+regulations\s+of\s+[^.]+\.)",
         re.I
     ),
     "termination": re.compile(
@@ -128,11 +129,12 @@ def try_sbert(segments: List[Dict[str,Any]]):
     try:
         from sentence_transformers import SentenceTransformer
         import numpy as np
-        model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+        model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        model = SentenceTransformer(model_name)
         texts = [s["text"] for s in segments]
         ids = [s["id"] for s in segments]
         X = model.encode(texts, normalize_embeddings=True, show_progress_bar=False)
-        return {"type":"sbert", "model_name":"all-MiniLM-L6-v2", "ids":ids, "texts":texts, "X":X}
+        return {"type":"sbert", "model_name": model_name, "ids":ids, "texts":texts, "X":X}
     except Exception:
         return None
     
@@ -144,8 +146,8 @@ def _rewrite_query(q: str) -> str:
         boosts += ['"governing law"', "construed", "enforced", "laws of", "state of"]
     if "terminat" in ql or "expire" in ql:
         boosts += ["termination", "notice", '"prior written notice"', "insolvent", "mutual written agreement"]
-    if "payment" in ql or "fee" in ql or "charges" in ql or "settle" in ql or "compensation" in ql:
-        boosts += ["payment", "pass-through", "monthly", "charge", "settle", "net basis"]
+    if any(x in ql for x in ("payment","fee","fees","charges","settle","compensation","consideration","remuneration")):
+        boosts += ["payment", "pass-through", "monthly", "charge", "settle", "net basis", "invoice", "due date", "late fee"]
     if "parties" in ql or "roles" in ql:
         boosts += ["by and among", "between", "affiliate", "service provider", "service recipient"]
     return q + " " + " ".join(boosts)
@@ -353,7 +355,7 @@ def _search(idx_obj, query: str, k: int) -> List[Tuple[str,float,str]]:
         qv = idx_obj["vectorizer"].transform([q])
         sims = cosine_similarity(qv, idx_obj["X"]).ravel()
         order = sims.argsort()[::-1]
-        topn = max(k, 50)
+        topn = 50  # stable candidate pool for MMR
         order = order[:topn]
         return [(idx_obj["ids"][i], float(sims[i]), idx_obj["texts"][i]) for i in order]
     elif idx_obj["type"] == "sbert":

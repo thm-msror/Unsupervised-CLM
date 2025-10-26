@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 # metrics_rag.py — local RAG metrics (latency + simple accuracy) for one index.
-# No external deps beyond stdlib + joblib (already used by your project).
 
 import sys, json, re, csv, subprocess, argparse
 from pathlib import Path
 from typing import Dict, List, Tuple, Any
 from joblib import load
 
-# --- add near top, replace BENCH and add loader ---
-import sys, json, re, csv, subprocess, argparse
-from pathlib import Path
-from typing import Dict, List, Tuple, Any
-
+# ---- Bench loader ----
 def load_bench(path: Path) -> List[Dict[str, Any]]:
     data = json.loads(path.read_text(encoding="utf-8"))
     # expected: [{"q": "...", "gold_regex": "...", "k": 8}, ...]
@@ -20,8 +15,6 @@ def load_bench(path: Path) -> List[Dict[str, Any]]:
             raise ValueError(f"bench item {i} missing 'q' or 'gold_regex'")
         it.setdefault("k", 8)
     return data
-
-
 
 # ---- Utilities ----
 def load_texts_from_index(idx_path: Path) -> Dict[str, str]:
@@ -33,7 +26,7 @@ def load_texts_from_index(idx_path: Path) -> Dict[str, str]:
 def run_ask(idx_path: Path, query: str, k: int) -> Tuple[Any, Dict[str,str] | None]:
     py = sys.executable  # use current venv interpreter
     cmd = [
-        py, str(Path("app") / "rag_model.py"), "ask",
+        py, str(Path("rag_model.py")), "ask",
         "--idx", str(idx_path), "--q", query, "--k", str(k), "--mode", "extractive",
     ]
     p = subprocess.run(cmd, capture_output=True, text=True)
@@ -68,20 +61,18 @@ def exact_match(answer_text: str, gold_regex: str) -> int:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--idx", default=str(Path(".cache") / "idx.joblib"))
-    ap.add_argument("--parsed", default=str(Path("data") / "parsed" / "english_FinAmFamMut2016RestructExhA-19.json"))
     ap.add_argument("--out_csv", default=str(Path(".cache") / "metrics.csv"))
-    ap.add_argument("--bench", required=True, help="Path to bench JSON")   
+    ap.add_argument("--bench", required=True, help="Path to bench JSON")
     args = ap.parse_args()
 
     idx_path = Path(args.idx)
     out_csv = Path(args.out_csv)
     out_csv.parent.mkdir(parents=True, exist_ok=True)
 
-    # Ground truth text comes from the index to match hit IDs (supports sentence-split builds)
     texts_by_id = load_texts_from_index(idx_path)
 
     rows = []
-    BENCH = load_bench(Path(args.bench)) 
+    BENCH = load_bench(Path(args.bench))
     for b in BENCH:
         out, err = run_ask(idx_path, b["q"], b["k"])
         if err:
@@ -124,7 +115,7 @@ def main():
             "avg_latency_ms": avg_lat,
             "Hit@k": round(sum(r["hit_at_k"] for r in oks) / len(oks), 3),
             "P@1":   round(sum(r["p1"] for r in oks) / len(oks), 3),
-            "ExactMatch": round(sum(r["em"] for r in oks) / len(oks), 3),
+            "ExactMatch": round(sum(r["em"] for r in oks) / len(oks), 3)
         }, indent=2))
     else:
         print(json.dumps({"queries": len(rows), "ok": 0}, indent=2))
