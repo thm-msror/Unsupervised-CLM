@@ -1,5 +1,6 @@
 # Web Framework
 streamlit>=1.29.0
+extract-msg<=0.29.0
 
 # LLM & AI APIs
 google-generativeai>=0.3.0  # Google Gemini API
@@ -31,7 +32,7 @@ pandas>=2.0.0
 numpy>=1.24.0
 
 # Utilities
-python-dotenv>=1.0.0
+python-dotenv
 requests>=2.31.0
 
 # Testing
