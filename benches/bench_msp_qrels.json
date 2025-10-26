@@ -1,0 +1,75 @@
+[
+  {
+    "q": "What is the governing law and venue?",
+    "k": 8,
+    "gold_ids": [
+      "sec_10"
+    ],
+    "gold_answers": [
+      "19."
+    ]
+  },
+  {
+    "q": "What are the termination rights?",
+    "k": 8,
+    "gold_ids": [
+      "sec_8"
+    ],
+    "gold_answers": [
+      "15."
+    ]
+  },
+  {
+    "q": "What are the payment terms?",
+    "k": 8,
+    "gold_ids": [
+      "sec_4"
+    ],
+    "gold_answers": [
+      "6."
+    ]
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "k": 8,
+    "gold_ids": [
+      "sec_5",
+      "sec_8"
+    ],
+    "gold_answers": [
+      "9.",
+      "15."
+    ]
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "k": 8,
+    "gold_ids": [
+      "sec_1",
+      "sec_0",
+      "sec_2",
+      "sec_3",
+      "sec_4",
+      "sec_5",
+      "sec_6",
+      "sec_7",
+      "sec_8",
+      "sec_10"
+    ],
+    "gold_answers": [
+      "MANAGED SERVICE PROVIDER AGREEMENT This MANAGED SERVICE PROVIDER AGREEMENT (the “Agreement”) is made and entered into as of the last date executed below (“Effective Date”) by and between Corelight, Inc.",
+      "MANAGED SERVICE PROVIDER AGREEMENT This MANAGED SERVICE PROVIDER AGREEMENT (the “Agreement”) is made and entered into as of the last date executed below (“Effective Date”) by and between Corelight, Inc.",
+      "1."
+    ]
+  },
+  {
+    "q": "What is the liability cap?",
+    "k": 8,
+    "gold_ids": [
+      "sec_7"
+    ],
+    "gold_answers": [
+      "14."
+    ]
+  }
+]

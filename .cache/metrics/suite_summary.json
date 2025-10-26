@@ -1,0 +1,86 @@
+{
+  "per_dataset": [
+    {
+      "queries": 6,
+      "ok": 6,
+      "avg_latency_ms": 45.04,
+      "Hit@k": 1.0,
+      "Recall@k": 1.0,
+      "MRR@k": 1.0,
+      "nDCG@k": 1.0,
+      "MAP@k": 1.0,
+      "EM": 0.0,
+      "F1": 0.17,
+      "p95_latency_ms": 48.01,
+      "dataset": "contracts_en"
+    },
+    {
+      "queries": 6,
+      "ok": 0,
+      "avg_latency_ms": null,
+      "Hit@k": null,
+      "Recall@k": null,
+      "MRR@k": null,
+      "nDCG@k": null,
+      "MAP@k": null,
+      "EM": null,
+      "F1": null,
+      "p95_latency_ms": null,
+      "dataset": "contracts_ar"
+    },
+    {
+      "queries": 6,
+      "ok": 1,
+      "avg_latency_ms": 61.92,
+      "Hit@k": 1.0,
+      "Recall@k": 1.0,
+      "MRR@k": 1.0,
+      "nDCG@k": 1.0,
+      "MAP@k": 1.0,
+      "EM": 0.0,
+      "F1": 0.187,
+      "p95_latency_ms": 61.92,
+      "dataset": "hparc"
+    },
+    {
+      "queries": 6,
+      "ok": 6,
+      "avg_latency_ms": 58.38,
+      "Hit@k": 1.0,
+      "Recall@k": 0.95,
+      "MRR@k": 0.875,
+      "nDCG@k": 0.908,
+      "MAP@k": 0.823,
+      "EM": 0.0,
+      "F1": 0.037,
+      "p95_latency_ms": 62.57,
+      "dataset": "msp"
+    },
+    {
+      "queries": 6,
+      "ok": 6,
+      "avg_latency_ms": 53.03,
+      "Hit@k": 1.0,
+      "Recall@k": 0.683,
+      "MRR@k": 0.708,
+      "nDCG@k": 0.777,
+      "MAP@k": 0.467,
+      "EM": 0.0,
+      "F1": 0.299,
+      "p95_latency_ms": 60.62,
+      "dataset": "sda"
+    }
+  ],
+  "macro_avg": {
+    "datasets": 5,
+    "queries_total": 30,
+    "avg_latency_ms": 54.593,
+    "Hit@k": 1.0,
+    "Recall@k": 0.908,
+    "MRR@k": 0.896,
+    "nDCG@k": 0.921,
+    "MAP@k": 0.823,
+    "EM": 0.0,
+    "F1": 0.173
+  }
+}

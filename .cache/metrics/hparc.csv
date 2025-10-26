@@ -1,0 +1,47 @@
+q,status,latency_ms,hit@k,recall@k,mrr@k,ndcg@k,map@k,em,f1,err
+What is the governing law?,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 437, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\uf0e3' in position 13098: character maps to <undefined>"
+What are termination rights?,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 437, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\uf0e3' in position 2917: character maps to <undefined>"
+What are the payment terms?,OK,61.92,1.0,1.0,1.0,1.0,1.0,0,0.187,
+Is confidentiality present and how is it scoped?,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 437, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\uf0e3' in position 13481: character maps to <undefined>"
+Who are the parties and roles?,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 437, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\uf0e3' in position 16742: character maps to <undefined>"
+What is the liability cap?,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 437, in main
+    print(orjson.dumps(out, option=orjson.OPT_INDENT_2).decode())
+  File ""C:\Users\lynny\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py"", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\uf0e3' in position 13458: character maps to <undefined>"

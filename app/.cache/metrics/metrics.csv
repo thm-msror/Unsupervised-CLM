@@ -1,0 +1,7 @@
+q,status,latency_ms,hit@k,recall@k,mrr@k,ndcg@k,map@k,em,f1,err
+What is the governing law?,OK,131.91,1,,,,,1,,
+What are AFMIC's termination rights?,OK,55.47,1,,,,,1,,
+What are the payment terms?,OK,64.01,1,,,,,1,,
+Who are the parties and roles?,OK,66.93,1,,,,,1,,
+Is confidentiality present and how is it scoped?,OK,73.47,0,,,,,0,,
+What is the liability cap?,OK,63.34,0,,,,,0,,

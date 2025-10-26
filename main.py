@@ -33,12 +33,12 @@ try:
     from src.llm_handler import LLMHandler
     from src.analysis_metrics import ContractAnalysisMetrics
     from src.bilingual_analyzer import BilingualContractAnalyzer
-    from src.rag_model import build_index, ask
+    from src.rag.rag_model import build_index, ask
     MODULES_LOADED = True
     # Initialize translation handler
     translation_handler = TranslationHandler()
 except ImportError as e:
-    st.error(f"Module import error: {e}")
+    st.error(f"⚠️ Module import error: {e}")
     MODULES_LOADED = False
     translation_handler = None
 
@@ -295,7 +295,7 @@ Contract text: {document_text}
 Provide a detailed, structured analysis in clear sections."""
         
         # Analyze using the existing system
-        st.info("Analyzing document. This may take up to 2 minutes.")
+        st.info(f"🤖 Analyzing document... This may take up to 2 minutes.")
         result = analyze_document(tmp_path, handler, prompt_template, analysis_dir, metrics)
         
         # Check if files were created and read the content
@@ -322,7 +322,7 @@ Provide a detailed, structured analysis in clear sections."""
                 # Parse the content into sections
                 parsed_sections = parse_analysis_content(analysis_content)
                 
-                st.success("Analysis completed successfully.")
+                st.success(f"✅ Analysis completed successfully!")
                 
                 # Save to session state
                 analysis_data = {
@@ -339,21 +339,21 @@ Provide a detailed, structured analysis in clear sections."""
                 st.session_state.show_analysis_modal = True
                 
                 # Build RAG index for Q&A in parallel
-                with st.spinner("Building Q&A system and generating summary..."):
+                with st.spinner("🔍 Building Q&A system and generating summary..."):
                     # Build RAG index
                     rag_index = build_rag_index_for_analysis(analysis_data)
                     if rag_index:
                         st.session_state.rag_index = rag_index
                         st.session_state.rag_built = True
-                        st.success("Q&A system ready.")
+                        st.success("✅ Q&A system ready!")
                     else:
-                        st.warning("Q&A system could not be built.")
+                        st.warning("⚠️ Q&A system could not be built")
                     
                     # Generate summary
                     summary_result = generate_contract_summary(latest_file)
                     if summary_result and summary_result.get('success'):
                         st.session_state.current_analysis['summary'] = summary_result
-                        st.success("Summary generated and saved.")
+                        st.success("✅ Summary generated and saved!")
                 
             except Exception as e:
                 st.error(f"Error reading analysis file: {str(e)}")
@@ -388,7 +388,7 @@ def display_analysis_modal():
                 st.markdown(f"*Generated on {datetime.fromisoformat(analysis['timestamp']).strftime('%B %d, %Y at %I:%M %p')}*")
             
             with col2:
-                if st.button("Close", key="close_modal", help="Close analysis window"):
+                if st.button("❌ Close", key="close_modal", help="Close analysis window"):
                     st.session_state.show_analysis_modal = False
                     st.rerun()
             
@@ -421,7 +421,7 @@ def display_analysis_modal():
                 )
             
             with tabs[1]:
-                st.markdown("### Arabic Translation")
+                st.markdown("### 🌐 Arabic Translation")
                 
                 # Import translation utilities
                 try:
@@ -439,7 +439,7 @@ def display_analysis_modal():
                     if arabic_exists:
                         # Load and display existing Arabic translation
                         arabic_content = load_arabic_translation(file_path)
-                        st.success("Arabic translation available.")
+                        st.success("✅ Arabic translation available")
                         
                         st.markdown(
                             f"""
@@ -462,25 +462,25 @@ def display_analysis_modal():
                         )
                         
                         # Button to regenerate translation
-                        if st.button("Regenerate Arabic Translation", key="regenerate_arabic"):
-                            with st.spinner("Translating to Arabic. This may take a minute..."):
+                        if st.button("🔄 Regenerate Arabic Translation", key="regenerate_arabic"):
+                            with st.spinner("🌐 Translating to Arabic... This may take a minute..."):
                                 arabic_text = translate_to_arabic(analysis['content'])
                                 arabic_file = save_arabic_translation(file_path, arabic_text)
-                                st.success("Arabic translation regenerated and saved.")
+                                st.success(f"✅ Arabic translation regenerated and saved!")
                                 st.rerun()
                     else:
                         # Show button to generate Arabic translation
-                        st.info("No Arabic translation available yet. Click below to generate one.")
+                        st.info("📝 No Arabic translation available yet. Click below to generate.")
                         
-                        if st.button("Translate to Arabic", key="translate_arabic", type="primary"):
-                            with st.spinner("Translating to Arabic. This may take a minute..."):
+                        if st.button("🌐 Translate to Arabic", key="translate_arabic", type="primary"):
+                            with st.spinner("🌐 Translating to Arabic... This may take a minute..."):
                                 try:
                                     arabic_text = translate_to_arabic(analysis['content'])
                                     arabic_file = save_arabic_translation(file_path, arabic_text)
-                                    st.success(f"Translation complete. Saved to: {arabic_file}")
-                                    st.info("Refresh the page to see the Arabic version.")
+                                    st.success(f"✅ Translation complete! Saved to: {arabic_file}")
+                                    st.info("🔄 Refresh the page to see the Arabic version")
                                 except Exception as e:
-                                    st.error(f"Translation error: {str(e)}")
+                                    st.error(f"❌ Translation error: {str(e)}")
                         
                         st.markdown("""
                         **Note:** 
@@ -491,7 +491,7 @@ def display_analysis_modal():
                         """)
                 
                 except ImportError as e:
-                    st.error(f"Translation module not available: {e}")
+                    st.error(f"❌ Translation module not available: {e}")
                     st.info("Run: `pip install deep-translator`")
             
             # Action buttons
@@ -526,7 +526,7 @@ def display_analysis_modal():
                 
                 # Generate response using RAG
                 if st.session_state.rag_built and st.session_state.rag_index:
-                    with st.spinner("Generating answer..."):
+                    with st.spinner("🤔 Thinking..."):
                         response = answer_contract_question(prompt, st.session_state.rag_index)
                     st.session_state.chat.append({"role": "assistant", "text": response})
                 else:
@@ -543,7 +543,7 @@ def show_saved_analyses():
         # Show data loaded indicator
         if st.session_state.get('data_loaded'):
             loaded_count = len(st.session_state.analysis_results)
-            st.sidebar.info(f"Loaded contract analysis #{loaded_count} from disk.")
+            st.sidebar.info(f"✅ Loaded Contract Analysis #{loaded_count} from disk")
         
         st.sidebar.markdown("*Click to view previous analyses*")
         
@@ -682,34 +682,11 @@ def build_rag_index_for_analysis(analysis_data):
                 })
                 segment_id += 1
         
-        # If we have too few segments, split the content into paragraphs
-        if len(segments) < 3 and content:
-            segments = []
-            segment_id = 0
-            
-            # Split by double newlines (paragraphs)
-            paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
-            
-            # If still too few, split by single newlines
-            if len(paragraphs) < 3:
-                paragraphs = [p.strip() for p in content.split('\n') if p.strip() and len(p.strip()) > 50]
-            
-            # Create segments from paragraphs
-            for para in paragraphs:
-                if para and len(para) > 20:  # Skip very short segments
-                    segments.append({
-                        "id": str(segment_id),
-                        "text": para,
-                        "title": f"Section {segment_id + 1}",
-                        "level": 2
-                    })
-                    segment_id += 1
-        
         if not segments:
             return None
         
         # Build index using RAG model
-        from src.rag_model import TfidfIndex
+        from src.rag.rag_model import TfidfIndex
         index = TfidfIndex(segments)
         
         # Create index object compatible with RAG model
@@ -761,9 +738,7 @@ def answer_contract_question(question, index_data):
             if answer != "NOT_FOUND":
                 citations = answer_data.get('citations', [])
                 if citations:
-                    # Convert citations to strings in case they're integers
-                    citation_strs = [str(c) for c in citations]
-                    return f"{answer}\n\n*Source: Analysis sections {', '.join(citation_strs)}*"
+                    return f"{answer}\n\n*Source: Analysis sections {', '.join(citations)}*"
                 return answer
             else:
                 return "I couldn't find specific information about that in the contract analysis. Could you try rephrasing your question?"
@@ -778,32 +753,32 @@ def check_system_status():
     status = {}
     
     # Check Python environment
-    status["Python Environment"] = "OK"
+    status["Python Environment"] = "✅"
     
     # Check required packages
     try:
         import streamlit, requests
-        status["Required Packages"] = "OK"
+        status["Required Packages"] = "✅"
     except ImportError:
-        status["Required Packages"] = "Error"
+        status["Required Packages"] = "❌"
     
     # Check .env file
     if os.path.exists(".env"):
-        status[".env Configuration"] = "OK"
+        status[".env Configuration"] = "✅"
     else:
-        status[".env Configuration"] = "Warning"
+        status[".env Configuration"] = "⚠️"
     
     # Check Analysis modules
     if MODULES_LOADED:
-        status["Analysis Modules"] = "OK"
+        status["Analysis Modules"] = "✅"
     else:
-        status["Analysis Modules"] = "Error"
+        status["Analysis Modules"] = "❌"
     
     # Check RAG system
     if st.session_state.rag_built:
-        status["RAG Q&A System"] = "OK"
+        status["RAG Q&A System"] = "✅"
     else:
-        status["RAG Q&A System"] = "Warning"
+        status["RAG Q&A System"] = "⚠️"
     
     return status
 
@@ -904,7 +879,7 @@ st.markdown(dedent("""
       <span class="brand-text">VERDICT</span>
     </a>
     <ul class="nav-links nav-right">
-        <li><a class="nav-pill" href="/">Home</a></li>
+        <li><a class="nav-pill" href="/Upload">Upload</a></li>
         <li><a class="nav-pill" href="/Create">Create</a></li>
         <li><a class="nav-pill" href="/Edit">Edit</a></li>
     </ul>
@@ -961,7 +936,7 @@ def screen_home():
               <h2>Upload an Existing Contract</h2>
             </div>
             <p class="section-desc">
-               **Upload Process:** Drop in a PDF/DOCX →  **Parse to JSON** →  **AI Analysis** →  **Results**
+              📤 **Upload Process:** Drop in a PDF/DOCX → 🔄 **Parse to JSON** → 🤖 **AI Analysis** → 📊 **Results**
               <br>Your document will be converted to structured JSON format, then analyzed by AI to extract key contract information.
             </p>
             """,
@@ -987,7 +962,7 @@ def screen_home():
                     file_name = uploaded_file.name
                     
                     # Parse document
-                    with st.spinner("Parsing document and converting to JSON..."):
+                    with st.spinner("📄 Parsing document and converting to JSON..."):
                         parse_result = parse_document(file_bytes, file_name)
                         
                     if parse_result.get("success"):
@@ -1014,19 +989,19 @@ def screen_home():
                         
                         # Show parsing success with details
                         lang_display = "🇸🇦 Arabic" if language == 'ar' else "🇺🇸 English"
-                        st.success("**Document processed successfully.**")
+                        st.success(f"✅ **Document Processed Successfully!**")
                         
                         col1, col2 = st.columns(2)
                         with col1:
-                            st.info(f" **Original File:** {file_name}")
-                            st.info(f" **Language Detected:** {lang_display}")
-                            st.info(f" **Text Length:** {len(text):,} characters")
-
+                            st.info(f"📄 **Original File:** {file_name}")
+                            st.info(f"🗣️ **Language Detected:** {lang_display}")
+                            st.info(f"📏 **Text Length:** {len(text):,} characters")
+                        
                         with col2:
                             if json_filename:
-                                st.info(f" **JSON Created:** {json_filename}")
-                                st.info(f" **Saved to:** data/parsed/")
-                            st.info(f" **Processed:** {datetime.now().strftime('%H:%M:%S')}")
+                                st.info(f"� **JSON Created:** {json_filename}")
+                                st.info(f"💾 **Saved to:** data/parsed/")
+                            st.info(f"⏱️ **Processed:** {datetime.now().strftime('%H:%M:%S')}")
                         
                         st.rerun()
                     else:
@@ -1075,7 +1050,7 @@ def screen_home():
                 timestamp = datetime.fromisoformat(last_analysis['timestamp'])
                 display_time = timestamp.strftime('%B %d, %Y at %I:%M %p')
                 
-                st.success(f"**Analysis completed on:** {display_time}")
+                st.success(f"✅ **Analysis completed on:** {display_time}")
                 
                 col1, col2 = st.columns(2)
                 with col1:
@@ -1097,7 +1072,7 @@ def screen_home():
                 st.markdown("### 💬 Quick Q&A")
                 
                 if st.session_state.rag_built:
-                    st.success("**Q&A system ready.** Ask questions about your contract.")
+                    st.success("🤖 **Q&A System Ready** - Ask questions about your contract!")
                     
                     # Show recent chat messages (last 4)
                     recent_messages = st.session_state.chat[-4:] if len(st.session_state.chat) > 4 else st.session_state.chat
@@ -1114,33 +1089,33 @@ def screen_home():
                         st.session_state.chat.append({"role": "user", "text": prompt})
                         
                         # Generate response using RAG
-                        with st.spinner("Generating answer..."):
+                        with st.spinner("🤔 Thinking..."):
                             response = answer_contract_question(prompt, st.session_state.rag_index)
                         st.session_state.chat.append({"role": "assistant", "text": response})
                         st.rerun()
                     
                     # Link to full chat in modal
-                    st.info("Tip: Open the full analysis view for complete chat history and all analysis tabs.")
+                    st.info("💡 **Tip:** Open the full analysis view for complete chat history and all analysis tabs.")
                 else:
-                    st.info("The Q&A system is being built. Please wait or re-analyze the contract.")
+                    st.info("🔄 Q&A system is being built... Please wait or re-analyze the contract.")
             else:
-                st.markdown("### Ready for Analysis")
-                st.info("Document parsed and ready. Click the 'Analyze Contract' button above to start AI-powered analysis.")
+                st.markdown("### 📋 Ready for Analysis")
+                st.info("📝 **Document parsed and ready!** Click the 'Analyze Contract' button above to start AI-powered analysis.")
                     
             # System Status in sidebar
             with st.sidebar:
-                st.markdown("### System Status")
+                st.markdown("### 🔧 System Status")
                 
                 # Check system components
                 status_checks = check_system_status()
                 
                 for component, status in status_checks.items():
-                    if status == "OK":
-                        st.success(f"{component}: {status}")
-                    elif status == "Warning":
-                        st.warning(f"{component}: {status}")
+                    if status == "✅":
+                        st.success(f"{status} {component}")
+                    elif status == "⚠️":
+                        st.warning(f"{status} {component}")
                     else:
-                        st.error(f"{component}: {status}")
+                        st.error(f"{status} {component}")
 
 # =============================================================================
 # 🚀 Application Entry Point

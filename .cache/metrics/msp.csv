@@ -1,0 +1,7 @@
+q,status,latency_ms,hit@k,recall@k,mrr@k,ndcg@k,map@k,em,f1,err
+What is the governing law and venue?,OK,55.48,1.0,1.0,1.0,1.0,1.0,0,0.0,
+What are the termination rights?,OK,54.4,1.0,1.0,1.0,1.0,1.0,0,0.0,
+What are the payment terms?,OK,56.38,1.0,1.0,1.0,1.0,1.0,0,0.0,
+Is confidentiality present and how is it scoped?,OK,58.47,1.0,1.0,0.25,0.501,0.325,0,0.0,
+Who are the parties and roles?,OK,62.57,1.0,0.7,1.0,0.949,0.612,0,0.222,
+What is the liability cap?,OK,62.99,1.0,1.0,1.0,1.0,1.0,0,0.0,

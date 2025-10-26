@@ -1,0 +1,109 @@
+[
+  {
+    "q": "What is the governing law?",
+    "k": 8,
+    "gold_ids": [
+      "sec_1",
+      "sec_0",
+      "sec_16",
+      "sec_19"
+    ],
+    "gold_answers": [
+      "SOFTWARE DEVELOPMENT AGREEMENT TEMPLATE The Software Development Agreement, also known as a software contract, is a legal document that outlines the terms and conditions of a software development project between two or more parties.",
+      "SOFTWARE DEVELOPMENT AGREEMENT TEMPLATE The Software Development Agreement, also known as a software contract, is a legal document that outlines the terms and conditions of a software development project between two or more parties.",
+      "CLAUSES Clauses with different alternatives: choose the most favorable In the most important clauses of each contract (exclusivity, payment terms, applicable law and competent jurisdiction, etc."
+    ]
+  },
+  {
+    "q": "What are the termination rights?",
+    "k": 8,
+    "gold_ids": [
+      "sec_14",
+      "sec_16",
+      "sec_11",
+      "sec_19",
+      "sec_13",
+      "sec_10",
+      "sec_20",
+      "sec_9",
+      "sec_18",
+      "sec_1"
+    ],
+    "gold_answers": [
+      "DATE The date when the contract comes into force is the one that appears in its header, as mentioned in the final paragraphs of the contract, before signatures (This Contract comes into force on the date written above).",
+      "CLAUSES Clauses with different alternatives: choose the most favorable In the most important clauses of each contract (exclusivity, payment terms, applicable law and competent jurisdiction, etc.",
+      "4."
+    ]
+  },
+  {
+    "q": "What are the payment terms?",
+    "k": 8,
+    "gold_ids": [
+      "sec_1",
+      "sec_0",
+      "sec_10",
+      "sec_11",
+      "sec_16",
+      "sec_20"
+    ],
+    "gold_answers": [
+      "SOFTWARE DEVELOPMENT AGREEMENT TEMPLATE The Software Development Agreement, also known as a software contract, is a legal document that outlines the terms and conditions of a software development project between two or more parties.",
+      "SOFTWARE DEVELOPMENT AGREEMENT TEMPLATE The Software Development Agreement, also known as a software contract, is a legal document that outlines the terms and conditions of a software development project between two or more parties.",
+      "4."
+    ]
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "k": 8,
+    "gold_ids": [
+      "sec_1",
+      "sec_0"
+    ],
+    "gold_answers": [
+      "SOFTWARE DEVELOPMENT AGREEMENT TEMPLATE The Software Development Agreement, also known as a software contract, is a legal document that outlines the terms and conditions of a software development project between two or more parties.",
+      "SOFTWARE DEVELOPMENT AGREEMENT TEMPLATE The Software Development Agreement, also known as a software contract, is a legal document that outlines the terms and conditions of a software development project between two or more parties."
+    ]
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "k": 8,
+    "gold_ids": [
+      "sec_19",
+      "sec_16",
+      "sec_14",
+      "sec_20",
+      "sec_10",
+      "sec_11",
+      "sec_15",
+      "sec_1",
+      "sec_0",
+      "sec_9"
+    ],
+    "gold_answers": [
+      "SIGNATURES People who sign Persons signing the contract on behalf of the company must have the authority to do so and preferably, be entitled on the basis of a power of attorney.",
+      "CLAUSES Clauses with different alternatives: choose the most favorable In the most important clauses of each contract (exclusivity, payment terms, applicable law and competent jurisdiction, etc.",
+      "DATE The date when the contract comes into force is the one that appears in its header, as mentioned in the final paragraphs of the contract, before signatures (This Contract comes into force on the date written above)."
+    ]
+  },
+  {
+    "q": "What is the liability cap?",
+    "k": 8,
+    "gold_ids": [
+      "sec_14",
+      "sec_19",
+      "sec_16",
+      "sec_11",
+      "sec_10",
+      "sec_1",
+      "sec_0",
+      "sec_20",
+      "sec_3",
+      "sec_15"
+    ],
+    "gold_answers": [
+      "DATE The date when the contract comes into force is the one that appears in its header, as mentioned in the final paragraphs of the contract, before signatures (This Contract comes into force on the date written above).",
+      "SIGNATURES People who sign Persons signing the contract on behalf of the company must have the authority to do so and preferably, be entitled on the basis of a power of attorney.",
+      "CLAUSES Clauses with different alternatives: choose the most favorable In the most important clauses of each contract (exclusivity, payment terms, applicable law and competent jurisdiction, etc."
+    ]
+  }
+]

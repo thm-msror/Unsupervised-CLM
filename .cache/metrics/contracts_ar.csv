@@ -1,0 +1,73 @@
+q,status,latency_ms,hit@k,recall@k,mrr@k,ndcg@k,map@k,em,f1,err
+ما هو القانون الحاكم؟,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 435, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 384, in ask
+    raw_hits = _search(idx, query, k=k)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 369, in _search
+    from sentence_transformers import SentenceTransformer
+ModuleNotFoundError: No module named 'sentence_transformers'"
+ما هي حقوق إنهاء العقد؟,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 435, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 384, in ask
+    raw_hits = _search(idx, query, k=k)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 369, in _search
+    from sentence_transformers import SentenceTransformer
+ModuleNotFoundError: No module named 'sentence_transformers'"
+ما هي شروط الدفع؟,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 435, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 384, in ask
+    raw_hits = _search(idx, query, k=k)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 369, in _search
+    from sentence_transformers import SentenceTransformer
+ModuleNotFoundError: No module named 'sentence_transformers'"
+هل توجد سرية وكيف نطاقها؟,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 435, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 384, in ask
+    raw_hits = _search(idx, query, k=k)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 369, in _search
+    from sentence_transformers import SentenceTransformer
+ModuleNotFoundError: No module named 'sentence_transformers'"
+من هم الأطراف والأدوار؟,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 435, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 384, in ask
+    raw_hits = _search(idx, query, k=k)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 369, in _search
+    from sentence_transformers import SentenceTransformer
+ModuleNotFoundError: No module named 'sentence_transformers'"
+ما هو حد المسؤولية؟,ERR,,,,,,,,,"Traceback (most recent call last):
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 440, in <module>
+    main()
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 435, in main
+    out = ask(args.idx, args.q, k=args.k, lambda_mmr=args.lambda_mmr, mode=args.mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 384, in ask
+    raw_hits = _search(idx, query, k=k)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\lynny\OneDrive\Desktop\uni\extracurricular\hackathons\aix_final\Unsupervised-CLM\src\rag\rag_model.py"", line 369, in _search
+    from sentence_transformers import SentenceTransformer
+ModuleNotFoundError: No module named 'sentence_transformers'"

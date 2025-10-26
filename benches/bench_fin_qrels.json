@@ -1,0 +1,91 @@
+[
+  {
+    "q": "What is the governing law?",
+    "k": 8,
+    "gold_ids": [
+      "sec_5",
+      "sec_7"
+    ],
+    "gold_answers": [
+      "6000 American Parkway Madison, Wisconsin 53783-0001 Attention: Secretary Facsimile: Such notice shall be given at such other address or to such other representative as a party to this Agreement may furnish pursuant to this Section 6.",
+      "RECITALS WHEREAS, the affiliate of AFMIC signing this Joinder (the “Joinder Party”) wishes to become a signatory to the Agreement; NOW, THEREFORE, in consideration of the mutual promises made and the terms and conditions described in the Agreement, AFMIC and the Joinder Party agree as follows: Joinder to the Agreement."
+    ]
+  },
+  {
+    "q": "What are AFMIC's termination rights?",
+    "k": 8,
+    "gold_ids": [
+      "sec_4"
+    ],
+    "gold_answers": [
+      "2."
+    ]
+  },
+  {
+    "q": "What are the payment terms?",
+    "k": 8,
+    "gold_ids": [
+      "sec_3"
+    ],
+    "gold_answers": [
+      "1."
+    ]
+  },
+  {
+    "q": "Who are the parties and roles?",
+    "k": 8,
+    "gold_ids": [
+      "sec_1",
+      "sec_0",
+      "sec_2",
+      "sec_3",
+      "sec_4",
+      "sec_5",
+      "sec_6",
+      "sec_7"
+    ],
+    "gold_answers": [
+      "AMENDED AND RESTATED INTERCOMPANY SERVICES AND COST ALLOCATION AGREEMENT This Amended and Restated Intercompany Services and Cost Allocation Agreement (this “Agreement”) is made and entered into effective as to each Affiliate (as that term is defined below) as of the date such Affiliate first becomes a signatory hereto, by and among AMERICAN FAMILY MUTUAL INSURANCE COMPANY, S.",
+      "AMENDED AND RESTATED INTERCOMPANY SERVICES AND COST ALLOCATION AGREEMENT This Amended and Restated Intercompany Services and Cost Allocation Agreement (this “Agreement”) is made and entered into effective as to each Affiliate (as that term is defined below) as of the date such Affiliate first becomes a signatory hereto, by and among AMERICAN FAMILY MUTUAL INSURANCE COMPANY, S.",
+      "RECITALS WHEREAS, AFMIC may provide goods (“Goods”), third party services (“Third Party Services”), and management and other direct services including, without limitation, executive, corporate strategy, business development, legal, corporate governance, product management, product development, underwriting, marketing, customer sales, customer service, policy administration, billing, claims, reserving, sourcing and procurement, human resources, business integration, communications, strategic data and analytics, financial, investment, enterprise risk, reinsurance, internal audit, licensing, compliance, information and technology services (collectively, “Management Services”) used by the Affiliates in the conduct of their various businesses; and WHEREAS, AFMIC may at times, request Goods, Third Party Services and/or Management Services from one or more of the Affiliates for use in AFMIC’s various businesses, including the provision of services to other affiliates and/or subsidiaries of AFMIC; and WHEREAS, when and to the extent that a Party hereunder is the provider of Goods, Third Party Services or Management Services to another Party under the terms and conditions of this Agreement, it is referred to herein as a “Service Provider”; and WHEREAS, when and to the extent that a Party hereunder is the recipient of Goods, Third Party Services or Management Services from another Party under the terms and conditions of this Agreement, it is referred to herein as a “Service Recipient”."
+    ]
+  },
+  {
+    "q": "Is confidentiality present and how is it scoped?",
+    "k": 8,
+    "gold_ids": [
+      "sec_2",
+      "sec_0",
+      "sec_1",
+      "sec_4",
+      "sec_7",
+      "sec_6",
+      "sec_5",
+      "sec_3"
+    ],
+    "gold_answers": [
+      "RECITALS WHEREAS, AFMIC may provide goods (“Goods”), third party services (“Third Party Services”), and management and other direct services including, without limitation, executive, corporate strategy, business development, legal, corporate governance, product management, product development, underwriting, marketing, customer sales, customer service, policy administration, billing, claims, reserving, sourcing and procurement, human resources, business integration, communications, strategic data and analytics, financial, investment, enterprise risk, reinsurance, internal audit, licensing, compliance, information and technology services (collectively, “Management Services”) used by the Affiliates in the conduct of their various businesses; and WHEREAS, AFMIC may at times, request Goods, Third Party Services and/or Management Services from one or more of the Affiliates for use in AFMIC’s various businesses, including the provision of services to other affiliates and/or subsidiaries of AFMIC; and WHEREAS, when and to the extent that a Party hereunder is the provider of Goods, Third Party Services or Management Services to another Party under the terms and conditions of this Agreement, it is referred to herein as a “Service Provider”; and WHEREAS, when and to the extent that a Party hereunder is the recipient of Goods, Third Party Services or Management Services from another Party under the terms and conditions of this Agreement, it is referred to herein as a “Service Recipient”.",
+      "AMENDED AND RESTATED INTERCOMPANY SERVICES AND COST ALLOCATION AGREEMENT This Amended and Restated Intercompany Services and Cost Allocation Agreement (this “Agreement”) is made and entered into effective as to each Affiliate (as that term is defined below) as of the date such Affiliate first becomes a signatory hereto, by and among AMERICAN FAMILY MUTUAL INSURANCE COMPANY, S.",
+      "AMENDED AND RESTATED INTERCOMPANY SERVICES AND COST ALLOCATION AGREEMENT This Amended and Restated Intercompany Services and Cost Allocation Agreement (this “Agreement”) is made and entered into effective as to each Affiliate (as that term is defined below) as of the date such Affiliate first becomes a signatory hereto, by and among AMERICAN FAMILY MUTUAL INSURANCE COMPANY, S."
+    ]
+  },
+  {
+    "q": "What is the liability cap?",
+    "k": 8,
+    "gold_ids": [
+      "sec_2",
+      "sec_4",
+      "sec_7",
+      "sec_3",
+      "sec_6",
+      "sec_0",
+      "sec_1",
+      "sec_5"
+    ],
+    "gold_answers": [
+      "RECITALS WHEREAS, AFMIC may provide goods (“Goods”), third party services (“Third Party Services”), and management and other direct services including, without limitation, executive, corporate strategy, business development, legal, corporate governance, product management, product development, underwriting, marketing, customer sales, customer service, policy administration, billing, claims, reserving, sourcing and procurement, human resources, business integration, communications, strategic data and analytics, financial, investment, enterprise risk, reinsurance, internal audit, licensing, compliance, information and technology services (collectively, “Management Services”) used by the Affiliates in the conduct of their various businesses; and WHEREAS, AFMIC may at times, request Goods, Third Party Services and/or Management Services from one or more of the Affiliates for use in AFMIC’s various businesses, including the provision of services to other affiliates and/or subsidiaries of AFMIC; and WHEREAS, when and to the extent that a Party hereunder is the provider of Goods, Third Party Services or Management Services to another Party under the terms and conditions of this Agreement, it is referred to herein as a “Service Provider”; and WHEREAS, when and to the extent that a Party hereunder is the recipient of Goods, Third Party Services or Management Services from another Party under the terms and conditions of this Agreement, it is referred to herein as a “Service Recipient”.",
+      "2.",
+      "RECITALS WHEREAS, the affiliate of AFMIC signing this Joinder (the “Joinder Party”) wishes to become a signatory to the Agreement; NOW, THEREFORE, in consideration of the mutual promises made and the terms and conditions described in the Agreement, AFMIC and the Joinder Party agree as follows: Joinder to the Agreement."
+    ]
+  }
+]

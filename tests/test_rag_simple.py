@@ -64,7 +64,7 @@ def test_rag_qa():
     print("="*50)
     
     try:
-        from src.rag_model import TfidfIndex
+        from src.rag.rag_model import TfidfIndex
         import google.generativeai as genai
         
         # Sample contract text
